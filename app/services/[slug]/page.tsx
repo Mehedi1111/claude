@@ -1,0 +1,294 @@
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { allServices } from "@/lib/data";
+import CTASection from "@/components/sections/CTASection";
+import SectionReveal from "@/components/ui/SectionReveal";
+
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  return allServices.map((s) => ({ slug: s.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const service = allServices.find((s) => s.slug === slug);
+  if (!service) return {};
+  return {
+    title: `${service.title} — Evoke`,
+    description: service.description,
+  };
+}
+
+export default async function ServiceDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const service = allServices.find((s) => s.slug === slug);
+  if (!service) notFound();
+
+  const serviceIndex = allServices.findIndex((s) => s.slug === slug);
+  const nextService = allServices[(serviceIndex + 1) % allServices.length];
+
+  const categoryLabel = service.category === "ai" ? "AI Logo Services" : "Traditional Branding";
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="pt-36 pb-16 lg:pt-44 lg:pb-20 bg-[#0a0a0a] overflow-hidden relative">
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{ backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`, backgroundSize: "48px 48px" }}
+        />
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
+          <SectionReveal>
+            <div className="flex items-center gap-4 mb-10">
+              <Link href="/services" className="text-[11px] font-sans text-white/30 hover:text-white/60 transition-colors">
+                ← Services
+              </Link>
+              <span className="text-white/10">/</span>
+              <span className="text-[11px] font-sans text-white/30 uppercase tracking-[0.1em]">{categoryLabel}</span>
+              <span className="text-white/10">/</span>
+              <span className="text-[11px] font-sans text-white/30">{service.number}</span>
+            </div>
+          </SectionReveal>
+          <SectionReveal delay={0.1}>
+            <h1 className="text-[clamp(40px,6vw,90px)] font-display font-bold text-white tracking-[-0.04em] leading-[0.9] mb-5">
+              {service.title}
+            </h1>
+          </SectionReveal>
+          <SectionReveal delay={0.2}>
+            <p className="text-xl font-sans text-white/35 italic mb-10 max-w-lg">
+              {service.tagline}
+            </p>
+          </SectionReveal>
+          <SectionReveal delay={0.3}>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-[#0a0a0a] bg-white px-6 py-3.5 hover:bg-white/90 transition-colors"
+              >
+                Start This Service ↗
+              </Link>
+              <div className="flex items-center gap-6">
+                <div className="flex items-center gap-2 text-sm font-sans text-white/30">
+                  <span>From</span>
+                  <span className="text-white font-semibold text-base">{service.startingPrice}</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm font-sans text-white/30">
+                  <span>⏱</span>
+                  <span>{service.turnaround}</span>
+                </div>
+              </div>
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
+
+      {/* Hero image */}
+      <div className="relative aspect-[21/7] overflow-hidden bg-[#111]">
+        <Image
+          src={service.image}
+          alt={service.title}
+          fill
+          className="object-cover grayscale opacity-50"
+          priority
+          sizes="100vw"
+        />
+      </div>
+
+      {/* Main content */}
+      <section className="py-20 lg:py-28 bg-white">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-16 lg:gap-20">
+
+            {/* Left content */}
+            <div>
+              {/* Overview */}
+              <SectionReveal>
+                <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-5">
+                  Overview
+                </p>
+                <p className="text-lg lg:text-xl font-sans text-[#404040] leading-relaxed mb-12">
+                  {service.longDescription}
+                </p>
+              </SectionReveal>
+
+              {/* What's included */}
+              <SectionReveal delay={0.1}>
+                <div className="mb-12">
+                  <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-5">
+                    What&apos;s Included
+                  </p>
+                  <ul className="space-y-3">
+                    {service.features.map((f, i) => (
+                      <li key={i} className="flex items-start gap-3.5 text-[15px] font-sans text-[#404040] py-3 border-b border-[#f0f0f0] last:border-0">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="mt-1 shrink-0">
+                          <circle cx="7" cy="7" r="6" stroke="#0a0a0a" strokeWidth="1" />
+                          <path d="M4.5 7L6.5 9L9.5 5" stroke="#0a0a0a" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </SectionReveal>
+
+              {/* Who needs this */}
+              {service.whoNeedsThis && (
+                <SectionReveal delay={0.15}>
+                  <div className="mb-12">
+                    <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-5">
+                      Who This Is For
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {service.whoNeedsThis.map((who, i) => (
+                        <span key={i} className="text-sm font-sans text-[#404040] border border-[#e5e5e5] px-3.5 py-2">
+                          {who}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </SectionReveal>
+              )}
+
+              {/* Common use cases */}
+              {service.commonUseCases && (
+                <SectionReveal delay={0.2}>
+                  <div className="mb-12">
+                    <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-5">
+                      Common Use Cases
+                    </p>
+                    <ul className="space-y-2.5">
+                      {service.commonUseCases.map((uc, i) => (
+                        <li key={i} className="flex items-start gap-3 text-[15px] font-sans text-[#737373]">
+                          <span className="mt-2 w-1 h-1 bg-[#737373] rounded-full shrink-0" />
+                          {uc}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </SectionReveal>
+              )}
+
+              {/* Service FAQ */}
+              {service.serviceFAQ && service.serviceFAQ.length > 0 && (
+                <SectionReveal delay={0.25}>
+                  <div>
+                    <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-5">
+                      Questions About This Service
+                    </p>
+                    <div className="space-y-5">
+                      {service.serviceFAQ.map((faq, i) => (
+                        <div key={i} className="bg-[#f5f5f5] p-6">
+                          <p className="text-sm font-sans font-semibold text-[#0a0a0a] mb-2">{faq.q}</p>
+                          <p className="text-sm font-sans text-[#737373] leading-relaxed">{faq.a}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </SectionReveal>
+              )}
+            </div>
+
+            {/* Right sidebar */}
+            <div className="space-y-5">
+              {/* Deliverables card */}
+              <SectionReveal delay={0.1}>
+                <div className="bg-[#f5f5f5] p-7 lg:p-8">
+                  <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-5">
+                    Deliverables
+                  </p>
+                  <ul className="space-y-0">
+                    {service.deliverables.map((d, i) => (
+                      <li key={i} className="flex items-center gap-3 text-sm font-sans text-[#404040] py-3 border-b border-[#e5e5e5] last:border-0">
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="shrink-0">
+                          <circle cx="6" cy="6" r="5" stroke="#0a0a0a" strokeWidth="0.8" />
+                          <path d="M3.5 6L5.5 8L8.5 4" stroke="#0a0a0a" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        {d}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </SectionReveal>
+
+              {/* Pricing + CTA card */}
+              <SectionReveal delay={0.15}>
+                <div className="border border-[#e5e5e5] p-7 lg:p-8">
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="text-[11px] font-sans font-semibold text-[#0a0a0a]/40 uppercase tracking-[0.15em]">
+                      Starting from
+                    </span>
+                    <span className="text-3xl font-display font-bold text-[#0a0a0a] tracking-[-0.03em]">
+                      {service.startingPrice}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between border-t border-[#e5e5e5] pt-4 pb-6">
+                    <span className="text-[11px] font-sans font-semibold text-[#0a0a0a]/40 uppercase tracking-[0.15em]">
+                      Turnaround
+                    </span>
+                    <span className="text-sm font-sans font-semibold text-[#0a0a0a]">
+                      {service.turnaround}
+                    </span>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="block w-full text-center text-sm font-sans font-semibold text-white bg-[#0a0a0a] px-6 py-4 hover:bg-[#1f1f1f] transition-colors"
+                  >
+                    Get Started →
+                  </Link>
+                  <p className="text-[11px] font-sans text-[#737373] text-center mt-3">
+                    Free quote within 1 business day
+                  </p>
+                </div>
+              </SectionReveal>
+
+              {/* Contact card */}
+              <SectionReveal delay={0.2}>
+                <div className="bg-[#0a0a0a] p-7 lg:p-8">
+                  <p className="text-sm font-display font-bold text-white tracking-[-0.02em] mb-2">
+                    Have a complex project?
+                  </p>
+                  <p className="text-[13px] font-sans text-white/40 leading-relaxed mb-5">
+                    Send us your brief directly. We&apos;ll scope it and quote within 24 hours.
+                  </p>
+                  <a
+                    href="mailto:work@madebyevoke.com"
+                    className="text-[13px] font-sans font-medium text-white/60 hover:text-white transition-colors link-underline"
+                  >
+                    work@madebyevoke.com →
+                  </a>
+                </div>
+              </SectionReveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Next service */}
+      <section className="py-14 lg:py-16 bg-[#f5f5f5] border-t border-[#e5e5e5]">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-6">
+            Next Service
+          </p>
+          <Link href={`/services/${nextService.slug}`} className="group flex items-center justify-between gap-8">
+            <div>
+              <p className="text-[11px] font-sans text-[#737373] mb-1.5">{nextService.number} — {nextService.category === "ai" ? "AI Services" : "Traditional Branding"}</p>
+              <h3 className="text-2xl lg:text-3xl font-display font-bold text-[#0a0a0a] tracking-[-0.03em] group-hover:text-[#0a0a0a]/50 transition-colors">
+                {nextService.title}
+              </h3>
+            </div>
+            <span className="text-3xl text-[#0a0a0a]/15 group-hover:text-[#0a0a0a] group-hover:translate-x-2 transition-all duration-300">
+              →
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      <CTASection />
+    </>
+  );
+}
