@@ -1,0 +1,120 @@
+---
+title: "Vector vs. Raster: A Brand Owner's Guide"
+excerpt: "The definitive explanation of why vector files are the foundation of every professional brand identity — in plain language, for non-designers."
+category: "Education"
+date: "2025-04-22"
+image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80"
+author:
+  name: "Evoke Studio"
+  role: "Brand Technicians"
+tags: ["Education", "Vectors", "Brand Basics"]
+related:
+  - "why-ai-logos-fail-in-print"
+  - "midjourney-logo-to-vector"
+seo:
+  description: "Understand the difference between vector and raster files, and why every professional brand needs vector assets for their logo."
+---
+
+If you've ever been asked by a printer, developer, or brand agency to "send the vector file" and didn't know what they meant — this is for you.
+
+The vector vs. raster distinction is one of the most practically important concepts in brand design. It determines whether your logo can be used professionally, at scale, and across every medium that matters.
+
+<Callout type="tip" title="The Short Version">
+Raster files are made of pixels. They break when you scale them up. Vector files are made of math. They're infinitely scalable. Your brand logo needs to be a vector.
+</Callout>
+
+## What Is a Raster File?
+
+A raster file stores images as a fixed grid of coloured squares called pixels. JPG, PNG, WEBP, and GIF are all raster formats. At their native resolution, raster images look sharp. When you scale them up, the pixels become visible — a phenomenon called "pixelation."
+
+Every AI-generated image — Midjourney, DALL-E, Ideogram, Stable Diffusion — is a raster file.
+
+<ImageCaption
+  src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&q=80"
+  alt="Raster vs vector comparison"
+  caption="A raster image magnified 400% shows visible pixel blocks. The same image as a vector remains perfectly crisp at any zoom level."
+/>
+
+## What Is a Vector File?
+
+A vector file stores images as mathematical equations. Instead of "pixel (100,100) is black," it says "draw a circle with centre point X, radius Y, fill colour Z." Because the description is mathematical, the rendering engine calculates a perfectly crisp result at any output size — from a 16px favicon to a 20-metre banner.
+
+SVG, AI (Adobe Illustrator), and EPS are vector formats.
+
+<ComparisonTable
+  beforeLabel="Raster File (PNG/JPG)"
+  afterLabel="Vector File (SVG/AI/EPS)"
+  rows={[
+    { feature: "Stores as", before: "Grid of pixels", after: "Mathematical equations" },
+    { feature: "Scale to 10×", before: "Pixelated, blurry", after: "Perfectly crisp" },
+    { feature: "Scale to 0.1×", before: "Fine", after: "Fine" },
+    { feature: "File size grows with size", before: true, after: false },
+    { feature: "Editable in Illustrator", before: false, after: true },
+    { feature: "Colour changeable", before: "Destructive edit only", after: "One-click change" },
+    { feature: "Print production ready", before: false, after: true },
+    { feature: "Animation ready", before: false, after: true },
+  ]}
+/>
+
+## Why Does Brand Logo Design Need Vectors?
+
+Professional use of a brand logo spans an enormous range of scales and contexts. Consider the typical deployment of a single brand mark:
+
+- A **responsive website** may render your logo at 40px on mobile
+- A **business card** renders it at roughly 150px wide
+- A **PowerPoint slide** might need it at 300px
+- A **banner stand** needs it at ~2000px equivalent
+- A **vehicle wrap** might need it at 10,000px or larger
+- A **building sign** might require it at 50,000px
+
+No raster file survives this range with its integrity intact. A vector does — effortlessly, and with a file size often smaller than the PNG equivalent.
+
+<Callout type="note">
+The reason your developer or printer keeps asking for "the SVG" is not because of preference. It's because without it, they literally cannot do their job correctly.
+</Callout>
+
+## The AI Logo Problem
+
+AI image generators are extraordinarily capable at producing visually compelling brand concepts. The problem is that their output format — raster — is fundamentally unsuitable for professional brand use.
+
+This has created an entirely new category of design need: **AI logo vectorisation**. The process of manually reconstructing an AI-generated raster logo as a precise vector file.
+
+The key word is manually. Auto-trace tools (such as Adobe Illustrator's Image Trace) exist, but they produce bloated, imprecise paths that fail professional use cases. True vectorisation requires a designer to study the raster output and rebuild every path, curve, and letterform from scratch.
+
+## What You Should Always Have
+
+For any brand logo, you need a minimum of:
+
+| File | Format | Use Case |
+|------|--------|----------|
+| Master vector | `.ai` or `.eps` | Source of truth |
+| Web SVG | `.svg` | Websites, apps |
+| Print PDF | `.pdf` | Print production |
+| Transparent PNG | `.png` at 3x | Social, email |
+| White version | All of the above | Dark backgrounds |
+
+If you don't have all of these — particularly the vector source files — your brand is not production-ready.
+
+<CTASection
+  headline="Don't have a vector version of your logo?"
+  description="We manually reconstruct AI-generated logos into complete vector file sets. Starting from $50, delivered in 24–48 hours."
+  cta="Start a Project"
+  href="/contact"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Can I convert my PNG logo to a vector myself?",
+      a: "You can use auto-trace tools like Illustrator's Image Trace, but the results are usually unsuitable for professional use — too many anchor points, imprecise curves, and broken paths. Manual reconstruction is significantly more work but produces a genuinely production-ready file."
+    },
+    {
+      q: "Is SVG always better than PNG?",
+      a: "For logos and icons, yes — SVG is almost always preferable. For photographs or complex photorealistic artwork, raster formats are more appropriate since vector isn't designed for photographic content."
+    },
+    {
+      q: "What's the difference between EPS and SVG?",
+      a: "EPS (Encapsulated PostScript) is the traditional print industry vector format, widely accepted by print vendors. SVG (Scalable Vector Graphics) is the web standard. For a complete brand asset library, you should have both."
+    }
+  ]}
+/>

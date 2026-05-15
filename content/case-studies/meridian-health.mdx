@@ -1,0 +1,89 @@
+---
+title: "Meridian Health"
+client: "Meridian Health"
+category: "AI Logo Cleanup"
+year: "2024"
+service: "AI Logo Cleanup"
+coverImage: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=90"
+image: "https://images.unsplash.com/photo-1541628951107-a9af5346a3e4?w=900&q=80"
+tags: ["Cleanup", "Print-Ready"]
+challenge: "A healthcare startup's AI-generated mark rejected by their print vendor twice. Open paths, inconsistent stroke weights, and a brand blue that shifted to purple under CMYK conversion."
+solution: "Full technical audit and cleanup: closed open paths, converted strokes to outlines, standardised element weights, and rigorous CMYK colour management for coated and uncoated stock."
+outcomes:
+  - "Print vendor accepted first submission"
+  - "Pantone values matched and documented"
+  - "Full file structure audit report delivered"
+---
+
+In healthcare, brand trust is built slowly. Meridian Health had invested significant time developing their visual identity — a clean, geometric AI-generated mark that tested well with their target audience of independent practitioners and health system administrators.
+
+When their signage vendor rejected their logo file for the second time, they came to us.
+
+## The Rejection Reports
+
+Two vendor rejection reports told the story clearly:
+
+**Rejection 1** (Large format printer): *"File contains open paths. Cannot guarantee print quality. Please supply corrected vector file."*
+
+**Rejection 2** (Offset print, stationery supplier): *"Colour values do not match specified brand blue. Test print shows significant hue shift toward purple. Please supply Pantone-referenced file."*
+
+Both rejections pointed to fixable technical problems. The logo itself was fine — the file was not.
+
+## The Audit
+
+We opened the Illustrator file that Meridian's designer had exported from a traced PNG and ran a full technical audit.
+
+<Callout type="warning" title="What We Found">
+11 open paths across the mark's components. 3 stroke elements not converted to outlines (a common source of vendor rejection — strokes render differently depending on the vendor's RIP settings). Colour specified as R:0 G:71 B:187 — a rich blue that shifts to approximately R:60 G:0 B:200 under CMYK conversion without colour management.
+</Callout>
+
+The specific issues:
+
+| Issue | Count | Impact |
+|-------|-------|--------|
+| Open paths | 11 | File rejection, print artifacts |
+| Unconverted strokes | 3 | Unpredictable weight at different scales |
+| Incorrect CMYK conversion | 1 | Colour shift to purple |
+| Missing bleed (stationery) | — | Edge trim issues |
+| Redundant anchor points | ~400 | Fragile at scale |
+
+## The Cleanup Process
+
+Unlike full vectorisation, cleanup work preserves the existing structure where possible and corrects only the technical failures.
+
+**Closing open paths**: Each open path was traced to its disconnected endpoint and closed with a mathematically consistent curve that matched the visual intent of the surrounding geometry.
+
+**Stroke conversion**: The three unconverted strokes were expanded to outlined paths with the correct visual weight at the intended use size. Each was documented with its specification in the master file.
+
+**Colour correction**: We established the correct CMYK equivalent for the brand blue through test printing on both coated and uncoated stock, then comparing results against the screen reference. The final specification:
+
+- Pantone: 2728 C (coated) / 2728 U (uncoated)
+- CMYK: C85 M50 Y0 K0
+- RGB: R27 G108 B219
+- Hex: #1B6CDB
+
+<TestimonialQuote
+  quote="We had the same file rejected twice. After Evoke's cleanup, the vendor accepted it first submission. The colour is exactly right now."
+  author="Dr. Sarah Okonkwo"
+  role="Co-Founder"
+  company="Meridian Health"
+/>
+
+## Deliverables
+
+The cleanup engagement delivered:
+
+- Corrected master Illustrator file with documented changes
+- Print-ready EPS for all production contexts
+- Pantone reference card (coated and uncoated)
+- Technical audit report documenting every correction
+- Usage notes for the Meridian design team
+
+<CTASection
+  headline="Has your logo been rejected by a vendor?"
+  description="We audit and correct AI-generated logo files for professional production. Most cleanup engagements are delivered within 12–24 hours."
+  cta="Submit Your File"
+  href="/contact"
+  secondary="View Cleanup Service"
+  secondaryHref="/services/ai-logo-cleanup"
+/>

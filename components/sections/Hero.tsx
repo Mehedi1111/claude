@@ -12,7 +12,6 @@ const headline = [
   { text: "From Pixel.", accent: false },
   { text: "To Vector.", accent: false },
   { text: "To", accent: false },
-  { text: "Authority.", accent: true },
 ];
 
 export default function Hero() {

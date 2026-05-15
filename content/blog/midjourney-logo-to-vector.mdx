@@ -1,0 +1,180 @@
+---
+title: "How to Turn Your Midjourney Logo Into a Professional Vector"
+excerpt: "A step-by-step walkthrough of the exact process we use to convert Midjourney-generated logos into production-ready vector brand assets."
+category: "Guide"
+date: "2025-04-10"
+image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
+author:
+  name: "Evoke Studio"
+  role: "Brand Technicians"
+tags: ["Midjourney", "How-to", "Vectorization", "Process"]
+related:
+  - "why-ai-logos-fail-in-print"
+  - "vector-vs-raster-explained"
+seo:
+  description: "Step-by-step guide to converting your Midjourney logo into a professional vector file for print and digital use."
+---
+
+Midjourney produces stunning visual concepts. The problem is that between a Midjourney render and a deployable brand asset lies a precise technical process — one that most founders and designers don't know about until they try to use the file professionally.
+
+This guide walks through the exact process we use at Evoke to rebuild Midjourney-generated logos into production-ready vector systems.
+
+<Callout type="warning" title="Before You Begin">
+Do not send a Midjourney output directly to a printer, developer, or brand agency as your "logo file." It is an inspiration image, not a production asset. The rest of this guide explains why — and what to do about it.
+</Callout>
+
+## Step 1: Get the Best Raster Possible
+
+The quality of the source raster affects the ease and accuracy of the reconstruction. Start with the best export you can get from Midjourney:
+
+- Use the **U1–U4 upscale commands** to get a single upscaled version at maximum resolution
+- Use `/settings` to ensure you're generating at the highest quality setting
+- If you have Midjourney Pro, the **Upscale (Max)** option produces significantly sharper source material
+- Export as PNG, not JPG — JPG compression introduces artifacts at edges that complicate tracing
+
+The output should be at least 2048×2048 pixels for a clean source to work from.
+
+## Step 2: Analyse the Geometry
+
+Before a single vector path is drawn, we study the mark carefully.
+
+<BeforeAfter
+  beforeLabel="Source Raster"
+  afterLabel="Geometric Analysis"
+  beforeCaption="Midjourney output — precise intent, imprecise execution"
+  afterCaption="Underlying geometry identified — ready to rebuild"
+/>
+
+Key questions at this stage:
+
+- Is the form based on a **circle**? (Most geometric marks are)
+- Is there a **grid system** underlying the proportions?
+- Are there **symmetry axes** that should be mathematically perfect?
+- Does the **typography** match an existing typeface, or is it custom?
+- What is the intended **visual weight** — thick strokes or hairlines?
+
+Understanding the geometry allows the reconstruction to be mathematically precise rather than "close enough." A logo that is close enough at 200px will look wrong at 4000px.
+
+## Step 3: Background Isolation
+
+Before vectorisation can begin, the logo must be cleanly isolated from its background. This requires manual masking — not auto-removal.
+
+Common AI logo issues at this stage:
+
+- **Fringe pixels**: Semi-transparent pixels at edges that create haloing when placed on a different background
+- **Anti-aliasing artifacts**: Smooth-looking edges in the raster that are actually blended with the background colour
+- **Embedded shadows**: Drop shadows baked into the raster that aren't part of the logo
+
+Each of these requires manual attention in Photoshop or a similar raster editor before vectorisation can produce clean paths.
+
+## Step 4: Manual Vector Reconstruction
+
+This is the core of the process. Every shape is rebuilt from scratch in Adobe Illustrator using Bézier curves.
+
+<Callout type="tip" title="Why Not Auto-Trace?">
+Adobe Illustrator's Image Trace (and similar tools) produces hundreds of redundant anchor points, imprecise curves, and paths that behave unpredictably at different scales. Manual reconstruction uses as few anchor points as possible to describe each shape precisely. The difference is immediately visible when the file is scaled to print dimensions.
+</Callout>
+
+The reconstruction workflow:
+
+1. Place the raster as a locked reference layer
+2. Create a new layer above it for the vector construction
+3. Identify and draw the primary shapes first (the overall form)
+4. Add secondary shapes and details
+5. Handle typography separately — either identifying the source typeface or reconstructing custom letterforms
+
+For a moderately complex Midjourney logo, this process typically takes 2–4 hours. For logos with intricate detail, it can take considerably longer.
+
+## Step 5: Typography Handling
+
+If your Midjourney mark includes a wordmark or letterforms, this is usually the most complex part of the rebuild.
+
+<ComparisonTable
+  beforeLabel="AI Typography"
+  afterLabel="Rebuilt Typography"
+  rows={[
+    { feature: "Letterform consistency", before: "Variable — AI estimates shapes", after: "Perfect — each glyph correctly proportioned" },
+    { feature: "Kerning", before: "Often irregular or merged", after: "Optically balanced and documented" },
+    { feature: "Editable text", before: false, after: true },
+    { feature: "Font licensing guidance", before: false, after: true },
+    { feature: "Custom letterforms", before: "Accidental", after: "Intentional" },
+  ]}
+/>
+
+If the typeface is identifiable (using tools like WhatTheFont or detailed manual analysis), we source the correct font and rebuild the wordmark using it. If it's genuinely custom, each character is rebuilt as a custom vector path.
+
+## Step 6: Colour Translation
+
+AI logos are generated in RGB. Professional brand use requires CMYK values, and ideally Pantone (PMS) references for print consistency.
+
+The process:
+
+1. Identify the intended colours from the raster (accounting for screen rendering)
+2. Find the nearest Pantone equivalent
+3. Generate the correct CMYK values for both coated and uncoated stock
+4. Document everything in a colour palette reference sheet
+
+<TestimonialQuote
+  quote="The vector rebuild was flawless. Our logo now scales from our app icon to our trade show booth without a single pixel out of place."
+  author="James Whitfield"
+  role="Head of Brand"
+  company="Arc Commerce"
+/>
+
+## Step 7: File Delivery
+
+A professional vectorisation delivery should include:
+
+| File | Purpose |
+|------|---------|
+| `.ai` (Adobe Illustrator) | Master source file with layers |
+| `.svg` (Optimised) | Web and app use |
+| `.eps` | Print vendor compatible |
+| `.pdf` | Universal print-ready format |
+| `.png` at 3×, 6× | Digital raster exports |
+| White version (all formats) | For dark backgrounds |
+
+The Illustrator file should have named, organised layers. Each format should be tested before delivery.
+
+## The DIY vs. Professional Trade-Off
+
+You can attempt this process yourself if you have access to Adobe Illustrator and experience with Bézier curves. For a simple geometric mark with no typography, an intermediate designer can produce acceptable results.
+
+For marks with:
+- Complex detail or fine lines
+- Typography components
+- Gradients or shading
+- Print production requirements
+- Multi-format delivery needs
+
+— professional vectorisation is almost always the right call. The cost of getting it wrong (unusable print files, incorrect brand colours, vendor rejections) typically exceeds the cost of professional reconstruction by a significant margin.
+
+<CTASection
+  headline="Ready to transform your Midjourney logo?"
+  description="We manually reconstruct AI-generated logos into production-ready vector systems. Turnaround in 24–48 hours, starting from $50."
+  cta="Upload Your Logo"
+  href="/contact"
+  secondary="See Our Work"
+  secondaryHref="/portfolio"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "What resolution should my Midjourney output be?",
+      a: "Use Midjourney's upscale commands (U1-U4) to get the highest resolution possible. The 'Upscale (Max)' option if available is ideal. Minimum 2048×2048 pixels for clean source material."
+    },
+    {
+      q: "Can you work with other AI generators besides Midjourney?",
+      a: "Yes — we work with all AI generators: DALL-E 3, Ideogram, Stable Diffusion, Adobe Firefly, Leonardo AI, and anything else that produces a raster image."
+    },
+    {
+      q: "How long does the process take?",
+      a: "Standard vectorisation is delivered within 24–48 hours. Complex marks or full brand system work takes longer. Rush delivery (12 hours) is available for an additional fee."
+    },
+    {
+      q: "What if I don't like how the vector looks compared to the original?",
+      a: "All orders include two rounds of revisions. In our experience, the vector version always looks sharper and more refined than the raster source — that's the point of the process."
+    }
+  ]}
+/>

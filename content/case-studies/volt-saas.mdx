@@ -1,0 +1,107 @@
+---
+title: "Volt SaaS"
+client: "Volt SaaS"
+category: "SVG Conversion"
+year: "2025"
+service: "SVG Conversion"
+coverImage: "https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=1600&q=90"
+image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=900&q=80"
+tags: ["SVG", "Web-Ready"]
+challenge: "A 14KB bloated SVG export with hundreds of redundant nodes, inline styles breaking theming, and structure preventing animation — inside a complex React production codebase."
+solution: "Full SVG reconstruction: 2.1KB output, clean semantic IDs, CSS variable theming, animation-ready layers, and a typed React component with full prop interface."
+outcomes:
+  - "SVG reduced from 14KB to 2.1KB"
+  - "Full React component with TypeScript types"
+  - "Dark/light mode ready out of the box"
+---
+
+Volt SaaS builds infrastructure tooling for B2B data pipelines. Their engineering team is methodical about performance — which is why the state of their logo SVG was frustrating them.
+
+The logo had been exported from a design tool, converted once through an online SVG optimizer, and then embedded in their React codebase. The result was a file that technically worked but was a production engineering nightmare.
+
+## The Problem
+
+<Callout type="warning" title="What Their SVG Actually Contained">
+14.2KB for a simple geometric mark. 847 anchor points where 18 were needed. Inline `style` attributes on every path, making CSS theming impossible. Group IDs like `Layer_0_1_2_3` that revealed nothing about the structure.
+</Callout>
+
+Their frontend team had tried three times to implement dark mode logo switching. Each attempt required either JavaScript DOM manipulation or maintaining two entirely separate SVG files. Neither was acceptable.
+
+The animation team wanted to build an entrance animation for the logo in their marketing site. After analysing the SVG structure, they gave up — the paths were too fragmented to animate meaningfully.
+
+## The Audit
+
+We ran a full audit against the five criteria for production-ready SVGs:
+
+| Criterion | Current State | Target |
+|-----------|--------------|--------|
+| File size | 14.2KB | &lt;3KB |
+| Anchor point count | 847 | &lt;25 |
+| Semantic structure | None | Named layers by element |
+| CSS theming support | None (inline styles) | CSS custom properties |
+| Animation readiness | Not possible | Layer-based animation scaffold |
+
+## The Reconstruction
+
+The SVG was rebuilt from scratch, using the existing file only as a visual reference.
+
+<BeforeAfter
+  beforeLabel="14.2KB Export"
+  afterLabel="2.1KB Rebuild"
+  beforeCaption="847 anchor points, inline styles, no structure"
+  afterCaption="18 anchor points, CSS variables, animation-ready"
+/>
+
+The rebuild process:
+
+1. **Geometry clean reconstruction** — Rebuilt the primary mark with mathematically minimal anchor points
+2. **Semantic layer structure** — Named groups: `logo-mark`, `logo-wordmark`, `logo-tagline`
+3. **CSS variable integration** — All colours defined as `var(--logo-primary, #0a0a0a)` for easy theming
+4. **Animation scaffold** — Each animatable element on its own layer with clean IDs
+5. **ViewBox optimisation** — Configured for responsive use at any container size
+
+## The React Component
+
+Beyond the SVG file, we delivered a typed React component:
+
+```tsx
+interface LogoProps {
+  size?: number | string;
+  color?: string;
+  className?: string;
+  animated?: boolean;
+}
+
+export const VoltLogo: React.FC<LogoProps> = ({
+  size = 120,
+  color = 'currentColor',
+  className,
+  animated = false,
+}) => { /* ... */ }
+```
+
+The component accepts colour as a prop (defaulting to `currentColor` for automatic CSS inheritance), size as either a number or CSS string, and an `animated` prop that triggers the entrance animation when true.
+
+## Outcomes
+
+<TestimonialQuote
+  quote="The vector rebuild was flawless. Our logo now scales from our app icon to our trade show booth without a single pixel out of place. Worth every cent."
+  author="James Whitfield"
+  role="Head of Brand"
+  company="Volt SaaS"
+/>
+
+After implementation, the Volt engineering team:
+
+- Removed the two separate logo files they had been maintaining
+- Implemented dark mode logo switching in 4 lines of CSS
+- Built an entrance animation in their marketing site that had previously been blocked
+
+<CTASection
+  headline="Is your logo SVG production-ready?"
+  description="We rebuild SVGs for web and app production — clean code, CSS theming, React components, and animation scaffolds."
+  cta="Get a Quote"
+  href="/contact"
+  secondary="View SVG Service"
+  secondaryHref="/services/svg-conversion"
+/>
