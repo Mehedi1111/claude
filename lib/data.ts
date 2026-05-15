@@ -280,9 +280,125 @@ export const traditionalServices = [
   },
 ];
 
+// ─── Digital Services ─────────────────────────────────────────────────────────
+
+export const digitalServices = [
+  {
+    slug: "web-design-development",
+    number: "11",
+    category: "digital",
+    title: "Web Design & Development",
+    tagline: "Websites that look as good as your brand.",
+    description:
+      "Custom-designed, performance-optimised websites built with your brand identity at the core. From landing pages to full marketing sites — designed to convert and built to last.",
+    longDescription:
+      "Your website is your brand's most visible asset. We design and develop custom websites that embody your visual identity with precision — every spacing decision, every interaction, every typographic choice intentional. Built on Next.js for performance, deployed on Vercel for reliability, and designed to rank and convert from day one.",
+    features: [
+      "Custom UI design aligned to your brand identity",
+      "Next.js / React development — fast, SEO-ready",
+      "Fully responsive across all devices and breakpoints",
+      "Performance-optimised (Core Web Vitals 90+)",
+      "CMS integration (Sanity, Contentful, or Notion-based)",
+      "On-page SEO setup, sitemap, and schema markup",
+    ],
+    deliverables: [
+      "Figma design files",
+      "Production Next.js codebase",
+      "Deployed site on Vercel",
+      "CMS setup and training",
+      "SEO configuration",
+      "30-day post-launch support",
+    ],
+    turnaround: "2–4 weeks",
+    startingPrice: "$500",
+    image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=1200&q=80",
+    whoNeedsThis: [
+      "Startups launching their first marketing site",
+      "Brands refreshing an outdated website",
+      "Founders who need a high-converting landing page",
+      "Companies whose site no longer reflects their brand",
+    ],
+    commonUseCases: [
+      "Startup marketing site ahead of a product launch",
+      "Portfolio or agency website showcasing brand work",
+      "Landing page for a product or service offering",
+      "Rebrand refresh requiring a new web presence",
+    ],
+    serviceFAQ: [
+      {
+        q: "What technologies do you build with?",
+        a: "We build with Next.js, React, Tailwind CSS, and TypeScript as our core stack. For CMS, we integrate with Sanity, Contentful, or simple Notion-based setups depending on your needs.",
+      },
+      {
+        q: "Do you handle hosting and deployment?",
+        a: "Yes. We deploy to Vercel and handle the initial setup including your custom domain, SSL, and environment configuration. Ongoing hosting costs are paid directly by you to Vercel — typically $0–20/month.",
+      },
+      {
+        q: "Can you redesign my existing site?",
+        a: "Yes. We do full redesigns — starting from your existing content structure and rebuilding the design and development from scratch to reflect your current brand.",
+      },
+    ],
+  },
+  {
+    slug: "social-media-management",
+    number: "12",
+    category: "digital",
+    title: "Social Media Management",
+    tagline: "Content that builds the brand, not just the feed.",
+    description:
+      "Strategic social media content designed, written, and scheduled for your brand. On-brand visuals, sharp copy, and a consistent posting cadence — without you lifting a finger.",
+    longDescription:
+      "Social media is where your brand either earns trust or loses it. We handle the full content production pipeline: strategy, graphic design, copywriting, scheduling, and reporting. Every post is designed using your brand system, written in your brand voice, and optimised for the platform it lives on. You approve, we execute.",
+    features: [
+      "Monthly content calendar (15–30 posts)",
+      "Custom-designed graphics using your brand identity",
+      "Platform-optimised copywriting and hashtag strategy",
+      "Scheduling and publishing across Instagram, LinkedIn, X",
+      "Story and Reel templates for self-posting",
+      "Monthly performance report",
+    ],
+    deliverables: [
+      "Monthly content calendar (PDF + scheduling tool)",
+      "Designed post graphics (JPG/PNG + editable templates)",
+      "Captions and hashtag sets",
+      "Scheduled posts across platforms",
+      "Monthly analytics summary",
+    ],
+    turnaround: "Ongoing monthly",
+    startingPrice: "$300/mo",
+    image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1200&q=80",
+    whoNeedsThis: [
+      "Founders who know social matters but have no time",
+      "Brands with no consistent visual identity on social",
+      "Startups building an audience before launch",
+      "Businesses that post inconsistently or go silent",
+    ],
+    commonUseCases: [
+      "Brand launch content campaign across Instagram and LinkedIn",
+      "Consistent monthly posting for a professional services brand",
+      "Social presence rebuild after a rebrand or pivot",
+      "Content production for a founder building personal brand",
+    ],
+    serviceFAQ: [
+      {
+        q: "Which platforms do you manage?",
+        a: "Instagram, LinkedIn, X (Twitter), and Facebook as standard. TikTok and Pinterest are available as add-ons. We focus on the platforms where your audience actually is.",
+      },
+      {
+        q: "Do I need to approve content before it goes live?",
+        a: "Yes, always. We deliver the full month's content calendar for your approval before any post is scheduled. You can request edits before anything is published.",
+      },
+      {
+        q: "Do you run paid ads?",
+        a: "Our core service is organic content. Paid social media advertising (Meta Ads, LinkedIn Ads) is available as a separate add-on with ad spend managed directly by you.",
+      },
+    ],
+  },
+];
+
 // ─── All services combined ────────────────────────────────────────────────────
 
-export const allServices = [...services, ...traditionalServices];
+export const allServices = [...services, ...traditionalServices, ...digitalServices];
 
 // ─── Portfolio ────────────────────────────────────────────────────────────────
 
@@ -660,13 +776,15 @@ export const trustMetrics = [
 export const marqueeItems = [
   "AI LOGO VECTORIZATION",
   "BRAND IDENTITY DESIGN",
+  "WEB DESIGN & DEVELOPMENT",
+  "SOCIAL MEDIA MANAGEMENT",
   "LOGO DESIGN FROM SCRATCH",
   "SVG CONVERSION",
   "TYPOGRAPHY RECONSTRUCTION",
   "BRAND GUIDELINES",
   "AI LOGO CLEANUP",
-  "PRINT-READY DELIVERY",
   "VISUAL IDENTITY SYSTEM",
+  "PRINT-READY DELIVERY",
   "INFINITE PRECISION",
 ];
 

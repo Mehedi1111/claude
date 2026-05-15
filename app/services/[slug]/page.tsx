@@ -19,7 +19,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = allServices.find((s) => s.slug === slug);
   if (!service) return {};
 
-  const categoryLabel = service.category === "ai" ? "AI Logo Service" : "Brand Design Service";
+  const categoryLabel =
+    service.category === "ai" ? "AI Logo Service"
+    : service.category === "digital" ? "Digital Service"
+    : "Brand Design Service";
   const title = `${service.title} — From ${service.startingPrice} | Evoke Studio`;
   const description = `${service.description} ${service.turnaround} turnaround. From ${service.startingPrice}. Delivered as production-ready SVG, AI, EPS, and PDF files.`;
 
@@ -68,7 +71,10 @@ export default async function ServiceDetailPage({ params }: Props) {
   const serviceIndex = allServices.findIndex((s) => s.slug === slug);
   const nextService = allServices[(serviceIndex + 1) % allServices.length];
 
-  const categoryLabel = service.category === "ai" ? "AI Logo Services" : "Traditional Branding";
+  const categoryLabel =
+    service.category === "ai" ? "AI Logo Services"
+    : service.category === "digital" ? "Digital Services"
+    : "Traditional Branding";
 
   const serviceSchema = {
     "@context": "https://schema.org",
@@ -82,7 +88,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     },
     offers: {
       "@type": "Offer",
-      price: service.startingPrice.replace("$", ""),
+      price: service.startingPrice.replace(/[^0-9.]/g, ""),
       priceCurrency: "USD",
       availability: "https://schema.org/InStock",
       seller: {

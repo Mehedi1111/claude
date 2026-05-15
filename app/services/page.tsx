@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { services, traditionalServices } from "@/lib/data";
+import { services, traditionalServices, digitalServices } from "@/lib/data";
 import CTASection from "@/components/sections/CTASection";
 import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
@@ -173,6 +173,38 @@ export default function ServicesPage() {
 
           <div className="border-t border-[#e5e5e5]">
             {traditionalServices.map((service, i) => (
+              <ServiceRow
+                key={service.slug}
+                number={service.number}
+                title={service.title}
+                tagline={service.tagline}
+                features={service.features}
+                slug={service.slug}
+                startingPrice={service.startingPrice}
+                turnaround={service.turnaround}
+                index={i}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Digital Services */}
+      <section className="py-20 lg:py-28 bg-white border-t border-[#e5e5e5]">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <SectionReveal>
+            <div className="flex items-center gap-4 mb-10">
+              <p className="text-[11px] font-sans font-semibold text-white bg-[#0a0a0a] px-3 py-1.5 uppercase tracking-[0.15em]">
+                Digital Services
+              </p>
+              <p className="text-sm font-sans text-[#737373]">
+                Web presence and social media — built around your brand.
+              </p>
+            </div>
+          </SectionReveal>
+
+          <div className="border-t border-[#e5e5e5]">
+            {digitalServices.map((service, i) => (
               <ServiceRow
                 key={service.slug}
                 number={service.number}
