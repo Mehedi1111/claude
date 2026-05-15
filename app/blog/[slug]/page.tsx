@@ -25,15 +25,15 @@ export async function generateMetadata({
   const post = getPost<BlogFrontmatter>("blog", slug);
   if (!post) return {};
   const { frontmatter } = post;
-  const canonicalUrl = `https://madebyevoke.com/blog/${slug}`;
+  const metaUrl = `https://madebyevoke.com/blog/${slug}`;
   return {
     title: frontmatter.seo?.title || frontmatter.title,
     description: frontmatter.seo?.description || frontmatter.excerpt,
-    alternates: { canonical: canonicalUrl },
+    alternates: { canonical: metaUrl },
     openGraph: {
       title: frontmatter.seo?.title || frontmatter.title,
       description: frontmatter.seo?.description || frontmatter.excerpt,
-      url: canonicalUrl,
+      url: metaUrl,
       siteName: "Evoke Studio",
       type: "article",
       publishedTime: frontmatter.date,
@@ -74,13 +74,18 @@ export default async function BlogPostPage({
 
   const isMehedi = frontmatter.author.name === "Mehedi Hasan";
 
+  const canonicalUrl = `https://madebyevoke.com/blog/${slug}`;
+
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },
     headline: frontmatter.title,
     description: frontmatter.excerpt,
+    keywords: frontmatter.tags?.join(", "),
     datePublished: frontmatter.date,
-    url: `https://madebyevoke.com/blog/${slug}`,
+    dateModified: frontmatter.date,
+    url: canonicalUrl,
     author: isMehedi
       ? {
           "@type": "Person",
@@ -102,6 +107,16 @@ export default async function BlogPostPage({
     },
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://madebyevoke.com" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://madebyevoke.com/blog" },
+      { "@type": "ListItem", position: 3, name: frontmatter.title, item: canonicalUrl },
+    ],
+  };
+
   const formattedDate = new Date(frontmatter.date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -113,6 +128,10 @@ export default async function BlogPostPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <ReadingProgress />
 
