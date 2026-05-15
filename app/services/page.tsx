@@ -6,9 +6,18 @@ import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
 
 export const metadata: Metadata = {
-  title: "Services — AI Vectorisation & Traditional Brand Design",
+  title: "Logo Design & AI Vectorization Services — Pricing & Turnaround | Evoke Studio",
   description:
-    "AI logo vectorisation, cleanup, and brand system rebuilds. Plus full traditional branding — logo design from scratch, brand identity, stationery, and guidelines.",
+    "AI logo vectorization from $50 · Logo design from $150 · Brand identity from $500. Manual reconstruction, Pantone-certified, 24–48hr delivery. SVG, AI, EPS, PDF for print, web, and embroidery.",
+  openGraph: {
+    title: "Logo Design & AI Vectorization Services — Pricing & Turnaround | Evoke Studio",
+    description:
+      "AI logo vectorization from $50 · Logo design from $150 · Full brand identity from $500. Manual precision, 24–48hr turnaround.",
+    url: "https://madebyevoke.com/services",
+    siteName: "Evoke Studio",
+    type: "website",
+  },
+  alternates: { canonical: "https://madebyevoke.com/services" },
 };
 
 function ServiceRow({

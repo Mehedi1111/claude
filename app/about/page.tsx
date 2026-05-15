@@ -5,9 +5,18 @@ import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
 
 export const metadata: Metadata = {
-  title: "About — The Evoke Brand Studio",
+  title: "About Evoke Studio — Mehedi Hasan, Brand Identity & AI Logo Vectorization",
   description:
-    "Evoke is a brand identity and AI logo vectorisation studio. We build brands from scratch and convert AI-generated logos into professional vector systems.",
+    "Evoke Studio is led by Mehedi Hasan, a brand identity designer with 15 years of experience. We specialize in AI logo vectorization and complete brand identity systems — manual precision, Pantone-certified, 24–48hr delivery.",
+  openGraph: {
+    title: "About Evoke Studio — Mehedi Hasan, Brand Identity & AI Logo Vectorization",
+    description:
+      "Meet Mehedi Hasan — 15 years of brand identity experience, founder of Evoke Studio. AI logo vectorization and brand design for modern businesses.",
+    url: "https://madebyevoke.com/about",
+    siteName: "Evoke Studio",
+    type: "website",
+  },
+  alternates: { canonical: "https://madebyevoke.com/about" },
 };
 
 const values = [

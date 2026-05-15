@@ -11,9 +11,18 @@ import FAQPreview from "@/components/sections/FAQPreview";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
-  title: "Evoke — AI Logo to Vector Brand Systems",
+  title: "AI Logo Vectorization & Brand Identity Design | Evoke Studio",
   description:
-    "We manually convert AI-generated logos into professional vector brand systems. From pixel-locked AI concepts to infinite vector authority.",
+    "Convert your AI-generated logo into a production-ready vector file — manually traced, Pantone-certified, printer-approved. From $50. SVG, AI, EPS, PDF delivered in 24–48 hours.",
+  openGraph: {
+    title: "AI Logo Vectorization & Brand Identity Design | Evoke Studio",
+    description:
+      "Convert your AI-generated logo into a production-ready vector file — manually traced, Pantone-certified, printer-approved. From $50.",
+    url: "https://madebyevoke.com",
+    siteName: "Evoke Studio",
+    type: "website",
+  },
+  alternates: { canonical: "https://madebyevoke.com" },
 };
 
 export default function Home() {

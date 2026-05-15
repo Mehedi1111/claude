@@ -18,9 +18,45 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = allServices.find((s) => s.slug === slug);
   if (!service) return {};
+
+  const categoryLabel = service.category === "ai" ? "AI Logo Service" : "Brand Design Service";
+  const title = `${service.title} — From ${service.startingPrice} | Evoke Studio`;
+  const description = `${service.description} ${service.turnaround} turnaround. From ${service.startingPrice}. Delivered as production-ready SVG, AI, EPS, and PDF files.`;
+
   return {
-    title: `${service.title} — Evoke`,
-    description: service.description,
+    title,
+    description,
+    keywords: [
+      service.title.toLowerCase(),
+      `${service.title.toLowerCase()} service`,
+      `professional ${service.title.toLowerCase()}`,
+      categoryLabel.toLowerCase(),
+      "Evoke Studio",
+      "brand identity design",
+      "logo design",
+    ],
+    openGraph: {
+      title,
+      description,
+      url: `https://madebyevoke.com/services/${slug}`,
+      siteName: "Evoke Studio",
+      type: "website",
+      images: [
+        {
+          url: service.image,
+          width: 1200,
+          height: 400,
+          alt: `${service.title} — Evoke Studio`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [service.image],
+    },
+    alternates: { canonical: `https://madebyevoke.com/services/${slug}` },
   };
 }
 
@@ -34,8 +70,35 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   const categoryLabel = service.category === "ai" ? "AI Logo Services" : "Traditional Branding";
 
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    provider: {
+      "@type": "ProfessionalService",
+      name: "Evoke Studio",
+      url: "https://madebyevoke.com",
+    },
+    offers: {
+      "@type": "Offer",
+      price: service.startingPrice.replace("$", ""),
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      seller: {
+        "@type": "ProfessionalService",
+        name: "Evoke Studio",
+      },
+    },
+    url: `https://madebyevoke.com/services/${slug}`,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       {/* Hero */}
       <section className="pt-36 pb-16 lg:pt-44 lg:pb-20 bg-[#0a0a0a] overflow-hidden relative">
         <div

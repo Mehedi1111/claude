@@ -7,9 +7,18 @@ import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
 
 export const metadata: Metadata = {
-  title: "Journal — AI Logo & Brand Design Insights",
+  title: "AI Logo Vectorization Blog — Guides, Tutorials & Technical Insights | Evoke Studio",
   description:
-    "Technical guides and brand insights from the Evoke studio. Learn about AI logo vectorization, brand systems, and professional design production.",
+    "In-depth guides on AI logo vectorization, SVG optimization, CMYK conversion, embroidery-ready files, and brand identity. Written by Mehedi Hasan — 15 years of brand design experience.",
+  openGraph: {
+    title: "AI Logo Vectorization Blog — Guides, Tutorials & Technical Insights | Evoke Studio",
+    description:
+      "Expert guides on AI logo vectorization, SVG, CMYK, embroidery files, and brand systems. By Mehedi Hasan, Evoke Studio.",
+    url: "https://madebyevoke.com/blog",
+    siteName: "Evoke Studio",
+    type: "website",
+  },
+  alternates: { canonical: "https://madebyevoke.com/blog" },
 };
 
 export default function BlogPage() {

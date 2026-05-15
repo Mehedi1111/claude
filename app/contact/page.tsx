@@ -4,9 +4,18 @@ import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
 
 export const metadata: Metadata = {
-  title: "Contact — Start Your Project with Evoke",
+  title: "Get a Quote — AI Logo Vectorization & Brand Design | Evoke Studio",
   description:
-    "Ready to transform your AI logo into a professional vector brand system? Get in touch with the Evoke studio.",
+    "Start your AI logo vectorization or brand identity project today. Share your file, receive a detailed quote within 1 business day. From $50 — SVG, AI, EPS, PDF delivered in 24–48 hours.",
+  openGraph: {
+    title: "Get a Quote — AI Logo Vectorization & Brand Design | Evoke Studio",
+    description:
+      "Share your AI logo and get a quote within 1 business day. Manual vectorization, Pantone-certified, printer-approved. From $50.",
+    url: "https://madebyevoke.com/contact",
+    siteName: "Evoke Studio",
+    type: "website",
+  },
+  alternates: { canonical: "https://madebyevoke.com/contact" },
 };
 
 export default function ContactPage() {

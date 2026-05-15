@@ -7,9 +7,18 @@ import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
 
 export const metadata: Metadata = {
-  title: "Work — Brand Systems & Logo Vectorization Portfolio",
+  title: "Brand Identity & Logo Design Portfolio | Evoke Studio — Mehedi Hasan",
   description:
-    "Selected projects from Evoke. AI logo vectorization, brand system rebuilds, and precision vector reconstruction for founders and companies.",
+    "Real logo design and brand identity projects by Evoke Studio. 9 case studies across 8 industries — cannabis wellness, freight, logistics, food, tech, and more. See how AI logos become production-ready brand systems.",
+  openGraph: {
+    title: "Brand Identity & Logo Design Portfolio | Evoke Studio — Mehedi Hasan",
+    description:
+      "9 brand identity and AI logo vectorization case studies. From Midjourney concepts to Pantone-certified, printer-approved brand systems.",
+    url: "https://madebyevoke.com/portfolio",
+    siteName: "Evoke Studio",
+    type: "website",
+  },
+  alternates: { canonical: "https://madebyevoke.com/portfolio" },
 };
 
 export default function PortfolioPage() {

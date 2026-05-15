@@ -6,9 +6,18 @@ import AnimatedText from "@/components/ui/AnimatedText";
 import FAQAccordion from "@/components/sections/FAQAccordion";
 
 export const metadata: Metadata = {
-  title: "FAQ — AI Logo Vectorization Questions Answered",
+  title: "AI Logo Vectorization FAQ — Pricing, Turnaround & File Formats | Evoke Studio",
   description:
-    "Answers to common questions about AI logo vectorization, file formats, turnaround times, and our process.",
+    "Answers to every question about AI logo vectorization: pricing from $50, 24–48hr turnaround, SVG/AI/EPS/PDF formats, Pantone certification, embroidery-ready files, and our full process explained.",
+  openGraph: {
+    title: "AI Logo Vectorization FAQ — Pricing, Turnaround & File Formats | Evoke Studio",
+    description:
+      "Everything you need to know: vectorization pricing from $50, turnaround times, file formats, and what to expect from Evoke Studio.",
+    url: "https://madebyevoke.com/faq",
+    siteName: "Evoke Studio",
+    type: "website",
+  },
+  alternates: { canonical: "https://madebyevoke.com/faq" },
 };
 
 const faqSchema = {
