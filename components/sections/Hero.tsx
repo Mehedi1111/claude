@@ -39,7 +39,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen bg-[#0a0a0a] flex flex-col justify-end overflow-hidden"
+      className="relative min-h-screen bg-[#0a0a0a] flex flex-col justify-center sm:justify-end overflow-hidden"
     >
       {/* Fine grid */}
       <div
@@ -80,7 +80,7 @@ export default function Hero() {
       {/* Main content */}
       <div
         ref={contentRef}
-        className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 pb-16 sm:pb-20 lg:pb-28 pt-28"
+        className="relative z-10 w-full max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 pb-16 sm:pb-20 lg:pb-28 pt-24 sm:pt-28"
       >
         {/* Overline */}
         <motion.div

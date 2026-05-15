@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -14,8 +13,6 @@ const navLinks = [
   { href: "/faq", label: "FAQ" },
 ];
 
-const WHITE_LOGO = "https://madebyevoke.com/wp-content/uploads/2023/07/EVOKE-NEW-LOGO-WHITE-1.png";
-const BLACK_LOGO = "https://madebyevoke.com/wp-content/uploads/2023/07/EVOKE-NEW-LOGO-BLACK.png";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -23,10 +20,6 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [visible, setVisible] = useState(true);
-  // null = loading, true = success, false = error
-  const [whiteLoaded, setWhiteLoaded] = useState<boolean | null>(null);
-  const [blackLoaded, setBlackLoaded] = useState<boolean | null>(null);
-
   // Only use dark (white text) mode on home page when at the very top
   const isDark = !scrolled && pathname === "/";
 
@@ -66,46 +59,14 @@ export default function Navbar() {
         <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between h-16 lg:h-20">
 
-            {/* Logo with image + text fallback */}
-            <Link href="/" className="relative shrink-0 block" style={{ width: 110, height: 32 }}>
-              {/* Text fallback – shown only when the logo image explicitly fails */}
-              <span
-                className={`absolute inset-0 flex items-center font-display font-bold text-[18px] tracking-[-0.05em] select-none transition-opacity duration-300 ${
-                  isDark ? "text-white" : "text-[#0a0a0a]"
-                } ${
-                  (isDark ? whiteLoaded === false : blackLoaded === false) ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                EVOKE
-              </span>
-              {/* White logo */}
-              <Image
-                src={WHITE_LOGO}
-                alt="Evoke"
-                fill
-                unoptimized
-                priority
-                sizes="110px"
-                className={`object-contain object-left transition-opacity duration-300 ${
-                  isDark && whiteLoaded === true ? "opacity-100" : "opacity-0"
-                }`}
-                onLoad={() => setWhiteLoaded(true)}
-                onError={() => setWhiteLoaded(false)}
-              />
-              {/* Black logo */}
-              <Image
-                src={BLACK_LOGO}
-                alt="Evoke"
-                fill
-                unoptimized
-                priority
-                sizes="110px"
-                className={`object-contain object-left transition-opacity duration-300 ${
-                  !isDark && blackLoaded === true ? "opacity-100" : "opacity-0"
-                }`}
-                onLoad={() => setBlackLoaded(true)}
-                onError={() => setBlackLoaded(false)}
-              />
+            {/* Logo wordmark */}
+            <Link
+              href="/"
+              className={`shrink-0 font-display font-bold text-[19px] tracking-[-0.055em] select-none transition-colors duration-300 ${
+                isDark ? "text-white" : "text-[#0a0a0a]"
+              }`}
+            >
+              EVOKE
             </Link>
 
             {/* Desktop nav */}

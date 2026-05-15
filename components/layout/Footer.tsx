@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const aiServices = [
   { label: "AI Logo Vectorization", href: "/services/ai-logo-vectorization" },
@@ -79,26 +78,31 @@ export default function Footer() {
 
             {/* Brand column */}
             <div className="col-span-2 lg:col-span-1">
-              <div className="relative mb-5" style={{ width: 100, height: 28 }}>
-                <Image
-                  src="https://madebyevoke.com/wp-content/uploads/2023/07/EVOKE-NEW-LOGO-WHITE-1.png"
-                  alt="Evoke"
-                  fill
-                  className="object-contain object-left"
-                  unoptimized
-                />
-              </div>
+              <Link
+                href="/"
+                className="inline-block font-display font-bold text-[22px] tracking-[-0.055em] text-white mb-5"
+              >
+                EVOKE
+              </Link>
               <p className="text-[13px] font-sans text-white/35 leading-relaxed max-w-[200px] mb-6">
                 From pixel-locked AI concepts to infinite vector authority.
               </p>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-center gap-4">
                 <a
-                  href="https://x.com/MadeByEvoke"
+                  href="https://www.behance.net/mh62221352f0fFF"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[11px] font-sans font-medium text-white/30 hover:text-white transition-colors uppercase tracking-[0.1em]"
                 >
-                  X / Twitter
+                  Behance
+                </a>
+                <a
+                  href="https://dribbble.com/madebyevoke"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] font-sans font-medium text-white/30 hover:text-white transition-colors uppercase tracking-[0.1em]"
+                >
+                  Dribbble
                 </a>
                 <a
                   href="https://www.linkedin.com/company/madebyevoke/"
@@ -107,6 +111,14 @@ export default function Footer() {
                   className="text-[11px] font-sans font-medium text-white/30 hover:text-white transition-colors uppercase tracking-[0.1em]"
                 >
                   LinkedIn
+                </a>
+                <a
+                  href="https://x.com/MadeByEvoke"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[11px] font-sans font-medium text-white/30 hover:text-white transition-colors uppercase tracking-[0.1em]"
+                >
+                  X
                 </a>
                 <a
                   href="https://clutch.co/profile/evoke"
