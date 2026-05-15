@@ -118,3 +118,24 @@ h1, h2, h3, h4, h5, h6 {
   outline: 1px solid #0a0a0a;
   outline-offset: 4px;
 }
+
+/* Force all text to render as text glyph, not emoji — prevents → ↗ ← becoming colored on iOS/Android */
+* {
+  font-variant-emoji: text;
+}
+
+/* Custom cursor — hide default on desktop */
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none !important; }
+}
+
+/* Premium section transitions */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Magnetic hover area */
+[data-magnetic] {
+  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}

@@ -8,69 +8,108 @@ import AnimatedText from "@/components/ui/AnimatedText";
 export default function CTASection() {
   return (
     <section className="py-24 lg:py-36 bg-[#0a0a0a] overflow-hidden relative">
-      {/* Background mark */}
-      <div className="absolute right-[-4vw] top-1/2 -translate-y-1/2 select-none pointer-events-none">
-        <p className="text-[22vw] font-display font-bold text-white/[0.03] tracking-[-0.04em] leading-none whitespace-nowrap">
+      {/* Ghost watermark */}
+      <div
+        className="absolute inset-0 flex items-center justify-end pointer-events-none select-none overflow-hidden"
+        aria-hidden
+      >
+        <p className="text-[20vw] font-display font-bold text-white/[0.025] tracking-[-0.05em] leading-none whitespace-nowrap pr-[-4vw] translate-x-[8%]">
           EVOKE
         </p>
       </div>
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 relative z-10">
-        <div className="max-w-3xl">
-          <SectionReveal>
-            <p className="text-xs font-sans font-semibold text-white/30 uppercase tracking-[0.2em] mb-8">
-              Start Today
-            </p>
-          </SectionReveal>
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-24 items-end">
 
-          <h2 className="text-[clamp(40px,6vw,88px)] font-display font-bold text-white tracking-[-0.03em] leading-[1] mb-8">
-            <AnimatedText text="Your AI logo" />
-            <br />
-            <AnimatedText text="deserves better." delay={0.1} />
-          </h2>
+          {/* Left: headline + description */}
+          <div>
+            <SectionReveal>
+              <div className="flex items-center gap-3 mb-8 sm:mb-10">
+                <span className="w-5 h-px bg-white/20" />
+                <p className="text-[10px] sm:text-[11px] font-sans font-semibold text-white/25 uppercase tracking-[0.25em]">
+                  Start Today
+                </p>
+              </div>
+            </SectionReveal>
 
-          <SectionReveal delay={0.3}>
-            <p className="text-base lg:text-lg font-sans text-white/50 max-w-sm leading-relaxed mb-12">
-              Send us your file. We&apos;ll send back a production-ready vector
-              brand asset — typically within 24 to 48 hours.
-            </p>
-          </SectionReveal>
+            <h2 className="text-[clamp(36px,5.5vw,82px)] font-display font-bold text-white tracking-[-0.04em] leading-[0.95] mb-8 sm:mb-10">
+              <AnimatedText text="Your AI logo" />
+              <br />
+              <AnimatedText text="deserves" delay={0.1} />
+              <br />
+              <AnimatedText text="better." delay={0.2} />
+            </h2>
 
-          <SectionReveal delay={0.4}>
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-[#0a0a0a] bg-white px-8 py-4 hover:bg-white/90 transition-colors duration-200"
-              >
-                Start a Project
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            <SectionReveal delay={0.35}>
+              <p className="text-[15px] sm:text-base font-sans text-white/40 max-w-sm leading-relaxed">
+                Send us your file. We&apos;ll send back a production-ready vector
+                brand asset — typically within 24 to 48 hours.
+              </p>
+            </SectionReveal>
+          </div>
+
+          {/* Right: action block */}
+          <SectionReveal delay={0.2}>
+            <div className="lg:pb-4">
+              <div className="space-y-3">
+                <Link
+                  href="/contact"
+                  data-cursor="START"
+                  className="group flex items-center justify-between w-full text-sm font-sans font-semibold text-[#0a0a0a] bg-white px-7 py-5 hover:bg-white/92 transition-all duration-200"
                 >
-                  →
-                </motion.span>
-              </Link>
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-2 text-sm font-sans font-medium text-white/50 hover:text-white px-8 py-4 border border-white/10 hover:border-white/30 transition-all duration-200"
-              >
-                Explore Services
-              </Link>
+                  Start a Project
+                  <motion.span
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+                    className="text-base"
+                  >
+                    →
+                  </motion.span>
+                </Link>
+                <Link
+                  href="/services"
+                  className="group flex items-center justify-between w-full text-sm font-sans font-medium text-white/50 border border-white/10 px-7 py-5 hover:border-white/25 hover:text-white transition-all duration-200"
+                >
+                  Explore Services
+                  <span className="text-white/20 group-hover:text-white/60 transition-colors">→</span>
+                </Link>
+              </div>
+
+              <div className="mt-8 pt-8 border-t border-white/[0.08]">
+                <p className="text-[11px] font-sans text-white/25 mb-3 uppercase tracking-[0.15em]">
+                  Or reach us directly
+                </p>
+                <a
+                  href="mailto:work@madebyevoke.com"
+                  className="text-base font-sans text-white/40 hover:text-white transition-colors link-underline"
+                >
+                  work@madebyevoke.com
+                </a>
+              </div>
             </div>
           </SectionReveal>
         </div>
 
-        {/* Bottom stat bar */}
+        {/* Bottom metrics strip */}
         <SectionReveal delay={0.5}>
-          <div className="mt-20 pt-10 border-t border-white/10 flex flex-wrap gap-8 lg:gap-16">
-            {["500+ logos rebuilt", "24–48hr turnaround", "All AI tools supported", "White-label available"].map((item, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <span className="w-1 h-1 bg-white/30 rounded-full" />
-                <span className="text-xs font-sans font-medium text-white/40 uppercase tracking-[0.15em]">
-                  {item}
-                </span>
-              </div>
-            ))}
+          <div className="mt-20 sm:mt-24 pt-8 border-t border-white/[0.08]">
+            <div className="flex flex-wrap gap-6 sm:gap-10 lg:gap-16">
+              {[
+                ["500+", "logos rebuilt"],
+                ["24–48hr", "turnaround"],
+                ["100%", "manual precision"],
+                ["5.0/5", "Clutch rating"],
+              ].map(([num, label]) => (
+                <div key={label} className="flex flex-col gap-1">
+                  <span className="text-lg sm:text-xl font-display font-bold text-white tracking-[-0.03em]">
+                    {num}
+                  </span>
+                  <span className="text-[10px] font-sans text-white/30 uppercase tracking-[0.12em]">
+                    {label}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </SectionReveal>
       </div>

@@ -20,9 +20,16 @@ const serviceOptions = [
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [selected, setSelected] = useState<string[]>([]);
   const [fileName, setFileName] = useState<string>("");
   const fileRef = useRef<HTMLInputElement>(null);
+  const nameRef = useRef<HTMLInputElement>(null);
+  const companyRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const aiToolRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
 
   const toggleService = (label: string) => {
     setSelected((prev) =>
@@ -35,9 +42,31 @@ export default function ContactForm() {
     if (file) setFileName(file.name);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: nameRef.current?.value,
+          company: companyRef.current?.value,
+          email: emailRef.current?.value,
+          services: selected,
+          aiTool: aiToolRef.current?.value,
+          message: messageRef.current?.value,
+          fileName,
+        }),
+      });
+      if (!res.ok) throw new Error("Send failed");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please email us directly at work@madebyevoke.com");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -78,6 +107,7 @@ export default function ContactForm() {
               Name *
             </label>
             <input
+              ref={nameRef}
               type="text"
               required
               placeholder="Your name"
@@ -89,6 +119,7 @@ export default function ContactForm() {
               Company
             </label>
             <input
+              ref={companyRef}
               type="text"
               placeholder="Company or brand"
               className="w-full border border-[#e5e5e5] px-4 py-3.5 text-sm font-sans text-[#0a0a0a] bg-white placeholder-[#c4c4c4] focus:border-[#0a0a0a] focus:outline-none transition-colors"
@@ -102,6 +133,7 @@ export default function ContactForm() {
             Email *
           </label>
           <input
+            ref={emailRef}
             type="email"
             required
             placeholder="you@company.com"
@@ -203,6 +235,7 @@ export default function ContactForm() {
             AI tool used (if applicable)
           </label>
           <input
+            ref={aiToolRef}
             type="text"
             placeholder="Midjourney, DALL-E, Ideogram, etc."
             className="w-full border border-[#e5e5e5] px-4 py-3.5 text-sm font-sans text-[#0a0a0a] bg-white placeholder-[#c4c4c4] focus:border-[#0a0a0a] focus:outline-none transition-colors"
@@ -215,20 +248,29 @@ export default function ContactForm() {
             Project details
           </label>
           <textarea
+            ref={messageRef}
             rows={4}
             placeholder="Tell us about your brand, how you intend to use the logo, any specific requirements or deadlines..."
             className="w-full border border-[#e5e5e5] px-4 py-3.5 text-sm font-sans text-[#0a0a0a] bg-white placeholder-[#c4c4c4] focus:border-[#0a0a0a] focus:outline-none transition-colors resize-none"
           />
         </div>
 
+        {/* Error */}
+        {error && (
+          <p className="text-sm font-sans text-red-600 bg-red-50 border border-red-200 px-4 py-3">
+            {error}
+          </p>
+        )}
+
         {/* Submit */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <button
             type="submit"
-            className="inline-flex items-center gap-3 text-sm font-sans font-semibold text-white bg-[#0a0a0a] px-8 py-4 hover:bg-[#1f1f1f] transition-colors duration-200"
+            disabled={loading}
+            className="inline-flex items-center gap-3 text-sm font-sans font-semibold text-white bg-[#0a0a0a] px-8 py-4 hover:bg-[#1f1f1f] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Send Brief & Get Quote
-            <span>→</span>
+            {loading ? "Sending…" : "Send Brief & Get Quote"}
+            {!loading && <span>→</span>}
           </button>
           <p className="text-[12px] font-sans text-[#737373]">
             We respond within 1 business day. No spam.

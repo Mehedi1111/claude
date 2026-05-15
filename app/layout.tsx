@@ -3,6 +3,7 @@ import { Space_Grotesk, Manrope } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -74,6 +75,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${manrope.variable}`}
     >
       <body className="antialiased">
+        <CustomCursor />
         <Navbar />
         <main>{children}</main>
         <Footer />

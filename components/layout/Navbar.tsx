@@ -67,10 +67,10 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16 lg:h-20">
 
             {/* Logo with image + text fallback */}
-            <Link href="/" className="flex items-center relative shrink-0" style={{ minWidth: 100, height: 32 }}>
+            <Link href="/" className="relative shrink-0 block" style={{ width: 110, height: 32 }}>
               {/* Text fallback – shown only when the logo image explicitly fails */}
               <span
-                className={`font-display font-bold text-[18px] tracking-[-0.05em] select-none transition-opacity duration-300 ${
+                className={`absolute inset-0 flex items-center font-display font-bold text-[18px] tracking-[-0.05em] select-none transition-opacity duration-300 ${
                   isDark ? "text-white" : "text-[#0a0a0a]"
                 } ${
                   (isDark ? whiteLoaded === false : blackLoaded === false) ? "opacity-100" : "opacity-0"
@@ -85,7 +85,8 @@ export default function Navbar() {
                 fill
                 unoptimized
                 priority
-                className={`object-contain object-left absolute inset-0 transition-opacity duration-300 ${
+                sizes="110px"
+                className={`object-contain object-left transition-opacity duration-300 ${
                   isDark && whiteLoaded === true ? "opacity-100" : "opacity-0"
                 }`}
                 onLoad={() => setWhiteLoaded(true)}
@@ -98,7 +99,8 @@ export default function Navbar() {
                 fill
                 unoptimized
                 priority
-                className={`object-contain object-left absolute inset-0 transition-opacity duration-300 ${
+                sizes="110px"
+                className={`object-contain object-left transition-opacity duration-300 ${
                   !isDark && blackLoaded === true ? "opacity-100" : "opacity-0"
                 }`}
                 onLoad={() => setBlackLoaded(true)}
