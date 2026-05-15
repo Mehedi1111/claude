@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import CTASection from "@/components/sections/CTASection";
 import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
@@ -48,9 +49,9 @@ const values = [
 
 const stats = [
   { value: "500+", label: "Logos vectorised" },
-  { value: "5.0", label: "Clutch rating" },
+  { value: "10+", label: "Team members" },
   { value: "48h", label: "Standard delivery" },
-  { value: "2023", label: "Studio founded" },
+  { value: "4", label: "Countries" },
 ];
 
 export default function AboutPage() {
@@ -104,48 +105,80 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Story */}
+      {/* Founder */}
       <section className="py-24 lg:py-36 bg-[#fafafa]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            {/* Photo */}
+            <SectionReveal>
+              <div className="relative">
+                <div className="relative aspect-[3/4] overflow-hidden bg-[#e8e4dc] max-w-[480px]">
+                  <Image
+                    src="/mehedi-hasan.jpg"
+                    alt="Mehedi Hasan — Founder & CEO, Evoke Studio"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 480px"
+                    priority
+                  />
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 max-w-[480px] bg-[#0a0a0a] px-6 py-5">
+                  <p className="text-white font-display font-bold text-lg tracking-[-0.02em]">Mehedi Hasan</p>
+                  <p className="text-white/45 text-xs font-sans tracking-[0.1em] uppercase mt-1">Founder & CEO, Evoke Studio</p>
+                </div>
+              </div>
+            </SectionReveal>
+
+            {/* Story */}
+            <div className="pt-0 lg:pt-4">
               <SectionReveal>
                 <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-6">
                   Our Story
                 </p>
               </SectionReveal>
               <SectionReveal delay={0.1}>
-                <h2 className="text-[clamp(32px,4vw,52px)] font-display font-bold text-[#0a0a0a] tracking-[-0.03em] leading-[1.05] mb-8">
+                <h2 className="text-[clamp(28px,3.5vw,46px)] font-display font-bold text-[#0a0a0a] tracking-[-0.03em] leading-[1.05] mb-8">
                   Built for the gap between AI output and professional production.
                 </h2>
               </SectionReveal>
+              <SectionReveal delay={0.2}>
+                <div className="space-y-5 text-base lg:text-[17px] font-sans text-[#404040] leading-relaxed">
+                  <p>
+                    AI image generation changed everything about how brands start.
+                    Founders no longer need a full agency engagement to have a visual
+                    starting point. Within minutes, you can have a compelling logo
+                    concept — at a fraction of the traditional cost.
+                  </p>
+                  <p>
+                    But there&apos;s a gap. The files AI tools produce are technically
+                    unsuitable for professional use. They&apos;re raster-based, their paths
+                    are undefined, and their colour systems are not print-compatible.
+                    Sending them to a printer, a developer, or a brand partner fails.
+                  </p>
+                  <p>
+                    Evoke was built to close that gap. I&apos;m Mehedi Hasan — and I lead
+                    a team of 10+ designers, technicians, and strategists spread across
+                    the USA, Canada, UK, and Indonesia. Together we specialise in one
+                    thing: taking whatever visual asset you have — AI-generated or
+                    otherwise — and producing professional, production-grade brand files
+                    that work everywhere.
+                  </p>
+                  <p>
+                    We also design brands from scratch. Because sometimes the right
+                    answer is a mark that was never generated — it was crafted.
+                  </p>
+                </div>
+              </SectionReveal>
+              <SectionReveal delay={0.3}>
+                <div className="mt-10 flex flex-wrap gap-3">
+                  {["USA", "Canada", "UK", "Indonesia"].map((country) => (
+                    <span key={country} className="text-xs font-sans font-medium text-[#0a0a0a] border border-[#e5e5e5] px-4 py-2">
+                      {country}
+                    </span>
+                  ))}
+                </div>
+              </SectionReveal>
             </div>
-            <SectionReveal delay={0.2}>
-              <div className="space-y-5 text-base lg:text-[17px] font-sans text-[#404040] leading-relaxed">
-                <p>
-                  AI image generation changed everything about how brands start.
-                  Founders no longer need a full agency engagement to have a visual
-                  starting point. Within minutes, you can have a compelling logo
-                  concept — at a fraction of the traditional cost.
-                </p>
-                <p>
-                  But there&apos;s a gap. The files AI tools produce are technically
-                  unsuitable for professional use. They&apos;re raster-based, their paths
-                  are undefined, and their colour systems are not print-compatible.
-                  Sending them to a printer, a developer, or a brand partner fails.
-                </p>
-                <p>
-                  Evoke was built to close that gap. We are a studio of designers
-                  and technicians who specialise in one thing: taking whatever visual
-                  asset you have — AI-generated or otherwise — and producing
-                  professional, production-grade brand files that work everywhere.
-                </p>
-                <p>
-                  We also design brands from scratch. Because sometimes the right
-                  answer is a mark that was never generated — it was crafted.
-                </p>
-              </div>
-            </SectionReveal>
           </div>
         </div>
       </section>
@@ -197,14 +230,15 @@ export default function AboutPage() {
               </SectionReveal>
               <SectionReveal delay={0.1}>
                 <h2 className="text-[clamp(32px,4vw,52px)] font-display font-bold text-[#0a0a0a] tracking-[-0.03em] leading-[1.05] mb-6">
-                  Two distinct disciplines. One uncompromising standard.
+                  Three disciplines. One uncompromising standard.
                 </h2>
               </SectionReveal>
               <SectionReveal delay={0.2}>
                 <p className="text-base font-sans text-[#737373] leading-relaxed mb-10">
-                  Whether you need your AI-generated logo transformed into a production-grade
-                  vector, or you need a brand built from a blank canvas — Evoke delivers
-                  to the same standard of technical precision.
+                  Whether you need an AI-generated logo vectorised, a brand built from
+                  scratch, a website that reflects your identity, or a social presence
+                  that looks consistent everywhere — Evoke delivers to the same
+                  standard of precision.
                 </p>
               </SectionReveal>
               <SectionReveal delay={0.3}>
@@ -224,6 +258,11 @@ export default function AboutPage() {
                   label: "Traditional Branding",
                   items: ["Logo design", "Brand identity", "Business stationery", "Brand guidelines", "Visual identity system"],
                   dark: false,
+                },
+                {
+                  label: "Digital Services",
+                  items: ["Web design & development", "Social media management", "Social media content", "Brand consistency"],
+                  dark: true,
                 },
               ].map((block, i) => (
                 <SectionReveal key={i} delay={i * 0.1}>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { getAllPosts } from "@/lib/mdx";
 import type { BlogFrontmatter } from "@/lib/mdx";
 import SectionReveal from "@/components/ui/SectionReveal";
@@ -21,6 +20,94 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://madebyevoke.com/blog" },
 };
 
+// Category accent colors
+const categoryColor: Record<string, string> = {
+  Guide: "#ffffff",
+  "How-To": "#d4f4dd",
+  Technical: "#d4e8ff",
+  Education: "#fff0c2",
+  Troubleshooting: "#ffd4d4",
+  Comparison: "#e8d4ff",
+  Branding: "#ffe8d4",
+  "Social Media": "#d4fff4",
+  "Web Design": "#d4ecff",
+  default: "#ffffff",
+};
+
+function TitleCard({
+  title,
+  category,
+  readTime,
+  date,
+  slug,
+  featured,
+}: {
+  title: string;
+  category: string;
+  readTime: string;
+  date: string;
+  slug: string;
+  featured?: boolean;
+}) {
+  const accent = categoryColor[category] ?? categoryColor.default;
+  return (
+    <Link href={`/blog/${slug}`} className="block group">
+      <div
+        className={`relative bg-[#0a0a0a] overflow-hidden transition-all duration-300 group-hover:bg-[#111] ${
+          featured ? "min-h-[300px] sm:min-h-[360px] lg:min-h-[400px]" : "min-h-[200px] sm:min-h-[220px]"
+        } flex flex-col justify-between p-7 sm:p-8 lg:p-10`}
+      >
+        {/* Subtle dot grid */}
+        <div
+          className="absolute inset-0 opacity-[0.035] pointer-events-none"
+          style={{
+            backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+
+        {/* Top: category + meta */}
+        <div className="relative z-10 flex items-center justify-between gap-4">
+          <span
+            className="text-[10px] font-sans font-bold uppercase tracking-[0.18em] px-2.5 py-1"
+            style={{ color: "#0a0a0a", backgroundColor: accent }}
+          >
+            {category}
+          </span>
+          <span className="text-[11px] font-sans text-white/30">{readTime}</span>
+        </div>
+
+        {/* Title */}
+        <div className="relative z-10 mt-6">
+          <h2
+            className={`font-display font-bold text-white tracking-[-0.035em] leading-[1.05] group-hover:text-white/85 transition-colors ${
+              featured
+                ? "text-[clamp(24px,3.5vw,48px)]"
+                : "text-[clamp(18px,2vw,26px)]"
+            }`}
+          >
+            {title}
+          </h2>
+        </div>
+
+        {/* Bottom: date + arrow */}
+        <div className="relative z-10 flex items-center justify-between mt-8 pt-5 border-t border-white/[0.07]">
+          <time className="text-[11px] font-sans text-white/30">
+            {new Date(date).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </time>
+          <span className="text-white/20 group-hover:text-white group-hover:translate-x-1 transition-all duration-300 text-lg">
+            →
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 export default function BlogPage() {
   const posts = getAllPosts<BlogFrontmatter>("blog");
   const [featured, ...rest] = posts;
@@ -38,11 +125,11 @@ export default function BlogPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-36 pb-16 sm:pb-20 lg:pt-44 lg:pb-28 bg-white border-b border-[#e5e5e5]">
+      <section className="pt-36 pb-16 sm:pb-20 lg:pt-44 lg:pb-24 bg-white border-b border-[#e5e5e5]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
           <SectionReveal>
             <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-8">
-              Journal
+              Blog
             </p>
           </SectionReveal>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 lg:gap-16">
@@ -55,8 +142,7 @@ export default function BlogPage() {
             </h1>
             <SectionReveal delay={0.3}>
               <p className="text-[15px] sm:text-base font-sans text-[#737373] max-w-xs leading-relaxed">
-                Technical articles, brand guides, and studio notes from the
-                people who rebuild AI-generated logos for a living.
+                Technical articles, brand guides, and studio notes from Mehedi Hasan — 15 years of brand design experience.
               </p>
             </SectionReveal>
           </div>
@@ -64,92 +150,45 @@ export default function BlogPage() {
       </section>
 
       {/* Featured post */}
-      <section className="py-14 sm:py-16 lg:py-20 bg-[#f5f5f5] border-b border-[#e5e5e5]">
+      <section className="py-12 sm:py-14 lg:py-16 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
           <SectionReveal>
-            <Link href={`/blog/${featured.slug}`} className="group block">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                <div className="relative overflow-hidden bg-[#e5e5e5]" style={{ aspectRatio: "16/9" }}>
-                  <Image
-                    src={featured.frontmatter.image}
-                    alt={featured.frontmatter.title}
-                    fill
-                    className="object-cover grayscale transition-transform duration-700 group-hover:scale-105"
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-                <div>
-                  <div className="flex flex-wrap items-center gap-3 mb-6">
-                    <span className="text-[11px] font-sans font-bold text-[#0a0a0a] uppercase tracking-[0.12em] border border-[#0a0a0a]/15 px-2.5 py-1">
-                      {featured.frontmatter.category}
-                    </span>
-                    <span className="text-[12px] font-sans text-[#a3a3a3]">
-                      {featured.readTime}
-                    </span>
-                    <span className="text-[12px] font-sans text-[#a3a3a3]">
-                      {new Date(featured.frontmatter.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
-                    </span>
-                  </div>
-                  <h2 className="text-[clamp(22px,2.8vw,38px)] font-display font-bold text-[#0a0a0a] tracking-[-0.03em] leading-[1.1] mb-4 group-hover:text-[#0a0a0a]/65 transition-colors">
-                    {featured.frontmatter.title}
-                  </h2>
-                  <p className="text-[15px] sm:text-base font-sans text-[#737373] leading-relaxed mb-6">
-                    {featured.frontmatter.excerpt}
-                  </p>
-                  <span className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-[#0a0a0a] group-hover:gap-3 transition-all">
-                    Read Article
-                    <span>→</span>
-                  </span>
-                </div>
-              </div>
-            </Link>
+            <p className="text-[10px] font-sans font-semibold text-white/25 uppercase tracking-[0.2em] mb-6">
+              Latest Article
+            </p>
+          </SectionReveal>
+          <SectionReveal delay={0.1}>
+            <TitleCard
+              title={featured.frontmatter.title}
+              category={featured.frontmatter.category}
+              readTime={featured.readTime}
+              date={featured.frontmatter.date}
+              slug={featured.slug}
+              featured
+            />
           </SectionReveal>
         </div>
       </section>
 
       {/* Post grid */}
       {rest.length > 0 && (
-        <section className="py-16 sm:py-20 lg:py-28 bg-white">
+        <section className="py-16 sm:py-20 lg:py-28 bg-[#fafafa]">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+            <SectionReveal>
+              <p className="text-[10px] font-sans font-semibold text-[#0a0a0a]/30 uppercase tracking-[0.2em] mb-8">
+                All Articles — {rest.length + 1} published
+              </p>
+            </SectionReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#e5e5e5]">
               {rest.map((post, i) => (
-                <SectionReveal key={post.slug} delay={i * 0.08}>
-                  <Link href={`/blog/${post.slug}`} className="group block">
-                    <article>
-                      <div className="relative overflow-hidden bg-[#f0f0f0] mb-5" style={{ aspectRatio: "16/9" }}>
-                        <Image
-                          src={post.frontmatter.image}
-                          alt={post.frontmatter.title}
-                          fill
-                          className="object-cover grayscale transition-transform duration-700 group-hover:scale-105"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                      </div>
-                      <div className="flex items-center gap-2.5 mb-3">
-                        <span className="text-[10px] font-sans font-bold text-[#0a0a0a] uppercase tracking-[0.12em] border border-[#e5e5e5] px-2 py-0.5">
-                          {post.frontmatter.category}
-                        </span>
-                        <span className="text-[11px] font-sans text-[#b4b4b4]">
-                          {post.readTime}
-                        </span>
-                      </div>
-                      <h3 className="text-[17px] sm:text-lg font-display font-bold text-[#0a0a0a] tracking-[-0.025em] leading-[1.2] mb-2.5 group-hover:text-[#0a0a0a]/60 transition-colors">
-                        {post.frontmatter.title}
-                      </h3>
-                      <p className="text-[14px] font-sans text-[#737373] leading-relaxed mb-4 line-clamp-3">
-                        {post.frontmatter.excerpt}
-                      </p>
-                      <div className="flex items-center justify-between pt-4 border-t border-[#f5f5f5]">
-                        <time className="text-[11px] font-sans text-[#b4b4b4]">
-                          {new Date(post.frontmatter.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                        </time>
-                        <span className="text-[12px] font-sans font-semibold text-[#0a0a0a] group-hover:underline">
-                          Read →
-                        </span>
-                      </div>
-                    </article>
-                  </Link>
+                <SectionReveal key={post.slug} delay={i * 0.05}>
+                  <TitleCard
+                    title={post.frontmatter.title}
+                    category={post.frontmatter.category}
+                    readTime={post.readTime}
+                    date={post.frontmatter.date}
+                    slug={post.slug}
+                  />
                 </SectionReveal>
               ))}
             </div>
