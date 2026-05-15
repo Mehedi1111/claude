@@ -1,0 +1,106 @@
+---
+title: "Sable Coffee"
+client: "Sable Coffee"
+category: "AI Logo Cleanup"
+year: "2025"
+service: "AI Logo Cleanup + CMYK Colour Management"
+coverImage: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=90"
+image: "https://images.unsplash.com/photo-1509042928590-6a7c60a3e67e?w=900&q=80"
+tags: ["DALL-E", "Packaging", "CMYK", "Cleanup"]
+challenge: "A specialty coffee brand's DALL-E 3 logo printed orange instead of the intended deep espresso brown across two vendors, making 12,000 kraft paper cups unusable and delaying their flagship café opening by six weeks."
+solution: "Comprehensive colour audit, CMYK profile correction, Pantone matching for both coated and uncoated kraft stock, open path remediation, and stroke-to-outline conversion — with print proofs confirmed before full production run."
+outcomes:
+  - "12,000 corrected cups printed and accepted"
+  - "Pantone 4625 C certified across all stock types"
+  - "Zero colour variance between web, social, and packaging"
+  - "Stocked in 3 specialty coffee shops at launch"
+seo:
+  title: "Sable Coffee: AI Logo CMYK Colour Fix for Kraft Packaging | Evoke Studio"
+  description: "How Evoke Studio corrected a DALL-E 3 coffee brand logo that printed orange instead of brown—saving 12,000 cups from the bin and fixing the CMYK colour profile for consistent brand printing."
+  keywords: ["AI logo CMYK correction", "coffee brand logo cleanup", "DALL-E logo print fix", "AI logo printing wrong color", "logo color shift fix"]
+---
+
+When Sable Coffee's first batch of branded cups arrived from the printer, head roaster Marcus Teo knew immediately something was wrong. The deep, warm espresso brown he'd seen on screen — a colour that had taken forty-two Midjourney and DALL-E 3 iterations to perfect — had printed as a burnt orange.
+
+Not close. Not approximately right. A different colour entirely.
+
+## What Went Wrong
+
+DALL-E 3 generates images in RGB colour space. RGB is designed for screens, which emit light in red, green, and blue channels. Print uses CMYK — cyan, magenta, yellow, and black pigments that absorb light rather than emit it. The conversion between these two colour systems is not automatic, and without explicit colour management, the result is unpredictable.
+
+Sable's deep espresso brown was specified as `R:62 G:29 B:13` in the original DALL-E output. Under unmanaged CMYK conversion, this rendered as approximately C:15 M:68 Y:78 K:45 on the printer's press — which produces a warm orange-brown that bore no resemblance to the intended colour.
+
+<Callout type="warning" title="The Colour Math Problem">
+RGB `#3E1D0D` — Sable's intended espresso brown — converts to CMYK differently depending on which ICC profile is used, the substrate, and the printer's calibration. Without an explicit Pantone reference, every vendor will apply their own interpretation. The result: four different browns across four different vendors.
+</Callout>
+
+The cups weren't the only casualty. Sable's kraft paper coffee bags — from a different vendor — had also run with the orange interpretation. 12,000 units of packaging that could not be used.
+
+## The Audit
+
+We received the original DALL-E 3 export and ran a full technical audit before touching any paths.
+
+| Issue Found | Impact |
+|------------|--------|
+| Unmanaged RGB colour (no ICC profile) | Colour shift at every print vendor |
+| 4 open paths in the mark | Unpredictable fill behaviour |
+| 2 strokes not converted to outlines | Weight inconsistency at small sizes |
+| No Pantone equivalent specified | Impossible to proof consistently |
+| Missing bleed and crop marks | Edge artefacts in packaging die-cut |
+
+The mark itself — a minimal geometric coffee bean form with a subtle wordmark — was visually strong. The problems were entirely technical, not creative.
+
+## The Colour Correction Process
+
+Identifying the correct Pantone equivalent for a rich, warm dark brown required print testing, not just profile conversion. We tested three Pantone candidates against the client's intended colour on both the coated paper cup stock and the uncoated kraft bag material before specifying the final values.
+
+The final Sable colour system:
+- **Pantone:** 4625 C (coated) / 4625 U (uncoated)
+- **CMYK:** C20 M68 Y78 K55
+- **RGB:** R87 G42 B24
+- **Hex:** #572A18
+
+These values are now documented in Sable's brand file set, so every future vendor — packaging, signage, stationery — receives an unambiguous specification.
+
+<TestimonialQuote
+  quote="We lost 12,000 cups to a colour problem we didn't understand. Evoke explained exactly what had gone wrong, fixed it properly, and gave us a colour system I can hand to any printer in the world and get the right result."
+  author="Marcus Teo"
+  role="Head Roaster & Co-Founder"
+  company="Sable Coffee"
+/>
+
+## The Outcome
+
+The corrected files were accepted by both vendors on the first submission. The replacement cup run completed in time for Sable's café opening. The kraft bag stock was similarly approved. Sable Coffee now operates with a single documented colour specification that produces consistent results across all production contexts.
+
+Within three months of opening, Sable was stocked as a wholesale account by three additional specialty coffee venues — all of which required brand files for their own menu and signage use. Every file was delivered from the same clean, print-certified source.
+
+<CTASection
+  headline="Is your AI logo printing the wrong colour?"
+  description="We correct AI-generated logo colour profiles for professional print production — CMYK, Pantone, and ICC profiles certified for your specific vendors and substrates."
+  cta="Fix My Logo"
+  href="/contact"
+  secondary="AI Logo Cleanup Service"
+  secondaryHref="/services/ai-logo-cleanup"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Why does my AI logo print a different colour than it looks on screen?",
+      a: "AI image generators create files in RGB colour space, which is designed for screens. Print uses CMYK pigment mixing. The conversion between them is not automatic — without explicit colour management and Pantone specification, the result will vary by vendor, substrate, and press calibration."
+    },
+    {
+      q: "Can you match my AI logo colour to a specific Pantone?",
+      a: "Yes. We identify the correct Pantone equivalent through a combination of digital analysis and print proofing on your specific substrate. We test on the actual stock you'll be printing on before specifying final values."
+    },
+    {
+      q: "What is AI logo cleanup and what does it include?",
+      a: "AI logo cleanup addresses the technical file problems that prevent professional use: open paths, unconverted strokes, incorrect colour profiles, missing Pantone values, and file structure issues. We deliver a corrected file set with full documentation of every correction made."
+    },
+    {
+      q: "How long does AI logo cleanup take?",
+      a: "Standard cleanup engagements are delivered within 12–24 hours. Cases requiring print proofing on specific substrates may take 48 hours. Rush delivery is available."
+    }
+  ]}
+/>

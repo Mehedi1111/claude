@@ -3,84 +3,101 @@ title: "Forma Studio"
 client: "Forma Studio"
 category: "Typography Reconstruction"
 year: "2025"
-service: "Typography Reconstruction"
+service: "Typography Reconstruction + Wordmark Vectorization"
 coverImage: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1600&q=90"
 image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80"
-tags: ["Typography", "Cleanup"]
-challenge: "An AI-generated wordmark with beautiful display letterforms — but rasterised, optically unbalanced, with merged characters and spacing that didn't survive at display scale."
-solution: "Each character rebuilt as a custom vector path. Source typeface identified, systematic optical corrections made to spacing, weight consistency, and baseline alignment."
+tags: ["AI Logo", "Typography", "Wordmark", "Interior Design"]
+challenge: "An award-winning interior design studio's AI-generated display wordmark was visually beautiful but technically unusable — rasterised letterforms with irregular kerning, merged characters, and spacing that collapsed at sizes below 40pt."
+solution: "Manual reconstruction of every letterform as custom vector paths, typeface identification and optical spacing correction, and a wordmark specification document detailing every character proportion and spacing value."
 outcomes:
-  - "Consistent rendering at all sizes"
-  - "Editable source files for future updates"
-  - "Type specimen sheet delivered"
+  - "Wordmark renders correctly from 8pt to 800pt"
+  - "Type specimen sheet documenting all letterform specifications"
+  - "Editable source files for future brand updates"
+  - "Used in 3-city brand rollout across studio locations"
+seo:
+  title: "Forma Studio: AI-Generated Display Wordmark Reconstructed as Vector | Evoke Studio"
+  description: "How Evoke Studio manually rebuilt an interior design studio's AI-generated display wordmark—reconstructing every letterform as custom vector paths with corrected optical spacing and delivered as editable source files."
+  keywords: ["wordmark vectorization", "AI logo typography reconstruction", "display typeface vectorization", "logo letterform rebuild", "AI wordmark to vector"]
 ---
 
-Typography is the most technically demanding element of any logo reconstruction. AI generators frequently distort letterforms, merge characters at connection points, and produce spacing that appears acceptable at small sizes but reveals serious problems at display scale.
+Forma Studio had won three regional interior design awards in eighteen months. Their brand — a proprietary display wordmark generated through a combination of AI tools and manual refinement — was distinctive and widely recognised among their clientele.
 
-Forma Studio — a premium interior design practice — brought us a wordmark that had become central to their identity. Generated in Midjourney, the letterforms had a distinctive architectural quality that the founding partners loved.
+When they approached a specialist signage company to produce lettering for their third studio location, the conversation ended quickly. The file was rasterised. The signage company couldn't use it.
 
-The problem emerged when they tried to use the mark on their studio entrance signage.
+## The Typography Problem
 
-## The Typography Issues
+Forma's wordmark was built on a display letterform with a compressed, high-contrast character: tall x-height, thin hairlines, and a distinctive ink trap geometry that made the mark immediately recognisable. The problem was entirely in the file structure, not the design.
 
-<ImageCaption
-  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&q=80"
-  alt="Forma Studio typography reconstruction"
-  caption="The completed typographic reconstruction maintains the visual character of the original while correcting every technical flaw."
-/>
-
-At 600mm wide — the size required for their studio entrance — the issues were immediately apparent:
-
-- The 'F' and 'O' characters had merged at a connection point, creating an artifact that looked like a ligature but wasn't intentional
-- Stroke weights varied between characters by up to 15% — invisible at small sizes, obvious at large
-- The spacing between 'R' and 'M' was almost double the spacing between other character pairs
-- The baseline was not horizontally consistent — it drifted approximately 2px across the length of the wordmark
-
-Each of these problems requires a different technical solution.
-
-## Typeface Analysis
-
-The wordmark appeared to reference a commercial display typeface. We used a combination of automated typeface recognition tools and manual comparison against major type libraries to identify the likely source family.
-
-<Callout type="tip" title="The Identification Process">
-AI generators often produce letterforms that are heavily influenced by a specific typeface but modified enough that they don't exactly match. We identify the source family to establish the correct proportional reference, then reconstruct the letterforms with appropriate modifications that make the final mark distinctly owned by the client.
+<Callout type="warning" title="What Rasterised Typography Produces">
+When AI tools generate letterforms, they render them as pixels, not as font curves. The result looks like a typeface but behaves like a photograph. Characters cannot be selected, spacing cannot be adjusted, and at sizes below the native render resolution, hairlines collapse or disappear entirely. At signage scale, the hairlines in a high-contrast wordmark become the most visible element — and they cannot reproduce correctly from a raster file.
 </Callout>
 
-After analysis, we identified the underlying typeface family and the specific weight and optical size that matched most closely with the AI-generated intent. This allowed us to establish correct proportional references for each character.
+We opened the source file — a 2048×2048 PNG — and identified four specific technical problems:
 
-## Reconstruction
+| Problem | Impact |
+|---------|--------|
+| Letterforms rasterised (not paths) | Cannot be used by signage or embossing vendors |
+| Irregular kerning (especially R-M pair) | Optical irregularity visible above 48pt |
+| Two characters partially merged | Cannot be reproduced at small sizes |
+| Hairline elements below 2px in source | Will not reproduce in print below 24pt |
 
-Each character was rebuilt as a clean vector path:
+## The Reconstruction Process
 
-| Character | Issue | Resolution |
-|-----------|-------|-----------|
-| F | Merged with O artifact | Rebuilt as separate clean path |
-| O | Connection artifact | Closed path, correct optical size |
-| R | Inconsistent weight | Weight standardised to median |
-| M | Spacing error | Kerning pair corrected |
-| A | Stroke inconsistency | Terminals adjusted to match F, O |
+Typography reconstruction requires a different approach from geometric mark rebuilding. Each letterform must be studied as a drawing problem — understanding what the designer intended, identifying where AI generation introduced distortions, and rebuilding accordingly.
 
-The baseline drift was corrected by establishing a mathematical baseline and aligning all character origins to it. The result is a wordmark where every character is optically balanced to its neighbours.
+**Stage 1 — Typeface identification**
+The base typeface used for the AI generation was identified as a compressed display serif family. This gave us the underlying structural logic — proportions, stem widths, serif construction — to work from.
+
+**Stage 2 — Character-by-character rebuild**
+Each of Forma's six letterforms was rebuilt individually as a custom vector path. The approach was not to trace the raster but to draw each character from first principles, correcting the proportional inconsistencies introduced by the AI generation process.
+
+The compressed R-M kerning pair required particular attention: the raster version had a 3px optical gap that read as slightly too close at display size. The vector reconstruction corrected this to mathematical optical spacing.
+
+**Stage 3 — Hairline specification**
+The hairline elements — serifs, crossbars, and ink traps — were specified at a minimum production weight of 0.4pt. This is the threshold below which offset printing at standard resolutions produces inconsistent results. The AI output had hairlines as thin as 0.1pt at standard viewing size.
+
+**Stage 4 — Type specimen document**
+A complete type specimen was delivered: proportions for every character, spacing values for the most common letterform pairs, minimum size specifications, and production notes for vendors.
 
 <TestimonialQuote
-  quote="I've worked with three brand agencies before. None of them were as technically precise as Evoke. They understand the difference between a logo that looks good and a logo that works."
+  quote="I had been told for two years that our wordmark couldn't be used for signage. After Forma's rebuild, our third location opened with the same display wordmark we'd always had — but as actual letterforms. The signage company called it beautiful work."
   author="Sophie Laurent"
   role="Creative Director"
   company="Forma Studio"
 />
 
-## Deliverables
+## The Outcome
 
-The completed engagement delivered a full typographic system:
+The reconstructed wordmark was used for all three Forma Studio locations. The signage company produced the display lettering without issue. The brand has been applied to embossed stationery, a website rebrand, and printed publication features — all requiring different technical file types, all served from the same master vector source.
 
-- Master Illustrator file with individual character paths on separate layers
-- Complete outlined version for print production
-- Type specimen sheet documenting character spacing, weight, and alignment rules
-- Licensing guidance for the source typeface family
+The type specimen document is now part of Forma's brand standards, shared with every designer and vendor who works with the brand.
 
 <CTASection
-  headline="AI logo with typography issues?"
-  description="We rebuild AI-generated wordmarks and letterforms into precisely engineered, production-ready typographic systems."
-  cta="Get a Quote"
+  headline="Is your AI-generated wordmark visually right but technically broken?"
+  description="We rebuild AI-generated typography as production-grade vector letterforms — correct proportions, optical spacing, and editable source files for every application."
+  cta="Rebuild My Wordmark"
   href="/contact"
+  secondary="Typography Reconstruction"
+  secondaryHref="/services/typography-reconstruction"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Can you vectorize an AI-generated wordmark?",
+      a: "Yes. We manually reconstruct every letterform as custom vector paths, correcting proportional inconsistencies and optical spacing issues introduced by AI generation. The result is a production-grade wordmark that works at any size and in any production context."
+    },
+    {
+      q: "What's wrong with an AI-generated typeface?",
+      a: "AI tools generate letterforms as pixels, not as font curves. The result cannot be edited, scaled without quality loss, or used by print and signage vendors who require vector path data. Proportions are often subtly inconsistent, and fine details like hairlines collapse at small sizes."
+    },
+    {
+      q: "Can you identify the typeface used in my AI logo?",
+      a: "Often yes. We use a combination of type databases and manual analysis to identify the source typeface or closest equivalent. If no matching font exists, we rebuild custom letterforms that match the AI-generated character."
+    },
+    {
+      q: "How do I know if my AI wordmark needs reconstruction?",
+      a: "If your wordmark has been rejected by a sign company, letterpress printer, or embossing vendor — or if the letterforms look inconsistent at sizes above 100pt — reconstruction is likely required. Submit your file for a free technical assessment."
+    }
+  ]}
 />

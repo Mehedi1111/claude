@@ -30,6 +30,7 @@ export interface CaseStudyFrontmatter {
   challenge: string;
   solution: string;
   outcomes: string[];
+  seo?: { title?: string; description?: string; keywords?: string[] };
 }
 
 export interface Post<T = BlogFrontmatter | CaseStudyFrontmatter> {

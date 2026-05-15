@@ -31,10 +31,22 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost<CaseStudyFrontmatter>("case-studies", slug);
   if (post) {
+    const fm = post.frontmatter;
     return {
-      title: `${post.frontmatter.client} — Case Study`,
-      description: post.frontmatter.challenge,
-      openGraph: { images: [post.frontmatter.coverImage] },
+      title: fm.seo?.title || `${fm.client} — Case Study | Evoke Studio`,
+      description: fm.seo?.description || fm.challenge,
+      keywords: fm.seo?.keywords,
+      openGraph: {
+        title: fm.seo?.title || `${fm.client} — Case Study`,
+        description: fm.seo?.description || fm.challenge,
+        images: [fm.coverImage],
+        type: "article",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: fm.seo?.title || `${fm.client} — Case Study`,
+        description: fm.seo?.description || fm.challenge,
+      },
     };
   }
   const item = portfolioItems.find((p) => p.slug === slug);

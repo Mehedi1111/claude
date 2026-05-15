@@ -1,0 +1,117 @@
+---
+title: "Finch Learning"
+client: "Finch Learning"
+category: "SVG Conversion"
+year: "2025"
+service: "SVG Optimization + React Component"
+coverImage: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=1600&q=90"
+image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=900&q=80"
+tags: ["SVG", "React", "App Store", "Performance"]
+challenge: "An EdTech startup's Ideogram-generated logo SVG was 22KB, failing Apple App Store icon submission and dragging their Lighthouse performance score down by 11 points — blocking both the iOS launch and Google ranking goals."
+solution: "SVG rebuilt from 22KB to 1.8KB with clean semantic structure, typed React component with dark mode support, and correctly exported PNG icon sets at all App Store required resolutions."
+outcomes:
+  - "SVG reduced from 22KB to 1.8KB — 92% reduction"
+  - "Apple App Store icon submission approved first attempt"
+  - "Lighthouse performance score improved from 71 to 84"
+  - "Dark mode logo switching in 3 lines of CSS"
+seo:
+  title: "Finch Learning: AI Logo SVG Optimized for React App & App Store | Evoke Studio"
+  description: "How Evoke Studio rebuilt a bloated 22KB Ideogram SVG into a 1.8KB production-ready React component that passed Apple App Store review and improved Lighthouse scores."
+  keywords: ["SVG logo optimization", "AI logo for app store", "React logo SVG component", "Ideogram logo vectorization", "logo SVG performance optimization"]
+---
+
+Finch Learning builds adaptive curriculum software for secondary schools. When their iOS app was ready for App Store submission in March 2025, their engineering team hit a wall they hadn't anticipated: the App Store rejected their icon.
+
+Not for policy reasons. For technical file quality.
+
+## The Problem
+
+Finch's lead designer had created their mark in Ideogram — a clean, geometric bird silhouette that tested well with educators. The SVG export from Ideogram looked correct in Figma and in the browser. But the engineering team's audit told a different story.
+
+<Callout type="warning" title="What Was Inside the 22KB SVG">
+847 anchor points describing a shape that needed 34. Inline style attributes on every single path element, making CSS theming impossible. Group IDs automatically generated as `g4821`, `g4822`, `g4823` — meaningless to any developer. A viewBox set to an arbitrary `0 0 1080 1080` with no responsive configuration. And the App Store icon export — a PNG derived from this SVG at 1024×1024 — was failing Apple's icon quality check.
+</Callout>
+
+The App Store rejection cited "icon does not meet image quality guidelines." The underlying cause: the SVG's redundant paths were causing rendering artefacts at certain export sizes that the App Store's automated review process flagged.
+
+The performance issue was separate but compounding. The 22KB SVG was being inlined in the React app's header component — loaded on every page, parsed on every render. Google's Lighthouse was docking performance points and, with it, organic search rankings the team was counting on.
+
+## The Reconstruction
+
+We rebuilt the SVG from scratch, using the Ideogram export purely as a visual reference.
+
+| Metric | Original | Rebuilt |
+|--------|----------|---------|
+| File size | 22.1KB | 1.8KB |
+| Anchor points | 847 | 34 |
+| Style approach | Inline on every element | CSS custom properties |
+| Dark mode support | Requires duplicate file | 3 lines of CSS |
+| Animation readiness | Not possible | Layer-ready |
+| App Store exports | Failing review | Approved |
+
+The rebuild preserved every visual characteristic of the original mark. The bird silhouette proportions, the internal negative space, the optical weight — all matched. The difference was in the technical layer: how the file was structured, not what it displayed.
+
+## The React Component
+
+Beyond the optimised SVG file, we delivered a typed React component:
+
+```tsx
+interface FinchLogoProps {
+  size?: number | string;
+  color?: string;
+  className?: string;
+}
+
+export const FinchLogo: React.FC<FinchLogoProps> = ({
+  size = 48,
+  color = 'currentColor',
+  className,
+}) => { /* clean, 34-point SVG */ }
+```
+
+The component defaults to `currentColor` — meaning it automatically inherits the CSS text colour of its container. Dark mode requires no JavaScript: the CSS `color` property change cascades into the SVG automatically.
+
+## The App Store Icon Set
+
+We exported the complete Apple App Store icon set from the rebuilt SVG: all twelve required sizes from 20×20 to 1024×1024. Each export was pixel-perfect at its target size — no aliasing, no rendering artefacts. The App Store submission was approved on the first attempt.
+
+<TestimonialQuote
+  quote="We'd been going in circles on the App Store rejection for two weeks. Evoke solved it in a day and gave us a React component our entire team could actually work with. The performance improvement was a bonus we didn't expect."
+  author="Tom Ashworth"
+  role="CTO"
+  company="Finch Learning"
+/>
+
+## The Outcome
+
+Finch's iOS app launched on schedule. The 92% SVG size reduction, combined with proper React integration, pushed their Lighthouse performance score from 71 to 84. The dark mode icon — which had previously required maintaining a completely separate SVG file — was implemented in three lines of CSS.
+
+<CTASection
+  headline="Is your AI logo blocking your app launch?"
+  description="We rebuild SVGs for React, Next.js, and native app contexts — clean code, App Store-ready exports, and TypeScript components. Delivered in 24 hours."
+  cta="Submit Your SVG"
+  href="/contact"
+  secondary="SVG Conversion Service"
+  secondaryHref="/services/svg-conversion"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Why did Apple App Store reject my AI logo icon?",
+      a: "App Store icon rejections from SVG-derived exports are usually caused by rendering artefacts from redundant anchor points, or incorrect colour profiles in the PNG export. Rebuilding the SVG from scratch and re-exporting the icon set at all required sizes typically resolves the issue."
+    },
+    {
+      q: "Can you deliver a React SVG component from my AI logo?",
+      a: "Yes. We deliver a typed TypeScript React component with clean props for size, colour, and className. The component defaults to currentColor for automatic CSS theme inheritance, making dark mode implementation trivial."
+    },
+    {
+      q: "How much does SVG optimization cost?",
+      a: "SVG conversion and optimization starts from $40. Complex marks with animation scaffolds or full React component delivery are quoted individually. Most SVG orders are delivered within 24 hours."
+    },
+    {
+      q: "Will the optimised SVG look identical to the original?",
+      a: "Yes. We rebuild every visual characteristic of the original mark — proportions, curves, spacing, and weight. The only difference is in the technical file structure, not the visual output."
+    }
+  ]}
+/>
