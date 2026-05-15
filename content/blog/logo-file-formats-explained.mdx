@@ -1,0 +1,177 @@
+---
+title: "SVG, AI, EPS, PDF, PNG: Which Logo File Do You Actually Need?"
+excerpt: "Six logo file formats. Three completely different use cases. Here's what each format actually does and how to know which one to send to any vendor, developer, or printer."
+category: "Education"
+date: "2025-05-12"
+image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Logo Files", "SVG", "EPS", "PDF", "Brand Assets", "File Formats"]
+related:
+  - "ai-logo-vectorization-complete-guide"
+  - "svg-optimization-for-web"
+  - "svg-broken-after-export"
+seo:
+  title: "Logo File Formats Explained — SVG vs AI vs EPS vs PDF vs PNG"
+  description: "Learn what each logo file format is actually used for. A practical guide to SVG, AI, EPS, PDF, and PNG — which to use, when, and why."
+---
+
+A design agency delivers your brand files as a ZIP. Inside: SVG, AI, EPS, PDF, PNG (transparent), PNG (white), PNG (black). Seven files, one logo, zero explanation of which to use for what.
+
+This isn't a theoretical question. Send the wrong file to a developer and they'll spend an hour cleaning up your SVG. Send the wrong file to a printer and they'll call you asking for "the original vector." Send the wrong file to an embroidery machine and the digitizer will reject it.
+
+Here's a practical breakdown of every format in a professional logo delivery.
+
+## SVG — Your Everyday Vector File
+
+**Full name:** Scalable Vector Graphics  
+**Type:** Vector  
+**What it is:** An XML-based format that describes graphics using code. Open an SVG in a text editor and you'll see the actual path descriptions. A circle is literally `<circle cx="50" cy="50" r="40"/>`.
+
+**Best for:**
+- Web and app development
+- Figma, Webflow, Framer, and any design tool
+- Animated logos (CSS and JavaScript can target SVG elements directly)
+- Anywhere a developer needs to embed your logo
+
+**Not great for:** Sending to commercial printers. SVG is a web standard; most print RIPs (raster image processors) prefer PDF or EPS.
+
+**The quality caveat:** Not all SVGs are equal. An SVG exported from a raster image via auto-trace can be 200KB with 4,000 anchor points. A hand-crafted SVG of the same logo might be 2KB with 80 anchor points. The file extension tells you nothing about the underlying quality.
+
+When a developer complains that your SVG is "messy" or "hard to work with," they're telling you the SVG has structural problems — not that the logo is wrong.
+
+## AI — The Editable Master File
+
+**Full name:** Adobe Illustrator document  
+**Type:** Vector (proprietary)  
+**What it is:** The native file format of Adobe Illustrator. Contains all the editable paths, layers, color swatches, and artboards of your original design.
+
+**Best for:**
+- Future editing and updates to your logo
+- Handing off to another designer
+- Source of truth when regenerating all other formats
+- Your archive copy
+
+**Not for:** Sending to anyone who doesn't have Adobe Illustrator. Printers, developers, and non-designers cannot open `.ai` files without the software.
+
+**The layer organization matters:** A well-organized AI file has named layers, global color swatches, and logical grouping. A poorly organized one is just an SVG wrapped in an AI container — functionally the same but harder to work with in future.
+
+Guard the `.ai` source file carefully. Every other format is regenerated from it. If you lose the source and need to modify the logo, you're starting over or paying for reconstruction.
+
+## EPS — The Print Vendor Standard
+
+**Full name:** Encapsulated PostScript  
+**Type:** Vector  
+**What it is:** A PostScript-based format developed in 1987. Old. Ubiquitous. Every commercial print system on the planet accepts EPS.
+
+**Best for:**
+- Sending to commercial printers
+- Older production systems (sign makers, screen printers, some embroidery systems)
+- Anywhere a vendor explicitly requests EPS
+
+**Not for:** Web use. Browsers don't render EPS natively. Not for editing — while EPS is technically editable in Illustrator, it's not the format you want for working files.
+
+**The practical reality:** EPS is the format of choice for the print industry because of its compatibility. When a printer asks for "the vector file," they usually mean either PDF or EPS. Send both and let them pick.
+
+<Callout type="info" title="EPS vs AI for Printers">
+Modern print workflows increasingly use PDF over EPS. But many sign shops, screen printers, and older offset houses still prefer EPS. When in doubt, send both.
+</Callout>
+
+## PDF — Print-Ready and Presentation
+
+**Full name:** Portable Document Format  
+**Type:** Can be vector or raster depending on content  
+**What it is:** A cross-platform format that can contain vector paths, raster images, embedded fonts, and color profiles — all in one standardized container.
+
+**Best for:**
+- Sending to commercial printers (PDF/X-1a or PDF/X-4 are print standards)
+- Brand guidelines and presentations
+- Proposals and documents that include the logo
+- Printers who specifically request PDF
+
+**The version matters:** There is a significant difference between a "PDF" and a "print-ready PDF." A print-ready PDF has:
+- CMYK color space (not RGB)
+- Embedded color profiles
+- Fonts embedded or outlined
+- Crops and bleed marks (for bleed-sensitive print jobs)
+- PDF/X compliance
+
+A PDF exported from Illustrator with default settings is not print-ready. A PDF exported with the correct print preset is.
+
+**For logo delivery specifically:** Export as PDF/X-1a for maximum compatibility with commercial print. Use PDF/X-4 if your logo includes transparency that must be preserved.
+
+## PNG — The Raster Universal
+
+**Full name:** Portable Network Graphics  
+**Type:** Raster  
+**What it is:** A lossless raster format that supports transparency (unlike JPG). At its correct resolution and size, it looks sharp. Scaled beyond that size, it degrades.
+
+**Best for:**
+- Social media profile photos
+- Embedding logos in Word and PowerPoint documents
+- Email signatures
+- Anywhere someone needs a quick visual that doesn't require vector
+
+**The resolution question:** A PNG for social media needs to be different from a PNG for print. A social media profile logo at 400×400px looks fine. That same PNG used on a business card printed at 300 DPI will degrade.
+
+Professional logo delivery includes multiple PNG sizes:
+- **@1x** (standard screen resolution)
+- **@2x** (retina/high-DPI screens — twice the dimensions)
+- **@3x** (mobile high-DPI — three times the dimensions)
+- **@300dpi** (print-compatible raster, sized to the largest practical print application)
+
+**Avoid JPG for logos.** JPG uses lossy compression that introduces artifacts around sharp edges and hard color transitions — exactly the characteristics of a logo. PNG is always the correct raster format for logo marks.
+
+## A Quick Reference
+
+| Format | Type | Opens In | Best Use |
+|--------|------|----------|----------|
+| SVG | Vector | Browser, Figma, Illustrator, any code editor | Web, apps, animation |
+| AI | Vector | Adobe Illustrator only | Editing, archiving, source file |
+| EPS | Vector | Illustrator, print RIPs | Commercial printing, legacy systems |
+| PDF | Vector + Raster | Any PDF viewer | Presentations, print-ready files |
+| PNG | Raster | Everything | Social, documents, quick use |
+
+## What to Send to Common Vendors
+
+**Web developer**: SVG (optimized, clean code)  
+**Commercial printer**: PDF/X-1a or EPS, with separate CMYK color spec  
+**Sign maker**: EPS or AI  
+**Embroidery digitizer**: EPS or AI  
+**Social media**: PNG at 400×400px minimum  
+**Figma designer**: SVG  
+**Presentation deck**: PNG @2x or embedded PDF  
+**Merchandise company**: EPS or PDF, with Pantone references  
+
+When a vendor asks for "the original vector," they mean SVG, AI, or EPS — not a PDF or a PNG with a transparent background.
+
+<CTASection
+  headline="Need a complete, production-ready logo file set?"
+  description="Every vectorization we deliver includes SVG, AI source, EPS, PDF, and PNG exports at multiple resolutions — organized, labeled, and ready for any vendor."
+  cta="Get Your Files"
+  href="/contact"
+  secondary="What We Deliver"
+  secondaryHref="/services/ai-logo-vectorization"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Is an SVG the same as a vector file?",
+      a: "SVG is one type of vector file. AI and EPS are also vector formats. What they share is the underlying mathematical path description. What differs is the container format, metadata, and software compatibility."
+    },
+    {
+      q: "My logo SVG file is 800KB. Is that normal?",
+      a: "No. A well-crafted logo SVG should be under 10KB — typically 1–5KB for simple marks, up to 20KB for complex ones. An 800KB SVG has structural problems: either it's embedding a raster image internally, or it was generated by auto-trace with thousands of redundant anchor points."
+    },
+    {
+      q: "Can I open an EPS without Illustrator?",
+      a: "Modern macOS can preview EPS files in Quick Look. Adobe Acrobat can open EPS files. Inkscape (free software) can open and edit EPS. But for production use, you want Illustrator or a comparable professional vector editor."
+    },
+    {
+      q: "A printer said my PDF isn't print-ready. What does that mean?",
+      a: "Usually one of: the colors are in RGB instead of CMYK, fonts aren't embedded or outlined, there's no bleed set up, or the file doesn't meet PDF/X standards. Re-export from your vector source with the correct print preset, or send the EPS/AI instead and let the printer preflight it."
+    }
+  ]}
+/>

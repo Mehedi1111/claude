@@ -1,0 +1,173 @@
+---
+title: "SVG Looks Wrong After Export: 7 Causes and How to Fix Each One"
+excerpt: "Your logo looked perfect in Illustrator. The exported SVG is missing shapes, showing wrong colors, or displaying with a black rectangle behind it. Here's the specific cause for each of these problems."
+category: "Troubleshooting"
+date: "2025-05-07"
+image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=1200&q=80"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["SVG", "Troubleshooting", "Logo Export", "Illustrator", "Web Development"]
+related:
+  - "svg-optimization-for-web"
+  - "logo-file-formats-explained"
+  - "ai-logo-vectorization-complete-guide"
+seo:
+  title: "SVG Broken After Export — 7 Common Causes and Exact Fixes"
+  description: "Fix SVG export problems from Illustrator: missing shapes, wrong colors, black backgrounds, clipping issues, and font failures. Each problem with its specific solution."
+---
+
+You export your logo as SVG from Illustrator. You open it in a browser. Something is wrong: a shape is missing, the background is black, the colors are completely different, or the whole thing looks like it's been clipped to a tiny rectangle.
+
+These aren't random failures. Each problem has a specific cause in the SVG specification or the export settings. Here's a diagnostic guide covering the seven most common SVG export problems.
+
+## Problem 1: Black Rectangle Behind the Logo
+
+**Symptom:** The SVG displays with a solid black rectangle filling the entire viewBox area.
+
+**Cause:** The Illustrator `enable-background` attribute is being interpreted as a filled black background. This attribute is an artifact of older Illustrator exports and has no equivalent behavior in browser SVG rendering.
+
+**The fix:**
+
+Open the SVG in a text editor. Find the root `<svg>` element. Remove `style="enable-background:new 0 0 500 500;"` — this is the culprit.
+
+```
+<!-- Before -->
+<svg xmlns="http://www.w3.org/2000/svg" style="enable-background:new 0 0 500 500;">
+
+<!-- After -->
+<svg xmlns="http://www.w3.org/2000/svg">
+```
+
+After removing it, the background should be transparent, and the logo should render correctly.
+
+**Prevention:** In Illustrator's SVG export options, choose SVG 1.1 profile and disable "Preserve Illustrator Editing Capabilities." This reduces legacy attributes in the output.
+
+## Problem 2: Colors Are Completely Wrong
+
+**Symptom:** Shapes appear in black, white, or wrong colors — not matching what Illustrator showed.
+
+**Cause (most common):** The SVG contains an inline `<style>` block that applies color classes. If the SVG is embedded inline in HTML alongside other CSS, the page's CSS is overriding the SVG's internal styles.
+
+```
+<!-- SVG internal style -->
+<style>.st0{fill:#1B4FD8;}</style>
+
+<!-- Site CSS accidentally overriding -->
+.st0 { fill: #000000; }
+```
+
+The class name `st0` is generic — if anything in your site's stylesheet targets `.st0` (unlikely but possible), or if another SVG on the page uses the same class name with different colors, you have a collision.
+
+**The fix:** Convert all class-based styles to presentation attributes. Instead of:
+
+```
+<style>.st0{fill:#1B4FD8;}</style>
+<path class="st0" d="..."/>
+```
+
+Use:
+
+```
+<path fill="#1B4FD8" d="..."/>
+```
+
+Presentation attributes are scoped to their element — they cannot be overridden by external CSS class rules unless `!important` is explicitly used.
+
+**Alternative fix:** If you must keep the class approach, use longer, unique class names: `.evoke-logo-primary` instead of `.st0`. These are unlikely to collide with anything else on the page.
+
+## Problem 3: Shapes or Elements Are Missing
+
+**Symptom:** Part of the logo renders correctly; other parts are invisible.
+
+**Cause A — Wrong fill:** The missing shape has `fill="none"` or no fill specified, and no stroke either. The path exists but renders as invisible.
+
+Open the SVG in a text editor and find the path for the missing element. Check its `fill` and `stroke` attributes. If `fill="none"` and there's no stroke, add the correct fill color.
+
+**Cause B — Clipping mask:** The element is inside a `<clipPath>` or `<mask>` element that's incorrectly defined, clipping it to zero area.
+
+Look for `clip-path="url(#...)"` on the parent group. Find the referenced `<clipPath>` element and check its path — if the path is tiny or has wrong coordinates, the clip is hiding the content.
+
+**Cause C — Visibility or display property:** An Illustrator layer was hidden when exported. The path exists in the SVG with `visibility="hidden"` or `display="none"`.
+
+Search the SVG for `visibility` and `display` attributes. Remove them from elements that should be visible.
+
+## Problem 4: Logo Is Clipped to a Small Rectangle
+
+**Symptom:** The logo renders but appears cropped — cut off at the edges or showing only a small portion of the full mark.
+
+**Cause:** The `viewBox` attribute is set incorrectly. The `viewBox` defines the coordinate space that maps to the rendered area. If it doesn't match where your paths actually are, the paths fall outside the visible area.
+
+**How to diagnose:** Open the SVG in a text editor and note the `viewBox` value: `viewBox="0 0 500 500"` means the visible area runs from coordinate (0,0) to (500,500). If your paths are centered at (250,250) within a 500×500 coordinate space, they should be visible. If your paths are at coordinates around (2000,2000), they're outside the viewBox.
+
+**The fix in Illustrator:** Select all your artwork. Object → Artboard → Fit to Artwork Bounds. This resizes the artboard to exactly contain your artwork. Re-export. The new viewBox will match your artwork coordinates.
+
+Alternatively, fix the viewBox manually by setting it to contain all your path coordinates.
+
+## Problem 5: Font Rendering Incorrectly or Showing as Boxes
+
+**Symptom:** Text in the logo renders as boxes, a different font, or with incorrect letterforms.
+
+**Cause:** The SVG references a font by name (e.g., `font-family="Neue Haas Grotesk"`) but that font isn't installed on the viewing system. The browser substitutes a fallback font.
+
+**The fix (for logos):** Outline all text before exporting. In Illustrator: Select all text → Type → Create Outlines. The text becomes vector paths. No font is referenced; no font needs to be installed.
+
+**Important:** Do this on a copy of your Illustrator source. Outlined text cannot be re-edited as text. Keep the text version in a separate "Text Live" layer that you lock before export.
+
+**Alternative (for web where text must remain selectable):** Embed the font in the SVG using `@font-face` within the SVG `<style>` block and reference the font file as a base64-encoded data URL. This is appropriate for text-heavy SVGs like infographics — overkill for a logo mark with a wordmark.
+
+## Problem 6: Gradients Not Rendering
+
+**Symptom:** Gradient fills appear as flat solid colors, or gradients are completely missing.
+
+**Cause A:** The gradient is defined using CMYK color values. SVG gradients must use RGB (hex or `rgb()`) colors. CMYK values in SVG are not spec-compliant and browsers don't render them.
+
+**The fix:** In Illustrator, convert your gradient colors to RGB before exporting. Edit → Color Settings → ensure RGB working space. Check each gradient stop in the Gradient panel and verify the color mode is RGB.
+
+**Cause B:** The gradient definition is referenced by ID, but the ID got mangled or duplicated during export. If two gradient definitions have the same ID, only the last one applies.
+
+Open the SVG in a text editor. Find all `<linearGradient>` and `<radialGradient>` elements. Check their `id` attributes for duplicates. Rename any duplicates.
+
+## Problem 7: Transparency Effects Are Missing or Show as Black
+
+**Symptom:** Drop shadows, glows, opacity effects, or transparency blending applied in Illustrator disappear or render as black shapes.
+
+**Cause:** SVG supports transparency via `opacity` and `fill-opacity` attributes. It also supports filters (for effects like drop shadows) via `<filter>` elements. However, complex Illustrator transparency effects sometimes export incorrectly, particularly compound transparency effects.
+
+**The most reliable fix:** Flatten the transparency before exporting. In Illustrator: Object → Flatten Transparency. This rasterizes the transparency effect — merging it into the surrounding shapes. The result has no transparency in the SVG, but looks identical.
+
+For logo files specifically: if your logo has drop shadows, glows, or blending mode effects, flatten them. Production SVG logos should not rely on filter effects for their appearance — too many contexts (email clients, some print workflows, older browsers) don't render them.
+
+<Callout type="info" title="Quick Diagnostic Approach">
+Open the SVG in a code editor. Scan for: `enable-background`, class names like `st0`, font-family references, `visibility="hidden"`, and `clipPath` elements. These five patterns account for about 80% of SVG display problems.
+</Callout>
+
+<CTASection
+  headline="SVG export giving you trouble? We'll fix it."
+  description="We deliver clean, production-ready SVGs that work in every browser, every framework, and every production context — first time, every time."
+  cta="Get a Fixed SVG"
+  href="/contact"
+  secondary="SVG Conversion Service"
+  secondaryHref="/services/svg-conversion"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "My SVG looks fine in Illustrator but wrong in Chrome. Why?",
+      a: "Illustrator renders SVG using its own rendering engine, which interprets some attributes differently from browsers. The browser is the authoritative rendering environment for web SVGs. Always verify SVG output in the target browser, not in Illustrator's preview."
+    },
+    {
+      q: "Is there a tool that automatically diagnoses SVG problems?",
+      a: "SVGO in verbose mode will flag structural issues. The W3C SVG validator (validator.w3.org) checks spec compliance. For visual debugging, browser DevTools → Elements panel lets you inspect and modify SVG properties live."
+    },
+    {
+      q: "Why does my SVG look different in Safari vs Chrome?",
+      a: "Safari and Chrome use different rendering engines (WebKit vs Blink). They handle certain SVG features differently — particularly complex filters, some gradient types, and SVG font rendering. Test in both if Safari users are a significant part of your audience."
+    },
+    {
+      q: "Can I use an SVG exported from Figma instead of Illustrator?",
+      a: "Figma's SVG export is generally cleaner than Illustrator's — it doesn't include legacy attributes like enable-background. But Figma SVGs still benefit from optimization and may have presentation attribute issues. The same principles apply."
+    }
+  ]}
+/>

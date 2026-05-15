@@ -1,0 +1,189 @@
+---
+title: "How to Vectorize a Midjourney Logo (The Right Way)"
+excerpt: "Midjourney produces raster images, not vector files. Here's the exact process for converting a Midjourney-generated logo into a production-ready vector — without shortcuts."
+category: "How-To"
+date: "2025-05-14"
+image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Midjourney", "Vectorization", "Logo Design", "SVG", "Brand Production"]
+related:
+  - "ai-logo-vectorization-complete-guide"
+  - "auto-trace-vs-manual-vectorization"
+  - "ai-logo-rejected-by-printer"
+seo:
+  title: "How to Vectorize a Midjourney Logo — Step-by-Step for Production Use"
+  description: "Learn the correct process for vectorizing a Midjourney-generated logo. Why auto-trace fails, how manual vectorization works, and what a production-ready file looks like."
+---
+
+Midjourney is a generative image tool. It produces a PNG. That PNG is not a logo file — it is a starting point for a logo file.
+
+The distinction matters when you try to use it: send the PNG to a printer, and they'll tell you the resolution is too low. Try to embroider it, and the digitizer says they can't work with a raster. Export it as SVG through Illustrator's Image Trace, and you'll get a technically vector file that no professional will accept.
+
+This article covers what actually has to happen between "I generated this in Midjourney" and "I have a production-ready logo."
+
+## Step 1: Get the Highest Quality Midjourney Export You Can
+
+Before any vectorization work, you need the best possible source image.
+
+In Midjourney, after generating an image you like:
+- Click **U1**, **U2**, **U3**, or **U4** to upscale the specific variation
+- The upscaled image is typically 2048×2048 pixels (v5 and later)
+- For maximum quality: after upscaling, you can use the **Upscale (Subtle)** or **Upscale (Creative)** options to reach 4096×4096 in some versions
+
+Download the upscaled PNG directly from the Discord message (or the Midjourney web app). Use the full-resolution download, not the thumbnail.
+
+<Callout type="info" title="What Resolution Is Actually Sufficient?">
+At 2048×2048 pixels, a Midjourney image can be reproduced at 300 DPI at approximately 17×17cm — enough for business cards and most stationery applications. For large format (signage, banners, vehicle livery), you need a vector. No amount of upscaling will change that.
+</Callout>
+
+If your logo has a specific background colour in the Midjourney output, note the approximate colour values. You'll need to match these when building the final palette.
+
+## Step 2: Identify the Geometry Underlying the Mark
+
+This is where the actual vectorization work begins — before touching the software.
+
+Study the Midjourney output carefully:
+
+**Does the mark have symmetry?** Left-right symmetry is the most common. Some marks have radial symmetry (like a compass or starburst). Identifying symmetry means you can build half the mark and mirror it, guaranteeing mathematical precision.
+
+**What basic shapes are present?** Most logo marks, however organic they look, are constructed from circles, rectangles, and lines. A mark that looks like an abstract bird might be three overlapping circles and a triangle. Identifying the underlying primitives makes path construction much faster and more accurate.
+
+**What is the grid?** Many AI-generated marks suggest an underlying grid that the AI was working within. Look at the proportional relationships between elements. If the mark appears to sit within a circle, measure the relative sizes of components against that circle.
+
+**Is there a typographic component?** If the mark includes letters, treat them separately. You'll need to identify whether the letterforms match an existing typeface or need custom reconstruction.
+
+This analysis takes 10–20 minutes for most marks. It determines the quality of everything that follows.
+
+## Step 3: Set Up Your Artboard Correctly
+
+In Adobe Illustrator:
+- Create a new document at 500×500px (or any square) with no bleed
+- Place your Midjourney PNG on a locked layer called "Reference"
+- Create a new layer above it called "Vector"
+- Set the reference layer opacity to 50% so you can see your work against it
+- Use the View → Grid to activate a modular grid that matches the geometry you identified
+
+The locked reference layer lets you trace over the AI output while keeping the original visible and unmodified.
+
+## Step 4: Reconstruct Every Shape Manually
+
+Use the Pen tool — not Image Trace, not the Shape Builder starting from auto-traced paths.
+
+For each component of the mark:
+1. Identify the curve's geometry (circular arc, straight segment, Bézier free-form)
+2. Place anchor points at the minimum required positions
+3. Adjust handles to match the curve of the reference
+4. Compare against the reference at multiple zoom levels
+
+**For circular arcs specifically:** Use the Ellipse tool to create the circle you're matching, then cut it to the arc you need. This guarantees the arc is mathematically circular rather than a freehand approximation that merely looks circular.
+
+**For straight edges:** Use straight segments with no handles at all. Many AI-generated marks have edges that look straight but are actually slightly curved due to the generation process. Go straight — it looks better.
+
+**Anchor point count per shape** — a typical well-executed logo component uses:
+- Simple circle: 4 anchors
+- Oval: 4 anchors
+- Simple arc: 2–4 anchors
+- Complex organic curve: 6–12 anchors maximum
+
+If you're placing more than 12 anchor points on a single path, you're over-working it.
+
+## Step 5: Handle Symmetry With Precision
+
+If the mark is symmetrical, do not eyeball the symmetry. Build it mathematically.
+
+1. Draw one side of the mark completely
+2. Select all paths for that side
+3. Object → Transform → Reflect, then copy (not move) across the axis of symmetry
+4. Align both sides using the Align panel with "Align to artboard" enabled
+
+This produces exact symmetry. Eyeballed symmetry always has imperceptible errors that professional eyes notice in isolation and that print vendors notice when the mark is reproduced at large scale.
+
+## Step 6: Apply Optical Corrections
+
+Geometric precision and visual accuracy are not the same thing. After the mathematical work is done, review the mark at actual print sizes.
+
+Common corrections for Midjourney-derived marks:
+- **Junction weight**: where two strokes meet, the intersection appears darker/heavier. Reduce the stroke weight at the junction by 3–5% to compensate.
+- **Apparent size**: elements placed on the baseline of a circle appear smaller than elements placed in the centre. Adjust sizes accordingly.
+- **Terminal sharpness**: pointed terminals (arrow tips, letter apices) should extend slightly beyond the mathematical boundary of the form to appear correctly sized.
+
+Print the mark at several sizes — 30mm, 60mm, 100mm — and review on paper. The eye catches things at paper scale that the screen hides.
+
+## Step 7: Build the Colour System
+
+The AI-generated image has RGB colours. You need professional colour values.
+
+Use the Eyedropper tool to sample the primary colours from the reference. Then:
+- Document the hex value
+- Convert to RGB (usually identical to hex, just a different notation)
+- Find the nearest CMYK equivalent — use a Pantone swatch book or the Find a Pantone Color feature in Illustrator
+- Note the Pantone number for spot colour applications
+
+For a typical 2-colour logo, this produces a colour specification like:
+- **Primary Black**: `#0A0A0A` | RGB 10, 10, 10 | CMYK 0, 0, 0, 96 | Pantone Black 6 C
+- **Brand Blue**: `#1B4FD8` | RGB 27, 79, 216 | CMYK 88, 63, 0, 15 | Pantone 2728 C
+
+Every vendor, every context, every future designer works from these references.
+
+## Step 8: Organise and Export
+
+Before export:
+- Name your layers logically (Mark, Wordmark, Background)
+- Make all colours global swatches
+- Convert all strokes to outlined paths (Object → Expand)
+- Close any open paths (use Object → Path → Close Path)
+- Delete the reference layer
+
+Export:
+- Save as `.ai` (the editable source)
+- Export as `.svg` with "Embed Images" off, "Use Artboard" on
+- Export as `.eps` (legacy vector for some print systems)
+- Export as `.pdf` (presentation and print-ready)
+- Export as `.png` at 300 DPI with transparent background
+
+<TestimonialQuote
+  quote="The vector Evoke delivered was so clean that our development team said it was the best SVG they'd ever received from a branding project. Under 2KB with a React component included."
+  author="Sophie Laurent"
+  role="Creative Director"
+  company="Forma Studio"
+/>
+
+## Why Auto-Trace Fails for Midjourney Logos Specifically
+
+Midjourney images have a characteristic quality that makes auto-trace particularly bad: they are generated with slight organic variation. Edges are never perfectly sharp, forms never perfectly symmetric, gradients never perfectly smooth. The image is designed to look natural to human eyes.
+
+Auto-trace reads all of this as signal and tries to reproduce it faithfully. The result is a vector with thousands of anchor points describing the micro-variations of a raster image — the opposite of what a production-ready logo requires.
+
+Manual vectorization ignores the micro-variation and reconstructs the intended underlying form. The result is sharper, cleaner, and more professional than the Midjourney output itself.
+
+<CTASection
+  headline="Have a Midjourney logo that needs to be production-ready?"
+  description="We manually vectorize Midjourney-generated logos into clean, print-certified vector files. 24–48 hour turnaround, complete file set included."
+  cta="Start the Project"
+  href="/contact"
+  secondary="See AI Vectorization Service"
+  secondaryHref="/services/ai-logo-vectorization"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Can I do this myself if I have Adobe Illustrator?",
+      a: "Yes — if you're comfortable with the Pen tool and have time to learn the optical correction principles. The process described here is achievable without professional training. What takes professionals 2–3 hours typically takes a self-taught designer 6–10 hours the first time."
+    },
+    {
+      q: "Does the AI style of the Midjourney output affect how hard it is to vectorize?",
+      a: "Significantly. Clean geometric marks (shapes, geometric forms, minimal logos) are relatively straightforward. Illustrative marks with fine detail, textures, or complex gradients are considerably more work. Textured or painterly styles generated by Midjourney are the most challenging because the detail doesn't translate meaningfully to a flat vector."
+    },
+    {
+      q: "What if my Midjourney logo has a complex background?",
+      a: "The background is almost always discarded during vectorization. Logo marks are isolated and delivered with a transparent background. If the background is part of the brand identity (like a badge or shield shape), that shape is vectorized as a separate element."
+    },
+    {
+      q: "How do I know if the Midjourney logo I generated is even worth vectorizing?",
+      a: "The key question is whether it communicates clearly as a flat, simplified shape without gradients, textures, or photographic detail. Zoom out until the image is about 2cm wide. If the mark still reads clearly and distinctly at that scale, it's likely a strong candidate for vectorization."
+    }
+  ]}
+/>

@@ -71,15 +71,37 @@ export default async function BlogPostPage({
     }));
 
   // JSON-LD
+  const isMehedi = frontmatter.author.name === "Mehedi Hasan";
+  const authorSchema = isMehedi
+    ? {
+        "@type": "Person",
+        name: "Mehedi Hasan",
+        jobTitle: "Founder & CEO",
+        worksFor: { "@type": "Organization", name: "Evoke Studio" },
+        sameAs: [
+          "https://www.linkedin.com/in/m-mehedi-h-hasan/",
+          "https://www.upwork.com/freelancers/~011af9123385f97f10",
+          "https://www.behance.net/mh62221352f0fFF",
+          "https://dribbble.com/madebyevoke",
+        ],
+        description: "Brand identity designer and vectorization specialist with 15 years of experience. Founder of Evoke Studio.",
+      }
+    : { "@type": "Organization", name: frontmatter.author.name };
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: frontmatter.title,
     description: frontmatter.excerpt,
     datePublished: frontmatter.date,
-    author: { "@type": "Organization", name: frontmatter.author.name },
+    author: authorSchema,
     image: frontmatter.image,
-    publisher: { "@type": "Organization", name: "Evoke Studio" },
+    publisher: {
+      "@type": "Organization",
+      name: "Evoke Studio",
+      url: "https://madebyevoke.com",
+      logo: { "@type": "ImageObject", url: "https://madebyevoke.com/favicon.ico" },
+    },
   };
 
   return (
@@ -195,8 +217,29 @@ export default async function BlogPostPage({
             <BlogSidebar headings={headings} related={related} />
           </div>
 
+          {/* Author bio */}
+          {isMehedi && (
+            <div className="mt-16 pt-10 border-t border-[#e5e5e5] max-w-3xl">
+              <div className="flex items-start gap-5">
+                <div className="w-14 h-14 bg-[#0a0a0a] flex items-center justify-center shrink-0">
+                  <span className="text-[18px] font-display font-bold text-white">M</span>
+                </div>
+                <div>
+                  <p className="text-[13px] font-sans font-semibold uppercase tracking-[0.1em] text-[#b4b4b4] mb-1">Written by</p>
+                  <p className="text-[18px] font-display font-bold text-[#0a0a0a] tracking-[-0.02em] mb-1">Mehedi Hasan</p>
+                  <p className="text-[13px] font-sans text-[#737373] mb-3">Founder & CEO, Evoke Studio — 15 years of brand identity design, logo vectorization, and visual systems for clients across technology, wellness, professional services, and consumer brands.</p>
+                  <div className="flex flex-wrap gap-4">
+                    <a href="https://www.linkedin.com/in/m-mehedi-h-hasan/" target="_blank" rel="noopener noreferrer" className="text-[12px] font-sans font-medium text-[#0a0a0a] hover:underline underline-offset-2">LinkedIn →</a>
+                    <a href="https://www.upwork.com/freelancers/~011af9123385f97f10" target="_blank" rel="noopener noreferrer" className="text-[12px] font-sans font-medium text-[#0a0a0a] hover:underline underline-offset-2">Upwork →</a>
+                    <a href="https://www.behance.net/mh62221352f0fFF" target="_blank" rel="noopener noreferrer" className="text-[12px] font-sans font-medium text-[#0a0a0a] hover:underline underline-offset-2">Behance →</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Tags + bottom nav */}
-          <div className="mt-16 pt-10 border-t border-[#e5e5e5] max-w-3xl">
+          <div className="mt-10 pt-10 border-t border-[#e5e5e5] max-w-3xl">
             {frontmatter.tags && frontmatter.tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-10">
                 {frontmatter.tags.map((tag) => (
