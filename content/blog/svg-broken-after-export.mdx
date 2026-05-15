@@ -3,7 +3,7 @@ title: "SVG Looks Wrong After Export: 7 Causes and How to Fix Each One"
 excerpt: "Your logo looked perfect in Illustrator. The exported SVG is missing shapes, showing wrong colors, or displaying with a black rectangle behind it. Here's the specific cause for each of these problems."
 category: "Troubleshooting"
 date: "2025-05-07"
-image: "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=1200&q=80"
+image: "https://images.unsplash.com/photo-1526498460520-4c246339dccb?w=1200&q=80"
 author:
   name: "Mehedi Hasan"
   role: "Founder & CEO, Evoke Studio"
@@ -19,7 +19,7 @@ seo:
 
 You export your logo as SVG from Illustrator. You open it in a browser. Something is wrong: a shape is missing, the background is black, the colors are completely different, or the whole thing looks like it's been clipped to a tiny rectangle.
 
-These aren't random failures. Each problem has a specific cause in the SVG specification or the export settings. Here's a diagnostic guide covering the seven most common SVG export problems.
+These aren't random failures. Each problem has a specific cause in the SVG specification or the export settings. Once your SVG is fixed, see our [SVG optimization guide](/blog/svg-optimization-for-web) for making it production-ready for web. Here's a diagnostic guide covering the seven most common SVG export problems.
 
 ## Problem 1: Black Rectangle Behind the Logo
 
@@ -110,7 +110,7 @@ Alternatively, fix the viewBox manually by setting it to contain all your path c
 
 **Cause:** The SVG references a font by name (e.g., `font-family="Neue Haas Grotesk"`) but that font isn't installed on the viewing system. The browser substitutes a fallback font.
 
-**The fix (for logos):** Outline all text before exporting. In Illustrator: Select all text → Type → Create Outlines. The text becomes vector paths. No font is referenced; no font needs to be installed.
+**The fix (for logos):** Outline all text before exporting. In Illustrator: Select all text → Type → Create Outlines. The text becomes vector paths. No font is referenced; no font needs to be installed. If the typeface itself needs to be reconstructed, our [Typography Reconstruction service](/services/typography-reconstruction) handles that.
 
 **Important:** Do this on a copy of your Illustrator source. Outlined text cannot be re-edited as text. Keep the text version in a separate "Text Live" layer that you lock before export.
 
@@ -139,7 +139,7 @@ Open the SVG in a text editor. Find all `<linearGradient>` and `<radialGradient>
 For logo files specifically: if your logo has drop shadows, glows, or blending mode effects, flatten them. Production SVG logos should not rely on filter effects for their appearance — too many contexts (email clients, some print workflows, older browsers) don't render them.
 
 <Callout type="info" title="Quick Diagnostic Approach">
-Open the SVG in a code editor. Scan for: `enable-background`, class names like `st0`, font-family references, `visibility="hidden"`, and `clipPath` elements. These five patterns account for about 80% of SVG display problems.
+Open the SVG in a code editor. Scan for: `enable-background`, class names like `st0`, font-family references, `visibility="hidden"`, and `clipPath` elements. If you'd rather hand this off, our [SVG Conversion service](/services/svg-conversion) fixes and rebuilds files for production. These five patterns account for about 80% of SVG display problems.
 </Callout>
 
 <CTASection

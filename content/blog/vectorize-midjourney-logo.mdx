@@ -3,7 +3,7 @@ title: "How to Vectorize a Midjourney Logo (The Right Way)"
 excerpt: "Midjourney produces raster images, not vector files. Here's the exact process for converting a Midjourney-generated logo into a production-ready vector — without shortcuts."
 category: "How-To"
 date: "2025-05-14"
-image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
+image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&q=80"
 author:
   name: "Mehedi Hasan"
   role: "Founder & CEO, Evoke Studio"
@@ -21,7 +21,7 @@ Midjourney is a generative image tool. It produces a PNG. That PNG is not a logo
 
 The distinction matters when you try to use it: send the PNG to a printer, and they'll tell you the resolution is too low. Try to embroider it, and the digitizer says they can't work with a raster. Export it as SVG through Illustrator's Image Trace, and you'll get a technically vector file that no professional will accept.
 
-This article covers what actually has to happen between "I generated this in Midjourney" and "I have a production-ready logo."
+This article covers what actually has to happen between "I generated this in Midjourney" and "I have a production-ready logo." For the broader picture across all AI tools, see our [complete guide to AI logo vectorization](/blog/ai-logo-vectorization-complete-guide).
 
 ## Step 1: Get the Highest Quality Midjourney Export You Can
 
@@ -115,7 +115,7 @@ Print the mark at several sizes — 30mm, 60mm, 100mm — and review on paper. T
 
 The AI-generated image has RGB colours. You need professional colour values.
 
-Use the Eyedropper tool to sample the primary colours from the reference. Then:
+Use the Eyedropper tool to sample the primary colours from the reference. The full explanation of why this translation matters is in [AI logo color conversion: RGB to CMYK](/blog/ai-logo-rgb-to-cmyk). Then:
 - Document the hex value
 - Convert to RGB (usually identical to hex, just a different notation)
 - Find the nearest CMYK equivalent — use a Pantone swatch book or the Find a Pantone Color feature in Illustrator
@@ -136,7 +136,7 @@ Before export:
 - Close any open paths (use Object → Path → Close Path)
 - Delete the reference layer
 
-Export:
+Export — see [which format to use for which vendor](/blog/logo-file-formats-explained):
 - Save as `.ai` (the editable source)
 - Export as `.svg` with "Embed Images" off, "Use Artboard" on
 - Export as `.eps` (legacy vector for some print systems)
@@ -152,7 +152,7 @@ Export:
 
 ## Why Auto-Trace Fails for Midjourney Logos Specifically
 
-Midjourney images have a characteristic quality that makes auto-trace particularly bad: they are generated with slight organic variation. Edges are never perfectly sharp, forms never perfectly symmetric, gradients never perfectly smooth. The image is designed to look natural to human eyes.
+Midjourney images have a characteristic quality that makes [auto-trace particularly bad](/blog/auto-trace-vs-manual-vectorization): they are generated with slight organic variation. Edges are never perfectly sharp, forms never perfectly symmetric, gradients never perfectly smooth. The image is designed to look natural to human eyes.
 
 Auto-trace reads all of this as signal and tries to reproduce it faithfully. The result is a vector with thousands of anchor points describing the micro-variations of a raster image — the opposite of what a production-ready logo requires.
 

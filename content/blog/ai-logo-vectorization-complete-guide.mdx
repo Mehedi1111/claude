@@ -3,7 +3,7 @@ title: "The Complete Guide to AI Logo Vectorization"
 excerpt: "Everything a founder, marketer, or designer needs to know about converting AI-generated logos into production-ready vector files — the process, the formats, and the failure points."
 category: "Guide"
 date: "2025-05-15"
-image: "https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&q=80"
+image: "https://images.unsplash.com/photo-1626785774625-ddcddc3445e9?w=1200&q=80"
 author:
   name: "Mehedi Hasan"
   role: "Founder & CEO, Evoke Studio"
@@ -49,9 +49,9 @@ Vector graphics describe shapes mathematically rather than as pixels. A circle i
 
 When professionals say "vectorizing your logo," they mean converting the pixel grid into mathematical path descriptions. The process can be done two ways:
 
-**Auto-trace** — software like Adobe Illustrator's Image Trace or Inkscape's auto-trace analyses the pixel data and attempts to infer the underlying shapes. It works by identifying edges and converting them to paths. The result is technically a vector file, but typically a poor one: hundreds of redundant anchor points, imprecise paths, and shapes that don't reflect the original intent.
+**[Auto-trace](/blog/auto-trace-vs-manual-vectorization)** — software like Adobe Illustrator's Image Trace or Inkscape's auto-trace analyses the pixel data and attempts to infer the underlying shapes. It works by identifying edges and converting them to paths. The result is technically a vector file, but typically a poor one: hundreds of redundant anchor points, imprecise paths, and shapes that don't reflect the original intent.
 
-**Manual vectorization** — a designer redraws every shape by hand using Bézier curves, studying the AI output to understand the underlying geometry and reconstructing it with precision. The result has minimal anchor points, mathematically correct proportions, and clean paths that behave predictably in every context.
+**[Manual vectorization](/blog/manual-vectorization-explained)** — a designer redraws every shape by hand using Bézier curves, studying the AI output to understand the underlying geometry and reconstructing it with precision. The result has minimal anchor points, mathematically correct proportions, and clean paths that behave predictably in every context.
 
 The difference matters most when the file encounters the real world: print vendors, embroidery digitizers, sign makers, and developers all work with the underlying file structure, not just the visual appearance.
 
@@ -94,7 +94,7 @@ These corrections are invisible when right and obvious when wrong. They are what
 
 AI tools generate colours in RGB — the additive colour model used by screens. Print production uses either CMYK (subtractive mixing for offset and digital print) or Pantone spot colours (pre-mixed ink).
 
-RGB and CMYK do not map 1:1. The CMYK colour gamut is narrower — certain saturated RGB colours (especially electric blues and vivid greens) have no exact CMYK equivalent and must be approximated. The vectorizer identifies the closest professional print values and documents them for every context:
+[RGB and CMYK do not map 1:1](/blog/ai-logo-rgb-to-cmyk). The CMYK colour gamut is narrower — certain saturated RGB colours (especially electric blues and vivid greens) have no exact CMYK equivalent and must be approximated. The vectorizer identifies the closest professional print values and documents them for every context:
 
 - **Hex** — for web, app, and digital use
 - **RGB** — for screen-specific applications
@@ -122,7 +122,7 @@ For wordmarks, option 3 is usually the strongest. A custom letterform is owned e
 
 ### 6. File Organisation and Delivery
 
-A professional vector delivery isn't a single file. It includes:
+A professional vector delivery isn't a single file. For a breakdown of what each format is for, see [SVG, AI, EPS, PDF, PNG — which do you actually need?](/blog/logo-file-formats-explained). It includes:
 
 - **Master SVG** — the canonical source of truth
 - **Adobe Illustrator source (.ai)** — for future editing, with organised layers
@@ -148,9 +148,9 @@ If a vectorization service delivers only an SVG, ask why. A complete delivery sh
 
 ## When You Need Full Vectorization vs Cleanup
 
-**Full vectorization** — you have a raster image (PNG, JPG) and need a vector file. No existing vector source.
+**[Full vectorization](/services/ai-logo-vectorization)** — you have a raster image (PNG, JPG) and need a vector file. No existing vector source.
 
-**Cleanup** — you have a vector file (SVG, AI, EPS) but it has technical problems: too many anchor points, open paths, broken structures, colour management issues, unoptimised SVG code. The shapes are there; they need correcting, not rebuilding.
+**[Cleanup](/services/ai-logo-cleanup)** — you have a vector file (SVG, AI, EPS) but it has technical problems: too many anchor points, open paths, broken structures, colour management issues, unoptimised SVG code. The shapes are there; they need correcting, not rebuilding.
 
 Most AI-generated logos that have been "converted" by the tool itself (e.g., SVG export from an AI generator) fall into the cleanup category. The file is technically a vector but structurally a mess.
 

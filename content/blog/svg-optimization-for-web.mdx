@@ -3,7 +3,7 @@ title: "How to Optimize an SVG Logo for Web: File Size, Code Quality, and Perfor
 excerpt: "An SVG logo exported from Illustrator and an SVG logo optimized for production are different files. Here's what separates them and how to get from one to the other."
 category: "Technical"
 date: "2025-05-09"
-image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80"
+image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80"
 author:
   name: "Mehedi Hasan"
   role: "Founder & CEO, Evoke Studio"
@@ -17,7 +17,7 @@ seo:
   description: "Learn how to optimize SVG logos for production web use: reduce file size, clean code structure, React component delivery, and performance impact."
 ---
 
-Open the SVG your designer delivered in a code editor. If it looks like this, you have a problem:
+Open the SVG your designer delivered in a code editor. If you're not sure what format you even need, start with [logo file formats explained](/blog/logo-file-formats-explained). If it looks like this, you have a problem:
 
 ```
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -40,7 +40,7 @@ This is how Illustrator exports SVG. It is not optimized for web production. Her
 
 SVG logos typically appear in the `<head>` (as a favicon), inline in the HTML (for the header), or as an `<img>` src. In all three cases, the browser must download, parse, and render the file.
 
-A well-optimized logo SVG is 1–3KB. A raw Illustrator export of the same mark can be 20–80KB, depending on the version of Illustrator and the export settings used.
+A well-optimized logo SVG is 1–3KB. A raw Illustrator export of the same mark can be 20–80KB. For the [Jowa brand identity project](/portfolio/jowa), we delivered a 1.2KB SVG with a React component — down from a 28KB Illustrator export., depending on the version of Illustrator and the export settings used.
 
 The difference:
 - **20KB SVG** inline in every page: adds 20KB to each page's blocking HTML payload
@@ -157,7 +157,7 @@ If the SVG is purely decorative (and a visible text name appears nearby), use `a
 
 ## Step 5: Build the React Component
 
-For React applications, converting the SVG to a typed component gives developers clean, flexible integration:
+For React applications, converting the SVG to a typed component gives developers clean, flexible integration. This is included as standard in our [SVG Conversion service](/services/svg-conversion):
 
 ```typescript
 interface LogoProps {
