@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/ui/CustomCursor";
+import Chatbot from "@/components/ui/Chatbot";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -131,6 +132,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <Chatbot />
       </body>
     </html>
   );
