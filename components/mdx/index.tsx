@@ -7,6 +7,7 @@ import ComparisonTable from "./ComparisonTable";
 import MDXCTASection from "./MDXCTASection";
 import TestimonialQuote from "./TestimonialQuote";
 import ImageCaption from "./ImageCaption";
+import PortfolioLinks from "./PortfolioLinks";
 
 const mdxComponents: MDXComponents = {
   // MDX custom components
@@ -17,6 +18,7 @@ const mdxComponents: MDXComponents = {
   CTASection: MDXCTASection,
   TestimonialQuote,
   ImageCaption,
+  PortfolioLinks,
 
   // Override default HTML elements
   img: ({ src, alt }) => (
