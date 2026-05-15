@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import Image from "next/image";
 import SectionReveal from "@/components/ui/SectionReveal";
 
 export default function Showcase() {
@@ -35,6 +35,7 @@ export default function Showcase() {
     <section className="py-24 lg:py-36 bg-[#f5f5f5]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
           {/* Text */}
           <div>
             <SectionReveal>
@@ -77,81 +78,60 @@ export default function Showcase() {
           <SectionReveal delay={0.2} direction="none">
             <div
               ref={containerRef}
-              className="relative aspect-[4/3] overflow-hidden cursor-col-resize select-none bg-[#e5e5e5]"
+              className="relative aspect-square overflow-hidden cursor-col-resize select-none"
+              style={{ background: "#f5ede0" }}
               onMouseDown={() => setIsDragging(true)}
               onMouseUp={() => setIsDragging(false)}
               onMouseLeave={() => setIsDragging(false)}
               onMouseMove={handleMouseMove}
               onTouchMove={handleTouchMove}
             >
-              {/* Before: blurry/pixelated panel */}
-              <div className="absolute inset-0 flex items-center justify-center bg-[#d4d4d4]">
-                <div className="relative">
-                  <div
-                    className="w-48 h-48 filter blur-[3px]"
-                    style={{
-                      background: `
-                        repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(0,0,0,0.08) 8px, rgba(0,0,0,0.08) 9px),
-                        repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(0,0,0,0.08) 8px, rgba(0,0,0,0.08) 9px)
-                      `,
-                    }}
-                  >
-                    <svg viewBox="0 0 200 200" className="w-full h-full opacity-60">
-                      <rect x="60" y="40" width="80" height="80" fill="#555" opacity="0.7" rx="4" />
-                      <rect x="75" y="140" width="50" height="20" fill="#555" opacity="0.5" rx="2" />
-                      <circle cx="100" cy="80" r="25" fill="#333" opacity="0.4" />
-                    </svg>
-                  </div>
-                  <p className="absolute bottom-[-28px] left-0 right-0 text-center text-[10px] font-sans text-[#737373] uppercase tracking-[0.15em]">
-                    AI Raster Output
-                  </p>
-                </div>
-              </div>
+              {/* Before image — full background */}
+              <Image
+                src="/before-logo-nael.jpg"
+                alt="Before — AI-generated raster logo"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
 
-              {/* After: clean vector panel */}
+              {/* After image — revealed from the left by slider */}
               <div
-                className="absolute inset-0 flex items-center justify-center bg-white"
+                className="absolute inset-0"
                 style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
               >
-                <div className="relative">
-                  <div className="w-48 h-48">
-                    <svg viewBox="0 0 200 200" className="w-full h-full">
-                      <rect x="60" y="40" width="80" height="80" fill="#0a0a0a" rx="2" />
-                      <rect x="75" y="140" width="50" height="18" fill="#0a0a0a" rx="1" />
-                      <circle cx="100" cy="80" r="22" fill="white" />
-                      <path
-                        d="M88 80 L96 88 L114 70"
-                        stroke="#0a0a0a"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        fill="none"
-                      />
-                    </svg>
-                  </div>
-                  <p className="absolute bottom-[-28px] left-0 right-0 text-center text-[10px] font-sans text-[#737373] uppercase tracking-[0.15em]">
-                    Precision Vector
-                  </p>
-                </div>
+                <Image
+                  src="/after-logo-nael.jpg"
+                  alt="After — Precision vector rebuild"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
               </div>
 
-              {/* Divider */}
+              {/* Divider line */}
               <div
-                className="absolute top-0 bottom-0 w-px bg-[#0a0a0a] z-10"
+                className="absolute top-0 bottom-0 w-px bg-white/70 z-10 pointer-events-none"
+                style={{ left: `${sliderPos}%` }}
+              />
+
+              {/* Drag handle */}
+              <div
+                className="absolute top-1/2 z-20 -translate-y-1/2 -translate-x-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center cursor-grab active:cursor-grabbing"
                 style={{ left: `${sliderPos}%` }}
               >
-                <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 bg-[#0a0a0a] rounded-full flex items-center justify-center cursor-grab active:cursor-grabbing">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M4 2L1 6L4 10M8 2L11 6L8 10" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M5 2L2 7L5 12M9 2L12 7L9 12" stroke="#0a0a0a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </div>
 
               {/* Labels */}
-              <div className="absolute bottom-4 left-4 text-[10px] font-sans font-semibold text-[#737373] uppercase tracking-[0.15em]">
+              <div className="absolute bottom-4 left-4 z-10 bg-black/35 backdrop-blur-sm text-white text-[10px] font-sans font-semibold uppercase tracking-[0.15em] px-2.5 py-1">
                 Before
               </div>
-              <div className="absolute bottom-4 right-4 text-[10px] font-sans font-semibold text-[#737373] uppercase tracking-[0.15em]">
+              <div className="absolute bottom-4 right-4 z-10 bg-black/35 backdrop-blur-sm text-white text-[10px] font-sans font-semibold uppercase tracking-[0.15em] px-2.5 py-1">
                 After
               </div>
             </div>
@@ -160,6 +140,7 @@ export default function Showcase() {
               Drag to compare ← →
             </p>
           </SectionReveal>
+
         </div>
       </div>
     </section>
