@@ -20,28 +20,21 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://madebyevoke.com/blog" },
 };
 
-// Category accent colors — used as left border and badge tint
+// Vivid category accents — readable on both light and dark backgrounds
 const categoryAccent: Record<string, string> = {
-  Guide: "#2563eb",
-  "How-To": "#059669",
-  Technical: "#7c3aed",
-  Education: "#d97706",
-  Troubleshooting: "#dc2626",
-  Comparison: "#db2777",
-  Branding: "#ea580c",
-  default: "#0a0a0a",
+  Guide: "#3b82f6",
+  "How-To": "#10b981",
+  Technical: "#8b5cf6",
+  Education: "#f59e0b",
+  Troubleshooting: "#ef4444",
+  Comparison: "#ec4899",
+  Branding: "#f97316",
+  default: "#a3a3a3",
 };
 
-const categoryBg: Record<string, string> = {
-  Guide: "#eff6ff",
-  "How-To": "#ecfdf5",
-  Technical: "#f5f3ff",
-  Education: "#fffbeb",
-  Troubleshooting: "#fef2f2",
-  Comparison: "#fdf2f8",
-  Branding: "#fff7ed",
-  default: "#f5f5f5",
-};
+function getAccent(category: string) {
+  return categoryAccent[category] ?? categoryAccent.default;
+}
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString("en-US", {
@@ -51,7 +44,7 @@ function formatDate(date: string) {
   });
 }
 
-// ── Featured card — wide, taller, shows excerpt ──────────────────────────────
+// ── Featured (always dark) ────────────────────────────────────────────────────
 function FeaturedCard({
   title,
   excerpt,
@@ -67,45 +60,44 @@ function FeaturedCard({
   date: string;
   slug: string;
 }) {
-  const accent = categoryAccent[category] ?? categoryAccent.default;
-  const bg = categoryBg[category] ?? categoryBg.default;
+  const accent = getAccent(category);
 
   return (
     <Link href={`/blog/${slug}`} className="group block">
-      <div className="relative bg-white border border-[#e8e8e8] overflow-hidden transition-all duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] hover:-translate-y-0.5">
+      <div className="relative border border-[#1e1e1e] overflow-hidden transition-colors duration-300 hover:bg-[#111111]">
         {/* Left accent bar */}
-        <div className="absolute left-0 top-0 bottom-0 w-1" style={{ backgroundColor: accent }} />
+        <div className="absolute left-0 top-0 bottom-0 w-[3px]" style={{ backgroundColor: accent }} />
 
-        <div className="pl-8 pr-8 py-10 lg:py-12 lg:px-12">
+        <div className="pl-8 pr-8 py-10 lg:py-12 lg:pl-12 lg:pr-12">
           <div className="flex flex-col lg:flex-row lg:items-start lg:gap-16">
-            {/* Left: meta + title */}
+            {/* Left: meta + title + excerpt */}
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex flex-wrap items-center gap-3 mb-5">
                 <span
                   className="text-[10px] font-sans font-bold uppercase tracking-[0.18em] px-2.5 py-1"
-                  style={{ color: accent, backgroundColor: bg }}
+                  style={{ color: accent, backgroundColor: `${accent}1a` }}
                 >
                   {category}
                 </span>
-                <span className="text-[11px] font-sans text-[#b4b4b4]">{readTime}</span>
-                <span className="text-[10px] font-sans text-[#b4b4b4] ml-auto">{formatDate(date)}</span>
+                <span className="text-[11px] font-sans text-white/30">{readTime}</span>
+                <span className="text-[10px] font-sans text-white/25 lg:ml-auto">{formatDate(date)}</span>
               </div>
-              <h2 className="text-[clamp(22px,3vw,38px)] font-display font-bold text-[#0a0a0a] tracking-[-0.03em] leading-[1.1] line-clamp-2 mb-4 group-hover:text-[#1a1a1a] transition-colors">
+              <h2 className="text-[clamp(22px,3vw,40px)] font-display font-bold text-white tracking-[-0.03em] leading-[1.1] line-clamp-2 mb-4 group-hover:text-white/85 transition-colors">
                 {title}
               </h2>
-              <p className="text-[15px] font-sans text-[#737373] leading-relaxed line-clamp-2 max-w-2xl">
+              <p className="text-[15px] font-sans text-white/40 leading-relaxed line-clamp-2 max-w-2xl">
                 {excerpt}
               </p>
             </div>
 
             {/* Right: CTA */}
             <div className="mt-6 lg:mt-0 lg:shrink-0 flex lg:flex-col items-center lg:items-end lg:justify-between lg:self-stretch gap-4">
-              <span className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-[#0a0a0a] border border-[#0a0a0a] px-5 py-3 group-hover:bg-[#0a0a0a] group-hover:text-white transition-all duration-300">
+              <span className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white border border-white/15 px-5 py-3 group-hover:bg-white group-hover:text-[#0a0a0a] group-hover:border-white transition-all duration-300">
                 Read Article
                 <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
               </span>
               <span
-                className="hidden lg:block text-[10px] font-sans font-bold uppercase tracking-[0.15em] text-white px-2 py-0.5"
+                className="hidden lg:block text-[9px] font-sans font-bold uppercase tracking-[0.2em] text-[#0a0a0a] px-2.5 py-0.5"
                 style={{ backgroundColor: accent }}
               >
                 Latest
@@ -118,26 +110,33 @@ function FeaturedCard({
   );
 }
 
-// ── Regular card — fixed height, uniform grid ─────────────────────────────────
+// ── Grid card (light or dark variant) ────────────────────────────────────────
 function PostCard({
   title,
   category,
   readTime,
   date,
   slug,
+  dark,
 }: {
   title: string;
   category: string;
   readTime: string;
   date: string;
   slug: string;
+  dark: boolean;
 }) {
-  const accent = categoryAccent[category] ?? categoryAccent.default;
-  const bg = categoryBg[category] ?? categoryBg.default;
+  const accent = getAccent(category);
 
   return (
     <Link href={`/blog/${slug}`} className="group block">
-      <div className="h-[280px] bg-white border border-[#e8e8e8] flex flex-col overflow-hidden transition-all duration-200 hover:shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:-translate-y-0.5 relative">
+      <div
+        className={`h-[280px] flex flex-col overflow-hidden transition-colors duration-200 ${
+          dark
+            ? "bg-[#0f0f0f] hover:bg-[#161616]"
+            : "bg-white hover:bg-[#fafafa]"
+        }`}
+      >
         {/* Top accent line */}
         <div className="h-[3px] w-full shrink-0" style={{ backgroundColor: accent }} />
 
@@ -146,24 +145,40 @@ function PostCard({
           <div className="flex items-center justify-between mb-4">
             <span
               className="text-[9px] font-sans font-bold uppercase tracking-[0.18em] px-2 py-0.5"
-              style={{ color: accent, backgroundColor: bg }}
+              style={{ color: accent, backgroundColor: `${accent}1a` }}
             >
               {category}
             </span>
-            <span className="text-[11px] font-sans text-[#c0c0c0]">{readTime}</span>
+            <span className={`text-[11px] font-sans ${dark ? "text-white/25" : "text-[#c0c0c0]"}`}>
+              {readTime}
+            </span>
           </div>
 
-          {/* Title — always 3 lines clamped so all cards are same height */}
-          <h2 className="text-[17px] font-display font-bold text-[#0a0a0a] tracking-[-0.025em] leading-[1.25] line-clamp-3 flex-1 group-hover:text-[#1a1a1a] transition-colors">
+          {/* Title — clamped to 3 lines, same height on every card */}
+          <h2
+            className={`text-[17px] font-display font-bold tracking-[-0.025em] leading-[1.25] line-clamp-3 flex-1 transition-colors ${
+              dark
+                ? "text-white/85 group-hover:text-white"
+                : "text-[#0a0a0a] group-hover:text-[#1a1a1a]"
+            }`}
+          >
             {title}
           </h2>
 
-          {/* Bottom */}
-          <div className="flex items-center justify-between pt-4 mt-4 border-t border-[#f0f0f0]">
-            <time className="text-[11px] font-sans text-[#c0c0c0]">
+          {/* Bottom row */}
+          <div
+            className={`flex items-center justify-between pt-4 mt-4 border-t ${
+              dark ? "border-white/[0.06]" : "border-[#f0f0f0]"
+            }`}
+          >
+            <time className={`text-[11px] font-sans ${dark ? "text-white/25" : "text-[#c0c0c0]"}`}>
               {formatDate(date)}
             </time>
-            <span className="text-[#c0c0c0] group-hover:text-[#0a0a0a] group-hover:translate-x-1 transition-all duration-200 text-base">
+            <span
+              className={`transition-all duration-200 text-base group-hover:translate-x-1 ${
+                dark ? "text-white/20 group-hover:text-white" : "text-[#c0c0c0] group-hover:text-[#0a0a0a]"
+              }`}
+            >
               →
             </span>
           </div>
@@ -173,6 +188,7 @@ function PostCard({
   );
 }
 
+// ── Page ──────────────────────────────────────────────────────────────────────
 export default function BlogPage() {
   const posts = getAllPosts<BlogFrontmatter>("blog");
   const [featured, ...rest] = posts;
@@ -187,9 +203,15 @@ export default function BlogPage() {
     );
   }
 
+  // Split remaining posts into rows of 3
+  const rows: (typeof rest)[] = [];
+  for (let i = 0; i < rest.length; i += 3) {
+    rows.push(rest.slice(i, i + 3));
+  }
+
   return (
     <>
-      {/* ── HERO ── */}
+      {/* ── HERO — white ── */}
       <section className="pt-36 pb-16 sm:pb-20 lg:pt-44 lg:pb-24 bg-white border-b border-[#e8e8e8]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
           <SectionReveal>
@@ -214,12 +236,15 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* ── ALL ARTICLES ── */}
-      <section className="py-14 sm:py-16 lg:py-24 bg-[#f7f7f5]">
+      {/* ── FEATURED — dark band ── */}
+      <section className="bg-[#0a0a0a] pt-12 pb-5 lg:pt-16 lg:pb-6">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-
-          {/* Featured */}
           <SectionReveal>
+            <p className="text-[10px] font-sans font-semibold text-white/20 uppercase tracking-[0.25em] mb-5">
+              Latest Article
+            </p>
+          </SectionReveal>
+          <SectionReveal delay={0.1}>
             <FeaturedCard
               title={featured.frontmatter.title}
               excerpt={featured.frontmatter.excerpt}
@@ -229,26 +254,43 @@ export default function BlogPage() {
               slug={featured.slug}
             />
           </SectionReveal>
-
-          {/* Grid */}
-          {rest.length > 0 && (
-            <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {rest.map((post, i) => (
-                <SectionReveal key={post.slug} delay={Math.min(i * 0.04, 0.3)}>
-                  <PostCard
-                    title={post.frontmatter.title}
-                    category={post.frontmatter.category}
-                    readTime={post.readTime}
-                    date={post.frontmatter.date}
-                    slug={post.slug}
-                  />
-                </SectionReveal>
-              ))}
-            </div>
-          )}
-
         </div>
       </section>
+
+      {/* ── GRID ROWS — alternating white / dark ── */}
+      {rows.map((row, ri) => {
+        // row 0 = white, row 1 = dark, row 2 = white …
+        const isDark = ri % 2 === 1;
+        const isLast = ri === rows.length - 1;
+
+        return (
+          <section
+            key={ri}
+            className={`${isDark ? "bg-[#0a0a0a]" : "bg-white"} ${isLast ? "pb-16 lg:pb-24" : "pb-0"}`}
+          >
+            <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 pt-5 lg:pt-6">
+              <div
+                className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px ${
+                  isDark ? "bg-[#1e1e1e]" : "bg-[#e8e8e8]"
+                }`}
+              >
+                {row.map((post, i) => (
+                  <SectionReveal key={post.slug} delay={i * 0.07}>
+                    <PostCard
+                      title={post.frontmatter.title}
+                      category={post.frontmatter.category}
+                      readTime={post.readTime}
+                      date={post.frontmatter.date}
+                      slug={post.slug}
+                      dark={isDark}
+                    />
+                  </SectionReveal>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })}
     </>
   );
 }
