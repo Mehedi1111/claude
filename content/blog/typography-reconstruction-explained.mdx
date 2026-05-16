@@ -1,0 +1,152 @@
+---
+title: "Typography Reconstruction: When and Why You Need to Rebuild Logo Text"
+excerpt: "AI-generated logos almost always have broken text. Scanned logos have rasterised letterforms. Old files have fonts that no longer exist. Typography reconstruction rebuilds the wordmark correctly — from scratch, as clean vector paths."
+category: "Technical"
+date: "2025-06-03"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Typography Reconstruction", "Wordmark", "Logo Text", "Font Reconstruction", "Vector"]
+related:
+  - "logo-file-formats-explained"
+  - "manual-vectorization-explained"
+  - "logo-design-process"
+seo:
+  title: "Typography Reconstruction Explained: When and Why to Rebuild Logo Text"
+  description: "What typography reconstruction is, when you need it, and how it works. AI logo text, missing fonts, rasterised wordmarks — how to rebuild letterforms correctly as clean vector paths."
+---
+
+Typography reconstruction is the process of rebuilding a wordmark — the text portion of a logo — as clean vector paths when the original letterforms are unavailable, incorrect, or technically broken.
+
+It applies in more situations than most people realise:
+
+- An AI-generated logo where the text is distorted and doesn't match any real typeface
+- A logo file where the font was never outlined and the font is no longer installed (or no longer exists)
+- A scanned logo that was never properly digitized — the letterforms exist only as pixels
+- A logo where auto-trace was used on the original, producing thousands of redundant anchor points around rasterised letterforms
+- A rebrand where the existing wordmark needs to be modified — proportions adjusted, weight changed, custom letterforms added
+
+In every case, the result without reconstruction is a wordmark that either can't be used professionally or looks broken when you try. This article explains the process and when it applies.
+
+## Why AI Logo Text Is Almost Always Broken
+
+AI tools generate text by creating images of text — not by actually typesetting it. The difference is fundamental.
+
+When a designer sets text in Illustrator, each letter is a mathematically precise shape from a real typeface, placed at a specific position, with correct spacing. The letterforms are defined by the typeface designer's work: optimal weights, correct proportions, refined spacing pairs.
+
+When DALL-E, Midjourney, Stable Diffusion, or Ideogram renders a logo with text, it is doing the opposite: predicting what a logo with text looks like, pixel by pixel. The letterforms it produces are an approximation of letters — they look like letters in the same way that a drawn map looks like a satellite photo. The same concept, executed with a fundamentally different process, at a fundamentally different level of precision.
+
+The specific errors in AI-generated letterforms:
+- **Inconsistent stroke weights** — the thick strokes aren't all the same thickness
+- **Incorrect proportions** — letters are slightly too wide, too narrow, or inconsistently spaced
+- **Missing details** — serifs appear on some letters but not others; crossbars are missing or distorted
+- **Character blending** — adjacent letters run together at smaller sizes
+- **Unrecognisable as any existing typeface** — even when the design intent is clearly "a classic serif," the AI doesn't produce any actual typeface
+
+If you attempt to vectorize these letterforms as-is — by tracing the raster shapes — you reproduce all of these errors as vector paths. The result looks like the AI output at the original resolution and fails at every other scale and application.
+
+Our [AI logo vectorization service](/services/ai-logo-vectorization) includes typography reconstruction when the wordmark requires it. If you need standalone wordmark reconstruction for an existing file, the [typography reconstruction service](/services/typography-reconstruction) handles this specifically.
+
+## When Reconstruction Uses an Existing Typeface
+
+The first approach, when possible: identify the typeface that most closely matches the AI-generated wordmark and set the text correctly using the real font.
+
+This works when the AI output clearly resembles an existing typeface — a common outcome, since AI tools are trained on images of real typefaces and often produce approximations of recognisable ones.
+
+**The matching process:**
+
+1. Sample the letterforms at high zoom and study the serifs, letter proportions, bowl shapes, and weight distribution.
+2. Use type identification tools (WhatTheFont, Identifont, MyFonts "What Font Is" tool) to find candidates.
+3. Set the candidate typeface in Illustrator at the approximate size and weight.
+4. Compare directly with the reference, paying attention to: 'a' and 'g' shapes (single vs double story), 'R' leg (straight vs curved), 'Q' tail, 't' crossbar style, uppercase M and W geometry.
+5. If the match is close but not perfect, use the real typeface as a base and apply modifications.
+
+**When this approach works best:** The AI-generated text resembles a real geometric sans (Futura, Montserrat), a real slab serif (Rockwell, Clarendon), or a common humanist sans (Gill Sans, Optima). These typefaces have very specific geometric properties that the AI approximates recognisably.
+
+**When it doesn't work:** The AI generated text that blends properties of multiple typefaces, or that has stylistic qualities that don't correspond to any existing typeface. In this case, move to custom reconstruction.
+
+## When Reconstruction Requires Custom Path Work
+
+Custom letterform reconstruction is required when no existing typeface matches the AI-generated wordmark closely enough to use as a base — or when the wordmark is intended to be fully original.
+
+The process:
+
+**1. Establish the baseline grid.** Determine the cap height, x-height, and baseline from the reference. Set up guides in Illustrator to define these structural lines.
+
+**2. Identify letter proportions.** Measure the width-to-height ratio of each letter in the reference. Note which letters share proportions (I and L are typically the same width; similar proportions often exist between O and D, or between H and N).
+
+**3. Reconstruct each letterform.** Using the Pen tool, Ellipse tool, and Rectangle tool as appropriate, build each letter as a separate compound path. Start with the most geometrically simple letters (I, O, C) and use them as proportion references for the others.
+
+**4. Maintain consistency.** The stroke weight — the width of the thickest part of each stroke — must be consistent across all letters in a wordmark. Inconsistent stroke weights are the most visible quality failure in custom letterforms.
+
+**5. Handle spacing.** Letter spacing (tracking) in the AI output may be irregular. Reconstruct all letters at a consistent size and then space them using optical spacing — the visual space between letters, not mathematical equal spacing. Certain letter pairs require specific attention: AV, VA, To, LT, AT, and any pair involving straight and diagonal strokes.
+
+**6. Convert to outlines.** The final wordmark should be a single compound path, or one path per colour, with no live text. This ensures the file works correctly without the recipient having the font installed.
+
+## Handling Missing or Unavailable Fonts
+
+If you have an existing logo where the font was not outlined and the font is no longer available, you have a reconstruction problem.
+
+**First: try to find the font.** Use the document metadata in the Illustrator file to identify the font name. Search Adobe Fonts, Google Fonts, MyFonts, and type foundry sites. Many fonts that appear "missing" are available with a subscription.
+
+**If the font is discontinued:** Check type archives, specimen books, and the Type Foundry archives. Some discontinued typefaces have been digitised and are available through specialist suppliers.
+
+**If the font genuinely doesn't exist:** Reconstruct from the best available raster representation — a PNG export of the old logo, a scan of old materials, a screenshot. The reconstruction process is the same as for AI-generated text, with the additional step of accounting for raster artifacts in the source.
+
+## Reconstruction for Rebranding
+
+Typography reconstruction is also the right approach when an existing wordmark needs to be modified — not replaced entirely, but altered.
+
+Common modification scenarios:
+- **Weight adjustment:** A bold wordmark needs to be lighter for digital use
+- **Letter spacing change:** A tightly-spaced wordmark needs more breathing room
+- **Individual letter modification:** The 'A' needs a different apex treatment; the 'G' needs a more distinctive spur
+- **Addition of custom ligatures:** Two letters need to be connected in a specific way that the existing typeface doesn't support
+
+In all of these cases, reconstruction starts from the existing paths (properly outlined) and makes the specific changes needed. The [brand system rebuild service](/services/brand-system-rebuild) covers this kind of systematic update to an existing brand.
+
+## Quality Benchmarks for Reconstructed Typography
+
+A correctly reconstructed wordmark should:
+- Have consistent stroke weights across all letters
+- Use the minimum number of anchor points needed to describe each letterform accurately
+- Have optical (not mechanical) spacing between letters
+- Be legible at 12pt without any modifications
+- Scale to 300pt without visible imprecision in the curves
+- Print correctly at 0.5mm letterform widths
+
+Test the reconstruction at extreme sizes — 10pt and 500pt — to verify these properties.
+
+<CTASection
+  headline="Have a wordmark that needs to be rebuilt correctly?"
+  description="We reconstruct logo typography from AI-generated sources, scanned originals, and missing-font files. Clean paths, optically correct spacing, every letterform built by hand."
+  cta="Start the Reconstruction"
+  href="/contact"
+  secondary="View Typography Reconstruction Service"
+  secondaryHref="/services/typography-reconstruction"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "How long does typography reconstruction take?",
+      a: "A short wordmark of 4–6 letters in a relatively simple typeface takes 3–5 hours. A complex wordmark with modified letterforms, custom ligatures, or extended character set (tagline plus brand name) takes 8–15 hours. Our standard 24–48 hour turnaround covers most single wordmark projects."
+    },
+    {
+      q: "What if I don't know what the original font was?",
+      a: "We investigate using type identification tools and our typeface knowledge. In many cases we can identify the font from the letterforms. If we can't identify it precisely, we'll either match it to the closest available equivalent or propose custom reconstruction — and check with you before proceeding."
+    },
+    {
+      q: "Can you reconstruct a script or handwritten wordmark?",
+      a: "Yes, but the process is more time-intensive than geometric or sans letterforms. Organic, flowing letterforms require more anchor points and more careful curve work to look natural rather than mechanical. We'd scope this specifically based on the complexity of the reference."
+    },
+    {
+      q: "After reconstruction, can the wordmark be edited as live text?",
+      a: "No. Typography reconstruction produces outlined paths — shapes that look exactly like the letters but aren't editable as live text. This is the correct delivery format for production use. If you need to change the wording in the future, the reconstruction would need to be updated."
+    },
+    {
+      q: "The AI generated my logo's text in a style that doesn't match any real font. Can that be reconstructed faithfully?",
+      a: "Yes. If the AI-generated style is intentional and you want to preserve its character, we reconstruct the letterforms from the raster reference as custom paths — interpreting the intended form, not tracing the imprecise raster edges. The result is a clean vector version of the same style."
+    }
+  ]}
+/>
