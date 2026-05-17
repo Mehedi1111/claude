@@ -1,0 +1,154 @@
+---
+title: "Designing Your Logo for Dark Mode: Files, Formats, and Best Practices"
+excerpt: "Dark mode is now the default for millions of users. A logo designed only for light backgrounds breaks visibly in dark mode. Here's what a dark mode logo requires, how to build it, and how to implement it correctly."
+category: "Technical"
+date: "2025-06-09"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Dark Mode", "Logo Design", "SVG", "Web Design", "Brand Identity"]
+related:
+  - "svg-optimization-for-web"
+  - "logo-file-formats-explained"
+  - "eps-vs-svg-vs-pdf-logo-formats"
+seo:
+  title: "Logo for Dark Mode — How to Design, Build, and Implement a Dark Mode Logo"
+  description: "How to create a dark mode version of your logo: design considerations, SVG implementation, CSS media queries, and what files you need for a complete dark/light logo system."
+---
+
+In 2019, Apple and Google both shipped system-wide dark mode. By 2024, approximately half of mobile users and a significant proportion of desktop users have dark mode enabled as their default. If your website uses a white logo on a white background in dark mode, your brand becomes invisible to them.
+
+This is a solvable problem. It requires thinking about your logo as a system — multiple versions for multiple contexts — rather than a single asset.
+
+## Why "Just Invert the Logo" Doesn't Work
+
+The obvious solution is to invert the logo colours when dark mode is active. For many logos, this produces the wrong result:
+
+**Black logos don't invert to white gracefully.** A logo designed as a dark mark on a light background often uses very specific dark tones — #0a0a0a, #1a1a1a — that aren't pure black. Mechanical inversion produces off-whites and greys that look inconsistent with the design intent.
+
+**Colour logos have dark-mode problems.** A navy blue logo on a white background may be barely visible on a dark background — not because it's dark, but because the contrast ratio is insufficient. Mechanical inversion makes it a pale blue on dark, which may look washed out.
+
+**Logos with coloured elements need individual treatment.** A mark with a coloured icon and a black wordmark can't be inverted as a whole — the icon colour stays (or is adjusted), the wordmark becomes white, and those are different operations.
+
+The correct approach: design a specific dark mode version of the logo. Not an inversion, but a considered adaptation.
+
+## What a Dark Mode Logo Requires
+
+A complete dark mode logo is not just a different colour. Consider:
+
+**The wordmark.** On dark backgrounds, the wordmark is typically white (or very light). This is not "the inverted version" — it's a specifically designed light treatment of the same letterforms.
+
+**The mark/icon.** If the mark uses a dark colour on light backgrounds, it needs a light version for dark backgrounds. If it uses a brand colour that remains legible on dark (like a vivid blue or red), the mark may work unchanged — but verify the contrast ratio.
+
+**The clear space.** Dark backgrounds can make logos feel more constrained. Review whether the standard clear space guidelines still produce a comfortable result on dark, or whether additional space improves the presentation.
+
+**Minimum size.** Fine details in a logo that are legible on white may disappear on dark backgrounds where the contrast is different. Review the minimum size for the dark version specifically.
+
+For multi-element logos (mark + wordmark + tagline), you may also need to consider whether the same lockup works on dark, or whether a simplified version is better for this context.
+
+## SVG Implementation for Dark Mode
+
+SVG is the correct format for web logos, and SVG supports dark mode natively using CSS media queries. This is the most maintainable implementation.
+
+**Option 1: CSS `prefers-color-scheme` on an inline SVG**
+
+```css
+/* Inside the SVG or in your stylesheet */
+@media (prefers-color-scheme: dark) {
+  .logo-wordmark {
+    fill: #ffffff;
+  }
+  .logo-mark {
+    fill: var(--brand-accent);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .logo-wordmark {
+    fill: #0a0a0a;
+  }
+  .logo-mark {
+    fill: var(--brand-accent);
+  }
+}
+```
+
+This requires the SVG to be inline (embedded in the HTML) rather than referenced as an `<img src>`. Inline SVG allows CSS and JavaScript to access the paths directly.
+
+**Option 2: Two separate SVG files, switched by JavaScript or CSS**
+
+```html
+<picture>
+  <source srcset="/logo-light.svg" media="(prefers-color-scheme: light)">
+  <source srcset="/logo-dark.svg" media="(prefers-color-scheme: dark)">
+  <img src="/logo-light.svg" alt="Brand Logo">
+</picture>
+```
+
+This works with external SVG files (no inline requirement) and is supported in all modern browsers. It's simpler to implement but less flexible for CSS-based theming.
+
+**Option 3: SVG with `currentColor`**
+
+The most elegant solution for logos that are primarily single-colour: use `fill="currentColor"` in the SVG, then set the CSS `color` property on the parent element. The logo inherits the text colour of its context, automatically adapting to light and dark themes.
+
+This only works cleanly for logos that are a single colour. Multi-colour logos need more specific control.
+
+For SVG optimisation before implementation, see [SVG optimization for web](/blog/svg-optimization-for-web) — the dark mode SVG should still be under 10KB.
+
+## File Set for a Complete Dark/Light Logo System
+
+A production-ready dark mode logo system includes:
+
+- `/logo-primary.svg` — light background version, web-optimised
+- `/logo-dark.svg` — dark background version, web-optimised
+- `/logo-primary.eps` — light version, print (CMYK)
+- `/logo-dark.eps` — dark version, print (CMYK) — for dark packaging, dark print backgrounds
+- `/logo-primary.ai` — light version, editable master
+- `/logo-dark.ai` — dark version, editable master
+- PNG exports for both versions at multiple resolutions
+
+The dark version doesn't need separate CMYK and Pantone documentation if the only change is the wordmark colour (black to white) — white is 0,0,0,0 in CMYK and is specified as "white/unprinted area" in most packaging contexts.
+
+## Common Dark Mode Logo Problems
+
+**Invisible logo in dark header.** A dark logo on a dark navigation bar. Fix: implement the dark mode version for dark header backgrounds, or ensure the header background lightens in dark mode contexts.
+
+**Logo with white elements that disappears on dark backgrounds.** If your logo has intentional white negative space (a white reversed mark), it becomes invisible on dark backgrounds. This typically requires a bordered or contained version for dark contexts.
+
+**Inconsistent switching.** The logo switches based on `prefers-color-scheme` but the rest of the UI doesn't, creating a half-adapted appearance. Dark mode implementation should be holistic — or the logo should stay in one mode and the site's dark mode should be implemented consistently. For the broader topic of brand consistency in web design, see [brand consistency in web design](/blog/web-design-brand-consistency).
+
+**Cached SVG not updating.** Browser caches can hold old SVG versions. When deploying updated dark mode logos, ensure appropriate cache headers are set for the SVG files.
+
+<CTASection
+  headline="Need a dark mode version of your logo?"
+  description="We build complete dark/light logo systems — properly adapted versions for every background context, optimised SVG files, and clear implementation guidance."
+  cta="Build the Logo System"
+  href="/contact"
+  secondary="View Vectorization Service"
+  secondaryHref="/services/ai-logo-vectorization"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Do I need a separate logo for dark mode?",
+      a: "Yes, if your logo uses dark colours (black, dark grey, deep navy) that would become invisible on a dark background. At minimum, you need a light/white version of your wordmark and any dark elements. If your logo uses a brand colour that's legible on dark backgrounds, some elements may work unchanged."
+    },
+    {
+      q: "What is the easiest way to make my logo work in dark mode?",
+      a: "The simplest approach: create a second SVG file where the dark elements are replaced with white or a light colour, then use HTML picture element with prefers-color-scheme media queries to serve the correct version based on the user's system preference. This requires two SVG files but no JavaScript."
+    },
+    {
+      q: "How do I make an SVG logo change color automatically in dark mode?",
+      a: "Add a CSS media query inside the SVG or in your stylesheet: @media (prefers-color-scheme: dark) and target the specific path elements by their class or ID, changing the fill colour. This requires the SVG to be inline (embedded in the HTML, not referenced as an img tag)."
+    },
+    {
+      q: "My logo is always white. Does it need a dark mode version?",
+      a: "A white logo works on dark backgrounds natively — it's already the correct treatment for dark mode. You'll need a dark version (typically black or a brand colour) for light backgrounds in light mode. So you still need two versions, just inverted from the typical case."
+    },
+    {
+      q: "Should my app icon change in dark mode?",
+      a: "iOS and Android both support adaptive icons that respond to dark mode. iOS uses 'automatic' appearance assets in the asset catalogue. Android uses adaptive icon layers. Whether your icon needs adaptation depends on its colours — a colourful app icon may not need changes, while a white icon on a transparent background will need a dark background asset for light mode contexts."
+    }
+  ]}
+/>

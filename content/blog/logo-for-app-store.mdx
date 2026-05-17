@@ -1,0 +1,151 @@
+---
+title: "How to Prepare Your Logo for the App Store and Google Play"
+excerpt: "App store icons are one of the most demanding logo applications. The same mark that looks great as a business card logo may disappear, look crowded, or fail Apple's review at 60×60px. Here's the complete preparation guide."
+category: "How-To"
+date: "2025-06-14"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["App Icon", "App Store", "Google Play", "Logo", "Mobile Design"]
+related:
+  - "svg-optimization-for-web"
+  - "logo-file-formats-explained"
+  - "brand-identity-checklist-2025"
+seo:
+  title: "How to Prepare Your Logo for the App Store and Google Play Icon Requirements"
+  description: "Complete guide to preparing a logo-based app icon for the App Store and Google Play. Size requirements, design rules, common rejection reasons, and how to create an icon that works at every size."
+---
+
+An app icon is the smallest, most frequently seen version of your brand identity. At its largest, it's 1024×1024 pixels. At its smallest, it appears at 20×20 pixels in notification trays and settings menus. Every pixel matters.
+
+Most logos were not designed for this. A logotype with a wordmark, a mark with fine detail, or a multi-element lockup all fail at small sizes in predictable ways. This guide covers the preparation process — what the app stores require, what makes an icon work, and how to adapt an existing logo for the challenge.
+
+## What the App Stores Actually Require
+
+### Apple App Store (iOS)
+
+Apple requires a single 1024×1024 PNG as the marketing icon submitted to App Store Connect. From this, iOS generates all size variants automatically.
+
+**Technical requirements:**
+- 1024×1024 pixels
+- PNG format, RGB colour space
+- No alpha channel (no transparency) — must be fully opaque
+- No rounded corners — Apple applies the squircle mask automatically at system level
+- No border or shadow in the file — these are applied by iOS
+
+**Common rejection reasons:**
+- Transparency in the image
+- Placeholder or template content
+- Misleading content (icons that imply features the app doesn't have)
+- Low quality or pixelated artwork
+
+### Google Play Store (Android)
+
+Google Play requires a 512×512 PNG for the store listing icon. The app itself uses adaptive icons, which are separate files in the app bundle.
+
+**Technical requirements:**
+- 512×512 pixels
+- PNG format with alpha channel (transparency is allowed)
+- 32-bit PNG
+- Maximum file size: 1024KB
+
+**Adaptive icon requirements (in-app):**
+- 108×108dp (with 72×72dp safe zone)
+- Foreground layer (your icon artwork)
+- Background layer (solid colour or simple pattern)
+- Provides automatic shape adaptation (circle, rounded square, teardrop, etc.) across Android launcher styles
+
+## Why Standard Logos Fail as App Icons
+
+**Wordmarks don't work at small sizes.** A wordmark logo — one that primarily uses text — is unreadable at 60×60 pixels. The name becomes an illegible block of pixels. App icons must work as pure symbols, not as typographic identities.
+
+**Complex marks lose detail.** Multiple overlapping shapes, fine lines, small counters, and detailed illustrations all collapse into visual noise at small sizes. The eye can't distinguish what's what, and the icon reads as an indeterminate smudge.
+
+**Logos designed for white backgrounds look wrong on home screens.** An app icon appears on home screens with wallpaper behind it, next to colourful competitor icons. A mark designed for white backgrounds with a transparent centre element may disappear or look odd in this context.
+
+**Missing safe zone margin.** Apple and Android both apply clipping to icons at system level. Content placed at the very edge of the icon may be cut off by the mask. A 10% safe zone margin (no critical content within 10% of the edge) is a reliable standard.
+
+## Adapting Your Logo for App Icons
+
+The practical approach for most brands: create a dedicated icon mark, distinct from but derived from the primary logo.
+
+**Extract the mark.** If your logo has a separate symbol or mark element alongside the wordmark, this is your starting point for the app icon. The mark alone, scaled to fill most of the icon canvas, usually works better than any version of the full lockup.
+
+**Simplify if needed.** If the mark has fine detail that won't survive at 60×60, simplify. Remove fine strokes, increase counter sizes, reduce to the essential shape. Test at actual pixel sizes — not zoomed in — before finalising.
+
+**Consider a letter or monogram.** If the brand doesn't have a standalone mark, a single letter or monogram (the brand initials) in the brand typeface often makes the strongest icon. Set in the correct typeface, at a weight that reads at small sizes, on a brand-coloured background.
+
+**Add a background.** iOS requires fully opaque icons. Android's adaptive icon system separates foreground from background. A solid brand colour background often produces the strongest icons — it provides contrast for the mark and occupies space that would otherwise be empty on light wallpapers.
+
+## Size Testing: The Critical Step Most People Skip
+
+Every app icon must be reviewed at its actual display sizes before submission. Not at design canvas size — at the sizes users will actually see it.
+
+**iOS sizes to test:**
+- 1024×1024 — App Store marketing (your submission)
+- 180×180 — iPhone home screen (3x)
+- 120×120 — iPhone home screen (2x)
+- 87×87 — iPhone settings (3x)
+- 60×60 — iPhone settings/notifications (2x)
+- 40×40 — Spotlight search (2x)
+- 20×20 — Notification tray (1x)
+
+**Android sizes to test:**
+- 512×512 — Play Store listing
+- 192×192 — XXXHDPI
+- 144×144 — XXHDPI
+- 96×96 — XHDPI
+- 72×72 — HDPI
+- 48×48 — MDPI
+
+Create a test sheet in Photoshop or Figma with the icon at all required sizes, at 100% zoom (actual pixel size on screen). Review on an actual device, not just on a monitor.
+
+If anything becomes unreadable or indistinct at small sizes, revise the design before submission. Failing Apple's review process after submission delays release; finding the problem in testing costs only time.
+
+## File Preparation for Submission
+
+**iOS submission file:** 1024×1024 PNG, RGB, no alpha, no transparency. Export at 72 DPI (all that matters is pixel dimensions for digital submission).
+
+**Google Play listing file:** 512×512 PNG, 32-bit, alpha channel allowed.
+
+**In-app Android adaptive icon:** Separate foreground and background layers, each 108×108dp in vector (SVG or XML) or rasterised at 432×432px. The foreground layer has the icon artwork centred in the 72dp safe zone; the background layer is a solid colour or simple pattern.
+
+For the production workflow that produces clean SVG source files to work from, see our [AI logo vectorization service](/services/ai-logo-vectorization). If you need the full brand digital asset set including app icons, see the [brand identity checklist](/blog/brand-identity-checklist-2025) for what complete digital coverage includes.
+
+<CTASection
+  headline="Need a production-ready app icon for your brand?"
+  description="We create app icons derived from your logo — properly simplified, sized correctly for every platform, and technically compliant for App Store and Google Play submission."
+  cta="Discuss Your App Icon"
+  href="/contact"
+  secondary="View Brand Identity Service"
+  secondaryHref="/services/brand-identity"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "What size does an app icon need to be for the App Store?",
+      a: "Apple requires a 1024×1024 pixel PNG for submission to App Store Connect. iOS generates all other required sizes from this single file automatically. The file must be fully opaque (no transparency), in RGB colour space, and without pre-applied rounded corners — iOS applies the squircle shape at system level."
+    },
+    {
+      q: "Can I use my existing logo as an app icon?",
+      a: "If your logo has a distinct symbol or mark element without text, it often works well as an app icon with minor adaptations. Full logotypes (text-based logos) and complex multi-element logos typically don't work — text becomes illegible at small sizes and detail collapses. A derived icon mark usually produces better results than forcing the primary logo into the icon format."
+    },
+    {
+      q: "Why did Apple reject my app icon?",
+      a: "Common rejection reasons include: transparency in the image (iOS requires fully opaque icons), metadata suggesting placeholder content, quality issues (blurry artwork from upscaled rasters), and content that misrepresents the app. Ensure the icon is at exactly 1024×1024 pixels from a clean vector source, with no alpha channel, and using original artwork."
+    },
+    {
+      q: "What is an adaptive icon on Android?",
+      a: "Android adaptive icons separate the icon into a foreground layer (your artwork) and a background layer (a solid colour or simple pattern). The Android launcher applies different mask shapes — circle, rounded square, teardrop — depending on the device manufacturer and Android version. The safe zone is 72×72dp within a 108×108dp artboard, meaning your artwork should stay within the centre 66% to avoid clipping by any mask shape."
+    },
+    {
+      q: "Do I need a different icon for Android and iOS?",
+      a: "The icon should look the same on both platforms — same design, same brand mark. The technical file requirements differ: iOS needs a 1024px opaque PNG; Google Play needs a 512px PNG; Android in-app adaptive icons use separate foreground and background layers. The visual design is the same, but the prepared files are different."
+    },
+    {
+      q: "My app icon looks great in Figma but bad on my actual phone. Why?",
+      a: "Figma displays at screen resolution on a high-DPI monitor, which makes small text and detail look finer than they are at actual pixel size on a phone. Always test by exporting at the actual pixel dimensions and viewing on a physical device at 100% zoom — not in a design tool at high zoom. What looks clear at 500% zoom often disappears at actual 60px display size."
+    }
+  ]}
+/>
