@@ -1,0 +1,192 @@
+---
+title: "How to Animate Your Logo for the Web: SVG, Lottie, and CSS Animation"
+excerpt: "An animated logo marks the difference between a brand that feels alive and one that feels static. This guide covers the three main approaches — SVG animation, CSS animation, and Lottie — and when to use each."
+category: "Technical"
+date: "2025-06-18"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Logo Animation", "SVG Animation", "Lottie", "CSS Animation", "Web Design"]
+related:
+  - "svg-optimization-for-web"
+  - "logo-for-dark-mode"
+  - "responsive-logo-design"
+seo:
+  title: "Logo Animation for the Web — SVG, Lottie, and CSS Animation Guide"
+  description: "How to animate a logo for a website or app. Comparing SVG path animation, CSS animation, and Lottie — when to use each, how to implement them, and what file quality is required first."
+---
+
+A static logo introduces a brand. An animated logo makes it memorable.
+
+Animation adds a dimension that static marks can't: the logo doesn't just sit on the page — it arrives, builds, reveals. Used correctly, a logo animation communicates the brand's character in motion as precisely as the mark does in stillness.
+
+Used incorrectly, it's a distraction. A spinning logo doesn't communicate anything except that someone knew how to use the rotate transform.
+
+This guide covers the three main approaches to logo animation for the web — SVG animation, CSS animation, and Lottie — and how to choose between them.
+
+## Before Animating: The File Requirements
+
+Every animation approach starts with a clean vector file. An animated logo built on a poorly structured SVG will produce broken, unpredictable results.
+
+The animation assumes the SVG has:
+- Separate named paths for each element that will animate independently
+- Logical layer structure (each animatable element on its own layer or group)
+- No embedded raster images
+- No effects that require rasterisation
+- Clean, minimal anchor point counts per path
+
+If your logo came from an AI tool, a Canva export, or an auto-trace process, it needs professional vectorization before any animation work begins. See [SVG optimization for web](/blog/svg-optimization-for-web) and our [AI logo vectorization service](/services/ai-logo-vectorization) for the preparation step.
+
+## Approach 1: SVG Path Animation (CSS + SMIL)
+
+SVG files can be animated using CSS targeting specific path elements, or using SMIL (Synchronized Multimedia Integration Language) attributes directly in the SVG markup.
+
+**Best for:** Draw-on effects (the logo appearing as if being drawn), simple reveal animations, path morphing between shapes.
+
+**The draw-on effect** is the most common SVG animation for logos and one of the most effective:
+
+```css
+/* The path has a stroke dasharray equal to the path length */
+.logo-path {
+  stroke-dasharray: 500; /* total path length */
+  stroke-dashoffset: 500; /* start fully "not drawn" */
+  animation: draw 1.5s ease-in-out forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0; /* end fully drawn */
+  }
+}
+```
+
+This requires:
+1. The SVG to have `stroke` defined on the paths (not just `fill`)
+2. The `pathLength` attribute set on each path (or the exact pixel length measured)
+3. The SVG to be inline in the HTML (CSS in an external stylesheet cannot target paths inside `<img src>`)
+
+**Getting the path length:** In JavaScript, `path.getTotalLength()` returns the exact length. Alternatively, set `pathLength="1"` on the path element and use a dasharray of `1` — this normalises the length and simplifies the calculation.
+
+**For fill-based logos (most logos):** The draw-on effect works on the stroke. To animate a filled logo appearing, animate a `clip-path` or use a fill reveal technique where the fill opacity animates from 0 to 1 sequentially per element.
+
+## Approach 2: CSS Animation on Inline SVG
+
+For logos that need element-by-element animation — parts appearing in sequence, elements scaling up, marks rotating into position — CSS animation on an inline SVG is the cleanest approach.
+
+```css
+.logo-mark {
+  opacity: 0;
+  transform: scale(0.8);
+  animation: markReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+}
+
+.logo-wordmark {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: wordmarkReveal 0.5s ease-out 0.7s forwards;
+}
+
+@keyframes markReveal {
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes wordmarkReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+```
+
+**Best for:** Entrance animations (logo appearing when the page loads), hover state animations, logo transitions in navigation.
+
+**Performance note:** Animate only `opacity` and `transform` — these run on the GPU compositor thread and don't trigger layout recalculations. Animating `width`, `height`, `top`, `left`, or other layout properties causes repaints and produces janky animation.
+
+**Reduced motion:** Always add:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .logo-mark, .logo-wordmark {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+```
+
+Users who have enabled reduced motion (often due to vestibular disorders or motion sensitivity) should see a static logo, not an animation.
+
+## Approach 3: Lottie
+
+Lottie is an animation format developed by Airbnb. It exports After Effects animations as JSON files, which are then rendered by the Lottie player library in the browser.
+
+**Best for:** Complex animations that require frame-by-frame control — animations with curved motion paths, complex timing, character animation, or animations that were designed in After Effects and need to play precisely as designed.
+
+**How it works:**
+1. Design the animation in Adobe After Effects using the Bodymovin plugin
+2. Export as a `.json` file (Lottie format)
+3. Load the Lottie player: `npm install lottie-web` or use the CDN
+4. Render: `lottie.loadAnimation({ container, animationData, renderer: 'svg', loop: false, autoplay: true })`
+
+**File size consideration:** Lottie JSON files for logo animations are typically 20–100KB. The Lottie player library itself is ~60KB gzipped. For a site where logo animation is important, this is a worthwhile payload. For performance-critical pages, evaluate whether SVG/CSS animation achieves the same result at lower cost.
+
+**LottieFiles:** The LottieFiles platform provides a library of pre-made logo animations and an online editor. These can be adapted for your logo but require clean vector source and often professional design work to look brand-specific rather than generic.
+
+## Choosing the Right Approach
+
+| Need | Best approach |
+|---|---|
+| Simple draw-on / path reveal | SVG stroke animation |
+| Element-by-element entrance | CSS on inline SVG |
+| Complex multi-element with precise timing | Lottie |
+| Hover state micro-animation | CSS on inline SVG |
+| Loop animation for loading state | Lottie or CSS |
+| Maximum browser compatibility | CSS on inline SVG |
+| Minimum file size | CSS on inline SVG |
+
+## Animation Principles for Logo Motion
+
+**Ease, don't snap.** Linear animations look mechanical. Use ease-in-out, cubic-bezier, or spring animations for motion that feels natural and intentional.
+
+**Stagger elements.** When multiple elements animate, offset them slightly in time. A wordmark that appears 300ms after the mark feels composed; both appearing simultaneously feels abrupt.
+
+**Match the brand character.** A precise, technical brand uses sharp, controlled motion. A warm, friendly brand uses softer, bouncier easing. An animation that contradicts the brand character is worse than no animation.
+
+**One entrance, done.** Logo animations should play once on page load (or once per route change in a SPA). Looping logo animations are almost never appropriate — they fight for attention constantly rather than making a single memorable impression.
+
+For a logo to be animatable, the SVG must be clean, well-structured, and have elements that are meaningful as separate animated parts. Our [SVG conversion service](/services/svg-conversion) produces SVGs structured specifically for animation use.
+
+<CTASection
+  headline="Need a production-ready animated logo SVG?"
+  description="We build clean, animation-ready SVG logos — properly structured paths, named layers, optimised code. Ready for CSS animation, Lottie, or your development team's preferred approach."
+  cta="Discuss the Animation"
+  href="/contact"
+  secondary="View SVG Conversion Service"
+  secondaryHref="/services/svg-conversion"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "How do I animate my logo on a website?",
+      a: "The most accessible approach is CSS animation on an inline SVG. Embed the SVG directly in your HTML, give each animatable element a class, and use CSS keyframes to animate opacity, transform, or stroke properties. For complex animations, Lottie (which exports After Effects animations as JSON) gives you more control at the cost of a JavaScript dependency."
+    },
+    {
+      q: "What is Lottie and how is it used for logos?",
+      a: "Lottie is an animation format that exports After Effects animations as lightweight JSON files, which are rendered in the browser using the Lottie player library. For logo animation, it's used when the animation is complex enough to benefit from After Effects' keyframing and easing controls — smooth path morphing, complex multi-element choreography, or animations that must match a precise design specification."
+    },
+    {
+      q: "Can I animate an SVG logo without JavaScript?",
+      a: "Yes — CSS animations on inline SVG require no JavaScript. You can animate opacity, transform (scale, translate, rotate), and stroke properties entirely in CSS using @keyframes. For the draw-on stroke effect specifically, CSS alone handles it cleanly. JavaScript is only required for more dynamic control, such as triggering animation on scroll or in response to user interaction."
+    },
+    {
+      q: "Why does my SVG logo animation look wrong?",
+      a: "Common causes: the SVG is not inline (CSS can't target paths in externally referenced SVGs); the paths share a single group element with no individual targeting; the transform-origin is wrong (SVG transforms default to the top-left corner of the SVG viewport, not the element's centre); or the SVG was exported from auto-trace and has thousands of paths that don't correspond to logical logo elements."
+    },
+    {
+      q: "How large should a Lottie logo animation file be?",
+      a: "A simple logo animation in Lottie JSON should be under 50KB. If your Lottie file is larger, check whether it contains raster images embedded in the JSON (common with exports that include bitmap textures), has excessive keyframe data, or includes unused assets. The Lottie player itself adds about 60KB to your JavaScript bundle."
+    },
+    {
+      q: "Should my logo animate on every page load?",
+      a: "For the first visit to a website or the first render of a single-page app, a logo entrance animation can be effective. On subsequent page navigations, it's usually better to show the static logo — animating on every route change becomes tedious quickly. A 'has seen animation' session flag in JavaScript lets you show the animation once and the static logo thereafter."
+    }
+  ]}
+/>

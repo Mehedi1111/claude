@@ -1,0 +1,160 @@
+---
+title: "Preparing Your Logo for Print-on-Demand: Printful, Printify, Redbubble, and More"
+excerpt: "Print-on-demand platforms have different file requirements from commercial printers — and different failure modes. Here's exactly what you need to upload a logo that prints correctly on every product, every time."
+category: "How-To"
+date: "2025-06-24"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Print-on-Demand", "Printful", "Printify", "Merchandise", "Logo Files"]
+related:
+  - "ai-logo-merchandise"
+  - "logo-for-product-packaging"
+  - "eps-vs-svg-vs-pdf-logo-formats"
+seo:
+  title: "Logo for Print-on-Demand — File Requirements for Printful, Printify, and Redbubble"
+  description: "What file format, resolution, colour mode, and background requirements POD platforms need for your logo. How to prepare artwork for t-shirts, hoodies, mugs, and merchandise without quality issues."
+---
+
+Print-on-demand (POD) platforms — Printful, Printify, Redbubble, Merch by Amazon, Zazzle, and others — let you sell branded merchandise without holding inventory. The platform prints each item when ordered and ships it directly.
+
+The file requirements are different from commercial print, and different platforms have different specifications. Getting it right means clean prints; getting it wrong means blurry logos on t-shirts, colour that doesn't match your brand, and customer complaints that are expensive to resolve.
+
+## The Two Print Methods and What They Need
+
+Most POD merchandise uses one of two print methods:
+
+**Direct-to-Garment (DTG)** — Inkjet printing directly onto fabric. Used for t-shirts, hoodies, tote bags. Reproduces full colour including photographs. Produces softer prints with slight texture.
+
+**Sublimation** — Dye is transferred to synthetic fabrics or coated surfaces under heat. Used for all-over-print garments, mugs, phone cases. Requires white or light substrates. Produces vibrant, permanent prints.
+
+**Screen print** — Separate passes for each colour. Used for high-volume runs; most POD platforms don't offer true screen print, but some do for minimum-quantity orders.
+
+Each method has specific file requirements. Understanding which method is used for each product type guides your file preparation.
+
+## File Format Requirements by Platform
+
+### Printful
+
+**Recommended:** PNG with transparent background, minimum 150 DPI at the print size (higher is better)
+
+**Preferred specifications:**
+- PNG, JPEG, or SVG (SVG supported directly in some product types)
+- Minimum 150 DPI; 300 DPI preferred
+- sRGB colour space
+- Transparent background (for most apparel applications)
+
+**What Printful does not want:** CMYK colour mode (their system works in RGB/sRGB), excessively large files (upload limit 200MB), files with embedded profiles that conflict with sRGB
+
+**SVG support:** Printful supports SVG for some products, with limitations. Test with a simple SVG before relying on it for all products.
+
+### Printify
+
+**Recommended:** PNG, 300 DPI at the print size, transparent background
+
+**Key difference from Printful:** Printify's print partners vary by product type and geography — the same design may be printed differently depending on which partner fulfils the order. File quality requirements are therefore stricter to ensure consistency across partners.
+
+**Best practice:** Supply PNG at 300 DPI, square or the exact aspect ratio of the print area, transparent background.
+
+### Redbubble
+
+**Recommended:** PNG at 72–150 DPI, but at very large pixel dimensions (their templates specify exact pixel sizes per product)
+
+Redbubble works differently: you upload a single large file and their system maps it to different products. The recommended base file is typically 6500×6500 pixels at 72 DPI — which is effectively 3600+ DPI at typical print sizes.
+
+For logos specifically, upload at the maximum pixel dimension Redbubble recommends for your product category.
+
+### Merch by Amazon
+
+**Required:** PNG, sRGB, 4500×4500 pixels (for most apparel), transparent background
+
+Amazon's system is strict about dimensions. Files that don't meet the exact specifications are rejected at upload.
+
+## The Core Preparation Requirements
+
+Regardless of platform, the requirements converge on:
+
+### Transparent Background
+
+Your logo must be on a transparent background — a PNG with alpha channel, not a white background. When you place a white-background logo on a red t-shirt, you get the logo surrounded by a white box. This is the most common POD mistake.
+
+To check: open the PNG in any image viewer. If the area around the logo looks white, it's white. If it looks grey-and-white checkerboard (the universal symbol for transparency), it's transparent.
+
+If your logo file doesn't have transparency, you need to either re-export from the original vector source with transparent background, or use a background removal tool on the PNG.
+
+### High Resolution
+
+**The calculation:** Multiply the physical print size by the DPI requirement.
+
+A chest print on a t-shirt is typically 25cm × 25cm. At 300 DPI:
+- 25cm × (300 DPI / 2.54 cm per inch) = 2952 pixels per side
+
+So a chest logo needs to be at least 2952×2952 pixels for 300 DPI output.
+
+Most POD platforms specify minimum and recommended pixel dimensions per product. Use the recommended (higher) dimension for best results.
+
+**Why PNG from Canva usually fails here:** A Canva logo exported at its default resolution is rarely large enough for POD requirements. The "high quality PNG" from Canva is typically 2x the screen preview size — adequate for social media, not for print. See [Canva logo to vector](/blog/canva-logo-to-vector) for why this matters.
+
+### sRGB Colour Space
+
+POD platforms print in RGB colour systems. Unlike commercial print (which uses CMYK), DTG and sublimation printing uses an RGB workflow. Submit files in sRGB colour profile — not CMYK.
+
+If your logo file is in CMYK (which it should be if it was prepared for commercial printing), convert to sRGB before uploading to POD platforms. The conversion should be done in Illustrator or Photoshop with "Use Proof Setup" enabled to review the colour shift before committing.
+
+Note: this is the opposite of the requirement for commercial packaging print, which requires CMYK. Keep both versions of the colour specifications documented.
+
+### Correct Colour Mode for Your Logo
+
+The colours in a POD print will not match your brand's Pantone or CMYK specification exactly — POD printing is not precision colour-matched production. If exact colour matching matters for your brand, POD may not be the right merchandise channel.
+
+For most brand merchandise applications, getting the colours "close" (within normal RGB-to-screen variation) is sufficient. Document the RGB/hex values for your brand colours and verify them against the POD platform's colour output by ordering a test item before launching merchandise.
+
+## Getting the Right Files from an AI-Generated Logo
+
+If your logo was generated with an AI tool (Midjourney, DALL-E, Ideogram, Stable Diffusion), the PNG output is likely too small for POD requirements and lacks a transparent background.
+
+The solution:
+1. Professionally vectorize the logo as SVG/AI/EPS
+2. Re-export from the vector at the correct pixel dimensions for each platform
+3. Export with transparent background
+4. Confirm the colour space is sRGB
+
+Our [AI logo vectorization service](/services/ai-logo-vectorization) and [AI logo cleanup service](/services/ai-logo-cleanup) produce the clean vector source that lets you export at any size for any platform. For the broader merchandise workflow, see [using an AI logo for merchandise](/blog/ai-logo-merchandise).
+
+<CTASection
+  headline="Need POD-ready logo files for merchandise?"
+  description="We produce print-on-demand-ready PNGs — correct resolution, transparent background, sRGB colour mode, exported at the pixel dimensions each platform requires."
+  cta="Get Merchandise-Ready Files"
+  href="/contact"
+  secondary="View AI Logo Cleanup Service"
+  secondaryHref="/services/ai-logo-cleanup"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "What file format do I need for Printful or Printify?",
+      a: "PNG with a transparent background is the standard requirement for both platforms. The file should be at 300 DPI at the intended print size — which means a large pixel dimension, typically 3000–4500 pixels for apparel chest prints. sRGB colour mode is required (not CMYK). Always check the specific platform's current requirements for each product type, as specifications vary."
+    },
+    {
+      q: "Why does my logo look blurry on the print-on-demand product?",
+      a: "The most likely cause is insufficient resolution — the PNG was too small for the print size and was scaled up by the platform's system, producing blurry edges. Ensure your PNG is at minimum 150 DPI, preferably 300 DPI, at the actual print dimensions. For example, a 10cm × 10cm print at 300 DPI requires a 1181×1181 pixel image."
+    },
+    {
+      q: "My print-on-demand logo has a white box around it. How do I fix it?",
+      a: "The logo PNG has a white background instead of a transparent background. Open the PNG in Photoshop or another image editor and remove the background, then re-export with transparency (alpha channel). Alternatively, re-export from the original vector source in Illustrator with 'Transparent' background enabled in the PNG export settings."
+    },
+    {
+      q: "Do I need to use CMYK for print-on-demand merchandise?",
+      a: "No — print-on-demand platforms use DTG (direct-to-garment) or sublimation printing, which are RGB-based processes. Submit files in sRGB colour mode. CMYK colour mode is the requirement for commercial offset printing (business cards, packaging), not for POD merchandise. If you have a CMYK file, convert to sRGB in Illustrator before uploading."
+    },
+    {
+      q: "Can I use an SVG file on print-on-demand platforms?",
+      a: "Some platforms (Printful, Redbubble) accept SVG for certain products, but PNG remains the most universally supported format. If you use SVG, test it thoroughly on a specific product before launching — SVG rendering varies between platforms and can produce unexpected results with complex artwork."
+    },
+    {
+      q: "Will my logo colours look exactly the same on merchandise as they do on screen?",
+      a: "Probably not exactly. Print-on-demand uses colour management profiles that may produce slight shifts from your screen preview, and different fabrics absorb ink differently (dark garments in particular can shift colours). The solution is to order a test item before launching merchandise, compare against your brand colour standards, and adjust if necessary. Exact Pantone-matched colour is not achievable through POD printing."
+    }
+  ]}
+/>
