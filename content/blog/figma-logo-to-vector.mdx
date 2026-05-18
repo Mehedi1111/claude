@@ -1,0 +1,133 @@
+---
+title: "Figma Logo to Production Vector: What Figma Exports and What's Still Missing"
+excerpt: "Figma is where most logos get designed today. But a Figma export — even an SVG — is not the same as a production-ready vector file. Here's what Figma produces, what it doesn't, and how to bridge the gap."
+category: "How-To"
+date: "2025-06-26"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Figma", "Logo Files", "SVG", "Vector", "Design Handoff"]
+related:
+  - "eps-vs-svg-vs-pdf-logo-formats"
+  - "svg-optimization-for-web"
+  - "canva-logo-to-vector"
+seo:
+  title: "Figma Logo to Production Vector — What Figma Exports and What's Still Missing"
+  description: "Why a Figma SVG export isn't always production-ready, what Figma logos are missing for print and brand use, and how to properly prepare a Figma-designed logo for full production."
+---
+
+Figma has become the dominant interface design tool and is increasingly used for logo design too. It's fast, collaborative, vector-based, and designers already have it open. For a lot of teams, logos now start and live in Figma.
+
+The problem comes when the logo needs to leave Figma for production use — print, embroidery, signage, packaging. Figma's export capabilities are built primarily for screen contexts, and what it produces isn't always what production vendors need.
+
+This isn't a Figma failure — it's a tool-context mismatch. Understanding it prevents expensive surprises.
+
+## What Figma Actually Exports
+
+Figma offers SVG export, which sounds like it should produce a production-ready vector. It often does for digital use. For print and brand production, it frequently doesn't.
+
+**What Figma SVG exports do well:**
+- Clean vector paths for shapes drawn with Figma's vector tools
+- Correct path data for boolean operations (union, subtract, intersect)
+- Small file sizes for simple geometric marks
+- Direct use in web and app contexts
+
+**What Figma SVG exports commonly get wrong for production:**
+
+**RGB colour only.** Figma is a screen design tool. Every colour in a Figma file is RGB. There is no CMYK or Pantone workflow built into Figma. An SVG exported from Figma has hex colour values — usable for web, not usable for offset print without conversion. See [AI logo RGB to CMYK](/blog/ai-logo-rgb-to-cmyk) for the conversion process.
+
+**Auto-exported effects become rasters.** Drop shadows, blurs, inner shadows, background blurs — Figma cannot export these as pure vector data. When you export an SVG from Figma with any of these effects applied, they're rasterised into PNG images embedded in the SVG. The result is a large file with embedded rasters, not a clean vector.
+
+**Fonts may not be outlined.** Figma embeds font references in SVG exports using `<text>` elements with font-family attributes. If the recipient doesn't have the exact font installed (or the SVG is opened in an application that doesn't resolve the web font), the text renders in a fallback font. Production files require fonts to be outlined — converted to paths.
+
+**No EPS output.** Figma doesn't export EPS. Print vendors, packaging companies, signage studios, and embroidery services almost universally request EPS. Figma's SVG can be converted to EPS (via Illustrator), but this step is often missing in handoffs.
+
+**No print-ready PDF.** Figma's PDF export is screen-resolution and not print-calibrated. It doesn't include crop marks, bleed, or print colour profiles.
+
+## Evaluating a Figma SVG for Production Use
+
+Before using a Figma SVG for anything beyond digital:
+
+**Open in a text editor.** Look for `<image` tags — these indicate rasterised effects embedded in the SVG. A clean production SVG has only `<path>`, `<rect>`, `<circle>`, `<polygon>`, and `<g>` (group) elements.
+
+**Check for `<text>` elements.** If the SVG contains `<text font-family="...">`, the fonts are not outlined. For production use, every text element needs to be flattened to paths.
+
+**Check the file size.** A simple logo SVG should be under 20KB. An SVG over 100KB almost certainly contains embedded raster images.
+
+**Open in Adobe Illustrator.** Select all — if you see image objects in the layers panel alongside path objects, embedded rasters are present.
+
+## Preparing a Figma Logo for Full Production
+
+The gap between a Figma design file and a production-ready logo set is bridgeable with the right workflow.
+
+**Step 1: Clean the Figma file first.**
+Before exporting for production, remove or replace all effects that can't export as clean vector:
+- Remove drop shadows, blurs, layer effects
+- Use solid fills only (no gradients unless they're intentional brand elements)
+- Flatten all boolean operations (combine the shapes permanently)
+
+**Step 2: Export SVG and open in Illustrator.**
+Figma → Export → SVG. Open the SVG in Adobe Illustrator. This imports the Figma paths as editable Illustrator paths.
+
+**Step 3: Outline all text.**
+Select all text elements: Type → Select All Typography. Then Type → Create Outlines. Every letterform becomes a path. Verify in the Layers panel that no text objects remain.
+
+**Step 4: Convert colours to CMYK + Pantone.**
+Edit → Edit Colors → Convert to CMYK, or manually enter CMYK values for each swatch. Document the Pantone nearest match for each colour. See [Pantone matching guide](/blog/pantone-matching-guide).
+
+**Step 5: Clean up anchor points.**
+Figma's boolean operations sometimes produce redundant anchor points. Use Object → Path → Simplify to reduce unnecessary points while maintaining the path shape. Check the result visually at multiple zoom levels.
+
+**Step 6: Export the complete production set.**
+From Illustrator, export: SVG (clean, web-optimised), EPS (CMYK, for print vendors), AI (save as, the working master), PDF (print-ready), PNG at multiple resolutions (300 DPI for print, 72 DPI at various sizes for digital).
+
+For the complete list of files a finished logo should include, see the [complete logo file handoff guide](/blog/complete-logo-file-handoff) and [brand identity checklist](/blog/brand-identity-checklist-2025).
+
+## When Figma SVG Is Production-Ready
+
+Figma SVGs are directly usable — without Illustrator conversion — for:
+- Web embedding in websites and apps (as long as no effects are present)
+- Developer handoff for React/Vue/Next.js component use
+- Screen-only digital contexts at any resolution
+
+They are not directly usable for professional print, packaging, embroidery, signage, or any vendor who requires EPS with CMYK values. For those contexts, the Illustrator conversion process above is required.
+
+Our [SVG conversion service](/services/svg-conversion) handles this conversion for Figma logos, the same as for any other source — the output is a production-complete file set regardless of where the design originated.
+
+<CTASection
+  headline="Have a Figma logo that needs production files?"
+  description="We convert Figma designs into complete production-ready sets — outlined fonts, CMYK colours, EPS for print, SVG for web, clean AI master. Done in 24–48 hours."
+  cta="Convert My Figma Logo"
+  href="/contact"
+  secondary="View SVG Conversion Service"
+  secondaryHref="/services/svg-conversion"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Can I use a Figma SVG export as my final logo file?",
+      a: "For web and digital use, yes — if the SVG has no embedded raster effects and the fonts are outlined. For print, packaging, embroidery, or any vendor requiring EPS with CMYK values, no. Figma SVGs are RGB only and don't include the EPS format that production vendors require. Conversion through Illustrator is needed for full production use."
+    },
+    {
+      q: "Does Figma export EPS files?",
+      a: "No. Figma doesn't export EPS. If your logo vendor requires EPS (which most print vendors, signage companies, and embroidery services do), you need to open the Figma SVG in Adobe Illustrator and save as EPS with CMYK colours. If you don't have Illustrator access, we can do this conversion as part of the file preparation process."
+    },
+    {
+      q: "Why is my Figma SVG so large?",
+      a: "The most common cause is Figma rasterising layer effects (drop shadows, blurs) into embedded PNG images inside the SVG. A clean logo SVG should be under 20KB. If yours is 500KB or more, open it in a text editor and look for <image> tags — these are the embedded rasters. The solution is to remove effects in Figma before exporting, or to have the logo professionally cleaned up."
+    },
+    {
+      q: "How do I outline fonts in Figma for a logo?",
+      a: "In Figma, select the text layer and use Vector → Flatten (or Ctrl/Cmd+E). This converts the text to a flattened vector shape. However, Figma's text-to-paths conversion is different from Illustrator's Create Outlines — verify the result by checking that the exported SVG contains only <path> elements where the text was, not <text> elements."
+    },
+    {
+      q: "My designer delivered my logo as a Figma file. Is that acceptable?",
+      a: "A Figma file is an editable working file, not a production deliverable. A completed logo should be delivered as SVG, EPS (CMYK), AI, PDF, and PNG — not as a Figma link. The Figma file is fine to have as a working reference, but the final deliverable must be platform-independent production files that any vendor can use."
+    },
+    {
+      q: "Can I prepare my Figma logo for print myself without Illustrator?",
+      a: "For pure SVG web use, yes. For print production (EPS with CMYK), you need either Illustrator, Affinity Designer (which can export CMYK EPS), or a professional to do the conversion. Inkscape is free but has limitations with CMYK colour handling. For anything going to a commercial printer, Illustrator or Affinity Designer is the correct tool for the conversion."
+    }
+  ]}
+/>
