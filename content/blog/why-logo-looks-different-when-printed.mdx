@@ -1,0 +1,152 @@
+---
+title: "Why Your Logo Looks Wrong When You Print It (And How to Fix It)"
+excerpt: "You approved the logo on screen. It looked perfect. Then the business cards arrived and the colour is completely wrong. This happens to nearly every brand that skips one step — and fixing it is simpler than most people think."
+category: "How-To"
+date: "2026-05-27"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Logo Print", "CMYK", "Color Management", "Print Production", "Logo Files"]
+related:
+  - "ai-logo-rgb-to-cmyk"
+  - "pantone-matching-guide"
+  - "complete-logo-file-handoff"
+seo:
+  title: "Why Your Logo Looks Wrong When Printed (How to Fix)"
+  description: "Why your logo colour changes when printed and exactly how to fix it. Covers RGB vs CMYK, colour profiles, what to send your printer, and when to use Pantone."
+---
+
+A client came to us last year — a bakery owner who had just received 500 business cards and a stack of packaging labels. She'd spent weeks choosing her brand colours. A warm coral-orange that felt like her brand exactly. Energetic, warm, approachable.
+
+The cards arrived. The coral was gone. In its place was a flat, slightly brownish orange that looked nothing like what she'd approved. The labels looked even worse — the colour looked almost muddy on the glossy substrate.
+
+She thought the printer had made a mistake. She was ready to demand a reprint.
+
+The printer hadn't made a mistake.
+
+She had sent a logo in RGB. The printer converted it to CMYK. Nobody told either of them that coral-orange is one of the colours that shifts most dramatically in that conversion, and that the fix requires doing the conversion deliberately, not automatically.
+
+This situation — some version of it — happens constantly. Understanding why prevents it from happening to you.
+
+## The Root Cause: Two Completely Different Colour Systems
+
+Screens produce colour by emitting light. Red, green, and blue light mixed at different intensities creates every colour you see on a monitor. This is RGB. It can produce vivid, highly saturated colours that are physically impossible to print, because they rely on light emission rather than ink absorption.
+
+Printers create colour by layering transparent inks onto paper. Cyan, magenta, yellow, and black — CMYK. The inks absorb certain wavelengths of light and reflect others. This is a fundamentally different process with a fundamentally smaller range of reproducible colours.
+
+When a printer converts an RGB file to CMYK automatically (which is what happens when you send an RGB file to a print shop), the conversion algorithm makes decisions about how to approximate the RGB colours within the constraints of CMYK. It does this numerically, not visually. The results are often fine for photographs and complex imagery. For brand colours — particularly vivid blues, electric greens, and warm corals — the automatic conversion frequently produces colours that look noticeably different.
+
+The bakery client's coral was specified as a bright orange-red in RGB (something like R:255 G:100 B:60). When automatically converted to CMYK, the algorithm produced something in the region of C:0 M:70 Y:65 K:5 — which, when printed, appeared as a noticeably different shade.
+
+The correct approach would have been to find the CMYK values that produce the closest match to the intended colour in ink, test it on the target substrate and printer, and specify those values explicitly rather than relying on automatic conversion.
+
+## How to Know If This Will Be a Problem for Your Logo
+
+Not all colours shift dramatically between RGB and CMYK. Some colours are naturally printable and convert cleanly. Others shift significantly.
+
+**Colours that typically convert well:**
+- Neutral tones (greys, browns, blacks)
+- Darker, more saturated colours
+- Standard blues and navies (though bright blues shift more than dark blues)
+
+**Colours that frequently shift significantly:**
+- Vivid oranges and corals
+- Electric blues and cyans
+- Bright greens (especially lime and neon greens)
+- Hot pinks and magentas
+- Any highly saturated, vivid colour that relies on RGB's extended gamut
+
+The test is simple: open your logo in Adobe Illustrator, set the document colour mode to CMYK (Edit → Document Colour Mode → CMYK if you're on Mac, or Document → Colour Mode → CMYK), and see how the colours change. If a colour you've defined as, say, R:0 G:180 B:255 shifts visibly when you convert the document, you have a colour management issue to address before printing.
+
+You can also use Illustrator's gamut warning (View → Gamut Warning) to highlight any colours in your logo that fall outside the CMYK printable range. These are the colours most at risk of shifting.
+
+## The Three Ways to Fix It
+
+### Option 1: Adjust the CMYK Values Manually
+
+Rather than letting the printer's RIP (raster image processor) convert your RGB values automatically, you specify the CMYK values yourself. This means:
+
+1. Converting the document to CMYK colour mode in Illustrator
+2. Selecting each brand colour and adjusting the CMYK sliders until the on-screen CMYK representation looks as close as possible to the original RGB colour
+3. Documenting those specific CMYK values for every brand colour
+
+This isn't perfect — you're still working with the limitations of CMYK — but it puts you in control of the conversion rather than leaving it to an algorithm. The result is usually significantly better than automatic conversion.
+
+Document the final CMYK values alongside the hex and RGB values in your brand guidelines. Your printer needs CMYK values, not hex codes. See [complete logo file handoff](/blog/complete-logo-file-handoff) for how colour documentation should be structured.
+
+### Option 2: Use Pantone Colours
+
+Pantone (PMS) colours are pre-mixed inks — the printer doesn't mix them from CMYK dots, they're produced from a single standardised ink. The colour you specify is the colour you get, regardless of substrate or printer. Within the constraints of what Pantone produces, the colour is consistent across every print run and every vendor.
+
+This is the gold standard for brand colour accuracy in print. The limitation: Pantone printing costs more (each Pantone colour is an additional ink run) and isn't available from all printers (digital printers can't use Pantone).
+
+For a brand where colour accuracy is commercially important — a brand colour that appears on packaging, signage, and uniforms across multiple vendors — Pantone specification is worth the cost. See [Pantone matching guide](/blog/pantone-matching-guide) for how the specification process works.
+
+### Option 3: Request a Printed Proof Before Full Run
+
+Before approving a full print run, request a hard proof — a physical printed sample using the actual substrate and print process. Review the proof against a printed Pantone swatch book, not your monitor.
+
+A monitor is not a valid reference for approving print colour. Even a calibrated monitor shows colours using light emission. A printed proof on the target paper shows colours in reflected light — the only relevant comparison.
+
+Most professional print vendors offer proofing. It costs a small amount but prevents the much larger cost of reprinting an entire run with wrong colours.
+
+## What to Send Your Printer
+
+**Don't send:** An RGB JPEG or PNG and hope for the best.
+
+**Do send:**
+- A print-ready PDF exported from Illustrator with CMYK colour mode, no colour profile embedding, or with the correct output intent profile
+- Or an EPS file in CMYK
+- Along with a reference Pantone swatch or CMYK values for each brand colour so the print operator knows what you're aiming for
+
+Most professional printers will ask what CMYK values your brand colours should be. If you can't answer that question, it means your logo files were never prepared for print — which is worth addressing now before the next print job. See [AI logo RGB to CMYK conversion](/blog/ai-logo-rgb-to-cmyk) for the technical detail on the conversion process.
+
+## Different Papers, Different Results
+
+Even with correctly specified CMYK values, the same colour looks different on different paper stocks. A coated (glossy) paper produces more saturated, brighter colours than an uncoated (matte) paper because the ink sits on the surface rather than absorbing into it.
+
+If your brand appears on both coated and uncoated materials — glossy business cards and letterhead, for example — you may need two slightly different CMYK specifications to achieve visual consistency across substrates. This is why professional brand guidelines often specify CMYK values for both coated (C suffix in Pantone) and uncoated (U suffix) versions of each colour.
+
+This level of specification matters most for larger organisations producing high volumes of branded print. For small businesses, getting the CMYK conversion right and testing on a proof is usually sufficient.
+
+## The One Thing to Do Before Your Next Print Job
+
+Before you send any logo file to a printer, ask yourself: are these CMYK values? If the answer is no — if you're working from a PNG, a JPEG, or a Canva export — get proper vector files with documented CMYK values before printing. The cost of getting this right once is far less than reprinting materials with wrong colours.
+
+<CTASection
+  headline="Getting your logo print-ready before the next job?"
+  description="We convert logos to print-ready vector files with CMYK and Pantone colour specifications — so what you approved is what you get from the printer."
+  cta="Get Print-Ready Files"
+  href="/contact"
+  secondary="View AI Logo Vectorization"
+  secondaryHref="/services/ai-logo-vectorization"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Why does my logo colour look different when I print it?",
+      a: "Your logo was designed in RGB (the colour system screens use, which mixes red, green, and blue light) but printing uses CMYK (cyan, magenta, yellow, and black inks). These are different colour systems with different ranges of reproducible colours. When your RGB file gets converted to CMYK automatically by a printer, the conversion algorithm approximates your screen colours in ink — and some colours, particularly vivid oranges, bright blues, and electric greens, shift noticeably in that conversion. The fix is to control the conversion yourself by specifying CMYK values manually rather than letting the printer convert automatically."
+    },
+    {
+      q: "How do I fix my logo so it prints the right colour?",
+      a: "Open your logo in Adobe Illustrator and change the document colour mode to CMYK. Select each brand colour and adjust the CMYK sliders until the on-screen CMYK preview looks as close as possible to your intended colour. Document those exact CMYK values (for example, C:0 M:75 Y:80 K:0) and provide them to your printer. For critical colour work, also request a physical proof before approving the full print run — review it under daylight or a neutral light source, not on screen."
+    },
+    {
+      q: "What is the difference between CMYK and Pantone for printing?",
+      a: "CMYK printing reproduces colours by overlaying tiny dots of cyan, magenta, yellow, and black ink — the combination creates the appearance of many different colours. Pantone printing uses a single pre-mixed ink that is standardised globally, so the colour is consistent across any printer and any country that uses the same Pantone number. Pantone is more accurate and consistent for brand colours but costs more and isn't available from all printers. For brand colours where precision matters across multiple vendors, Pantone specification is worth the investment."
+    },
+    {
+      q: "Should I use CMYK or Pantone for my brand logo?",
+      a: "For most small and medium businesses, well-specified CMYK values with a physical proof approval process is sufficient. Pantone is worth the additional cost when: your brand appears at significant print volume across multiple vendors and accuracy must be consistent, your brand colour is in a range where CMYK has difficulty matching accurately (vivid oranges, electric blues), or when your materials include offset printing where Pantone is practical. Digital printers (which produce most short-run business cards, brochures, and flyers) can't use Pantone ink — they simulate it with CMYK."
+    },
+    {
+      q: "What file format should I send to a printer?",
+      a: "Send a print-ready PDF exported in CMYK colour mode from Adobe Illustrator, or an EPS file in CMYK. Do not send PNG or JPEG files for professional printing — these are typically RGB, may be lower resolution than required, and don't contain the colour profile information printers need. Along with the file, provide the CMYK values for each brand colour so the print operator has a reference target. If a printer asks for a 'high-resolution PDF,' they mean a CMYK vector PDF, not a screen-resolution export."
+    },
+    {
+      q: "My logo printed with wrong colours. Can I get a reprint?",
+      a: "It depends on whether the error was the printer's fault or the file's. If you sent an RGB file and the printer converted it without telling you the colours would shift, there's a grey area — some printers will reprint, others won't. If you sent a correctly specified CMYK file and the printed result doesn't match the CMYK values, the error is the printer's and you have a clear case for reprinting. This is why documenting your exact CMYK target values and getting a proof approval before the full run matters — it establishes what was agreed and gives you a clear standard to hold the printer to."
+    }
+  ]}
+/>

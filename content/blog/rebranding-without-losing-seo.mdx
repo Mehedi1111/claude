@@ -1,0 +1,144 @@
+---
+title: "How to Rebrand Without Losing Your SEO"
+excerpt: "A rebrand that costs you your search rankings is a rebrand that costs you twice. Here's how to change your logo, name, or domain without watching years of SEO work disappear."
+category: "Guide"
+date: "2026-06-01"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Rebranding", "SEO", "301 Redirect", "Domain Migration", "Search Console"]
+related:
+  - "brand-consistency-audit"
+  - "brand-guidelines-what-they-include"
+  - "complete-logo-file-handoff"
+seo:
+  title: "How to Rebrand Without Losing Your SEO"
+  description: "The exact steps to rebrand — new logo, name, or domain — without losing search rankings. Covers 301 redirects, Search Console, and structured data."
+---
+
+Last year I watched a client rebrand their business. New name, new logo, new domain. They had spent three years building genuine search visibility — ranking for several competitive terms in their niche, getting organic leads every week.
+
+Six months after the rebrand, they had lost roughly 70% of that organic traffic.
+
+Not because the rebrand was bad. Not because the new website was bad. Because nobody in the process had thought about what happens to search rankings when URLs change and a domain gets abandoned.
+
+They had done the design work correctly. They had completely forgotten the technical work.
+
+Here's the complete process they should have followed.
+
+## What Actually Happens to SEO When You Rebrand
+
+Your search rankings are not attached to your brand name — they're attached to your URLs and domain. Google's index contains specific pages at specific addresses. The authority those pages have accumulated, the links pointing to them from other sites, the click behaviour patterns — all of that is associated with the old URLs.
+
+When you change your domain or restructure your URLs without proper handling, Google treats the new pages as entirely new — with no history, no authority, and no backlinks. You don't just move your rankings; you lose them and start from zero.
+
+301 redirects are the technical mechanism for transferring this equity. A 301 tells Google that a page has permanently moved to a new address, and that the ranking signals from the old page should apply to the new one. Done correctly, a 301 redirect transfers a significant proportion of the old page's ranking strength to the new URL.
+
+Done incorrectly — or not at all — the old URLs die, the new ones start empty, and years of SEO work disappears.
+
+## Before the Rebrand: What to Document
+
+Before you change anything, make a complete record of what you have now.
+
+**Crawl your current site.** Use Screaming Frog (free for up to 500 URLs) or a similar crawler to export every URL on your current domain. Export the list with current status codes. This becomes your redirect map.
+
+**Export your Google Search Console data.** Go to Performance → Pages in Search Console and export the complete list of pages ranked by clicks over the last 12 months. These are your most valuable pages — they should all be on your redirect map and each one needs a 301 redirect to the appropriate new URL.
+
+**Record your current keyword rankings.** Use whatever tool you have access to, or even a manual check, to document where you're currently ranking for your target terms. This is your baseline to compare against after the migration.
+
+**Export your backlink profile.** Use Ahrefs, Semrush, or the free version of Moz to export the sites linking to you. The most valuable inbound links — particularly those to specific pages rather than your homepage — should get individual 301 redirects, not just homepage redirects.
+
+## The 301 Redirect Map: How to Build It
+
+A redirect map is a spreadsheet with two columns: old URL and new URL. Every page on your old domain gets a row.
+
+For most rebrands:
+- Old homepage → New homepage (straightforward)
+- Old blog posts → Same or equivalent posts on new domain (match content, not just URL structure)
+- Old service pages → Equivalent service pages on new domain
+- Old about/contact/other pages → Equivalent pages on new domain
+
+If the page is being retired with no equivalent: redirect it to the most relevant section of the new site, not just the homepage. A redirect to the homepage is better than a 404, but a redirect to a relevant category page is better than a redirect to the homepage.
+
+If you're restructuring your URL structure alongside the rebrand, map old paths to new paths carefully. `/services/logo-design` on the old site might become `/services/logo-design-and-vectorization` on the new one. Document every change.
+
+## Setting Up the Redirects
+
+Where you implement redirects depends on your hosting setup.
+
+For most websites on standard hosting, 301 redirects are set up in the `.htaccess` file (Apache) or `nginx.conf` (Nginx). For Next.js sites, redirects are configured in `next.config.js` using the `redirects` function. For WordPress, use the Redirection plugin.
+
+Test every redirect after implementation. Paste each old URL into a browser and confirm it lands on the correct new page without intermediate redirects. Chains of redirects (old URL → old URL → new URL) lose ranking equity at each hop.
+
+Check for redirect loops (A → B → A), which will break rather than transfer equity.
+
+## Google Search Console: The Migration Steps
+
+**Step 1: Verify the new domain in Search Console.** Add the new domain as a property in Google Search Console before you launch. Use the DNS verification method so you can verify even before pointing traffic.
+
+**Step 2: Submit the new sitemap immediately after launch.** Create an XML sitemap for the new domain and submit it in Search Console under the new property. This tells Google what pages to crawl on the new site.
+
+**Step 3: Use the Change of Address tool (for domain changes only).** If you're changing the root domain (not just a rebrand of the same domain), use the Change of Address tool in Search Console under Settings → Change of address. This formally notifies Google of the migration and accelerates the reindexing process.
+
+**Step 4: Keep the old domain live for at least 6 months.** The old domain should remain active with all 301 redirects in place. Do not let it expire or go offline. Google needs to crawl the old URLs, find the redirects, and reindex the new pages. This process takes time — for a large site, it can take months.
+
+**Step 5: Monitor crawl errors.** In Search Console, check for 404 errors and crawl anomalies regularly in the weeks after launch. Any 404 that previously had organic traffic is a redirect you missed. Fix them as they appear.
+
+## Structured Data: Update It
+
+If your old site had schema.org structured data (organisation schema, breadcrumb schema, article schema), this data contains your old domain URLs. After migration, update all structured data to reference the new domain.
+
+This includes:
+- Organisation schema on your homepage — update `url`, `logo`, and `sameAs` properties
+- BlogPosting schema on blog posts — update `publisher` and canonical URL references
+- Breadcrumb schema — update all breadcrumb URLs
+
+Broken or stale structured data doesn't directly tank rankings but creates inconsistencies in how Google understands your site.
+
+## What the Client Should Have Done
+
+Everything above, starting six months before the rebrand. The rebrand process should have included a technical SEO checklist alongside the brand design checklist.
+
+The things they missed: no 301 redirects on the old domain (they just let it expire), no Change of Address submission in Search Console, no sitemap submission on the new domain for the first two months, and the old domain lapsed and began returning errors two months after the rebrand launched.
+
+They recovered, eventually — but slowly, and not to where they had been. The work had to be done twice: the migration that should have happened properly the first time, and then the patient rebuilding of rankings from a degraded starting point.
+
+The brand design was excellent. The SEO cost was entirely avoidable.
+
+<CTASection
+  headline="Rebranding and need the logo files to match?"
+  description="We deliver complete vector logo packages ready for the new brand — every format, every colour spec, every variant your new domain and identity system needs."
+  cta="Get the Rebrand Files"
+  href="/contact"
+  secondary="View Brand Identity Service"
+  secondaryHref="/services/brand-identity"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Will I lose my SEO rankings if I rebrand my website?",
+      a: "You will lose rankings if you don't implement the technical migration correctly. The main risk is changing your domain or URL structure without setting up proper 301 redirects, which causes Google to treat every new page as starting from zero with no history. Done correctly — with 301 redirects on every old URL, a Change of Address submission in Google Search Console, and a new sitemap submitted immediately — a rebrand migration preserves a significant proportion of your existing search authority. It's the missing technical steps, not the rebrand itself, that causes SEO loss."
+    },
+    {
+      q: "What is a 301 redirect and why does it matter for rebranding?",
+      a: "A 301 redirect tells search engines that a page has permanently moved to a new address, and that the ranking signals — authority, backlinks, click history — should apply to the new URL. Without 301 redirects, changing your domain or URL structure means every page starts from zero in Google's index. With properly implemented 301 redirects, a large proportion of the old page's ranking strength transfers to the new URL. They are not optional for a rebrand that involves URL changes; they are the mechanism that makes the migration possible without starting over."
+    },
+    {
+      q: "How do I migrate my website to a new domain without losing SEO?",
+      a: "The process: crawl your current site and export all URLs. Document current keyword rankings and backlink profile as a baseline. Build a redirect map pairing each old URL to its new equivalent. Implement 301 redirects covering every old URL before or on launch day. Verify the new domain in Google Search Console, submit the new sitemap, and use the Change of Address tool. Keep the old domain live with redirects in place for at least six months. Monitor Search Console for 404 errors and fix any missed redirects. Expect some ranking fluctuation in the first few weeks — this is normal and usually recovers."
+    },
+    {
+      q: "How long does it take to recover SEO after a rebrand?",
+      a: "With a correctly implemented migration — full 301 redirects, Change of Address, new sitemap — most sites see ranking fluctuation for four to eight weeks followed by stabilisation near previous levels. Full recovery can take three to six months for larger sites as Google recrawls and reindexes all pages. Without proper migration, there is no 'recovery timeline' — the old rankings are simply gone and you're rebuilding from scratch. The variable is not how long recovery takes but whether the migration was done correctly."
+    },
+    {
+      q: "Should I keep my old domain after rebranding?",
+      a: "Yes, for at least six months — ideally twelve. The old domain should remain active with all 301 redirects pointing to the new site. Google needs to crawl the old URLs, follow the redirects, and reindex the new pages; this process takes time. If the old domain lapses or goes offline before Google has fully processed the migration, you lose the redirect chain and the ranking equity it was transferring. Renewing the old domain for a year after rebrand is a small cost relative to the SEO value it protects."
+    },
+    {
+      q: "What is the Google Search Console Change of Address tool?",
+      a: "The Change of Address tool in Google Search Console is a formal notification to Google that your website has moved from one domain to another. It accelerates the migration process by directly informing Google of the change rather than waiting for it to discover the redirects through normal crawling. You'll find it under Settings in your Search Console property. You can only use it when you've verified both the old and new domains in Search Console, and it should be submitted after 301 redirects are live and the new site is publicly accessible."
+    }
+  ]}
+/>
