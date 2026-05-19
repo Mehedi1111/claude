@@ -170,3 +170,36 @@ Fix the critical ones first. Work through the rest systematically. The goal is a
     }
   ]}
 />
+
+---
+
+## Quick Answers
+
+<FAQAccordion
+  items={[
+    {
+      q: "How do I check if I'm using the right colour on my website?",
+      a: "Open your website in Chrome. Right-click any element and choose Inspect. In the Styles panel, click any colour value (shown as a small coloured square) to open the colour picker — it will show you the exact hex code of that element. Compare that hex code against your documented brand colour. If they don't match, the colour is off. Do this on every page and every element type (buttons, headings, backgrounds) because they're often set separately."
+    },
+    {
+      q: "My team keeps using slightly different shades of our brand colour. How do I fix this?",
+      a: "The root cause is that the correct colour value was never definitively documented and shared. Fix it by: writing down the exact hex code (e.g. #1A4FDB), putting it in a shared document everyone can access, and updating every tool your team uses — Canva brand kit, Google Slides theme, email platform brand settings. Then brief the team. The drift comes back if people can still make their own colour choices, so the tools need to enforce it, not just the documentation."
+    },
+    {
+      q: "Is it worth paying someone to do a brand audit or can I do it myself?",
+      a: "For most small and medium businesses, the 20-minute self-audit in this guide is sufficient. You know your own touchpoints better than an outsider does, and the process is straightforward. A professional brand audit adds value when: you have a large number of touchpoints and need a systematic outside view, you're preparing for a rebrand and want a complete inventory, or you suspect inconsistencies but can't identify them yourself. The cost of a professional audit typically ranges from a few hundred to a few thousand pounds depending on scope."
+    },
+    {
+      q: "Should every team member have the same email signature?",
+      a: "Yes. Consistent email signatures are one of the highest-value brand consistency wins because every email sent is a brand touchpoint. The logo, font, font size, and layout should be identical across all team members. The only variable elements should be the individual's name, title, and direct contact number. Use a shared email signature template or a tool like Exclaimer or Opensense to enforce consistency rather than asking everyone to set it up manually."
+    },
+    {
+      q: "My old logo is still appearing in Google search results even though I've updated my website. How do I fix it?",
+      a: "Google caches images and structured data. Update your website's schema.org Organisation markup (the logo property) to point to the new logo URL. Submit your updated sitemap in Google Search Console and request a recrawl of key pages. You can also use the URL Inspection tool in Search Console to request indexing of specific pages. The cached version in search results may take 2–4 weeks to update after Google recrawls the pages."
+    },
+    {
+      q: "How many versions of a logo is too many?",
+      a: "If you have more than four active versions — primary, reversed, stacked, and icon-only — you probably have drift rather than a deliberate system. Colour variations, slightly different versions created by different people, or old versions that never got replaced all create version sprawl. A complete logo system has a defined number of variants for defined purposes. Anything beyond that belongs in an archive folder, not in active use."
+    }
+  ]}
+/>

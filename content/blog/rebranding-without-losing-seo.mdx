@@ -142,3 +142,32 @@ The brand design was excellent. The SEO cost was entirely avoidable.
     }
   ]}
 />
+
+---
+
+## Quick Answers
+
+<FAQAccordion
+  items={[
+    {
+      q: "Do backlinks transfer when I change my domain?",
+      a: "Yes, if you implement 301 redirects correctly. When a site links to your old URL and Google follows the 301 redirect to the new URL, the link equity (ranking signal) transfers to the new page. The transfer isn't instantaneous — Google needs to crawl both the old and new URLs and process the relationship. Most of the link equity transfers, though there is a small reduction at each redirect hop. This is why the old domain must stay live with 301s in place for at least six months: Google needs time to process all the redirects."
+    },
+    {
+      q: "Should I change my URL structure at the same time as my domain?",
+      a: "Avoid changing both at the same time if you can. Changing domain and URL structure simultaneously doubles the complexity of the migration and doubles the things that can go wrong. If you need to do both, the redirect map becomes more complex — every old domain/old path combination must redirect to the new domain/new path. If you can phase it, change the domain first (keep the same URL structure), let Google process the migration over several months, then change the URL structure as a separate migration."
+    },
+    {
+      q: "What happens to my Google local listing when I rebrand?",
+      a: "Update your Google Business Profile to reflect the new name, logo, and website URL immediately after the rebrand launches. The Business Profile is a separate property from your website and won't update automatically. Update the name, description, website URL, and profile/cover images. If the business is changing category (different services under the new brand), update those too. Changes to Business Profile name may require Google verification if the change is significant."
+    },
+    {
+      q: "Will my blog posts lose rankings during a rebrand?",
+      a: "If you implement 301 redirects correctly and each old blog URL redirects to the same post on the new domain, rankings should recover to near their previous levels within a few months. The risk is higher if: old post URLs change structure, content is significantly changed during the migration, or redirects are implemented incorrectly. Export your Search Console performance data before the rebrand to have a clear before/after baseline. Any posts that were ranking well and don't recover within 90 days should be investigated for redirect errors."
+    },
+    {
+      q: "How do I tell my existing clients about the rebrand without losing them?",
+      a: "Proactive communication prevents confusion. Email your client list before the rebrand launches explaining what's changing (new name, new website, new logo) and what's staying the same (same people, same service, same contact details). Send a follow-up after launch with the new URLs. Update any client-facing documents (proposals, contracts, invoices) with the new branding immediately. The risk with clients isn't SEO — it's that they search for you by old name, find the old site is gone, and assume you've closed. The solution is direct communication, not just technical redirects."
+    }
+  ]}
+/>

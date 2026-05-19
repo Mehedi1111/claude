@@ -150,3 +150,36 @@ Before you send any logo file to a printer, ask yourself: are these CMYK values?
     }
   ]}
 />
+
+---
+
+## Quick Answers
+
+<FAQAccordion
+  items={[
+    {
+      q: "Why does my logo look fine on my MacBook but wrong when printed?",
+      a: "Mac displays, particularly Retina screens, have wide colour gamuts and tend to show colours as more vivid and saturated than they actually print. A coral that looks bright on a MacBook may look flat and muddy when printed in CMYK ink on paper. The solution is to evaluate print colours on a physical printed proof under neutral light — never on screen. A calibrated monitor reduces the gap but doesn't eliminate it."
+    },
+    {
+      q: "Does it matter which printer I use for colour accuracy?",
+      a: "Yes, significantly. Digital printers (most short-run business card and brochure printers) reproduce CMYK differently from offset printers, and each device is calibrated differently. The same CMYK values can print noticeably differently across vendors. For colour-critical work, always request a physical proof from the specific printer you'll use for the full run, not from a different device."
+    },
+    {
+      q: "What's a Pantone number and do I need one for my logo?",
+      a: "Pantone numbers are standardised colour identifiers for pre-mixed inks (e.g. Pantone 485 C is a specific red). If you specify Pantone 485, any printer with that ink produces exactly that colour, regardless of device. You need Pantone if your brand appears at volume across multiple vendors and colour consistency is commercially important. For most small businesses printing with one digital printer, correctly specified CMYK values plus a proof approval is sufficient."
+    },
+    {
+      q: "Will my logo colour look the same on glossy paper and matte paper?",
+      a: "No. Glossy (coated) paper produces more saturated, brighter colours because ink sits on the surface. Matte (uncoated) paper absorbs more ink, making colours appear softer and slightly less saturated. A rich orange on glossy card may look noticeably different on an uncoated letterhead. For brands that print on both, professional guidelines often specify different CMYK values for coated and uncoated substrates."
+    },
+    {
+      q: "I exported my logo from Canva for print. Will it look right?",
+      a: "Probably not without conversion. Canva exports in RGB colour mode by default. When a print shop receives an RGB file, they convert it automatically — and brand colours, especially vivid ones, often shift noticeably in that conversion. Export from Canva as a PDF or SVG, then open it in Illustrator, convert to CMYK mode, adjust the colour values, and re-export as a print-ready PDF. If you don't have Illustrator access, a professional file conversion service can do this."
+    },
+    {
+      q: "Why does my logo look darker when printed than on screen?",
+      a: "Screens emit light; print reflects it. Even a perfectly colour-managed file will typically appear slightly darker and less luminous in print because you're comparing emitted light (screen) to reflected light (paper). This is inherent to the difference between the two media. The fix is to view print colours under a neutral, daylight-balanced light source — not fluorescent office lighting, which makes colours look even different."
+    }
+  ]}
+/>

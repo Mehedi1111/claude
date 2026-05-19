@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 interface AnimatedTextProps {
   text: string;
@@ -18,6 +18,17 @@ export default function AnimatedText({
 }: AnimatedTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once, margin: "-80px" });
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(window.matchMedia("(max-width: 767px)").matches);
+  }, []);
+
+  // On mobile: plain text — avoids the N×useInView observers and per-word
+  // transform animations that generate hundreds of ms of forced reflow.
+  if (isMobile) {
+    return <span className={`inline ${className}`}>{text}</span>;
+  }
 
   const words = text.split(" ");
 
@@ -36,7 +47,7 @@ export default function AnimatedText({
             }}
           >
             {word}
-            {i < words.length - 1 && " "}
+            {i < words.length - 1 && " "}
           </motion.span>
         </span>
       ))}
