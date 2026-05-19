@@ -1,0 +1,173 @@
+---
+title: "Logo in Email Signature: The Right Way to Do It"
+excerpt: "Most email signatures break on mobile, block-list your emails as spam, or show broken image icons. Here's how to get it right."
+category: "How-To"
+date: "2026-06-07"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Email Signature", "Logo", "Brand Identity", "Email Marketing", "How-To"]
+related:
+  - "logo-file-formats-explained"
+  - "responsive-logo-design"
+seo:
+  title: "Logo in Email Signature: How to Do It Right"
+  description: "Email signature logos break on mobile, trigger spam filters, or never load. Here's the right format, size, and setup that actually works."
+---
+
+A consultant we worked with had been sending every email with a broken image icon at the bottom where her logo should be. She'd set it up in Outlook six months earlier — it looked perfect on her screen. She never thought to check how it looked on the receiving end.
+
+Her clients were seeing a red X where her brand should be. Some probably thought she'd sent an attachment they couldn't open.
+
+She only found out when a new client mentioned it in passing: "I noticed the image in your signature never loads for me."
+
+Six months of looking unprofessional on every email she sent. The fix took fifteen minutes.
+
+Here's how to set up a logo in your email signature so it actually works — on every client, every device, and without triggering spam filters.
+
+## Why Email Signature Logos Break So Often
+
+There are three main failure modes:
+
+**1. The image is attached locally.** Some email clients let you drag an image directly into a signature. This embeds the file as an attachment. Recipients with security-conscious email clients (common in corporate environments) strip the attachment automatically. The image never loads.
+
+**2. The image URL is unreliable.** Hotlinking to an image on your website or Google Drive seems convenient. But if the URL changes, the server goes down, or the host blocks hotlinking, the image disappears for everyone — and you won't know unless someone tells you.
+
+**3. The image is too large.** A 2 MB PNG logo in every outgoing email is a red flag for spam filters. Large embedded images push emails toward the promotions tab or junk folder.
+
+The correct approach avoids all three.
+
+## The Right File Format
+
+Use a **PNG with a transparent background**, not a JPEG. JPEGs don't support transparency, so your logo will have a white box around it on any background that isn't white. If a recipient uses dark mode in their email client, a white-background logo looks bad.
+
+PNG with transparency means the logo floats cleanly on any background.
+
+Size the PNG at **exactly 2x the display size** for crisp rendering on retina screens. If you want the logo to appear at 200px wide in the signature, export a 400px wide PNG. Retina screens render it at 200px display size but use the full 400px detail. The file stays small (usually under 50 KB) but looks sharp everywhere.
+
+Do not use SVG in email signatures. Most email clients strip or ignore SVG — it has very poor email client support compared to browsers.
+
+## Hosting the Image Correctly
+
+Host the logo image on a reliable, permanent URL. Options:
+
+**Your own website:** Upload to your `/public` folder or media library. Use the full absolute URL (https://yourdomain.com/logo.png). This is the most reliable option — as long as your website is up, the image loads.
+
+**A CDN or image hosting service:** Amazon S3, Cloudinary, or similar services designed for asset hosting. These are more reliable than typical web servers and often faster.
+
+Avoid: Google Drive (links expire or require login), Dropbox (not designed for hotlinking), free image hosts (unreliable, often disappear).
+
+Once hosted, paste the full URL into your email client's signature image settings — never drag a local file.
+
+## Correct Display Dimensions
+
+The standard logo width in an email signature is **160–240 pixels**. Wider than that starts to dominate the signature visually. Narrower can look too small on desktop.
+
+For a stacked logo, 120–160px wide is appropriate. For a horizontal logo, 200–240px works.
+
+Set these in the HTML of your signature (`width="200"` on the image tag) — don't rely on the email client to scale it. Without explicit dimensions, some clients render at full resolution, making the logo huge.
+
+## The HTML Signature Structure
+
+If your email client supports HTML signatures (Gmail, Outlook, Apple Mail all do), here's a clean template:
+
+```html
+<table cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding-right:16px; border-right: 2px solid #0a0a0a; vertical-align:middle;">
+      <img src="https://yourdomain.com/logo.png"
+           alt="Your Company Name"
+           width="180"
+           style="display:block; max-width:180px;">
+    </td>
+    <td style="padding-left:16px; vertical-align:middle; font-family:Arial,sans-serif;">
+      <strong style="font-size:15px;">Your Name</strong><br>
+      <span style="font-size:13px; color:#737373;">Your Title, Company Name</span><br>
+      <a href="mailto:you@yourdomain.com" style="font-size:13px; color:#0a0a0a;">you@yourdomain.com</a>
+    </td>
+  </tr>
+</table>
+```
+
+Use a `<table>` layout, not `<div>`. Outlook and many corporate email clients ignore CSS flexbox and grid. Tables are ugly to write but they're the only thing that works consistently across clients.
+
+## Dark Mode Considerations
+
+About 40% of email users have dark mode enabled. Your logo should be readable on both light and dark backgrounds.
+
+If your logo is dark-coloured (black or navy), it will disappear on dark backgrounds. Options:
+
+1. **Use a logo with a white or light version** specifically for dark contexts
+2. **Add a light background to the image:** add a subtle white bounding box around the logo in the PNG itself — the logo always has a light surface to sit on
+3. **Use a full-colour version** that reads well on both light and dark
+
+The cleanest solution is option 1: have both a dark and light version of your logo as separate PNGs. This is part of a proper logo file set — read more about [responsive logo design](/blog/responsive-logo-design) for how the full system works.
+
+If your logo files aren't in good shape — missing transparent backgrounds, no dark mode version, only a JPEG — we sort this out as part of [logo cleanup](/services/ai-logo-cleanup). We deliver a complete file set ready for email, web, and print.
+
+<CTASection
+  headline="Get a Complete Logo File Set"
+  description="We prepare all the versions you need: transparent PNG, dark mode, different sizes — everything for email, web, and print."
+  cta="Get Your Logo Files"
+  href="/contact"
+  secondary="See Logo Cleanup Service"
+  secondaryHref="/services/ai-logo-cleanup"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "What format should my email signature logo be?",
+      a: "Use PNG with a transparent background. Export at 2x your target display size for retina sharpness — if you want it to display at 200px wide, export at 400px. Host the image on a permanent URL on your website or CDN rather than embedding it as an attachment."
+    },
+    {
+      q: "Why does my email signature logo show as a broken image to some recipients?",
+      a: "Usually because the image is embedded as a local attachment (stripped by corporate email security), hosted on an unreliable URL that went offline, or linked from a host that blocks external image requests. Re-host the image on your own website with a full absolute URL."
+    },
+    {
+      q: "Should I use SVG for my email signature?",
+      a: "No. SVG has poor support in email clients — Outlook ignores it entirely. Stick with PNG. It has wide support, handles transparency well, and keeps file size small if exported at the right dimensions."
+    },
+    {
+      q: "My logo has a white background in emails but my signature is grey. How do I fix it?",
+      a: "You're using a JPEG, which doesn't support transparency, or a PNG that was saved with a white background. Re-export the logo as a PNG with a transparent background. In Illustrator, make sure the background layer is deleted before exporting."
+    },
+    {
+      q: "How big should the logo be in an email signature?",
+      a: "160–240px wide is the standard range for desktop. Set explicit width and height attributes on the image tag — don't let the email client decide. On mobile, email clients often reflow signatures so a logo that's too wide gets cut off."
+    },
+    {
+      q: "Can a logo in my email signature trigger spam filters?",
+      a: "Yes, if the image is large. Images embedded as attachments are particularly suspicious. Using a hosted URL and keeping the PNG under 100 KB avoids most spam filter issues. Don't embed base64 image data directly in HTML signatures — that's another common spam trigger."
+    }
+  ]}
+/>
+
+---
+
+## Quick Answers
+
+<FAQAccordion
+  items={[
+    {
+      q: "My logo in Gmail shows a broken image icon. What's wrong?",
+      a: "The image is probably embedded as a local file or hotlinked from an unreliable host. Upload it to your website and use the full https:// URL in your signature settings."
+    },
+    {
+      q: "Why does my email signature logo look blurry on iPhones?",
+      a: "You're using a 1x image on a retina screen. Export the logo at 2x the display size. For a 200px display width, export a 400px wide PNG — then set width to 200 in the HTML."
+    },
+    {
+      q: "My logo has a white box around it in dark mode email. How do I fix it?",
+      a: "You're using a PNG saved with a white background instead of transparency. Re-export with transparent background. In Photoshop or Illustrator, delete any background layers before exporting."
+    },
+    {
+      q: "Does Outlook support HTML email signatures?",
+      a: "Yes, but Outlook uses Word as its rendering engine, which strips a lot of CSS. Use table-based HTML layouts instead of div/flexbox. It's frustrating but it's the only reliable approach."
+    },
+    {
+      q: "How do I stop my email signature logo from showing as an attachment?",
+      a: "Don't drag the image file into the signature editor. Instead, insert it via the signature settings using a hosted URL. Any image pasted directly becomes an embedded attachment."
+    }
+  ]}
+/>

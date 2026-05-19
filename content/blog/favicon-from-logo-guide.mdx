@@ -1,0 +1,185 @@
+---
+title: "How to Create a Favicon From Your Logo (Every Size, Every Platform)"
+excerpt: "A favicon is the smallest your logo will ever appear — 16x16 pixels. Here's exactly how to do it right without destroying your brand."
+category: "How-To"
+date: "2026-06-06"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Favicon", "Logo Design", "Web Design", "SVG", "Technical"]
+related:
+  - "responsive-logo-design"
+  - "logo-for-app-store"
+seo:
+  title: "How to Create a Favicon From Your Logo"
+  description: "Step-by-step guide to turning your logo into a favicon for every browser and device. Sizes, formats, and common mistakes explained."
+---
+
+A SaaS founder asked us why his website felt "unfinished" even though his homepage design was solid. We looked at his browser tab. There was a grey globe where his logo should be.
+
+That grey globe is the browser's default. It's what appears when a website has no favicon — or has one that doesn't load. To every visitor, it reads as unpolished. They may not consciously notice, but the absence registers.
+
+He had a logo. He just didn't know how to turn it into a favicon that actually worked. That's what this guide covers.
+
+## What a Favicon Actually Is
+
+A favicon is the small icon that appears in your browser tab, your bookmarks bar, and on mobile home screens when someone saves your site. The name comes from "favorites icon" — it's been part of the web since Internet Explorer 5 in 1999.
+
+The classic size is 16x16 pixels. But today you need multiple sizes because different devices and contexts request different resolutions:
+
+- 16x16 — browser tab
+- 32x32 — browser tab (high-DPI displays, Windows taskbar)
+- 180x180 — Apple touch icon (iPhone/iPad home screen)
+- 192x192 — Android home screen
+- 512x512 — Android splash screen, PWA icon
+- SVG — modern browsers (scales infinitely)
+
+If you provide only one size, browsers will try to scale it — and the results are usually bad.
+
+## Why Most Logos Don't Work as Favicons Directly
+
+At 16x16 pixels, your full logo — wordmark, icon, tagline — is invisible. There are literally 256 pixels to work with. A full horizontal logo with text will be an unreadable smear.
+
+The solution is a favicon version of your logo: typically just the icon mark, monogram, or a heavily simplified symbol — not the full logo. Think of it as a logo that's been distilled down to its most recognizable element.
+
+If your logo is purely a wordmark with no symbol (like many startups), you have two options:
+1. Use the first letter or initials as the favicon
+2. Create a simple geometric icon to serve as your brand symbol
+
+Both are valid. The wrong option is scaling the full wordmark down to 16x16 and hoping it works.
+
+## Step-by-Step: Creating a Favicon from Your Logo
+
+### Step 1: Start with your vector logo
+
+You need your logo as a true vector file — AI, EPS, or SVG. If you only have a PNG or JPEG, read our post on [checking whether your logo is truly vector](/blog/is-my-logo-truly-vector) first. Scaling a raster file down to 16x16 will produce a blurry mess.
+
+### Step 2: Isolate the icon element
+
+Open the file in Illustrator or Figma. If your logo has a standalone symbol, isolate that on its own artboard. Remove the wordmark, tagline, and any decorative elements.
+
+If your logo is purely text, create a new artboard and design a simple lettermark using your brand fonts and colors.
+
+### Step 3: Optimize for tiny sizes
+
+At this scale, fine details disappear. Thin strokes become invisible. Complex shapes look like noise. Simplify:
+
+- Increase stroke widths (lines that look elegant at large size vanish at 16px)
+- Remove details that won't read at small sizes
+- Increase contrast — light grey on white will not work
+- Test against both light and dark browser backgrounds
+
+### Step 4: Export at each required size
+
+From Illustrator or Figma, export as PNG at these exact sizes: 16x16, 32x32, 48x48, 180x180, 192x192, 512x512. Keep the canvas square — favicons are always square.
+
+Also export as SVG if your icon is simple enough (no complex gradients or filters).
+
+### Step 5: Generate the favicon.ico file
+
+The .ico format bundles multiple sizes into one file. Use a tool like RealFaviconGenerator (the most complete option) to upload your PNGs and generate a complete favicon package — it produces the .ico file plus all required sizes and the HTML tags to paste into your `<head>`.
+
+### Step 6: Add to your website
+
+Place the files in your public or root directory and add the appropriate `<link>` tags to your HTML head. A complete modern favicon setup looks like this:
+
+```html
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+```
+
+The SVG version goes first — modern browsers will use it. Older browsers fall back to the PNG or ICO.
+
+## The Dark Mode Favicon Problem
+
+Many modern browsers support dark mode, and a black favicon on a dark browser theme becomes invisible. If your icon is dark, add an SVG favicon with a `prefers-color-scheme` media query:
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      path { fill: white; }
+    }
+  </style>
+  <path d="..." fill="black"/>
+</svg>
+```
+
+This flips the icon to white in dark mode. It's a small detail that shows care for your users' experience.
+
+## The Apple Touch Icon Mistake
+
+The 180x180 Apple touch icon appears on iPhone home screens when someone bookmarks your site. Many designers just scale the 16x16 favicon up to 180x180. That produces a blurry, over-simplified icon.
+
+The Apple touch icon should use the full icon mark or logo at high resolution — not the stripped-down 16px version. Think of it like an app icon: it has room to breathe, so use the detail your full logo element provides.
+
+For a clean, scalable logo that works at all these sizes without degrading, you need a properly built vector file. If your logo hasn't been cleaned up or is inconsistent, our [logo cleanup service](/services/ai-logo-cleanup) rebuilds it properly before we export for different targets.
+
+<CTASection
+  headline="Get Production-Ready Favicon Files"
+  description="We prepare your logo for every digital context — favicons, app icons, social profiles — from a single clean vector source."
+  cta="Request Logo Files"
+  href="/contact"
+  secondary="See Our Logo Cleanup Service"
+  secondaryHref="/services/ai-logo-cleanup"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "What size should a favicon be?",
+      a: "You need multiple sizes for full browser and device support: 16x16 and 32x32 for browser tabs, 180x180 for iPhone home screen (Apple touch icon), 192x192 and 512x512 for Android. The modern best practice is to also provide an SVG favicon, which scales to any size automatically."
+    },
+    {
+      q: "Can I use my full logo as a favicon?",
+      a: "Only if your logo is a simple icon or symbol. A full horizontal wordmark at 16x16 is unreadable. You need a simplified version — typically just the icon mark, a monogram, or an initial — that holds up at tiny sizes."
+    },
+    {
+      q: "What file format should a favicon be?",
+      a: "Use a .ico file for maximum browser compatibility (it bundles 16x16 and 32x32 inside one file), PNG files for specific sizes, and an SVG for modern browsers. For Apple devices, the apple-touch-icon should be a 180x180 PNG. Most sites need all of these."
+    },
+    {
+      q: "My favicon looks blurry on retina screens. How do I fix it?",
+      a: "Export at 2x the required size. For a 32x32 display slot, export a 64x64 PNG and reference it as a 32x32 icon. Better yet, use an SVG favicon — it renders perfectly on every screen density because it's vector-based."
+    },
+    {
+      q: "How do I make a favicon for a dark mode browser?",
+      a: "Use an SVG favicon with a prefers-color-scheme media query inside the SVG file. This lets you define different fill colours for light and dark mode. Your icon will automatically switch to a light version when the browser is in dark mode."
+    },
+    {
+      q: "Do I need a favicon for SEO?",
+      a: "Google doesn't use favicons as a ranking factor, but they appear in Google search results next to your page title. A missing or broken favicon in search results looks unprofessional and can reduce click-through rate. It's a worthwhile 30-minute task."
+    }
+  ]}
+/>
+
+---
+
+## Quick Answers
+
+<FAQAccordion
+  items={[
+    {
+      q: "My favicon shows up as a grey globe. Why?",
+      a: "Your site either has no favicon file, the file path is wrong, or the HTML link tag is missing from your head. Check that favicon.ico exists at your domain root and that the link tag is present."
+    },
+    {
+      q: "Can I just use a PNG as a favicon without an ICO file?",
+      a: "Modern browsers accept PNG favicons just fine. The ICO format is mainly needed for legacy IE support. For modern sites, a 32x32 PNG plus an SVG is a reasonable minimal setup."
+    },
+    {
+      q: "My favicon looks fine on desktop but is blurry on my iPhone home screen.",
+      a: "The iPhone home screen uses the apple-touch-icon, which needs to be 180x180 pixels. If you only have a 32x32 PNG, iOS scales it up and it blurs. Create a separate 180x180 file."
+    },
+    {
+      q: "How do I make my logo work as a favicon if it's just text?",
+      a: "Use the first letter or your initials as the favicon. Style it in your brand font and colours, export as a clean square icon. Many text-only brands do this — the letter acts as a visual mark at small sizes."
+    },
+    {
+      q: "Does the favicon need to match my logo exactly?",
+      a: "It should be recognizably from the same brand, but it doesn't have to be a pixel-perfect crop. Favicon versions are often simplified or have slightly heavier weights to hold up at tiny sizes."
+    }
+  ]}
+/>

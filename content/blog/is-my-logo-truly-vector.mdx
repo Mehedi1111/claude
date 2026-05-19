@@ -1,0 +1,170 @@
+---
+title: "Is My Logo Actually Vector? How to Check Before It's Too Late"
+excerpt: "Most people assume their logo is vector because it ends in .ai or .eps. Here's how to verify — and what to do if you've been lied to."
+category: "Troubleshooting"
+date: "2026-06-05"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Vector Logo", "Logo Files", "SVG", "File Formats", "Logo Troubleshooting"]
+related:
+  - "what-is-a-vector-file"
+  - "logo-file-formats-explained"
+seo:
+  title: "Is My Logo Actually Vector? How to Check"
+  description: "Think your logo is vector? Most aren't. Here's exactly how to verify your logo file is truly vector — and what to do if it isn't."
+---
+
+A client came to us after spending $800 on a "rebrand." The agency had delivered an EPS file. She was thrilled — EPS is a professional format, vector format, the real deal. She sent it to her sign maker, who came back with a polished design mock-up. Six months later, she needed the logo at 10 feet wide for a trade show backdrop.
+
+The sign maker tried to scale it. The logo turned to mush.
+
+Turns out the EPS contained a rasterized JPEG embedded inside it. A vector container holding a pixel image. It looked right on paper, passed the file format test, and completely fell apart the moment anyone tried to actually use it.
+
+This happens constantly. And the way to avoid it is simple: stop trusting the file extension and start checking what's actually inside.
+
+## Why File Extensions Are Not Proof
+
+An .ai, .eps, .svg, or .pdf file can contain either vector paths or embedded raster images — or both. The extension tells you the container format. It says nothing about the contents.
+
+Think of it like a gift box. An elegant box doesn't guarantee what's inside is valuable. Your logo could be sitting in a professional-looking EPS box with a blurry JPEG inside.
+
+The only way to know is to look.
+
+## Method 1: The Zoom Test in Adobe Illustrator
+
+Open the file in Illustrator (or Inkscape, which is free). Zoom to 3,000% or higher. If it's a true vector:
+
+- Edges stay razor-sharp at any zoom level
+- You can click on individual shapes and see paths/anchor points
+- The Layers panel shows "path," "compound path," or "group" — not "image"
+
+If it's raster inside a vector container:
+
+- Edges get pixelated and blurry past about 300–400% zoom
+- Clicking the logo selects an image object, not paths
+- The Layers panel shows "linked file" or "embedded image"
+
+This test takes 30 seconds and is completely reliable.
+
+## Method 2: SVG Inspection (No Software Required)
+
+If you have an SVG file, right-click it and open with any text editor (Notepad on Windows, TextEdit on Mac). Scroll through the code.
+
+A true vector SVG contains tags like:
+- `<path d="M10,20 L30,40..."/>`
+- `<circle cx="50" cy="50" r="25"/>`
+- `<rect width="100" height="50"/>`
+- `<polygon points="..."/>`
+
+A raster image embedded in an SVG looks like:
+- `<image href="data:image/png;base64,iVBOR..."/>`
+- `<image xlink:href="logo.jpg"/>`
+
+If you see the base64 block or an external image reference, your "SVG" is just a vehicle for a raster image. It will break at large sizes.
+
+## Method 3: The Print Shop Test
+
+Send the file to a print shop and ask for a test at 6 feet wide. A professional printer will immediately tell you if the file is raster — they see this daily and will flag it before production. You don't even need to print; just ask for a pre-flight check.
+
+Most print shops run a file check as standard. Any shop that doesn't should make you nervous.
+
+## Method 4: The File Size Clue
+
+This isn't definitive on its own, but it's a useful red flag. True vector logos are usually very small files:
+
+- Simple logo: 10–100 KB in SVG or AI format
+- Moderate logo: 100–500 KB
+
+If your "vector" AI or EPS file is 3 MB, 8 MB, or more — there's almost certainly a raster image embedded. Paths don't take up much space. Pixels do.
+
+## What "Expanded" or "Outlined" Means (and Why It Matters)
+
+Even if your logo was created in Illustrator, it may not be safe to send to production if the text hasn't been outlined. Live text in a vector file requires the font to be installed on the receiving computer. If the printer or sign maker doesn't have your font, the text will reflow with a substitute font — your logo will look wrong, and they may not notice until it's printed.
+
+Proper vector files have text converted to outlines (also called "paths" or "curves"). In Illustrator: Type → Create Outlines. After this, your text is a shape, not a font. Safe for any computer, any printer, any software.
+
+Check this by clicking the text in your logo. If you see a cursor and can type new letters, it's live text. If you see anchor points on letter shapes, it's outlined and safe.
+
+## What to Do If Your Logo Isn't Really Vector
+
+First, don't panic. This is fixable.
+
+If you have the original design files (Illustrator, Figma, Sketch), open them and re-export properly — outlined text, paths only, no embedded images.
+
+If you only have the raster file (JPEG, PNG, or raster-inside-EPS), you need vectorization. This means a designer traces the logo and rebuilds it as true vector paths. The result is a file that scales to any size with perfect edges.
+
+This is exactly what we do. A typical logo vectorization at [Evoke Studio](/services/ai-logo-vectorization) takes 24–48 hours. If you've discovered your logo isn't vector and have a deadline — a trade show, a signage order, a new website — this is the fastest path to a usable file.
+
+Read our [complete guide to vectorization](/blog/ai-logo-vectorization-complete-guide) if you want to understand the full process before deciding.
+
+<CTASection
+  headline="Your Logo Should Scale to Billboard Size"
+  description="We verify file integrity and rebuild logos that aren't truly vector — fast, at production quality."
+  cta="Get Your Logo Vectorized"
+  href="/contact"
+  secondary="See How Vectorization Works"
+  secondaryHref="/services/ai-logo-vectorization"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Can an EPS file contain a raster image?",
+      a: "Yes. EPS is a container format, not a guarantee of vector content. A raster JPEG or PNG can be embedded inside an EPS file. The file will open in Illustrator and look fine at normal zoom, but it won't scale without quality loss. Always verify by zooming to 3,000% or checking for image layers."
+    },
+    {
+      q: "My logo looks sharp on screen. Doesn't that mean it's vector?",
+      a: "Not necessarily. A high-resolution raster image looks sharp on screen and even at moderate print sizes. The difference only becomes obvious at very large sizes — banners, vehicle wraps, signage. Always verify the file type rather than judging by screen appearance."
+    },
+    {
+      q: "How do I check a PDF to see if the logo inside is vector?",
+      a: "Open the PDF in Adobe Acrobat and zoom to 800–1,000%. Vector logos will stay perfectly sharp. You can also open it in Illustrator where you can click elements and see whether they're paths or images. Alternatively, check the file size — a PDF with only vector graphics is usually under 500 KB."
+    },
+    {
+      q: "My designer said they sent a vector file, but it fails the zoom test. What happened?",
+      a: "Common causes: the designer embedded a raster image inside the vector file, they exported from software that doesn't support true vector (like Canva at the free tier), or they exported at a fixed resolution rather than as scalable paths. Ask them to re-export with 'save as AI' or 'export SVG with paths only' — no embedded images."
+    },
+    {
+      q: "Does a vector file need to be a specific color mode?",
+      a: "For print, yes. Your vector file should be in CMYK color mode, not RGB. Even if the paths are perfect vectors, RGB colors will shift when printed. In Illustrator, go to File → Document Color Mode → CMYK to check and convert. For digital use only, RGB is fine."
+    },
+    {
+      q: "What's the fastest way to get a proper vector file if I don't have one?",
+      a: "Professional vectorization — a designer traces your existing logo image and rebuilds it as clean vector paths. This takes 24–48 hours at most studios. The result is an AI/EPS/SVG file that is genuinely scalable. This is much faster than a full logo redesign and preserves your existing brand look."
+    }
+  ]}
+/>
+
+---
+
+## Quick Answers
+
+<FAQAccordion
+  items={[
+    {
+      q: "My EPS file looks blurry when I zoom in. Is it a real vector?",
+      a: "No. If it blurs at high zoom, there's a raster image inside the EPS container. You'll need the logo vectorized — the EPS shell is misleading."
+    },
+    {
+      q: "How can I tell if my SVG is a real vector without design software?",
+      a: "Right-click the SVG and open it in any text editor. If you see path or polygon tags with coordinates, it's vector. If you see an image tag with base64 data, it's a raster image disguised as an SVG."
+    },
+    {
+      q: "My logo file is 15 MB. Is that normal for a vector?",
+      a: "No. A 15 MB AI or EPS file almost certainly contains embedded raster images. True vector logos are usually well under 1 MB — simple logos are often under 100 KB."
+    },
+    {
+      q: "Can I make my logo vector in Canva?",
+      a: "Canva Pro can export SVG, but the output quality varies. Complex logos with effects may still embed raster elements. For production-grade vector files, use Illustrator or hire a professional."
+    },
+    {
+      q: "My printer said my vector logo is actually a raster. What do I say to my designer?",
+      a: "Ask them to re-export with all text outlined and no embedded images. If they used Illustrator: File > Save As > AI, with fonts outlined. If they can't do this, you need the logo re-vectorized by someone else."
+    },
+    {
+      q: "Do I need a vector file for my website logo?",
+      a: "For your website, an SVG is ideal — it scales perfectly on all screen sizes and loads fast. A high-res PNG works too. But you absolutely need a true vector for print, signage, embroidery, and merchandise."
+    }
+  ]}
+/>
