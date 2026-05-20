@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import Image from "next/image";
 import Callout from "./Callout";
 import FAQAccordion from "./FAQAccordion";
+import QuickAnswers from "./QuickAnswers";
 import BeforeAfter from "./BeforeAfter";
 import ComparisonTable from "./ComparisonTable";
 import MDXCTASection from "./MDXCTASection";
@@ -13,6 +14,7 @@ const mdxComponents: MDXComponents = {
   // MDX custom components
   Callout,
   FAQAccordion,
+  QuickAnswers,
   BeforeAfter,
   ComparisonTable,
   CTASection: MDXCTASection,
