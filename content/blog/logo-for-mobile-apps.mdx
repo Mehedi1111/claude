@@ -1,0 +1,211 @@
+---
+title: "Logo for Mobile Apps: iOS & Android Icon Guidelines"
+excerpt: "Your app icon is a 60x60 pixel square competing against 2 million other apps. Here's how to adapt your logo for every iOS and Android icon size — and why most logos need significant adaptation."
+category: "Technical"
+date: "2026-06-22"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Mobile App", "App Icon", "iOS", "Android", "Logo Design"]
+related:
+  - "logo-for-app-store"
+  - "responsive-logo-design"
+seo:
+  title: "Logo for Mobile Apps: iOS & Android Icon Guide"
+  description: "App icon design for iOS and Android requires specific sizes, no transparency, and careful adaptation of your logo. Here are all the specs and rules."
+---
+
+A startup founder submitted their app to the App Store with their company logo as the app icon. Apple rejected it — not for the logo itself, but because the icon had a transparent background. Apple requires fully opaque icons.
+
+She fixed the transparency issue and resubmitted. The app was approved. But six months later at a conference, she showed someone her phone's home screen, and the person asked, "Which app is yours?" — there were four apps on the screen and the founder's was indistinguishable. The icon was a complex gradient logo mark with the company name in small type. At 60x60 pixels on the home screen, it looked like an indistinct coloured blob next to the clean, bold icons of competitors.
+
+The logo was fine as a logo. It wasn't working as an app icon. These are two different things.
+
+## App Icons vs Logos: The Core Difference
+
+A logo is designed to work across contexts — print, digital, large, small, with and without colour. An app icon is one specific application: a small square on a grid of small squares, in ambient light, competing for attention and quick recognition.
+
+The constraints are severe:
+- **Size:** Home screen displays at 60x60 pixels (iPhone standard), 58x58 (iPhone smaller), up to 180x180 for the App Store listing
+- **Shape:** iOS enforces a rounded rectangle with a specific corner radius applied by the OS — you submit a square image
+- **No transparency:** Apple requires fully opaque icon backgrounds
+- **No text at small sizes:** Any text under about 14sp is invisible at home screen sizes
+- **Context:** Your icon sits next to dozens of other icons. Distinctiveness comes from shape, colour, and bold visual weight — not detail
+
+Most logos fail as app icons because they were designed for different scale constraints.
+
+## iOS App Icon Requirements
+
+Apple requires icons for multiple contexts, all derived from a single 1024x1024 source (for modern submissions via Xcode 13+):
+
+**The 1024x1024 source:**
+Since Xcode 13 (iOS 15+), you can submit a single 1024x1024 PNG and Xcode generates all required sizes automatically. This is the recommended approach.
+
+**Full iOS icon size set (if required):**
+
+| Size | Context | Scale |
+|---|---|---|
+| 20x20 | Notification | @1x |
+| 40x40 | Notification | @2x |
+| 60x60 | Notification | @3x |
+| 29x29 | Settings | @1x |
+| 58x58 | Settings | @2x |
+| 87x87 | Settings | @3x |
+| 80x80 | Spotlight | @2x |
+| 120x120 | Spotlight | @3x |
+| 120x120 | Home Screen | @2x |
+| 180x180 | Home Screen | @3x |
+| 1024x1024 | App Store | @1x |
+
+**iOS icon rules:**
+- PNG format only
+- RGB colour space
+- No transparency — Apple requires fully opaque backgrounds
+- No rounded corners in your image — iOS applies the system corner radius
+- No alpha channel in the PNG
+
+**The App Store icon (1024x1024)** appears in the App Store listing, in App Store search results, and sometimes in featured sections. This is your highest-visibility icon. It can have more detail than the home screen version because it's displayed larger, but it still needs to communicate quickly.
+
+## Android App Icon Requirements
+
+Android is more complex because of the "adaptive icon" system introduced in Android 8.0 (API 26).
+
+### Adaptive icons
+
+Adaptive icons separate the icon into two layers: a foreground layer and a background layer. The Android launcher applies shapes (circle, squircle, rounded square, etc.) by masking the combined layers — different device manufacturers use different shapes. Your icon adapts to the device's icon shape automatically.
+
+**Layers:**
+- **Foreground layer:** 108x108dp PNG with transparency — this is where your logo mark goes (centred, with significant padding)
+- **Background layer:** 108x108dp PNG — solid colour or simple pattern that extends to the edges
+- **Legacy icon:** A single 48x48dp icon for Android 7.x and below
+
+**The safe zone:** Keep all critical visual elements within the central 66x66dp of the 108x108dp foreground layer. Android's masking clips the corners and edges depending on the launcher shape. Anything outside the 66x66dp safe zone may be clipped.
+
+**Design implication:** Your logo mark needs significant padding on the foreground layer — at least 20% on each side — to stay within the safe zone across all launcher shapes.
+
+### Legacy icon (for Android pre-8.0)
+
+For backwards compatibility, still include a 48dp PNG icon. This is a standard square image with any background you want. The Play Store also uses a 512x512 version of this for listing display.
+
+**Google Play Store icon:** 512x512 PNG, 32-bit with alpha supported (unlike iOS)
+
+### Format summary for Android:
+- Adaptive icons: Two 108x108dp PNG layers + XML definition
+- Play Store listing: 512x512 PNG
+- Legacy support: 48dp PNG
+- Colour space: RGB + alpha allowed
+
+## Designing the App Icon
+
+### Start with the icon mark, not the wordmark
+
+The first decision: what visual element becomes the icon? Almost never the full wordmark — there isn't room for text to be legible. Options:
+
+**Option 1: Your existing icon/symbol mark.** If your logo has a standalone symbol, this is the natural starting point. It may need adaptation (bolder, simpler, higher contrast) but you're working from an existing brand element.
+
+**Option 2: A letter or lettermark.** Your initial or initials, styled in your brand font and colour, on a solid background. Simple, scalable, brand-connected. Works well when the letter shape is distinctive.
+
+**Option 3: A simplified abstract mark.** If you're creating an app icon as a distinct expression of your brand — separate from the company logo — a bold geometric shape in your brand colours can be very effective.
+
+**Option 4: A metaphor for the app's function.** Many successful app icons communicate what the app does rather than just showing the brand. This is more relevant for consumer apps where first-time discovery matters.
+
+### The icon design principles that work
+
+**High contrast.** The icon competes against bright backgrounds (iOS 17 home screens, wallpapers) and grid backgrounds. High contrast between the icon element and background ensures it reads at a glance.
+
+**Bold, simple shapes.** Intricate illustrations look great at 1024x1024 and invisible at 60x60. Every pixel at 60x60 carries more weight than you think. Test at actual size throughout the design process.
+
+**Strong colour identity.** Your icon's background colour should be distinctive in the context of your app category. Map apps are often blue, food apps often red or orange, productivity apps often blue or green. Differentiate within category norms.
+
+**No text at home screen size.** Any typography should be considered decorative at home screen sizes. If the letter itself IS the icon, that's fine — that's a lettermark approach. But including your company name as text below the mark is invisible and wasted.
+
+### Testing before submission
+
+Test at actual display size. On a Mac: set the image to exactly 60x60 pixels (or 120x120 pixels divided by 2x screen factor). On an iPhone: use a mockup app to preview the icon on an actual home screen.
+
+The most revealing test: look at your icon in a grid of real app icons at normal viewing distance. Open your phone, look at the home screen, then look at your mockup from the same distance. Does it read? Is it recognisable at a glance?
+
+## From Logo to App Icon: The Workflow
+
+1. **Obtain your vector logo source file.** You need the logo as AI, EPS, or SVG. See our post on [checking whether your logo is truly vector](/blog/is-my-logo-truly-vector) if you're unsure what you have.
+
+2. **Isolate the icon element.** Remove wordmarks and subsidiary text. Keep only the symbol or create the lettermark.
+
+3. **Build at 1024x1024.** Work in this canvas with the logo element occupying 60–70% of the width, centred.
+
+4. **Choose the background.** Solid brand colour is the most reliable choice. Gradients work but can look dated — test against current App Store trends.
+
+5. **Test at 60x60.** Resize to 60x60 and evaluate. Is the element legible? Is the contrast sufficient? If not, simplify and increase visual weight.
+
+6. **For Android adaptive icons:** Design the 108x108dp foreground with logo centred inside the 66x66dp safe zone, generous transparency on the edges. Design the background layer separately.
+
+7. **Export at all required sizes.** Use Xcode's asset catalog (iOS) or Android Studio's Image Asset Studio (Android) to generate all sizes from your 1024x1024 source.
+
+For logos that need vectorization before this workflow — particularly AI-generated logos that are raster files — our [vectorization service](/services/ai-logo-vectorization) produces the vector source file you need to begin. The [logo for app store guide](/blog/logo-for-app-store) covers the App Store listing image and marketing assets separately from the app icon.
+
+<CTASection
+  headline="Get Your Logo Ready for iOS & Android"
+  description="We adapt logos for app icons — vector source, correct sizing, iOS and Android specifications. Ready for submission."
+  cta="Get My App Icon"
+  href="/contact"
+  secondary="See Vectorization Service"
+  secondaryHref="/services/ai-logo-vectorization"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "What size should an iOS app icon be?",
+      a: "Submit a single 1024x1024 PNG to Xcode, which generates all required sizes automatically. The App Store display icon is 1024x1024. Home screen icons display at 60x60 points (120x120 pixels at 2x, 180x180 at 3x on newer iPhones). Design for 1024x1024 but test at 60x60."
+    },
+    {
+      q: "Why did Apple reject my app icon?",
+      a: "Common rejection reasons: transparency in the PNG (Apple requires fully opaque icons), rounded corners added in your file (iOS applies its own corner radius), or the image doesn't meet size requirements. Use a flat square PNG at 1024x1024 with a solid background and no alpha channel."
+    },
+    {
+      q: "What is an Android adaptive icon?",
+      a: "Adaptive icons have two layers: a foreground (your logo mark with transparency) and a background (solid colour or pattern). Android applies a shape (circle, squircle, etc.) by masking the combined layers. This ensures your icon adapts to different device launcher shapes. Design to the 66x66dp safe zone to avoid clipping."
+    },
+    {
+      q: "Can I use my company logo directly as an app icon?",
+      a: "Rarely. Full logos — especially horizontal wordmarks — don't work at 60x60 pixels. You need an adapted version: the icon mark only, with simplified detail and bolder weights. If your logo doesn't have a standalone icon element, design a lettermark or simple mark specifically for the app icon context."
+    },
+    {
+      q: "What's the difference between the App Store icon and the home screen icon?",
+      a: "The App Store icon (1024x1024) appears in search results and the app's store listing — it can have slightly more detail. The home screen icon is tiny (60x60 points on iPhone) and must communicate instantly in a grid of other icons. Most teams use the same design for both, adapted to work at the smaller size."
+    },
+    {
+      q: "Should my app icon match my company logo exactly?",
+      a: "It should be brand-consistent — same colours, same visual language. It doesn't need to be an exact reproduction of the logo. Many successful apps have an icon that's inspired by the brand rather than a direct adaptation of the mark. The icon's job is fast recognition on a home screen, not logo fidelity."
+    }
+  ]}
+/>
+
+---
+
+## Quick Answers
+
+<FAQAccordion
+  items={[
+    {
+      q: "Apple says my icon has transparency. How do I fix it?",
+      a: "Open your PNG in Photoshop or Illustrator. Check for any transparent pixels — use a white or brand-colour background layer and flatten the image before exporting. Set export to RGB PNG with no alpha channel."
+    },
+    {
+      q: "My app icon looks great on my test device but bad on the App Store listing. Why?",
+      a: "The App Store shows the icon at 1024x1024. If you designed primarily at small sizes and scaled up, details that worked at small size may look sparse or undefined at the full resolution. Design at 1024x1024 and scale down to test."
+    },
+    {
+      q: "Can my app icon be animated?",
+      a: "iOS 18 introduced some interactive icon capabilities, but the static home screen icon cannot be animated traditionally. Android launchers also don't support animated icons by default."
+    },
+    {
+      q: "My logo has thin lines that look great large but disappear at app icon size.",
+      a: "Increase stroke weights for the app icon version. What reads as elegant at print size becomes invisible at 60x60. Create a specifically adapted version with heavier weights for the icon context — don't just scale down the standard logo."
+    },
+    {
+      q: "Do I need to design a different icon for the App Store vs the home screen?",
+      a: "Technically the same file is used for both (the 1024x1024 from which Xcode derives all sizes). But the App Store shows the icon larger, so you have more room for detail in the listing view. Design so the icon works at both 1024x1024 and 60x60."
+    }
+  ]}
+/>

@@ -1,0 +1,192 @@
+---
+title: "Why Your Logo Colour Looks Different on Every Printer (And How to Fix It)"
+excerpt: "You spec'd the same colour. Three printers gave you three different results. Here's the science behind print colour variation and the workflow that actually gets consistent results."
+category: "Troubleshooting"
+date: "2026-06-23"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Print Colour", "Logo", "Pantone", "CMYK", "Brand Consistency"]
+related:
+  - "pantone-matching-guide"
+  - "why-logo-looks-different-when-printed"
+seo:
+  title: "Why Your Logo Colour Looks Different on Every Printer"
+  description: "Same colour spec, three different printed results. Here's why print colour varies between vendors and the workflow that achieves consistent logo colour."
+---
+
+A national franchise had a brand guidelines document that specified their logo colour as HEX #D64A2B. They sent this spec to franchise partners across the country. Merchandise from one region came back a bright orange-red. Another region came back a deeper, muted rust. A third got it close but slightly too pink.
+
+Three vendors. Three different colours. Same spec.
+
+The problem was that HEX #D64A2B is an RGB colour — a screen colour — and each printer converted it to CMYK differently. Each printer's CMYK output for the same RGB input was slightly different depending on their calibration, press type, ink formulation, and substrate.
+
+This is one of the most common and frustrating brand consistency problems in print production. Here's exactly why it happens and the workflow that solves it.
+
+## Why Print Colour Is Inherently Variable
+
+### RGB vs CMYK gamut mismatch
+
+Screens display colour using light (RGB — Red, Green, Blue). They add light to create colours. Printers create colour by absorbing light from a white substrate using cyan, magenta, yellow, and black inks. The two systems have different "gamuts" — different ranges of achievable colour.
+
+The critical consequence: many RGB colours can't be exactly reproduced in CMYK. There's no CMYK formula that perfectly matches a vivid screen green, an electric blue, or a bright orange-red. When a printer converts your RGB colour to CMYK, they're finding the closest achievable match — and different printers find slightly different closest matches.
+
+### CMYK formula interpretation
+
+Even if you specify a CMYK formula (for example: C:0 M:70 Y:85 K:0), different printers can produce different results because:
+
+- **Ink density:** Different presses run inks at different densities. The same CMYK formula on a high-density press looks richer than on a lower-density one.
+- **Substrate:** White paper isn't always the same white. Warm-white paper makes cool colours look warmer. Bright white paper makes the same colours look cleaner.
+- **Ink formulation:** Different ink manufacturers produce slightly different Cyan, Magenta, Yellow pigments. The same percentage of Cyan from two different ink suppliers isn't the same colour.
+- **Press calibration:** Digital presses, offset presses, and wide-format inkjet all have their own colour profiles and drift from calibration over time.
+
+### Digital vs offset vs wide-format variation
+
+Digital printing (most short-run commercial print) and offset printing (most high-volume commercial print) use different technologies that interpret colour differently. Wide-format inkjet (banners, posters) uses different ink systems entirely.
+
+A business card printed offset and a banner printed wide-format cannot achieve exactly the same colour output even if they're spec'd identically in CMYK. The colour sciences are fundamentally different.
+
+## The Solution: Pantone Spot Colour
+
+Pantone's Matching System (PMS) was created specifically to solve this problem. Instead of describing colour as a formula to be mixed, Pantone provides physical ink standards — actual mixed inks with specific chemical formulations — that produce predictable results regardless of press or printer.
+
+When you spec your logo colour as "Pantone 485 C" instead of "HEX #D64A2B", you're not asking the printer to interpret a formula. You're asking them to use a specific ink that Pantone has certified to match the PMS 485 C standard.
+
+A printer using genuine Pantone inks in a calibrated process will produce the same colour as another printer using the same ink standard. The variation still exists at the margins, but it's dramatically smaller than CMYK formula interpretation.
+
+### How to find your brand's Pantone reference
+
+If you don't know your brand's Pantone colour:
+1. Work backwards from your existing printed materials if you have good-quality samples
+2. Use a Pantone Color Bridge guide (a physical reference book available from Pantone) to find the Pantone that visually matches your brand colour
+3. Ask your designer — they should have specified Pantone as part of the brand guidelines
+
+The [Pantone matching guide](/blog/pantone-matching-guide) covers the process of identifying and documenting Pantone references in detail.
+
+### Pantone Coated vs Uncoated
+
+Pantone maintains separate references for coated paper (C suffix — e.g., Pantone 485 C) and uncoated paper (U suffix — e.g., Pantone 485 U). The same Pantone number on coated vs uncoated stock produces visually different results because coated paper reflects more light and makes colours appear more saturated.
+
+Always specify whether you need the C or U version — it depends on the paper or material being printed. Business cards are usually coated. Letterhead is usually uncoated. Boxes may be either.
+
+## Building a Colour Specification Document
+
+A brand that achieves consistent colour across vendors provides each printer with a colour specification document that includes:
+
+**For digital CMYK printing:**
+- CMYK formula (e.g., C:0 M:70 Y:85 K:0)
+- A note that colours should match specified CMYK, not be converted from RGB
+- Request for a hard-copy proof before production
+
+**For offset printing:**
+- Pantone spot colour references (e.g., Pantone 485 C for coated stock, Pantone 485 U for uncoated)
+- CMYK equivalent for the same colour when spot colour isn't available (some items only support CMYK)
+
+**For wide-format / large format:**
+- Pantone reference plus a note that CMYK approximation is acceptable with expected deviation of X (acknowledge the gamut limitation upfront)
+- Request for a colour match proof on the specific material before production
+
+**For screen (digital):**
+- HEX and RGB values (screen colour, no print relevance)
+- sRGB colour profile
+
+A one-page colour specification document that every print vendor receives eliminates most of the "each printer gave me a different colour" problem. Include physical printed swatches when possible — mail a laminated reference card to vendors you use regularly.
+
+## Practical Workflow for Multi-Vendor Consistency
+
+### Step 1: Establish Pantone as your specification standard
+
+Identify Pantone references for every logo colour. This is non-negotiable for brands that print with multiple vendors.
+
+### Step 2: Maintain a physical reference sample
+
+Keep a printed sample of your logo on your standard paper stock, produced on a calibrated press to your Pantone specs. This is your "golden sample." When new print runs come back, compare them visually against the golden sample in consistent lighting (use D50 or D65 daylight-equivalent lighting, not fluorescent).
+
+### Step 3: Brief every vendor with specifications
+
+Don't just send the file. Send the file plus your colour specification document. State Pantone values explicitly. Request a proof.
+
+### Step 4: Request hard-copy proofs
+
+A PDF proof on screen is useless for colour matching. Request a physical proof on the actual substrate before approving any run. Most professional print vendors offer this, though it may incur a cost.
+
+### Step 5: Accept calibrated CMYK where Pantone isn't available
+
+For vendors who print CMYK only, provide a calibrated CMYK formula and request a proof. Acknowledge that the CMYK approximation won't be a perfect Pantone match and approve based on how close it gets.
+
+## When Consistency Requires Choosing One Vendor
+
+For franchises, chains, and any brand with very tight colour standards, achieving consistency across many independent vendors is extremely difficult. The practical solution many brands eventually reach: a single preferred print vendor for each product category, briefed and calibrated to your standards.
+
+This isn't always possible — geographic distribution, cost, or product diversity may require multiple vendors. But for the highest-visibility items (signage, uniforms, packaging), vendor consolidation dramatically improves colour consistency.
+
+This is also why [after the logo is approved](/blog/after-the-logo-is-approved), setting up print vendor relationships and requesting initial proofs should happen in the first 30 days — not as an afterthought years later when inconsistencies have accumulated.
+
+For logos that need their colour values documented and updated in the file — many AI-generated logos have RGB colours baked in that need CMYK conversion — our [logo cleanup service](/services/ai-logo-cleanup) handles colour mode conversion and Pantone identification as part of the cleanup process.
+
+<CTASection
+  headline="Get Consistent Print Colours for Your Logo"
+  description="We convert logo colours to CMYK and identify Pantone references — everything your print vendors need to hit the same colour every time."
+  cta="Fix My Logo Colours"
+  href="/contact"
+  secondary="See Logo Cleanup Service"
+  secondaryHref="/services/ai-logo-cleanup"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Why does my logo colour look different from printer to printer?",
+      a: "Multiple causes: different printers convert RGB to CMYK differently, different ink formulations produce different results for the same CMYK formula, different paper stocks change how ink looks, and different press calibration affects output. The solution is specifying Pantone spot colours — a single ink standard that produces predictable results across vendors."
+    },
+    {
+      q: "What is a Pantone colour and how do I use it?",
+      a: "Pantone is a standardised colour system where each colour has a specific number (e.g., Pantone 485 C) referencing a physical ink formulation. When you specify your logo colour as a Pantone number, printers use that specific ink rather than mixing CMYK. Pantone-to-Pantone variation is much smaller than CMYK interpretation variation."
+    },
+    {
+      q: "Can I specify Pantone for digital printing?",
+      a: "Digital presses can't use Pantone spot inks — they simulate Pantone using CMYK. Digital printers who advertise Pantone matching are producing a CMYK approximation calibrated to be as close as possible to the specified Pantone. The match is usually very good but not identical to true spot printing."
+    },
+    {
+      q: "My brand colour is a specific HEX code. How do I find the Pantone equivalent?",
+      a: "Use a physical Pantone Color Bridge guide — a book that maps Pantone references to their closest CMYK and screen equivalents, printed on actual paper stock. Alternatively, Adobe Illustrator and Photoshop have Pantone libraries. Open your brand colour and search the Pantone library for the closest match."
+    },
+    {
+      q: "Does paper type affect how my logo colour prints?",
+      a: "Significantly. Coated paper (gloss, matte, silk) gives more saturated colour reproduction. Uncoated paper absorbs more ink, making colours appear slightly duller. Pantone maintains separate coated (C) and uncoated (U) references for this reason. Always specify which Pantone variant applies to the paper you're printing on."
+    },
+    {
+      q: "How do I ensure my logo looks the same on business cards, signage, and merchandise?",
+      a: "Define Pantone references for every logo colour and include them in a colour specification document shared with all vendors. Request physical proofs from each vendor on their specific substrate. Accept that perfect cross-media consistency isn't possible — aim for acceptable variation within defined tolerances."
+    }
+  ]}
+/>
+
+---
+
+## Quick Answers
+
+<FAQAccordion
+  items={[
+    {
+      q: "I sent the same CMYK values to two printers and got two different colours. Why?",
+      a: "CMYK is a formula, not a fixed colour. Different printers apply different ink densities and their presses have different calibrations. The same C:0 M:70 Y:85 K:0 will vary slightly from press to press. Pantone spot colour is the only reliable standard for consistency across vendors."
+    },
+    {
+      q: "My logo looks bright and vibrant on screen but dull when printed. What happened?",
+      a: "Your brand colour is likely outside the CMYK gamut — it's an RGB colour that can't be exactly reproduced in print. The printer matched it as closely as possible in CMYK, which tends to be less saturated than the RGB original. Verify CMYK values look acceptable before production."
+    },
+    {
+      q: "What's the difference between Pantone C and Pantone U?",
+      a: "C means Coated paper stock. U means Uncoated. The same Pantone number printed on coated vs uncoated paper looks different because of how each surface reflects light. Always specify C or U based on the material you're printing on."
+    },
+    {
+      q: "Can I use Pantone for all my printing?",
+      a: "Not always — digital printers can only simulate Pantone with CMYK. True Pantone spot colour is available on offset presses (most commercial litho printing) and screen printing. For digital print jobs, get the best CMYK approximation and request proofs."
+    },
+    {
+      q: "My franchise partners all print the logo slightly differently. How do we standardise?",
+      a: "Create a colour specification document with Pantone values, recommended CMYK equivalents, and a physical golden sample. Share it with all vendors. Require hard-copy proofs against the golden sample before approving any production run."
+    }
+  ]}
+/>

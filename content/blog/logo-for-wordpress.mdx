@@ -1,0 +1,192 @@
+---
+title: "Logo for WordPress: Header, Favicon & Retina Display Setup"
+excerpt: "WordPress handles your logo through the Customizer, your theme, and a handful of plugin settings. Here's how to set it up so it looks sharp on every screen."
+category: "How-To"
+date: "2026-06-21"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["WordPress", "Logo Design", "Website", "Brand Identity", "Web Development"]
+related:
+  - "logo-for-wix-website"
+  - "favicon-from-logo-guide"
+seo:
+  title: "Logo for WordPress: Header, Favicon & Retina Setup"
+  description: "How to set up your logo in WordPress — Customizer, header, favicon, retina display. The specs and upload steps for a sharp logo on every device."
+---
+
+A business coach relaunched her WordPress site with a clean new design. Three days later, a reader emailed: "Your logo looks blurry — is it a new image?" It wasn't. The issue was that her theme had switched from the old header image approach to WordPress's native site logo — and the transition had left her with a logo rendering at the wrong size without the 2x retina version.
+
+WordPress logo handling is more fragmented than most platforms because it depends on your theme, the Customizer, and which plugins you have installed. The core process is standardised, but themes override it in different ways. Here's what actually works.
+
+## How WordPress Handles Logos
+
+WordPress (since version 4.5) has a native "Site Logo" feature built into the Customizer. Most modern themes use this. Older themes may use a custom "Header Image" approach or a theme-specific logo field.
+
+The difference matters because:
+- **Site Logo (Customizer):** Stored as an attachment in your media library, tied to the `custom_logo` theme support. Most modern themes use this.
+- **Header Image:** A full-width header background image, different from the logo. Some older themes confuse these two.
+- **Theme-specific fields:** Some themes (like Divi, Avada, Elementor-based themes) have their own logo upload in theme options rather than the Customizer.
+
+**Rule of thumb:** Check your theme documentation before uploading anything. Using the wrong field means your logo ends up in the wrong place or gets overridden.
+
+## Site Logo via the Customizer
+
+For themes using the native WordPress site logo:
+
+**Access:** Dashboard → Appearance → Customize → Site Identity → Logo
+
+**Upload the logo here:**
+- PNG with transparent background
+- Recommended width: 400px (this renders at 200px on standard screens, 200px displayed at 2x for retina)
+- WordPress allows you to crop the logo after upload — click "Skip Cropping" to use your image as-is if you've already prepared the right dimensions
+
+**Retina support:** Many themes support retina (HiDPI) logos. If your theme does, it expects a logo at 2x the display size. A logo that displays at 180px wide should be uploaded at 360px wide. The theme renders it at 180px but uses the full 360px for retina screens.
+
+Check if your theme handles retina: look for a "Retina Logo" upload field in the Customizer or theme options, or read the theme documentation. Some themes (Astra, GeneratePress, Hello/Elementor) have explicit retina logo support. Others just render whatever you upload at whatever size their CSS specifies.
+
+## Favicon in WordPress
+
+WordPress manages the favicon through the Customizer under "Site Icon":
+
+**Access:** Dashboard → Appearance → Customize → Site Identity → Site Icon
+
+**What WordPress calls it:** "Site Icon" — this is your favicon
+**Required size:** 512x512 pixels minimum (WordPress generates all sizes from this)
+**Format:** PNG or JPG
+
+WordPress auto-generates smaller versions (32x32, 180x180 Apple touch icon) from your 512x512 upload. This is why you should upload at 512x512 — WordPress needs the large source to scale down cleanly.
+
+**What to upload:** Your icon mark only. Not the full wordmark. At 32x32 display, any text is invisible. A clean icon/symbol at 512x512 produces good output at all the derived sizes.
+
+See the [complete favicon guide](/blog/favicon-from-logo-guide) if you need more detail on designing the right icon mark for browser use.
+
+## Theme-Specific Logo Setup
+
+**Astra theme:**
+- Appearance → Customize → Header → Site Identity → Logo
+- Has separate "Retina Logo" upload field (upload 2x file here)
+- Logo width control in Customize → Header → Site Identity → Logo Width
+
+**Elementor / Hello Elementor:**
+- Elementor header widget has its own logo controls
+- Site Logo widget pulls from WordPress Customizer
+- Can also use a custom image widget with your logo file directly
+
+**Divi:**
+- Divi Theme Options → General → Logo
+- Separate mobile logo option
+- Logo height is controlled in Divi customizer
+
+**GeneratePress:**
+- Appearance → Customize → Site Identity
+- Clean, straightforward — respects WordPress native logo field
+- Excellent retina support
+
+**WooCommerce (if running a shop):**
+The logo in a WooCommerce store header typically comes from the theme's Customizer settings, same as above. WooCommerce adds its own email templates, which have a separate logo upload in WooCommerce → Settings → Emails.
+
+## The Retina Problem in Detail
+
+"Retina" (HiDPI, high-density pixel display) screens — all modern iPhones, MacBook Pros, most modern Android phones, and many laptops — display content at 2x pixel density. A logo displayed at 200px CSS width uses 400 actual device pixels.
+
+If you upload a 200px PNG logo and it's displayed at 200px, retina screens show it at 200px physical pixels across 400 device pixels. The browser upscales it 2x — and it looks slightly soft.
+
+The fix: Upload at 2x your intended display size. If your logo displays at 200px wide in the header, upload a 400px wide PNG. The browser renders it at 200px CSS width (sharp on retina) and standard screens scale it down correctly (also sharp).
+
+**But there's a catch:** If WordPress or your theme has a `max-width` CSS rule on the logo element that's smaller than your uploaded image, the image gets constrained by CSS and renders fine. If there's no max-width, a 400px logo uploaded for a 200px header slot might render at 400px — too large.
+
+The safe approach: Upload at 2x, set the theme's logo width control to your target display size. Most modern themes have a "Logo Width" slider in Customizer.
+
+## SVG Logos in WordPress
+
+SVG logos have a unique advantage for web: infinitely scalable, small file size, looks perfect on any screen density without needing 2x versions.
+
+**Default WordPress blocks SVG uploads** (security reason — SVG can contain executable code). To enable SVG:
+- Install a plugin like "Safe SVG" or "SVG Support"
+- These sanitize the SVG and allow upload to the media library
+
+After enabling SVG uploads, you can upload your SVG logo directly. Benefits: no blurriness at any zoom level, very small file size.
+
+**Compatibility note:** The WordPress Customizer site logo field may not preview SVGs correctly, but they work at the theme level. Test on the live site, not just the Customizer preview.
+
+The [SVG optimization guide](/blog/svg-optimization-for-web) covers how to prepare an SVG specifically for web use — including removing unnecessary metadata that adds file size.
+
+## Checking Your Logo Across Devices
+
+After setup, verify your logo looks correct on:
+1. Desktop browser (standard screen) at 100% zoom
+2. Desktop browser at 200% zoom (simulates retina)
+3. Actual mobile device (not browser preview)
+4. Tablet
+
+The editor preview is not reliable for judging final logo quality. Always check the published site on real devices or with real browser tools (Chrome DevTools device simulation is acceptable for a quick check).
+
+For logos that need to be prepared or cleaned up before WordPress setup — proper transparency, correct dimensions, no white background artifacts — our [logo cleanup service](/services/ai-logo-cleanup) delivers everything you need, including a web-ready PNG at 2x and an optimized SVG.
+
+<CTASection
+  headline="Get Your WordPress Logo Files Ready"
+  description="We prepare transparent PNG at 2x retina, SVG for scalable web use, and favicon mark — everything WordPress needs for a sharp logo on every screen."
+  cta="Get My Logo Files"
+  href="/contact"
+  secondary="See Logo Cleanup Service"
+  secondaryHref="/services/ai-logo-cleanup"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "What size should my WordPress logo be?",
+      a: "Upload at 2x your intended display size for retina sharpness. If your theme displays the logo at 160px wide, upload a 320px wide PNG. Then use your theme's Logo Width setting in the Customizer to set the display size. Most modern themes have this control."
+    },
+    {
+      q: "How do I add a favicon to WordPress?",
+      a: "Go to Appearance → Customize → Site Identity → Site Icon. Upload a 512x512 PNG of your icon mark. WordPress automatically generates all the sizes it needs (32x32, 180x180, etc.) from your source image."
+    },
+    {
+      q: "My WordPress logo looks blurry on iPhones. What's wrong?",
+      a: "You're uploading a standard-resolution (1x) image. iPhones and most modern devices have retina (2x) displays. Upload a logo that's 2x your display size. If your logo appears at 160px wide, upload at 320px. The browser scales it down to 160px but uses 320px of pixel data for the retina display."
+    },
+    {
+      q: "Can I use SVG for my WordPress logo?",
+      a: "WordPress blocks SVG uploads by default for security. Install the 'Safe SVG' plugin to enable it — the plugin sanitizes SVG files to prevent code injection. Once enabled, SVG is the best format for web logos: infinitely scalable, no retina issues, very small file size."
+    },
+    {
+      q: "My WordPress logo has a white box behind it. How do I fix it?",
+      a: "You uploaded a PNG with a white background instead of a transparent background. Re-export your logo with transparency. In Illustrator, delete the background layer before exporting. In Photoshop, check that the Layer 0 or background layer is not visible when you export."
+    },
+    {
+      q: "Where do I upload my logo if I'm using Elementor?",
+      a: "If you're using the Hello Elementor theme, the logo is set via the WordPress Customizer (Appearance → Customize → Site Identity). If you've built the header with the Elementor Page Builder, use the 'Site Logo' widget or a custom Image widget in your header template. Divi has its own Logo field under Divi Theme Options."
+    }
+  ]}
+/>
+
+---
+
+## Quick Answers
+
+<FAQAccordion
+  items={[
+    {
+      q: "I uploaded my logo in WordPress but I can't see it on the site. Why?",
+      a: "Check whether your theme uses the WordPress Customizer site logo or its own theme options for the logo. If you uploaded to the wrong place, the theme ignores it. Check Appearance → Customize → Site Identity first."
+    },
+    {
+      q: "My WordPress site shows a tagline below my logo that I don't want.",
+      a: "Go to Appearance → Customize → Site Identity and clear the Site Tagline field, or uncheck 'Display Site Title and Tagline.' Some themes display this text below the logo by default."
+    },
+    {
+      q: "WordPress is cropping my logo when I upload it. How do I skip the crop?",
+      a: "After selecting your logo file, WordPress shows a crop interface. Click 'Skip Cropping' in the lower-left corner to use the image as-is."
+    },
+    {
+      q: "Can I have different logos for desktop and mobile in WordPress?",
+      a: "Some themes (Astra, Divi, GeneratePress Pro) support separate desktop and mobile logos. If your theme doesn't, you can add custom CSS to hide/show different image elements at different screen sizes — but this requires coding."
+    },
+    {
+      q: "How do I make my WordPress logo link to the homepage?",
+      a: "WordPress wraps the site logo in a link to the homepage by default when using the native Site Logo feature. If yours doesn't link, your theme may be overriding this. Check your theme documentation or add a link wrapper manually in the header template."
+    }
+  ]}
+/>
