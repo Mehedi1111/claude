@@ -47,6 +47,20 @@ export const showcaseItems: ShowcaseItem[] = [
     ],
   },
 
+  {
+    id: "Sparrow",
+    client: "Sparrow",
+    industry: "Brand Identity",
+    beforeSrc: "/portfolio/sparrow-before.jpg",
+    beforeSubtitle: "AI-generated JPG — pixelated edges, no vector source",
+    afterVariations: [
+      { src: "/portfolio/sparrow-after.jpg", label: "Full Colour Vector" },
+      { src: "/portfolio/sparrow-after-blue.jpg", label: "Blue Background" },
+      { src: "/portfolio/sparrow-after-yellow.jpg", label: "Yellow Background" },
+      { src: "/portfolio/sparrow-after-app.jpg", label: "App Icon Version" },
+    ],
+  },
+
   // ── Paste more items below this line ──────────────────────────────────────
   // {
   //   id: "project-2",
