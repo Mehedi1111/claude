@@ -35,6 +35,18 @@ export const showcaseItems: ShowcaseItem[] = [
       { src: "/after-logo-nael.jpg", label: "Production-ready vector" },
     ],
   },
+  {
+    id: "north-built-brewing",
+    client: "North Built Brewing Company",
+    industry: "Brand Identity",
+    beforeSrc: "/portfolio/north-build-logo-before-full-color.jpg",
+    beforeSubtitle: "AI-generated JPG — pixelated edges, no vector source",
+    afterVariations: [
+      { src: "/portfolio/north-build-logo-after-full-color.jpg", label: "Full Colour Vector" },
+      { src: "/portfolio/north-build-logo-after-black-color.jpg", label: "Black & White Version" },
+    ],
+  },
+
   // ── Paste more items below this line ──────────────────────────────────────
   // {
   //   id: "project-2",
