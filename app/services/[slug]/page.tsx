@@ -3,8 +3,10 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { allServices } from "@/lib/data";
+import { showcaseItems } from "@/lib/showcase";
 import CTASection from "@/components/sections/CTASection";
 import SectionReveal from "@/components/ui/SectionReveal";
+import LogoShowcase from "@/components/sections/LogoShowcase";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -336,6 +338,32 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Before/After showcase — vectorization service only */}
+      {slug === "ai-logo-vectorization" && showcaseItems.length > 0 && (
+        <section className="py-20 lg:py-28 bg-[#fafafa] border-t border-[#e5e5e5]">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <SectionReveal>
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-2">
+                <div>
+                  <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-3">
+                    Real Work
+                  </p>
+                  <h2 className="text-[clamp(28px,3.5vw,48px)] font-display font-bold text-[#0a0a0a] tracking-[-0.03em]">
+                    Before &amp; After
+                  </h2>
+                </div>
+                <p className="text-sm font-sans text-[#737373] max-w-xs leading-relaxed pb-1">
+                  Every project starts with an AI-generated file. This is what it looks like before and after precision vectorization.
+                </p>
+              </div>
+            </SectionReveal>
+            <SectionReveal delay={0.1}>
+              <LogoShowcase items={showcaseItems} columns={showcaseItems.length > 2 ? 2 : 1} />
+            </SectionReveal>
+          </div>
+        </section>
+      )}
 
       {/* Next service */}
       <section className="py-14 lg:py-16 bg-[#f5f5f5] border-t border-[#e5e5e5]">

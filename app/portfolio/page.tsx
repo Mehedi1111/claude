@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { portfolioItems } from "@/lib/data";
+import { showcaseItems } from "@/lib/showcase";
 import CTASection from "@/components/sections/CTASection";
 import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
+import LogoShowcase from "@/components/sections/LogoShowcase";
 
 export const metadata: Metadata = {
   title: "Brand Identity & Logo Design Portfolio | Evoke Studio — Mehedi Hasan",
@@ -97,6 +99,32 @@ export default function PortfolioPage() {
           </div>
         </div>
       </section>
+
+      {/* Before/After Transformations */}
+      {showcaseItems.length > 0 && (
+        <section className="py-20 lg:py-28 bg-[#fafafa] border-t border-[#e5e5e5]">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <SectionReveal>
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-2">
+                <div>
+                  <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-3">
+                    Transformations
+                  </p>
+                  <h2 className="text-[clamp(32px,4vw,56px)] font-display font-bold text-[#0a0a0a] tracking-[-0.03em]">
+                    AI to Vector
+                  </h2>
+                </div>
+                <p className="text-sm font-sans text-[#737373] max-w-xs leading-relaxed pb-1">
+                  AI-generated logos rebuilt as production-ready vector files — ready for print, embroidery, and screen printing.
+                </p>
+              </div>
+            </SectionReveal>
+            <SectionReveal delay={0.1}>
+              <LogoShowcase items={showcaseItems} columns={2} />
+            </SectionReveal>
+          </div>
+        </section>
+      )}
 
       <CTASection />
     </>
