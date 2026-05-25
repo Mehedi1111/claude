@@ -157,9 +157,9 @@ export default function ContactForm() {
             </span>
           </div>
           <div className="space-y-1.5">
-            {["ai", "traditional", "other"].map((cat) => {
+            {["ai", "traditional", "domain", "other"].map((cat) => {
               const catServices = serviceOptions.filter(s => s.category === cat);
-              const catLabel = cat === "ai" ? "AI Services" : cat === "traditional" ? "Traditional Branding" : "";
+              const catLabel = cat === "ai" ? "AI Services" : cat === "traditional" ? "Traditional Branding" : cat === "domain" ? "Domain Acquisition" : "";
               return (
                 <div key={cat}>
                   {catLabel && (
