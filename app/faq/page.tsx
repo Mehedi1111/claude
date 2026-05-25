@@ -42,21 +42,21 @@ export default function FAQPage() {
       />
 
       {/* Hero */}
-      <section className="pt-36 pb-20 lg:pt-44 lg:pb-28 bg-white border-b border-[#e5e5e5]">
+      <section className="pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <SectionReveal>
-            <p className="text-xs font-sans font-semibold text-[#0a0a0a]/40 uppercase tracking-[0.2em] mb-8">
+            <p className="text-xs font-sans font-semibold text-white/30 uppercase tracking-[0.2em] mb-8">
               Frequently Asked
             </p>
           </SectionReveal>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
-            <h1 className="text-[clamp(48px,7vw,100px)] font-display font-bold text-[#0a0a0a] tracking-[-0.04em] leading-[0.92]">
+            <h1 className="text-[clamp(48px,7vw,100px)] font-display font-bold text-white tracking-[-0.04em] leading-[0.92]">
               <AnimatedText text="Questions," />
               <br />
               <AnimatedText text="answered." delay={0.1} />
             </h1>
             <SectionReveal delay={0.3}>
-              <p className="text-base font-sans text-[#737373] leading-relaxed max-w-sm">
+              <p className="text-base font-sans text-white/50 leading-relaxed max-w-sm">
                 Everything you need to know about working with Evoke — from
                 file submission to final delivery.
               </p>

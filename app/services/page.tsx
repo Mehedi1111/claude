@@ -85,21 +85,21 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-36 pb-20 lg:pt-44 lg:pb-28 bg-white border-b border-[#e5e5e5]">
+      <section className="pt-36 pb-20 lg:pt-44 lg:pb-28 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <SectionReveal>
-            <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.25em] mb-8">
+            <p className="text-[11px] font-sans font-semibold text-white/30 uppercase tracking-[0.25em] mb-8">
               Services
             </p>
           </SectionReveal>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-end">
-            <h1 className="text-[clamp(48px,7vw,100px)] font-display font-bold text-[#0a0a0a] tracking-[-0.04em] leading-[0.9]">
+            <h1 className="text-[clamp(48px,7vw,100px)] font-display font-bold text-white tracking-[-0.04em] leading-[0.9]">
               <AnimatedText text="Every service." />
               <br />
               <AnimatedText text="One standard." delay={0.1} />
             </h1>
             <SectionReveal delay={0.25}>
-              <p className="text-base lg:text-lg font-sans text-[#737373] leading-relaxed">
+              <p className="text-base lg:text-lg font-sans text-white/50 leading-relaxed">
                 AI logo services for modern brands. Traditional branding for brands
                 built from scratch. Both delivered with the same uncompromising
                 technical precision.

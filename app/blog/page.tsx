@@ -211,16 +211,16 @@ export default function BlogPage() {
 
   return (
     <>
-      {/* ── HERO — white ── */}
-      <section className="pt-36 pb-16 sm:pb-20 lg:pt-44 lg:pb-24 bg-white border-b border-[#e8e8e8]">
+      {/* ── HERO — dark ── */}
+      <section className="pt-36 pb-16 sm:pb-20 lg:pt-44 lg:pb-24 bg-[#0a0a0a]">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
           <SectionReveal>
-            <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/30 uppercase tracking-[0.25em] mb-8">
+            <p className="text-[11px] font-sans font-semibold text-white/30 uppercase tracking-[0.25em] mb-8">
               Journal — {posts.length} articles
             </p>
           </SectionReveal>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 lg:gap-16">
-            <h1 className="text-[clamp(44px,6.5vw,96px)] font-display font-bold text-[#0a0a0a] tracking-[-0.04em] leading-[0.92]">
+            <h1 className="text-[clamp(44px,6.5vw,96px)] font-display font-bold text-white tracking-[-0.04em] leading-[0.92]">
               <AnimatedText text="Ideas." />
               <br />
               <AnimatedText text="Process." delay={0.1} />
@@ -228,7 +228,7 @@ export default function BlogPage() {
               <AnimatedText text="Precision." delay={0.2} />
             </h1>
             <SectionReveal delay={0.3}>
-              <p className="text-[15px] sm:text-base font-sans text-[#8a8a8a] max-w-xs leading-relaxed">
+              <p className="text-[15px] sm:text-base font-sans text-white/50 max-w-xs leading-relaxed">
                 Technical articles, brand guides, and studio notes from Mehedi Hasan — 15 years of brand design experience.
               </p>
             </SectionReveal>
