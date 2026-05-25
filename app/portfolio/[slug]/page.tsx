@@ -249,6 +249,16 @@ export default async function CaseStudyPage({
                     <p className="text-[14px] font-sans text-[#0a0a0a]">{value}</p>
                   </div>
                 ))}
+                {"websiteUrl" in item && item.websiteUrl && (
+                  <a
+                    href={item.websiteUrl as string}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center text-[13px] font-sans font-semibold text-[#0a0a0a] border border-[#0a0a0a] px-5 py-3.5 hover:bg-[#0a0a0a] hover:text-white transition-colors mb-3"
+                  >
+                    View Live Site ↗
+                  </a>
+                )}
                 <Link href="/contact" className="block text-center text-[13px] font-sans font-semibold text-white bg-[#0a0a0a] px-5 py-3.5 hover:bg-[#1f1f1f] transition-colors">
                   Similar project →
                 </Link>

@@ -1,0 +1,160 @@
+---
+title: "How to Change Your Domain Name Without Losing Your SEO or Your Customers"
+excerpt: "Changing your domain is one of the riskiest things you can do to an established brand. Here's the exact process to do it without losing search rankings, direct traffic, or customer trust."
+category: "How-To"
+date: "2026-07-14"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Domain Names", "Rebranding", "SEO", "Brand Migration", "Web Development"]
+related:
+  - "rebranding-without-losing-seo"
+  - "how-to-choose-a-domain-name"
+  - "brand-guidelines-what-they-include"
+seo:
+  title: "How to Change Your Domain Name Without Losing SEO"
+  description: "The complete process for changing your domain name: 301 redirects, Search Console updates, backlink migration, and how to protect your brand during the transition."
+---
+
+A client came to me after a domain migration that had gone wrong. He'd changed his domain name six months earlier without setting up 301 redirects correctly. By the time he realised what had happened, he'd lost 60% of his organic search traffic and his customers were landing on a dead URL.
+
+The rebuilding process took eight months and cost him far more than the rebrand itself. All of it was avoidable.
+
+Changing your domain name is one of the riskiest technical decisions you can make for an established website. Done correctly, you can transfer most of your search equity and maintain customer continuity. Done incorrectly, you can permanently destroy rankings that took years to build.
+
+Here's the exact process.
+
+## Before You Start: The Pre-Migration Checklist
+
+**Document everything first.** Export your Google Search Console data, export your Google Analytics data, and list every page on your current site that receives meaningful traffic. You'll need this to verify the migration went correctly and to identify any pages that need special attention.
+
+**Check your backlinks.** Use a tool like Ahrefs or Semrush to pull a list of your highest-value backlinks — sites that link to you with authority. These will not automatically transfer through redirects; you'll need to contact the most important ones and ask them to update their links.
+
+**Set up the new domain before migrating.** Build the new site, test it thoroughly, and have it ready to go live before touching the old domain. Never migrate to a half-built destination.
+
+**Register both domains.** The moment you decide on your new domain, register it. Don't let anyone else get it while you're preparing the migration. If you're still searching for your new domain, our guide on [how to choose a domain name](/blog/how-to-choose-a-domain-name) covers the full evaluation process.
+
+## The Technical Migration: 301 Redirects
+
+This is the most critical step and where most migrations go wrong.
+
+A 301 redirect tells search engines and browsers that a page has permanently moved to a new location. It passes the search equity (link authority) from the old URL to the new one. Without correct 301 redirects, your search rankings start from zero at the new domain.
+
+**Every page needs a matching redirect.** Not just your homepage. Every blog post, every service page, every portfolio page, every URL that has ever received a backlink or search traffic needs a corresponding 301 redirect to its equivalent at the new domain.
+
+In Next.js (which this site runs on), redirects are handled in `next.config.ts` via the `redirects()` function. We've implemented exactly this pattern for WordPress-to-Next.js URL migrations — you can see how it works in practice.
+
+**Test every redirect.** After setting up redirects, use a crawler (Screaming Frog is the standard) to verify that every old URL returns a 301 status code and that the destination URL is correct. Check for redirect chains (A → B → C instead of A → C) and fix them.
+
+## Updating Google Search Console
+
+When the migration is live and redirects are verified:
+
+1. Add the new domain as a new property in Google Search Console
+2. Verify ownership
+3. Submit your new sitemap
+4. Use the "Change of address" tool in Search Console (under Settings) to tell Google your site has moved
+
+This does not replace 301 redirects — it's additional notification. Google will recrawl your site and reassign search rankings over a period of weeks to months. The better your redirects, the more equity transfers.
+
+## What to Expect: The Timeline
+
+A well-executed domain migration typically looks like this:
+
+- **Week 1–2:** Traffic dips as Google processes the change. This is normal and expected.
+- **Week 3–8:** Rankings begin to stabilise and return. Most of your original positions come back if the migration was clean.
+- **Month 3–6:** Full recovery for most pages. Some pages may permanently rank differently at the new domain — usually for better, if the new domain has stronger brand recognition.
+- **6+ months:** New domain accumulates its own authority and may outperform the old one.
+
+The dip is uncomfortable. I've seen founders panic at week two and make the migration worse by trying to reverse it. Don't. Stick to the process, monitor Search Console weekly, and let Google work.
+
+If you want more depth on the SEO side of rebranding, our guide on [rebranding without losing SEO](/blog/rebranding-without-losing-seo) covers the full strategy — domain changes are one piece of a larger picture.
+
+## Communicating the Change to Customers
+
+The technical migration handles search engines. You also need to handle your human audience.
+
+Send an email to your customer list explaining the domain change and the new URL. Update your email signatures, social media profiles, and any printed materials. Update every place your old domain appears — invoice templates, business cards, marketing collateral.
+
+This is also the moment when many businesses choose to update their [brand identity](/services/brand-identity). A new domain often signals a new chapter, and the visual system — [logo design](/services/logo-design), [brand colours](/blog/brand-colors-guide), and [brand guidelines](/services/brand-guidelines) — can be refreshed at the same time. Customers notice the consistency of the brand; they tend to react positively when a rebrand is coherent rather than piecemeal.
+
+## Protecting the Old Domain
+
+Do not let your old domain expire. Keep it registered indefinitely (or at minimum for several years after the migration) and keep the redirects active. If the old domain expires, someone else can buy it — either a competitor or a domain investor — and your redirects stop working. Customers who bookmarked old URLs will hit a dead end or, worse, someone else's site.
+
+The annual cost of keeping the old domain is trivial compared to the cost of losing those redirects.
+
+Read our guide on [what to do when your perfect domain is taken](/blog/domain-name-taken-what-to-do) for context on what domain investors do with domains they acquire — you don't want to be the brand that creates that opportunity for them.
+
+## Starting Fresh vs Migrating
+
+Sometimes the right answer is not to migrate an existing site but to start the new domain fresh — particularly if the old site has low authority, thin content, or a penalty history. In these cases, the migration overhead isn't worth it and you're better off building the new domain properly from the start.
+
+If you're in this position — starting fresh with a new domain and a new brand — begin with [what brand identity design actually includes](/blog/what-is-brand-identity-design) and [how to choose a domain name for your brand](/blog/how-to-choose-a-domain-name). Getting both right from the start is far cheaper than fixing them later.
+
+<CTASection
+  headline="Rebranding and need a new visual identity to match your new domain?"
+  description="We handle complete brand refreshes — new logo, updated brand guidelines, and all the assets you need to launch your new identity consistently across every channel."
+  cta="Start Your Rebrand"
+  href="/contact"
+  secondary="See Rebrand Work"
+  secondaryHref="/portfolio"
+/>
+
+<FAQAccordion
+  items={[
+    {
+      q: "Will changing my domain name hurt my SEO?",
+      a: "Yes, temporarily. A domain migration causes a short-term traffic dip (usually 2–4 weeks) as Google reprocesses and reassigns your rankings. With correct 301 redirects, most of your search equity transfers to the new domain over 3–6 months. A botched migration — missing redirects, redirect chains, no Search Console update — can cause permanent losses."
+    },
+    {
+      q: "How long does it take to recover SEO rankings after changing domains?",
+      a: "Most sites see initial recovery within 6–12 weeks of the migration. Full recovery — where the new domain is performing at least as well as the old one — typically takes 3–6 months. Some pages may take longer. The speed of recovery depends on the quality of your redirects, the strength of your backlink profile, and how quickly Google recrawls your site."
+    },
+    {
+      q: "Do I need to set up redirects for every single page?",
+      a: "Yes. Every page that has received backlinks or search traffic needs a 301 redirect to its equivalent at the new domain. Missing redirects mean that page's search equity is lost. Prioritise pages with backlinks and pages that appear in Google Search Console with meaningful impressions or clicks."
+    },
+    {
+      q: "What's the Change of Address tool in Google Search Console?",
+      a: "It's a notification to Google that your site has permanently moved to a new domain. It works alongside 301 redirects to expedite Google's processing of your domain migration. You'll find it under Settings in Search Console after verifying both the old and new domain as properties."
+    },
+    {
+      q: "Should I rebrand visually at the same time as changing my domain?",
+      a: "Often yes — a domain change is a natural trigger for a visual refresh, and coordinating both means customers experience one coherent change rather than two confusing ones. The communication effort is also similar: one announcement for the domain and the new look is more effective than two separate changes."
+    },
+    {
+      q: "How long should I keep redirects from my old domain?",
+      a: "Indefinitely, or at minimum three to five years. Keep the old domain registered and the redirects active for as long as you can. Customers bookmark old URLs, old links in documents and emails continue to be clicked, and backlinks from third-party sites continue to direct traffic for years. The cost of letting the domain expire is almost never worth the savings."
+    }
+  ]}
+/>
+
+---
+
+## Quick Answers
+
+<FAQAccordion
+  items={[
+    {
+      q: "What is a 301 redirect and why does it matter for domain changes?",
+      a: "A 301 redirect is a permanent redirect that tells browsers and search engines a page has moved to a new URL. It passes search equity (link authority) from the old URL to the new one. Without 301 redirects, your search rankings at the new domain start from zero."
+    },
+    {
+      q: "My new domain is live but my rankings dropped. What happened?",
+      a: "This is normal in the first 2–4 weeks after a domain migration. Google is reprocessing your site under the new domain. If redirects are set up correctly, rankings should recover over the following weeks. If redirects are missing or incorrect, fix them immediately."
+    },
+    {
+      q: "How do I tell my customers about a domain change?",
+      a: "Email your customer list with the new URL, update your social media profiles and bios, update your email signatures, and update any printed materials. If the domain change accompanies a brand refresh, announce both together."
+    },
+    {
+      q: "Can I change my domain name without affecting my email?",
+      a: "Email is tied to your domain. Changing domains means changing email addresses too, unless you set up email forwarding from the old domain. Plan this carefully — business email continuity is critical."
+    },
+    {
+      q: "How much does a domain migration cost?",
+      a: "The technical migration itself can be done for minimal cost if you have development resources. The hidden costs are in time (testing, monitoring, backlink outreach), potential traffic losses during recovery, and any visual identity updates that accompany the rebrand. Budget accordingly."
+    }
+  ]}
+/>

@@ -98,6 +98,16 @@ export default async function DomainPage({
               <span className="text-xs font-sans font-semibold text-white/40 uppercase tracking-[0.15em] border border-white/10 px-3 py-1.5">
                 Full transfer
               </span>
+              {domain.websiteUrl && (
+                <a
+                  href={domain.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-sans font-semibold text-emerald-400 uppercase tracking-[0.15em] border border-emerald-400/30 px-3 py-1.5 hover:border-emerald-400/60 transition-colors"
+                >
+                  Live Website ↗
+                </a>
+              )}
             </div>
           </SectionReveal>
         </div>
@@ -129,6 +139,65 @@ export default async function DomainPage({
           </div>
         </div>
       </section>
+
+      {/* ── Live Website Preview (only shown when websiteUrl exists) ── */}
+      {domain.websiteUrl && (
+        <section className="py-20 lg:py-28 bg-[#0a0a0a] border-t border-white/5">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <SectionReveal>
+              <p className="text-xs font-sans font-semibold text-white/30 uppercase tracking-[0.2em] mb-4">
+                See It In Action
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-display font-bold text-white tracking-[-0.03em] mb-6">
+                A website built on this domain
+              </h2>
+              <p className="text-base font-sans text-white/50 max-w-xl leading-relaxed mb-10">
+                We designed and developed the ZoningGraph website to demonstrate exactly what a brand built on this domain can look like — from UI/UX design through to live Next.js deployment.
+              </p>
+            </SectionReveal>
+            <SectionReveal delay={0.15}>
+              <div className="border border-white/10 overflow-hidden">
+                <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex items-center gap-3">
+                  <div className="flex gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                  </div>
+                  <span className="text-xs font-sans text-white/30 flex-1 text-center">
+                    {domain.websiteUrl}
+                  </span>
+                </div>
+                <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+                  <iframe
+                    src={domain.websiteUrl}
+                    className="w-full h-full border-0"
+                    title={`${domain.name} live website preview`}
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </SectionReveal>
+            <SectionReveal delay={0.25}>
+              <div className="flex flex-wrap gap-4 mt-8">
+                <a
+                  href={domain.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white border border-white/20 px-6 py-3.5 hover:border-white/50 transition-colors"
+                >
+                  Open Live Site ↗
+                </a>
+                <Link
+                  href="/portfolio/zoninggraph-website"
+                  className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white/50 hover:text-white transition-colors px-6 py-3.5"
+                >
+                  View Full Case Study →
+                </Link>
+              </div>
+            </SectionReveal>
+          </div>
+        </section>
+      )}
 
       {/* ── Why this domain is premium ─────────────────────────────── */}
       <section className="py-20 lg:py-28 bg-[#fafafa]">

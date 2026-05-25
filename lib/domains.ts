@@ -17,6 +17,7 @@ export interface DomainListing {
   packages: DomainPackage[];
   available: boolean;
   featured?: boolean;
+  websiteUrl?: string; // live demo site for domains with a built website
 }
 
 export const domains: DomainListing[] = [
@@ -74,6 +75,7 @@ export const domains: DomainListing[] = [
     ],
     available: true,
     featured: true,
+    websiteUrl: "https://zoninggraph.vercel.app/",
   },
   {
     slug: "zoningops",
