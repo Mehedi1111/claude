@@ -15,6 +15,11 @@ const serviceOptions = [
   { label: "Business Stationery", price: "From $200", category: "traditional" },
   { label: "Brand Guidelines", price: "From $250", category: "traditional" },
   { label: "Visual Identity System", price: "From $800", category: "traditional" },
+  { label: "Domain Acquisition — ZoningGraph.com", price: "Inquire", category: "domain" },
+  { label: "Domain Acquisition — ZoningOps.com", price: "Inquire", category: "domain" },
+  { label: "Domain Acquisition — PayXara.com", price: "Inquire", category: "domain" },
+  { label: "Domain Acquisition — Fundegrity.com", price: "Inquire", category: "domain" },
+  { label: "Domain Acquisition — FundAgri.com", price: "Inquire", category: "domain" },
   { label: "Not sure yet — advise me", price: "", category: "other" },
 ];
 

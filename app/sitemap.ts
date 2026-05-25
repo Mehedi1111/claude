@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getSlugs } from "@/lib/mdx";
 import { allServices } from "@/lib/data";
+import { domains } from "@/lib/domains";
 
 const BASE = "https://madebyevoke.com";
 
@@ -40,5 +41,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.85,
   }));
 
-  return [...staticPages, ...servicePages, ...portfolioPages, ...blogPages];
+  const domainPages: MetadataRoute.Sitemap = [
+    { url: `${BASE}/domains`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+    ...domains.map((d) => ({
+      url: `${BASE}/domains/${d.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
+  ];
+
+  return [...staticPages, ...servicePages, ...domainPages, ...portfolioPages, ...blogPages];
 }
