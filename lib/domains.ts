@@ -75,7 +75,7 @@ export const domains: DomainListing[] = [
     ],
     available: true,
     featured: true,
-    websiteUrl: "https://zoninggraph.vercel.app/",
+    websiteUrl: "https://www.zoninggraph.com/",
   },
   {
     slug: "zoningops",
