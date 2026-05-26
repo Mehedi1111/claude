@@ -4,14 +4,18 @@ import { domains } from "@/lib/domains";
 import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
 
+const liveSites = domains.filter((d) => d.available && d.websiteUrl);
+
 export const metadata: Metadata = {
-  title: "Premium Domains for Sale — Evoke Studio",
+  title: "Premium Domains for Sale — PropTech, FinTech & AgriFinance | Evoke Studio",
   description:
-    "Acquire a premium domain name — complete with brand identity and website if needed. ZoningGraph.com, ZoningOps.com, PayXara.com, Fundegrity.com, FundAgri.com. Each domain comes with full ownership transfer and optional branding packages.",
+    "Acquire a premium .com domain with brand identity and website included. ZoningGraph.com, ZoningOps.com, PayXara.com, Fundegrity.com, FundAgri.com — each a strategic asset in a high-growth industry. Full ownership transfer, optional branding and web design packages.",
+  keywords:
+    "premium domains for sale, buy domain name, PropTech domain, FinTech domain, ZoningGraph, PayXara, ZoningOps, Fundegrity, FundAgri, domain with brand identity, domain and website package, Evoke Studio",
   openGraph: {
-    title: "Premium Domains for Sale — Evoke Studio",
+    title: "Premium Domains for Sale — PropTech, FinTech & AgriFinance | Evoke Studio",
     description:
-      "Acquire a premium domain name with brand identity included. PropTech, FinTech, and AgriFinance domains available now.",
+      "Acquire a premium .com domain with brand identity included. PropTech, FinTech, and AgriFinance domains available now with optional website packages.",
     url: "https://madebyevoke.com/domains",
     siteName: "Evoke Studio",
     type: "website",
@@ -135,6 +139,82 @@ export default function DomainsPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Live website previews ─────────────────────────────────── */}
+      {liveSites.length > 0 && (
+        <section className="py-20 lg:py-28 bg-[#0a0a0a]">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <SectionReveal>
+              <p className="text-[11px] font-sans font-semibold text-white/30 uppercase tracking-[0.2em] mb-4">
+                Live Websites
+              </p>
+              <h2 className="text-3xl lg:text-5xl font-display font-bold text-white tracking-[-0.03em] mb-4">
+                Domains with live websites.
+              </h2>
+              <p className="text-base font-sans text-white/50 max-w-xl leading-relaxed mb-16">
+                Some domains in this portfolio already have a full brand identity and marketing website built and deployed — so you can see exactly what your brand could look like before you acquire.
+              </p>
+            </SectionReveal>
+            <div className="space-y-16">
+              {liveSites.map((domain, i) => (
+                <SectionReveal key={domain.slug} delay={i * 0.1}>
+                  <div>
+                    {/* Label row */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                      <div>
+                        <p className="text-xs font-sans font-semibold text-white/30 uppercase tracking-[0.15em] mb-1">
+                          {domain.industry} · {domain.niche}
+                        </p>
+                        <h3 className="text-2xl font-display font-bold text-white tracking-[-0.03em]">
+                          {domain.name}
+                        </h3>
+                        <p className="text-sm font-sans text-white/50 mt-1">{domain.tagline}</p>
+                      </div>
+                      <div className="flex flex-wrap gap-3 shrink-0">
+                        <a
+                          href={domain.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white border border-white/20 px-5 py-3 hover:border-white/50 transition-colors"
+                        >
+                          Open Live Site ↗
+                        </a>
+                        <Link
+                          href={`/domains/${domain.slug}`}
+                          className="inline-flex items-center gap-2 text-sm font-sans font-medium text-white/50 hover:text-white transition-colors px-5 py-3"
+                        >
+                          Acquisition Details →
+                        </Link>
+                      </div>
+                    </div>
+                    {/* Browser frame */}
+                    <div className="border border-white/10 overflow-hidden">
+                      <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex items-center gap-3">
+                        <div className="flex gap-1.5">
+                          <span className="w-3 h-3 rounded-full bg-white/10" />
+                          <span className="w-3 h-3 rounded-full bg-white/10" />
+                          <span className="w-3 h-3 rounded-full bg-white/10" />
+                        </div>
+                        <span className="text-xs font-sans text-white/30 flex-1 text-center">
+                          {domain.websiteUrl}
+                        </span>
+                      </div>
+                      <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+                        <iframe
+                          src={domain.websiteUrl}
+                          className="w-full h-full border-0"
+                          title={`${domain.name} live website preview — web design by Evoke Studio`}
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </SectionReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── What's included section ────────────────────────────────── */}
       <section className="py-20 lg:py-28 bg-[#fafafa] border-t border-[#e5e5e5]">

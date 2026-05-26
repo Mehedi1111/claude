@@ -6,13 +6,15 @@ import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
 
 export const metadata: Metadata = {
-  title: "Logo Design & AI Vectorization Services — Pricing & Turnaround | Evoke Studio",
+  title: "Logo Design, AI Vectorization & Web Design Services | Evoke Studio",
   description:
-    "AI logo vectorization from $50 · Logo design from $150 · Brand identity from $500. Manual reconstruction, Pantone-certified, 24–48hr delivery. SVG, AI, EPS, PDF for print, web, and embroidery.",
+    "AI logo vectorization from $50 · Logo design from $150 · Brand identity from $500 · Web design and development for startups and brands. Manual reconstruction, Pantone-certified, 24–48hr delivery. SVG, AI, EPS, PDF for print, web, and embroidery.",
+  keywords:
+    "AI logo vectorization, logo vectorization service, logo design, brand identity design, web design and development, website design for startups, FinTech web design, PropTech web design, Evoke Studio services",
   openGraph: {
-    title: "Logo Design & AI Vectorization Services — Pricing & Turnaround | Evoke Studio",
+    title: "Logo Design, AI Vectorization & Web Design Services | Evoke Studio",
     description:
-      "AI logo vectorization from $50 · Logo design from $150 · Full brand identity from $500. Manual precision, 24–48hr turnaround.",
+      "AI logo vectorization from $50 · Logo design from $150 · Brand identity from $500 · Web design and development. Manual precision, 24–48hr turnaround.",
     url: "https://madebyevoke.com/services",
     siteName: "Evoke Studio",
     type: "website",
@@ -218,6 +220,105 @@ export default function ServicesPage() {
               />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Live Work — Web Design & Development */}
+      <section className="py-20 lg:py-28 bg-[#0a0a0a] border-t border-white/5">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <SectionReveal>
+            <p className="text-[11px] font-sans font-semibold text-white/30 uppercase tracking-[0.2em] mb-4">
+              Web Design &amp; Development · Live Work
+            </p>
+            <h2 className="text-3xl lg:text-5xl font-display font-bold text-white tracking-[-0.03em] mb-4">
+              Websites we designed and built.
+            </h2>
+            <p className="text-base font-sans text-white/50 max-w-xl leading-relaxed mb-16">
+              Every website we build is designed from the brand up — custom layout, identity-led visuals, and performance-optimised code. Here are two live examples: a PropTech platform and a FinTech payment brand.
+            </p>
+          </SectionReveal>
+
+          {/* ZoningGraph */}
+          <SectionReveal delay={0.1}>
+            <div className="mb-14">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                  <p className="text-xs font-sans font-semibold text-white/30 uppercase tracking-[0.15em] mb-1">
+                    PropTech · Real Estate Intelligence
+                  </p>
+                  <h3 className="text-2xl font-display font-bold text-white tracking-[-0.03em]">ZoningGraph.com</h3>
+                  <p className="text-sm font-sans text-white/50 mt-1">The data layer for zoning intelligence — domain, brand identity, and Next.js website.</p>
+                </div>
+                <div className="flex flex-wrap gap-3 shrink-0">
+                  <a
+                    href="https://www.zoninggraph.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white border border-white/20 px-5 py-3 hover:border-white/50 transition-colors"
+                  >
+                    Open Live Site ↗
+                  </a>
+                  <Link href="/portfolio/zoninggraph-website" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-white/50 hover:text-white transition-colors px-5 py-3">
+                    Case Study →
+                  </Link>
+                </div>
+              </div>
+              <div className="border border-white/10 overflow-hidden">
+                <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex items-center gap-3">
+                  <div className="flex gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                  </div>
+                  <span className="text-xs font-sans text-white/30 flex-1 text-center">www.zoninggraph.com</span>
+                </div>
+                <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+                  <iframe src="https://www.zoninggraph.com/" className="w-full h-full border-0" title="ZoningGraph website — PropTech web design by Evoke Studio" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </SectionReveal>
+
+          {/* PayXara */}
+          <SectionReveal delay={0.15}>
+            <div>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                  <p className="text-xs font-sans font-semibold text-white/30 uppercase tracking-[0.15em] mb-1">
+                    FinTech · Payments
+                  </p>
+                  <h3 className="text-2xl font-display font-bold text-white tracking-[-0.03em]">PayXara.com</h3>
+                  <p className="text-sm font-sans text-white/50 mt-1">A payment brand ready to scale globally — domain, brand identity, and Next.js website.</p>
+                </div>
+                <div className="flex flex-wrap gap-3 shrink-0">
+                  <a
+                    href="https://www.payxara.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white border border-white/20 px-5 py-3 hover:border-white/50 transition-colors"
+                  >
+                    Open Live Site ↗
+                  </a>
+                  <Link href="/domains/payxara" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-white/50 hover:text-white transition-colors px-5 py-3">
+                    Domain Listing →
+                  </Link>
+                </div>
+              </div>
+              <div className="border border-white/10 overflow-hidden">
+                <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex items-center gap-3">
+                  <div className="flex gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                  </div>
+                  <span className="text-xs font-sans text-white/30 flex-1 text-center">www.payxara.com</span>
+                </div>
+                <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+                  <iframe src="https://www.payxara.com/" className="w-full h-full border-0" title="PayXara website — FinTech web design by Evoke Studio" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </SectionReveal>
         </div>
       </section>
 

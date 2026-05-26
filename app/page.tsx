@@ -12,18 +12,21 @@ const Services = dynamic(() => import("@/components/sections/Services"));
 const Process = dynamic(() => import("@/components/sections/Process"));
 const PortfolioPreview = dynamic(() => import("@/components/sections/PortfolioPreview"));
 const ZoningGraphShowcase = dynamic(() => import("@/components/sections/ZoningGraphShowcase"));
+const PayXaraShowcase = dynamic(() => import("@/components/sections/PayXaraShowcase"));
 const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
 const FAQPreview = dynamic(() => import("@/components/sections/FAQPreview"));
 const CTASection = dynamic(() => import("@/components/sections/CTASection"));
 
 export const metadata: Metadata = {
-  title: "AI Logo Vectorization & Brand Identity Design | Evoke Studio",
+  title: "AI Logo Vectorization, Brand Identity & Web Design | Evoke Studio",
   description:
-    "Convert your AI-generated logo into a production-ready vector file — manually traced, Pantone-certified, printer-approved. From $50. SVG, AI, EPS, PDF delivered in 24–48 hours.",
+    "Convert your AI-generated logo into a production-ready vector file — manually traced, Pantone-certified, printer-approved. From $50. Also: brand identity design, web design & development, and premium domains. SVG, AI, EPS, PDF delivered in 24–48 hours.",
+  keywords:
+    "AI logo vectorization, logo vectorization service, brand identity design, web design and development, premium domains for sale, fintech domain, proptech domain, PayXara, ZoningGraph, Evoke Studio",
   openGraph: {
-    title: "AI Logo Vectorization & Brand Identity Design | Evoke Studio",
+    title: "AI Logo Vectorization, Brand Identity & Web Design | Evoke Studio",
     description:
-      "Convert your AI-generated logo into a production-ready vector file — manually traced, Pantone-certified, printer-approved. From $50.",
+      "Convert your AI-generated logo into a production-ready vector file — manually traced, Pantone-certified, printer-approved. From $50. Brand identity, web design, and premium domains.",
     url: "https://madebyevoke.com",
     siteName: "Evoke Studio",
     type: "website",
@@ -42,6 +45,7 @@ export default function Home() {
       <Process />
       <PortfolioPreview />
       <ZoningGraphShowcase />
+      <PayXaraShowcase />
       <Testimonials />
       <FAQPreview />
       <CTASection />

@@ -186,6 +186,7 @@ export const domains: DomainListing[] = [
     ],
     available: true,
     featured: true,
+    websiteUrl: "https://www.payxara.com/",
   },
   {
     slug: "fundegrity",

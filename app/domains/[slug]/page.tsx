@@ -152,7 +152,7 @@ export default async function DomainPage({
                 A website built on this domain
               </h2>
               <p className="text-base font-sans text-white/50 max-w-xl leading-relaxed mb-10">
-                We designed and developed the ZoningGraph website to demonstrate exactly what a brand built on this domain can look like — from UI/UX design through to live Next.js deployment.
+                We designed and developed the {domain.name} website to show exactly what a brand built on this domain can look like — from logo and brand identity through to a live Next.js deployment. This is what the full package delivers.
               </p>
             </SectionReveal>
             <SectionReveal delay={0.15}>
@@ -187,12 +187,14 @@ export default async function DomainPage({
                 >
                   Open Live Site ↗
                 </a>
-                <Link
-                  href="/portfolio/zoninggraph-website"
-                  className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white/50 hover:text-white transition-colors px-6 py-3.5"
-                >
-                  View Full Case Study →
-                </Link>
+                {domain.slug === "zoninggraph" && (
+                  <Link
+                    href="/portfolio/zoninggraph-website"
+                    className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white/50 hover:text-white transition-colors px-6 py-3.5"
+                  >
+                    View Full Case Study →
+                  </Link>
+                )}
               </div>
             </SectionReveal>
           </div>
