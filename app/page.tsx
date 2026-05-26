@@ -11,6 +11,7 @@ const TrustMetrics = dynamic(() => import("@/components/sections/TrustMetrics"))
 const Services = dynamic(() => import("@/components/sections/Services"));
 const Process = dynamic(() => import("@/components/sections/Process"));
 const PortfolioPreview = dynamic(() => import("@/components/sections/PortfolioPreview"));
+const ZoningGraphShowcase = dynamic(() => import("@/components/sections/ZoningGraphShowcase"));
 const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
 const FAQPreview = dynamic(() => import("@/components/sections/FAQPreview"));
 const CTASection = dynamic(() => import("@/components/sections/CTASection"));
@@ -40,6 +41,7 @@ export default function Home() {
       <Services />
       <Process />
       <PortfolioPreview />
+      <ZoningGraphShowcase />
       <Testimonials />
       <FAQPreview />
       <CTASection />
