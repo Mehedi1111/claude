@@ -234,7 +234,7 @@ export default function ServicesPage() {
               Websites we designed and built.
             </h2>
             <p className="text-base font-sans text-white/50 max-w-xl leading-relaxed mb-16">
-              Every website we build is designed from the brand up — custom layout, identity-led visuals, and performance-optimised code. Here are two live examples: a PropTech platform and a FinTech payment brand.
+              Every website we build is designed from the brand up — custom layout, identity-led visuals, and performance-optimised code. Here are three live examples: two PropTech platforms and a FinTech payment brand.
             </p>
           </SectionReveal>
 
@@ -281,7 +281,7 @@ export default function ServicesPage() {
 
           {/* PayXara */}
           <SectionReveal delay={0.15}>
-            <div>
+            <div className="mb-14">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                 <div>
                   <p className="text-xs font-sans font-semibold text-white/30 uppercase tracking-[0.15em] mb-1">
@@ -315,6 +315,47 @@ export default function ServicesPage() {
                 </div>
                 <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
                   <iframe src="https://www.payxara.com/" className="w-full h-full border-0" title="PayXara website — FinTech web design by Evoke Studio" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </SectionReveal>
+
+          {/* ZoningOps */}
+          <SectionReveal delay={0.2}>
+            <div>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                  <p className="text-xs font-sans font-semibold text-white/30 uppercase tracking-[0.15em] mb-1">
+                    PropTech · Real Estate Operations
+                  </p>
+                  <h3 className="text-2xl font-display font-bold text-white tracking-[-0.03em]">ZoningOps.com</h3>
+                  <p className="text-sm font-sans text-white/50 mt-1">Operations infrastructure for zoning professionals — domain, brand identity, and Next.js website.</p>
+                </div>
+                <div className="flex flex-wrap gap-3 shrink-0">
+                  <a
+                    href="https://www.zoningops.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white border border-white/20 px-5 py-3 hover:border-white/50 transition-colors"
+                  >
+                    Open Live Site ↗
+                  </a>
+                  <Link href="/domains/zoningops" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-white/50 hover:text-white transition-colors px-5 py-3">
+                    Domain Listing →
+                  </Link>
+                </div>
+              </div>
+              <div className="border border-white/10 overflow-hidden">
+                <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex items-center gap-3">
+                  <div className="flex gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                  </div>
+                  <span className="text-xs font-sans text-white/30 flex-1 text-center">www.zoningops.com</span>
+                </div>
+                <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+                  <iframe src="https://www.zoningops.com/" className="w-full h-full border-0" title="ZoningOps website — PropTech web design by Evoke Studio" loading="lazy" />
                 </div>
               </div>
             </div>
