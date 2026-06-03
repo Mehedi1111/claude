@@ -54,9 +54,45 @@ const stats = [
   { value: "4", label: "Countries" },
 ];
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Mehedi Hasan",
+  jobTitle: "Founder & CEO",
+  description: "Brand identity designer and AI logo vectorization specialist with 15+ years of experience. Founder of Evoke Studio, a brand identity and web design studio serving clients in the US, UK, Canada, and Australia.",
+  url: "https://madebyevoke.com/about",
+  image: "https://madebyevoke.com/icon.png",
+  worksFor: {
+    "@type": "Organization",
+    name: "Evoke Studio",
+    url: "https://madebyevoke.com",
+  },
+  knowsAbout: [
+    "Brand Identity Design",
+    "Logo Design",
+    "AI Logo Vectorization",
+    "Visual Identity Systems",
+    "Brand Strategy",
+    "Web Design and Development",
+    "SVG Conversion",
+    "Pantone Color Systems",
+  ],
+  sameAs: [
+    "https://www.linkedin.com/in/m-mehedi-h-hasan/",
+    "https://www.upwork.com/freelancers/~011af9123385f97f10",
+    "https://www.behance.net/mh62221352f0fFF",
+    "https://dribbble.com/madebyevoke",
+    "https://x.com/MadeByEvoke",
+  ],
+};
+
 export default function AboutPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       {/* Hero */}
       <section className="pt-36 pb-20 lg:pt-44 lg:pb-24 bg-[#0a0a0a] overflow-hidden relative">
         <div

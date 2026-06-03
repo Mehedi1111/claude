@@ -76,6 +76,28 @@ export default async function BlogPostPage({
 
   const canonicalUrl = `https://madebyevoke.com/blog/${slug}`;
 
+  // Extract FAQPage schema from FAQAccordion in MDX content
+  function extractFAQSchema(src: string) {
+    const block = src.match(/<FAQAccordion[\s\S]*?\]\}\s*\/>/);
+    if (!block) return null;
+    const qs = [...block[0].matchAll(/\bq:\s*"((?:[^"\\]|\\.)*)"/g)].map((m) => m[1]);
+    const as = [...block[0].matchAll(/\ba:\s*"((?:[^"\\]|\\.)*)"/g)].map((m) => m[1]);
+    if (!qs.length || qs.length !== as.length) return null;
+    return {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: qs.map((q, i) => ({
+        "@type": "Question",
+        name: q,
+        acceptedAnswer: { "@type": "Answer", text: as[i] },
+      })),
+    };
+  }
+
+  const faqSchema = extractFAQSchema(content);
+
+  const wordCount = content.replace(/<[^>]*>/g, "").split(/\s+/).filter(Boolean).length;
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -86,16 +108,21 @@ export default async function BlogPostPage({
     datePublished: frontmatter.date,
     dateModified: frontmatter.date,
     url: canonicalUrl,
+    inLanguage: "en-US",
+    wordCount,
+    ...(frontmatter.image ? { image: { "@type": "ImageObject", url: frontmatter.image } } : {}),
     author: isMehedi
       ? {
           "@type": "Person",
           name: "Mehedi Hasan",
           jobTitle: "Founder & CEO",
-          worksFor: { "@type": "Organization", name: "Evoke Studio" },
+          url: "https://madebyevoke.com/about",
+          worksFor: { "@type": "Organization", name: "Evoke Studio", url: "https://madebyevoke.com" },
           sameAs: [
             "https://www.linkedin.com/in/m-mehedi-h-hasan/",
             "https://www.upwork.com/freelancers/~011af9123385f97f10",
             "https://www.behance.net/mh62221352f0fFF",
+            "https://x.com/MadeByEvoke",
           ],
         }
       : { "@type": "Organization", name: frontmatter.author.name },
@@ -117,6 +144,17 @@ export default async function BlogPostPage({
     ],
   };
 
+  const speakableSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: frontmatter.title,
+    url: canonicalUrl,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "h2", "h3", ".prose-evoke > p:first-of-type"],
+    },
+  };
+
   const formattedDate = new Date(frontmatter.date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -133,6 +171,16 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
+      />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <ReadingProgress />
 
       {/* ── HERO: dark typographic header ── */}

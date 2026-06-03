@@ -80,34 +80,78 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": ["Organization", "ProfessionalService"],
   name: "Evoke Studio",
+  alternateName: "MadeByEvoke",
   url: "https://madebyevoke.com",
-  logo: "https://madebyevoke.com/icon.png",
-  description: "Brand identity design and AI logo vectorization studio. Manual vector reconstruction, Pantone-certified color systems, complete brand identity builds.",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://madebyevoke.com/icon.png",
+    width: 512,
+    height: 512,
+  },
+  description: "Evoke Studio is a brand identity design and AI logo vectorization studio led by Mehedi Hasan. We provide manual vector reconstruction, Pantone-certified color systems, complete brand identity builds, and web design for professional service firms worldwide.",
   founder: {
     "@type": "Person",
     name: "Mehedi Hasan",
     jobTitle: "Founder & CEO",
+    url: "https://madebyevoke.com/about",
+    knowsAbout: ["Brand Identity Design", "Logo Design", "AI Logo Vectorization", "Visual Identity Systems", "Brand Strategy", "Web Design", "SVG Conversion"],
     sameAs: [
       "https://www.linkedin.com/in/m-mehedi-h-hasan/",
       "https://www.upwork.com/freelancers/~011af9123385f97f10",
       "https://www.behance.net/mh62221352f0fFF",
       "https://dribbble.com/madebyevoke",
+      "https://x.com/MadeByEvoke",
     ],
   },
   sameAs: [
     "https://www.behance.net/mh62221352f0fFF",
     "https://dribbble.com/madebyevoke",
     "https://www.linkedin.com/company/madebyevoke/",
+    "https://x.com/MadeByEvoke",
   ],
-  serviceType: ["AI Logo Vectorization", "Logo Design", "Brand Identity Design", "SVG Conversion"],
+  serviceType: [
+    "AI Logo Vectorization",
+    "Logo Design",
+    "Brand Identity Design",
+    "SVG Conversion",
+    "Web Design",
+    "Web Development",
+    "Brand Strategy",
+  ],
+  areaServed: ["US", "GB", "CA", "AU"],
   priceRange: "$50–$800",
+  email: "work@madebyevoke.com",
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
     email: "work@madebyevoke.com",
     url: "https://madebyevoke.com/contact",
+    availableLanguage: "English",
+  },
+  knowsAbout: [
+    "Brand Identity Design",
+    "Logo Design",
+    "AI Logo Vectorization",
+    "Visual Identity Systems",
+    "Brand Strategy",
+    "Web Design and Development",
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Evoke Studio",
+  alternateName: "MadeByEvoke",
+  url: "https://madebyevoke.com",
+  description: "Brand identity design, AI logo vectorization, and web design by Evoke Studio.",
+  publisher: { "@type": "Organization", name: "Evoke Studio" },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: { "@type": "EntryPoint", urlTemplate: "https://madebyevoke.com/blog?q={search_term_string}" },
+    "query-input": "required name=search_term_string",
   },
 };
 
@@ -132,6 +176,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body className="antialiased">
