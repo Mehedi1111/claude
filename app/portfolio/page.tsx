@@ -137,7 +137,7 @@ export default function PortfolioPage() {
               Live websites we built.
             </h2>
             <p className="text-base font-sans text-white/50 max-w-xl leading-relaxed mb-16">
-              Beyond logos — we design and build complete websites. Each starts with a domain and brand identity, ending in a fully deployed, performance-optimised marketing site. Here are three live examples.
+              Beyond logos — we design and build complete websites. Each starts with a domain and brand identity, ending in a fully deployed, performance-optimised marketing site. Here are four live examples.
             </p>
           </SectionReveal>
 
@@ -235,7 +235,7 @@ export default function PortfolioPage() {
 
           {/* ZoningOps */}
           <SectionReveal delay={0.2}>
-            <div>
+            <div className="mb-14">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                 <div>
                   <p className="text-xs font-sans font-semibold text-white/30 uppercase tracking-[0.15em] mb-1">
@@ -272,6 +272,52 @@ export default function PortfolioPage() {
                     src="https://www.zoningops.com/"
                     className="w-full h-full border-0"
                     title="ZoningOps website — PropTech web design and development by Evoke Studio"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </SectionReveal>
+
+          {/* Orange Kannel Club */}
+          <SectionReveal delay={0.25}>
+            <div>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                <div>
+                  <p className="text-xs font-sans font-semibold text-white/30 uppercase tracking-[0.15em] mb-1">
+                    Dog Club · Community · Australia
+                  </p>
+                  <h3 className="text-2xl font-display font-bold text-white tracking-[-0.03em]">Orange Kannel Club</h3>
+                  <p className="text-sm font-sans text-white/50 mt-1">Professional dog club website for a DogsNSW-affiliated kennel club — 12,000+ members, 180+ dog breeds, 500+ annual events.</p>
+                </div>
+                <div className="flex flex-wrap gap-3 shrink-0">
+                  <a
+                    href="https://orange-kannel-club.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white border border-white/20 px-5 py-3 hover:border-white/50 transition-colors"
+                  >
+                    Open Live Site ↗
+                  </a>
+                  <Link href="/portfolio/kannel-club-website" className="inline-flex items-center gap-2 text-sm font-sans font-medium text-white/50 hover:text-white transition-colors px-5 py-3">
+                    Case Study →
+                  </Link>
+                </div>
+              </div>
+              <div className="border border-white/10 overflow-hidden">
+                <div className="bg-white/5 border-b border-white/10 px-4 py-3 flex items-center gap-3">
+                  <div className="flex gap-1.5">
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                    <span className="w-3 h-3 rounded-full bg-white/10" />
+                  </div>
+                  <span className="text-xs font-sans text-white/30 flex-1 text-center">orange-kannel-club.vercel.app</span>
+                </div>
+                <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
+                  <iframe
+                    src="https://orange-kannel-club.vercel.app/"
+                    className="w-full h-full border-0"
+                    title="Orange Kannel Club — dog club website design and development by Evoke Studio"
                     loading="lazy"
                   />
                 </div>
