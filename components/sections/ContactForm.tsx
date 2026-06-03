@@ -35,6 +35,7 @@ export default function ContactForm() {
   const emailRef = useRef<HTMLInputElement>(null);
   const aiToolRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   const toggleService = (label: string) => {
     setSelected((prev) =>
@@ -63,6 +64,7 @@ export default function ContactForm() {
           aiTool: aiToolRef.current?.value,
           message: messageRef.current?.value,
           fileName,
+          _hp: honeypotRef.current?.value ?? "",
         }),
       });
       if (!res.ok) throw new Error("Send failed");
@@ -104,6 +106,19 @@ export default function ContactForm() {
   return (
     <SectionReveal delay={0.15}>
       <form onSubmit={handleSubmit} className="space-y-7">
+
+        {/* Honeypot — hidden from real users, bots fill it */}
+        <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", overflow: "hidden" }}>
+          <label htmlFor="_hp">Leave this empty</label>
+          <input
+            id="_hp"
+            ref={honeypotRef}
+            type="text"
+            name="_hp"
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
 
         {/* Name + Company */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

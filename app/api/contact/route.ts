@@ -1,12 +1,32 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+// Returns true if the string looks like random gibberish (bot-generated)
+function looksLikeGibberish(str: string): boolean {
+  if (!str || str.length < 8) return false;
+  // Flag strings with no spaces that are long and have alternating upper/lower (typical bot random strings)
+  const hasNoSpaces = !str.includes(" ");
+  const hasMixedCase = /[A-Z]/.test(str) && /[a-z]/.test(str);
+  const hasNoVowelSequences = !/[aeiouAEIOU]{1}[a-zA-Z]{1,3}[aeiouAEIOU]{1}/.test(str);
+  return hasNoSpaces && hasMixedCase && hasNoVowelSequences && str.length > 12;
+}
+
 export async function POST(request: Request) {
   const data = await request.json();
-  const { name, company, email, services, aiTool, message, fileName } = data;
+  const { name, company, email, services, aiTool, message, fileName, _hp } = data;
+
+  // Honeypot check — bots fill hidden fields, humans don't
+  if (_hp && _hp.length > 0) {
+    return NextResponse.json({ success: true }); // Silent accept so bots don't retry
+  }
 
   if (!name || !email) {
     return NextResponse.json({ error: "Name and email are required." }, { status: 400 });
+  }
+
+  // Gibberish detection — block obvious bot random-string submissions
+  if (looksLikeGibberish(name) || (company && looksLikeGibberish(company)) || (aiTool && looksLikeGibberish(aiTool))) {
+    return NextResponse.json({ success: true }); // Silent accept
   }
 
   const transporter = nodemailer.createTransport({
