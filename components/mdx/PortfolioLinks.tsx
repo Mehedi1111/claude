@@ -1,12 +1,14 @@
 interface PortfolioLinksProps {
   behanceUrl?: string;
   dribbbleUrl?: string;
+  siteUrl?: string;
   label?: string;
 }
 
 export default function PortfolioLinks({
   behanceUrl,
   dribbbleUrl,
+  siteUrl,
   label = "View full project",
 }: PortfolioLinksProps) {
   return (
@@ -15,6 +17,21 @@ export default function PortfolioLinks({
         {label}
       </p>
       <div className="flex flex-col sm:flex-row gap-3">
+        {siteUrl && (
+          <a
+            href={siteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-[#0a0a0a] text-white px-5 py-3.5 text-[13px] font-sans font-semibold hover:bg-[#1f1f1f] transition-colors"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+            View Live Website ↗
+          </a>
+        )}
         {behanceUrl && (
           <a
             href={behanceUrl}
