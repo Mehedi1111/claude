@@ -1,0 +1,139 @@
+---
+title: "Website Speed Optimisation Guide: How to Make Your Site Load Faster"
+excerpt: "Website speed directly affects conversion rates, search rankings, and user experience. Every 100ms of additional load time reduces conversion by 1%. A site loading in 5 seconds has a 90% higher bounce rate than one loading in 1 second. The techniques to achieve sub-2-second load times are well established — most businesses simply have not implemented them."
+category: "Guide"
+date: "2027-01-05"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Website Speed Optimisation", "Website Speed Optimization", "Page Speed", "Core Web Vitals"]
+related:
+  - "website-seo-guide"
+  - "mobile-first-web-design-guide"
+  - "website-redesign-guide"
+seo:
+  title: "Website Speed Optimisation Guide: Load Faster and Convert More (2027)"
+  description: "Complete website speed optimisation guide. How to improve Core Web Vitals, reduce load times, optimise images, choose the right hosting, and pass Google's performance benchmarks."
+---
+
+Website speed optimisation is one of the highest-ROI technical investments a business can make. Google's research found that every 100ms of additional page load time reduces conversion rates by 1%. Sites loading in 5 seconds have bounce rates 90% higher than sites loading in 1 second. In the US, UK, Canada, and Australia, where Google explicitly uses Core Web Vitals as a ranking signal, a slow website loses both revenue and organic search visibility simultaneously.
+
+The good news: the techniques that produce sub-2-second load times are well documented, and for most websites, implementing 5–6 of them produces an immediate and substantial improvement.
+
+---
+
+## What Are Core Web Vitals and Why Do They Matter?
+
+Core Web Vitals are Google's standardised speed metrics that measure user experience quality. They are used as ranking signals in Google Search and are the primary framework for evaluating website performance.
+
+**Largest Contentful Paint (LCP):** How quickly the largest visible element — usually the hero image or headline — loads. Target: under 2.5 seconds. Failure: over 4 seconds.
+
+**Interaction to Next Paint (INP):** How quickly the page responds to user interactions (clicks, taps, keyboard input). Target: under 200ms. Failure: over 500ms.
+
+**Cumulative Layout Shift (CLS):** How much the page layout shifts visually as it loads — images jumping, buttons moving. Target: under 0.1. Failure: over 0.25.
+
+Achieving "Good" scores on all three Core Web Vitals places your site in the top tier for user experience signals, which correlates with higher rankings for competitive search terms.
+
+## What Are the Most Impactful Website Speed Improvements?
+
+**1. Image optimisation (typically saves 40–70% of page weight)**
+
+Images are the single largest contributor to slow page loads on most websites. Optimisation steps:
+- Convert all images to WebP format (30–50% smaller than JPEG at equivalent quality)
+- Serve appropriately sized images for each viewport (a 200px thumbnail should not be a 1200px file)
+- Implement lazy loading (`loading="lazy"` attribute) for all below-the-fold images
+- Use a CDN (content delivery network) for image delivery
+
+**2. Hosting and infrastructure**
+
+Hosting is where most businesses spend the least and lose the most. Shared hosting on GoDaddy or Bluehost typically produces Time to First Byte (TTFB) values of 800ms–2000ms. Modern cloud hosting (Vercel, Netlify, AWS CloudFront) produces 50–150ms TTFB. This single change can improve LCP by 1–2 seconds.
+
+**3. Reduce JavaScript bundle size**
+
+Unused JavaScript is the most common cause of slow INP scores. Steps:
+- Code-split your JavaScript so only the code required for the current page is loaded
+- Remove unused third-party scripts (analytics, chat widgets, tag managers loading scripts you no longer use)
+- Defer non-critical scripts to load after the page is interactive
+
+**4. Use a content delivery network (CDN)**
+
+A CDN serves your pages from servers geographically close to the visitor. A visitor in Sydney should not be waiting for a response from a server in Virginia. Vercel, Cloudflare, and AWS CloudFront all provide CDN functionality, and it is a standard feature of modern hosting platforms.
+
+**5. Implement HTTP caching**
+
+Static resources — JavaScript files, CSS, fonts, images — rarely change. Setting long cache lifetimes (`Cache-Control: max-age=31536000, immutable`) allows repeat visitors to load these resources from their browser cache rather than downloading them again.
+
+**6. Reduce render-blocking resources**
+
+CSS loaded in the `<head>` and JavaScript loaded without `async` or `defer` attributes block the browser from rendering the page. Inline critical CSS (the styles needed for the above-the-fold content) and defer everything else.
+
+## How Do You Measure Website Speed?
+
+**Google PageSpeed Insights (pagespeed.web.dev):** The authoritative tool for Core Web Vitals assessment. Run your URL here for both mobile and desktop scores. Shows field data (real user measurements) and lab data (synthetic test results).
+
+**Google Search Console:** Shows Core Web Vitals aggregated across all your pages with real user data. Identifies specific pages with "Poor" or "Needs Improvement" scores.
+
+**WebPageTest (webpagetest.org):** More detailed technical breakdown. Shows the waterfall chart of every resource loaded, which allows you to identify exactly which assets are causing delays.
+
+**Chrome DevTools Lighthouse:** Built into Chrome's developer tools. Run for a detailed local audit with specific actionable recommendations.
+
+**GTmetrix:** Popular combination tool that surfaces PageSpeed and YSlow scores alongside a detailed breakdown.
+
+The target benchmarks for business websites in 2027:
+- LCP: under 2.5s (preferably under 1.5s for competitive industries)
+- INP: under 200ms
+- CLS: under 0.1
+- Time to First Byte: under 200ms
+- Total page weight: under 1.5MB (ideally under 500KB for simple pages)
+
+## How Does Website Speed Affect SEO and Conversion?
+
+**Search rankings:** Google uses Core Web Vitals as a "page experience" ranking signal. Sites that fail Core Web Vitals are disadvantaged in rankings compared to topically equivalent pages that pass. The effect is most pronounced in competitive search results where multiple pages are similarly optimised for content relevance.
+
+**Conversion rates:** Amazon found that every 100ms of latency reduced sales by 1%. Google found that pages loading in 1–3 seconds have a 32% higher probability of a visitor bouncing compared to pages loading under 1 second. The relationship between load time and conversion is consistent across industries.
+
+**Mobile specifically:** Mobile devices are slower to load pages than desktop computers, and mobile users are less patient. A page that loads in 2 seconds on desktop may load in 4 seconds on mobile — with a corresponding significant increase in bounce rate. See [mobile-first web design](/blog/mobile-first-web-design-guide) for the full mobile performance framework.
+
+## What Technology Choices Most Affect Website Speed?
+
+**Hosting:** Vercel, Netlify, and Cloudflare Pages deliver the fastest static and server-rendered content. Traditional shared hosting consistently underperforms.
+
+**Framework:** Next.js with static generation or server-side rendering produces excellent Core Web Vitals out of the box. React applications with large JavaScript bundles and client-side rendering typically score poorly.
+
+**CMS:** Headless CMSes (Sanity, Contentful, Prismic) decouple content from presentation and allow fully optimised front-ends. Monolithic WordPress with multiple plugins frequently loads 20+ blocking scripts.
+
+**Images:** Platforms that include built-in image optimisation (Vercel's Image Optimisation API, Cloudinary, imgix) are significantly faster than serving images directly from storage.
+
+See [website redesign guide](/blog/website-redesign-guide) for how speed should be evaluated before committing to a redesign.
+
+<CTASection
+  headline="Your Website Should Load in Under 2 Seconds"
+  description="We build high-performance websites on Next.js and Vercel — optimised for Core Web Vitals, fast on mobile, and fast enough to convert. For businesses in the US, UK, Canada, and Australia."
+  cta="Start Your Web Project"
+  href="/contact"
+  secondary="View Web Design Service"
+  secondaryHref="/services/web-design-development"
+/>
+
+<FAQAccordion items={[
+  {
+    q: "How fast should a website load?",
+    a: "A website should achieve Largest Contentful Paint (LCP) under 2.5 seconds, with the ideal target being under 1.5 seconds for competitive industries. Interaction to Next Paint (INP) should be under 200ms and Cumulative Layout Shift (CLS) under 0.1. These are Google's 'Good' thresholds for Core Web Vitals. Pages failing these thresholds are at a disadvantage in search rankings and show materially higher bounce rates."
+  },
+  {
+    q: "What is the fastest way to improve website speed?",
+    a: "The single fastest improvement for most websites is image optimisation: converting images to WebP format, implementing lazy loading for below-the-fold images, and serving correctly sized images for each viewport. On a typical website with unoptimised images, these changes alone reduce page weight by 40–60% and improve LCP by 1–2 seconds. The second fastest improvement is upgrading hosting to a modern edge platform (Vercel, Netlify, Cloudflare Pages)."
+  },
+  {
+    q: "Does website speed affect Google rankings?",
+    a: "Yes. Google uses Core Web Vitals (LCP, INP, CLS) as explicit ranking signals under their Page Experience update. Sites that fail Core Web Vitals are disadvantaged in rankings compared to equivalent pages that pass. The effect is most pronounced in competitive niches where content quality between competing pages is similar — at that point, page experience signals can determine which page ranks higher."
+  },
+  {
+    q: "How do I check my website's speed?",
+    a: "Use Google PageSpeed Insights (pagespeed.web.dev) for the authoritative Core Web Vitals assessment — it shows both field data (real user measurements) and lab data. Google Search Console's Core Web Vitals report shows performance aggregated across all your pages over time. WebPageTest gives the most detailed technical breakdown for diagnosing specific bottlenecks. Run these tests from a mobile device perspective — that is how Google primarily evaluates your site."
+  },
+  {
+    q: "Why is my website slow on mobile but fast on desktop?",
+    a: "Mobile devices have slower CPUs, slower network connections, and less memory than desktops. Pages that load quickly on a desktop can be 2–3× slower on mobile if they include large JavaScript bundles, unoptimised images, or render-blocking scripts. The fix requires mobile-specific optimisation: responsive images (smaller files for smaller screens), deferred JavaScript loading, reduced third-party scripts, and ideally a CDN for geographic proximity to mobile users."
+  }
+]} />
