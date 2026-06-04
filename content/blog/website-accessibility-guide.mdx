@@ -1,0 +1,149 @@
+---
+title: "Website Accessibility Guide: How to Make Your Website Accessible to Everyone"
+excerpt: "Website accessibility is both a legal requirement and a commercial opportunity. In the US, UK, Canada, and Australia, websites that fail WCAG 2.1 AA accessibility standards face legal risk, exclude millions of potential customers, and — frequently — rank lower in search results. The good news: the most impactful accessibility improvements are straightforward and inexpensive."
+category: "Guide"
+date: "2027-01-31"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Website Accessibility", "WCAG", "Web Accessibility Guide", "Accessible Web Design"]
+related:
+  - "website-color-palette-guide"
+  - "website-typography-guide"
+  - "mobile-first-web-design-guide"
+seo:
+  title: "Website Accessibility Guide: WCAG 2.1 AA Made Practical (2027)"
+  description: "Complete website accessibility guide. How to make your website WCAG 2.1 AA compliant, colour contrast, keyboard navigation, alt text, and the legal requirements for accessibility in the US, UK, Canada, and Australia."
+---
+
+Website accessibility is the practice of designing and building websites that can be used by people with disabilities — visual, auditory, motor, and cognitive. In the US, UK, Canada, and Australia, websites that fail to meet WCAG 2.1 AA accessibility standards face increasing legal risk, exclude an estimated 15–20% of the population with some form of disability, and miss a combined spending power of over $8 trillion globally. The commercial case for accessibility is as strong as the ethical one — and the technical implementation of the most impactful improvements is less complex than most businesses assume.
+
+This guide covers the practical steps to make a business website WCAG 2.1 AA compliant, the legal requirements by jurisdiction, and the most common accessibility failures on professional websites.
+
+---
+
+## What Is Website Accessibility and Why Does It Matter?
+
+Website accessibility means that people with disabilities — including those who are blind or have low vision, deaf or hard of hearing, have motor impairments, or have cognitive or neurological conditions — can perceive, understand, navigate, and interact with your website.
+
+**Who benefits from accessibility:**
+- People who are blind or have low vision (using screen readers like NVDA, VoiceOver, or JAWS)
+- People with colour blindness (affecting 8% of men globally)
+- People with motor impairments who navigate using keyboard only or alternative input devices
+- People with cognitive differences (including dyslexia, ADHD) who benefit from clear structure and readable text
+- Older users with declining vision, hearing, or dexterity
+- Temporary disability (broken arm, post-surgery vision impairment) — situational for many users
+
+Additionally: many accessibility improvements (clear headings, adequate contrast, keyboard navigation) improve usability for all users — not just those with disabilities.
+
+## What Are the Legal Requirements for Website Accessibility?
+
+**USA (ADA and Section 508):** The Americans with Disabilities Act has been interpreted by courts to apply to websites as places of public accommodation. Over 4,000 ADA website accessibility lawsuits are filed annually in the US. The most targeted businesses are retail ecommerce, restaurants, hotels, financial services, and healthcare. Section 508 applies specifically to federal government websites. WCAG 2.1 AA is the standard courts and the DOJ reference as the benchmark.
+
+**UK (Equality Act 2010):** The Equality Act requires businesses to make reasonable adjustments for disabled people. Public sector websites must meet WCAG 2.1 AA under the Public Sector Bodies Accessibility Regulations 2018. Private sector businesses face potential Equality Act claims for inaccessible websites.
+
+**Canada (AODA — Ontario):** The Accessibility for Ontarians with Disabilities Act requires websites of businesses with 50+ employees operating in Ontario to meet WCAG 2.0 Level AA. Federal government websites must meet WCAG 2.1 AA.
+
+**Australia (Disability Discrimination Act):** The DDA and the Australian Human Rights Commission's guidance establish that website inaccessibility can constitute disability discrimination. WCAG 2.1 AA is the referenced standard.
+
+## What Is WCAG 2.1 AA?
+
+WCAG (Web Content Accessibility Guidelines) 2.1 AA is the internationally recognised accessibility standard, published by the W3C. It is organised around four principles:
+
+**Perceivable:** Information must be presentable to users regardless of how they perceive it.
+**Operable:** Navigation and interface components must be operable via keyboard and not just a mouse.
+**Understandable:** Information and operation must be understandable.
+**Robust:** Content must be interpretable by current and future assistive technologies.
+
+Level AA is the standard required by law in most jurisdictions — it is achievable without sacrificing design quality.
+
+## What Are the Most Important Accessibility Improvements?
+
+**1. Colour contrast (highest impact, frequently failed)**
+
+Body text must achieve a minimum 4.5:1 contrast ratio against its background. Large text (18px+ or 14px+ bold) requires 3:1 minimum. The most common violation: light grey text (#999, #b0b0b0) on a white background. Check every text/background combination using the WebAIM Colour Contrast Checker.
+
+See [website colour palette guide](/blog/website-color-palette-guide) for how to build an accessible colour palette.
+
+**2. Image alt text**
+
+Every image that conveys meaning must have descriptive alt text. Decorative images should have empty alt attributes (`alt=""`). Screen readers read alt text aloud — an uninformative "image001.jpg" alt tells a blind user nothing. A product image alt text should describe the product: "Blue suede Chelsea boots with brass-tipped heel, angled side view."
+
+**3. Keyboard navigation**
+
+Every interactive element — links, buttons, form fields, dropdown menus — must be reachable and operable via keyboard (Tab to navigate, Enter/Space to activate). Focus states must be visually visible (the blue outline browsers show by default should never be removed without providing an alternative). Test by unplugging your mouse and attempting to complete a key task using keyboard alone.
+
+**4. Heading structure**
+
+Pages must use a logical heading hierarchy: one H1 per page, H2 for main sections, H3 for subsections. Screen readers navigate pages by heading structure — a page where headings are used for visual styling rather than semantic structure (H3 before H2, no H1) is disorienting and inaccessible.
+
+**5. Form labels**
+
+Every form input must have an associated `<label>` element. Placeholder text is not a substitute for a label — it disappears when the user starts typing. Every field should have a visible label above or beside it, programmatically associated via the `for` attribute.
+
+**6. Captions for video**
+
+Any video with spoken content must include accurate closed captions. Auto-generated captions (YouTube, Otter.ai) are a reasonable starting point but should be reviewed for accuracy.
+
+**7. Readable font sizes**
+
+Body text minimum 16px. Text below 14px fails the readability threshold for many users with visual impairments. See [website typography guide](/blog/website-typography-guide) for font size standards.
+
+## How Do You Test Website Accessibility?
+
+**Automated testing (finds 30–40% of issues):**
+- WAVE (wave.webaim.org) — browser extension that overlays visual accessibility analysis
+- axe DevTools — browser extension for developers
+- Google Lighthouse — includes an accessibility audit
+
+**Manual testing (required for complete assessment):**
+- Keyboard-only navigation test (unplug mouse, navigate the site)
+- Screen reader test (NVDA on Windows — free; VoiceOver on Mac/iOS — built in)
+- Colour contrast check (WebAIM Contrast Checker)
+- Zoom test (set browser zoom to 200% — does content reflow correctly?)
+
+**User testing with disabled users:** The most reliable testing method. If possible, include disabled users in your user testing process.
+
+## What Is the Easiest Way to Improve Accessibility?
+
+In order of impact and ease:
+1. Fix colour contrast violations (a single CSS change per failure)
+2. Add descriptive alt text to all meaningful images
+3. Restore or redesign focus indicators (remove any `outline: none` rules)
+4. Add `<label>` elements to all form inputs
+5. Correct heading hierarchy
+6. Add captions to video content
+
+Most business websites can achieve WCAG 2.1 AA compliance for core user journeys with 2–5 days of focused developer work.
+
+<CTASection
+  headline="Your Website Should Be Accessible to Everyone"
+  description="We build accessible websites that meet WCAG 2.1 AA standards — for businesses in the US, UK, Canada, and Australia who take their legal obligations and their users seriously."
+  cta="Start Your Web Project"
+  href="/contact"
+  secondary="View Web Design Service"
+  secondaryHref="/services/web-design-development"
+/>
+
+<FAQAccordion items={[
+  {
+    q: "What is WCAG 2.1 AA and do I need to comply?",
+    a: "WCAG 2.1 AA is the Web Content Accessibility Guidelines Level AA — the internationally recognised accessibility standard. In practice: if you operate a business website in the US, UK, Canada, or Australia, you should target WCAG 2.1 AA compliance. US ADA litigation targets websites that fail this standard. UK Equality Act, Canadian AODA (Ontario), and Australian DDA all reference equivalent standards. Beyond legal risk, WCAG 2.1 AA compliance makes your website usable by the estimated 15–20% of the population with some form of disability."
+  },
+  {
+    q: "What is the most common website accessibility failure?",
+    a: "Colour contrast failures are the most common WCAG violation — found on the majority of business websites. The typical failure is light grey text (#999, #767676, #b0b0b0) on a white background that does not achieve the required 4.5:1 contrast ratio for body text. The fix is a single CSS colour change. The second most common failure is missing or uninformative image alt text. These two violations alone account for over 60% of WCAG AA failures on a typical business website."
+  },
+  {
+    q: "Do I need to remove my CSS focus outline for design purposes?",
+    a: "No — and this is one of the most damaging accessibility changes made by designers. The browser's default focus outline (typically a blue ring around focused elements) is essential for keyboard navigation. Removing it with `outline: none` or `outline: 0` makes the site completely unusable for keyboard users. If the default outline does not match your design, replace it with a custom focus indicator — a branded colour outline or box shadow — never remove it without a visible replacement."
+  },
+  {
+    q: "How do I check if my website is accessible?",
+    a: "Use three tools: WAVE (wave.webaim.org, a free browser extension) for a visual overlay of accessibility issues, WebAIM's Colour Contrast Checker for text contrast verification, and your browser's keyboard navigation (Tab through the site with your mouse unplugged). Automated tools find 30–40% of WCAG violations; manual testing finds the rest. If your website has significant traffic from disabled users or you serve regulated industries (healthcare, financial services, government), a professional accessibility audit by a specialist is recommended."
+  },
+  {
+    q: "Does website accessibility affect SEO?",
+    a: "Yes, positively. Many accessibility improvements directly overlap with SEO best practices: descriptive alt text improves image search indexing, logical heading hierarchy helps search engines understand page structure, clear page titles and meta descriptions benefit both screen reader users and search result snippets, and fast load times (which aid users with cognitive processing challenges) are a Google ranking signal. Accessible websites consistently perform better in technical SEO audits because the structural rigour required for accessibility aligns with what search engines reward."
+  }
+]} />
