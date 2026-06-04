@@ -1,0 +1,298 @@
+---
+title: "Website Launch Checklist: 47 Things to Do Before You Go Live (2027)"
+excerpt: "A complete pre-launch checklist for new websites — covering DNS, redirects, analytics, SEO setup, performance, accessibility, legal pages, and post-launch monitoring. Don't go live without checking these first."
+category: "Guide"
+date: "2027-02-26"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Website Launch Checklist", "Website Launch", "Pre-Launch Checklist", "Web Design"]
+related:
+  - "web-design-process-guide"
+  - "website-maintenance-guide"
+  - "website-analytics-guide"
+  - "how-much-does-web-design-cost"
+seo:
+  title: "Website Launch Checklist: 47 Things to Do Before You Go Live (2027)"
+  description: "Complete website launch checklist for 2027. DNS, redirects, analytics, SEO, performance, legal pages, accessibility — 47 checks before you go live. For new websites and redesigns."
+---
+
+Launching a website before it's properly configured is one of the most common and costly mistakes in web design. Missing a redirect breaks years of SEO equity. A missing privacy policy creates legal exposure. A misconfigured DNS points visitors to a blank page. A website that loads in 7 seconds on mobile loses the customer before the page finishes. This checklist covers 47 things to verify before any website goes live — whether it's a new build or a full redesign.
+
+---
+
+## Why Does a Website Launch Checklist Matter?
+
+Most website problems are invisible until launch day — or worse, until a customer or search engine finds them first. A pre-launch checklist catches issues in a controlled environment where they can be fixed without impacting real traffic, real customers, or existing search rankings.
+
+For a new website, a missed configuration means a slow start. For a redesign, a missed redirect or incorrect canonical tag can destroy organic search rankings that took years to build. The checklist exists to protect both.
+
+---
+
+## Section 1: Domain and DNS
+
+### 1. DNS records are correctly configured
+
+Your domain's A records (or CNAME for platforms like Vercel) should point to your hosting provider. Verify with a DNS lookup tool (dig, whatsmydns.net) before launch. DNS propagation can take up to 48 hours — configure DNS changes at least 24 hours before planned launch.
+
+### 2. WWW vs non-WWW redirect is configured
+
+Pick one canonical version (www.yourdomain.com or yourdomain.com) and redirect the other to it with a 301 permanent redirect. Both versions must not serve content independently — this creates duplicate content for search engines.
+
+### 3. SSL/HTTPS certificate is active and valid
+
+Every website must serve over HTTPS in 2027. Verify your SSL certificate is active, not expired, and correctly installed for both www and non-www versions. HTTP requests should redirect automatically to HTTPS.
+
+### 4. HTTP → HTTPS redirect is live
+
+Confirm that `http://yourdomain.com` and `http://www.yourdomain.com` both redirect to the HTTPS version with a 301.
+
+### 5. Old domain redirects are in place (redesigns)
+
+If the site URL structure has changed, every old URL that had organic traffic or backlinks needs a 301 redirect to the new equivalent page. Map old URLs to new URLs before DNS cutover.
+
+---
+
+## Section 2: Technical SEO
+
+### 6. Page titles are set for every page
+
+Every page needs a unique, keyword-relevant title tag under 60 characters. Duplicate or missing titles are a common issue on new builds.
+
+### 7. Meta descriptions are set for key pages
+
+Meta descriptions don't directly affect rankings but affect click-through rate from search results. Set unique, accurate meta descriptions for the homepage, service pages, and primary blog posts.
+
+### 8. robots.txt is correct
+
+Verify your robots.txt file is accessible at `/robots.txt` and does not block search engines from crawling pages you want indexed. A misconfigured robots.txt that blocks all crawlers is a common cause of new sites not appearing in search results.
+
+### 9. sitemap.xml is generated and submitted
+
+Your XML sitemap should list all indexable pages. Submit it to Google Search Console and Bing Webmaster Tools before launch. For Next.js sites, sitemap generation should be automatic — verify the output.
+
+### 10. Canonical tags are set correctly
+
+Every page should have a canonical tag pointing to its preferred URL. This prevents duplicate content issues where the same page is accessible via multiple URLs (e.g., with/without trailing slash, with UTM parameters).
+
+### 11. Open Graph and social meta tags are set
+
+Verify Open Graph title, description, and image tags on key pages. These control how your pages appear when shared on LinkedIn, X (Twitter), Facebook, and WhatsApp. Use a social card preview tool to check.
+
+### 12. Heading structure is correct (H1, H2, H3)
+
+Every page should have exactly one H1 tag containing the primary keyword. Check that heading hierarchy is logical (H2 follows H1, H3 follows H2 — no skips). Broken heading structure affects both SEO and accessibility.
+
+### 13. Image alt text is set
+
+Every content image should have descriptive alt text. Decorative images should have empty alt attributes (`alt=""`). Missing alt text affects both SEO and screen reader accessibility.
+
+### 14. Internal links are not broken
+
+Run a link checker (Screaming Frog, Ahrefs Site Audit, or a free equivalent) to confirm no internal links return 404 errors. Broken internal links waste crawl budget and create poor user experience.
+
+---
+
+## Section 3: Redirects (Critical for Redesigns)
+
+### 15. All redirected URLs return 301, not 302
+
+Permanent redirects (301) pass SEO equity to the destination URL. Temporary redirects (302) do not. Verify all redirects are 301.
+
+### 16. No redirect chains exist
+
+A chain (URL A → URL B → URL C) dilutes link equity and slows page load. All redirects should go directly to the final destination URL.
+
+### 17. Old pages with backlinks are redirected
+
+Check your old site's top pages by backlink count (Ahrefs, Moz, or Google Search Console) and ensure each has a direct 301 to the most relevant new page.
+
+### 18. 404 page is customised and helpful
+
+Your 404 error page should include navigation, a clear message, suggested pages, and a contact option. A blank or generic 404 page loses users who could otherwise find what they need.
+
+---
+
+## Section 4: Analytics and Tracking
+
+### 19. Google Analytics 4 is installed and firing
+
+Verify GA4 is installed and tracking pageviews. Use the GA4 DebugView or Google Tag Assistant to confirm events are firing correctly before launch.
+
+### 20. Google Search Console is verified
+
+Add your domain to Google Search Console and verify ownership. Submit your sitemap. This is where Google sends manual action notices and where you monitor organic search performance.
+
+### 21. Bing Webmaster Tools is verified
+
+Add your domain to Bing Webmaster Tools and submit your sitemap. Bing is the default search engine on Windows devices and has significant share in the US, UK, Canada, and Australia.
+
+### 22. Conversion tracking is configured
+
+If the site has contact forms, phone click tracking, booking forms, or e-commerce transactions — these should be tracked as conversion events in GA4 before launch. Retroactive tracking configuration is impractical.
+
+### 23. Internal IP addresses are excluded from analytics
+
+Filter out traffic from your own team's IP addresses in GA4 to prevent internal visits inflating session and conversion data.
+
+### 24. IndexNow is configured (for Bing/Yandex)
+
+IndexNow enables direct URL submission to Bing and other participating search engines when pages are published or updated. For Next.js sites on Vercel, this can be automated via a postbuild script.
+
+---
+
+## Section 5: Performance
+
+### 25. Core Web Vitals pass on mobile
+
+Use Google PageSpeed Insights or Lighthouse to test Core Web Vitals on mobile. LCP (Largest Contentful Paint) should be under 2.5 seconds. CLS (Cumulative Layout Shift) should be under 0.1. INP (Interaction to Next Paint) should be under 200ms.
+
+### 26. Images are in WebP or AVIF format
+
+JPEG and PNG images served without optimisation are the most common cause of slow page loads. All images should be converted to WebP or AVIF, and sized appropriately for their display dimensions.
+
+### 27. Images have width and height attributes
+
+Missing width/height attributes on images cause layout shift as they load — a direct hit to CLS scores. Every image should declare its dimensions.
+
+### 28. Fonts are preloaded and subset
+
+Web fonts loaded from Google Fonts or other CDNs can delay rendering if not preloaded. Preload primary font files and use `font-display: swap`. Consider self-hosting fonts to eliminate third-party DNS lookup latency.
+
+### 29. JavaScript bundles are split and lazy-loaded
+
+Large JavaScript bundles that load on every page slow down page rendering. Verify that route-based code splitting is active (default in Next.js) and that third-party scripts (chat widgets, analytics) are loaded asynchronously.
+
+### 30. Mobile layout is correct on real devices
+
+Test on actual mobile devices, not just browser developer tools. iOS Safari and Android Chrome render CSS differently. Pay particular attention to font sizes, touch target sizes, and navigation menus.
+
+---
+
+## Section 6: Accessibility
+
+### 31. Colour contrast meets WCAG AA minimums
+
+Body text against background should meet 4.5:1 contrast ratio. Large text and UI components need 3:1. Use a contrast checker tool before launch. Failing contrast is a common accessibility audit finding.
+
+### 32. All interactive elements are keyboard navigable
+
+Tab through every interactive element on every page. Focus states must be visible. Dropdowns, modals, and forms must be fully keyboard operable.
+
+### 33. Forms have correctly associated labels
+
+Every form field must have a `<label>` element correctly associated via `for`/`id` or `aria-label`. Placeholder text is not an accessible substitute for a label.
+
+### 34. Skip navigation link is present
+
+A skip navigation link at the top of each page lets keyboard and screen reader users jump past navigation to main content. It can be visually hidden but must be visible on focus.
+
+---
+
+## Section 7: Legal Pages
+
+### 35. Privacy policy is published and accurate
+
+A privacy policy is legally required in the UK (UK GDPR), EU (GDPR), California (CCPA), Canada (PIPEDA), and Australia (Privacy Act). It must accurately describe what data you collect and how it's used. If you use GA4, cookies, or contact forms — you collect data and need a policy.
+
+### 36. Cookie consent is configured (UK/EU)
+
+If your site is accessible to UK or EU visitors, you need a cookie consent mechanism that allows users to decline non-essential cookies before they're set. Pre-ticked consent is not compliant under GDPR.
+
+### 37. Terms and conditions are published (if applicable)
+
+E-commerce sites, SaaS products, and subscription services require terms of service. Professional services sites benefit from terms outlining scope of work and liability.
+
+### 38. Business registration information is visible (UK)
+
+UK law requires limited companies to display their registered company name, number, and registered address on their website — typically in the footer or on the contact page.
+
+### 39. ABN/ACN is displayed (Australia)
+
+Australian businesses with an ABN or ACN should display it on the website, typically in the footer. This is a trust signal and in some cases a legal requirement for businesses trading online.
+
+---
+
+## Section 8: Content and Functionality
+
+### 40. All forms are tested and submissions delivered
+
+Test every contact form, booking form, and newsletter signup on the live (or staging) environment. Confirm submissions are delivered to the correct email address or CRM. This is frequently broken due to email configuration issues on new hosting environments.
+
+### 41. All external links open correctly
+
+Test all external links — especially those to partners, case studies, and resources. Confirm they open in new tabs (with appropriate rel attributes) and that the destination URLs are still live.
+
+### 42. Phone numbers are click-to-call formatted
+
+Mobile users tapping a phone number expect it to trigger a call. Format phone numbers as `tel:` links: `<a href="tel:+441234567890">`.
+
+### 43. Email addresses are linked with mailto
+
+Email addresses listed on contact pages should be wrapped in `mailto:` links so desktop users can trigger their email client.
+
+### 44. Business hours and address are correct
+
+Contact pages, Google Business Profile, and the website footer should show consistent, accurate address and hours. Inconsistencies confuse both customers and local SEO algorithms.
+
+### 45. Social media links point to the correct profiles
+
+Verify every social media icon links to the correct, active account. Broken or incorrect social links are a surprisingly common oversight on new builds.
+
+---
+
+## Section 9: Post-Launch
+
+### 46. Uptime monitoring is configured
+
+Set up uptime monitoring (UptimeRobot free plan, Better Uptime, or similar) to notify you if the website goes offline. This is especially important in the first 72 hours after launch.
+
+### 47. Indexing is requested after launch
+
+After DNS is live and verified, request indexing of the homepage via Google Search Console's URL Inspection tool. Submit your sitemap again to confirm new pages are queued for crawling.
+
+---
+
+## Website Launch Timeline: What to Do When
+
+**2 weeks before launch:** Complete all content. Run accessibility audit. Configure analytics. Set up redirects map (for redesigns).
+
+**1 week before launch:** Configure DNS in advance (if possible). Test all forms on staging. Complete performance optimisation. Verify all legal pages.
+
+**24–48 hours before launch:** Make DNS changes. Monitor DNS propagation. Complete final content and image checks.
+
+**Launch day:** Verify HTTPS, redirects, and analytics. Submit sitemap. Request indexing via Search Console. Enable uptime monitoring.
+
+**Week 1 post-launch:** Monitor Search Console for crawl errors. Monitor uptime alerts. Review GA4 for unexpected bounce rates or broken conversion funnels.
+
+<CTASection
+  headline="About to launch a new website? Make sure it's built to perform from day one."
+  description="Evoke Studio builds Next.js websites with analytics, SEO, Core Web Vitals, and legal compliance configured before handover. No overlooked details — just a website that works from launch."
+  cta="Start Your Web Project"
+  href="/contact"
+  secondary="View Services & Pricing"
+  secondaryHref="/services"
+/>
+
+<FAQAccordion items={[
+  {
+    q: "What should I check before launching a website?",
+    a: "The most critical pre-launch checks are: DNS and HTTPS configuration, 301 redirects from all old URLs (for redesigns), analytics and Google Search Console setup, Core Web Vitals performance on mobile, all forms delivering to the correct email address, privacy policy and cookie consent (UK/EU), correct robots.txt (not blocking search engines), and XML sitemap submitted to Google and Bing. Missing any of these on launch day is harder to fix with live traffic on the site."
+  },
+  {
+    q: "How long does it take for a new website to appear in Google?",
+    a: "A new website typically takes 2–8 weeks to begin appearing in Google search results for relevant queries. Google's crawl queue means indexing is not instant. After launch, submit your sitemap via Google Search Console and request indexing of the homepage via URL Inspection. For Bing, submit your sitemap via Bing Webmaster Tools and implement IndexNow for faster indexing. Domain age, site authority, and backlinks all affect how quickly rankings develop."
+  },
+  {
+    q: "What redirects do I need for a website redesign?",
+    a: "For any website redesign where URLs have changed, you need a 301 permanent redirect from every old URL to the most relevant new URL. Start with the pages that have the most organic traffic (check Google Search Console), most backlinks (check Ahrefs or Google Search Console), and any direct linked URLs in printed materials, email signatures, or social media. Missing redirects for high-traffic or high-backlink pages will result in loss of organic search rankings."
+  },
+  {
+    q: "Do I need a cookie consent banner on my website?",
+    a: "If your website is accessible to visitors in the UK or EU and sets non-essential cookies (analytics cookies like Google Analytics count as non-essential), you need a GDPR-compliant cookie consent mechanism. This means: users must be able to decline non-essential cookies before they are set; consent must be freely given (no pre-ticked boxes); and users must be able to withdraw consent as easily as they gave it. Australian businesses serving UK/EU customers also need to comply."
+  },
+  {
+    q: "What analytics should I set up before launching a website?",
+    a: "Before launch: Google Analytics 4 (pageviews, events, conversion tracking for forms and calls), Google Search Console (organic search performance, crawl errors, indexing status), and Bing Webmaster Tools (Bing organic performance, sitemap submission). Set up conversion tracking for every meaningful action on the site (form submission, phone click, booking, purchase). Analytics configured retroactively after launch means you have no baseline data for the first weeks — a gap that's impossible to fill."
+  }
+]} />

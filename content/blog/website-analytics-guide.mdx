@@ -1,0 +1,225 @@
+---
+title: "Website Analytics Guide: How to Set Up and Use Analytics in 2027"
+excerpt: "A complete guide to website analytics — setting up Google Analytics 4, Google Search Console, Bing Webmaster Tools, conversion tracking, and using data to make decisions that improve traffic and leads. For business owners who want to understand their website."
+category: "Guide"
+date: "2027-03-01"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Website Analytics", "Google Analytics 4", "Website Analytics Guide", "Web Design"]
+related:
+  - "website-launch-checklist"
+  - "website-maintenance-guide"
+  - "web-design-process-guide"
+  - "how-much-does-web-design-cost"
+seo:
+  title: "Website Analytics Guide: Set Up GA4, Search Console & More (2027)"
+  description: "Complete website analytics guide for 2027. Set up Google Analytics 4, Google Search Console, Bing Webmaster Tools, and conversion tracking. How to use data to improve traffic and leads."
+---
+
+Most businesses install Google Analytics on their website and then never look at it. Others look at pageviews once a month and call it an analytics strategy. Neither approach produces actionable insight. This guide explains what website analytics you actually need in 2027, how to set each tool up correctly, what metrics matter, what doesn't, and how to use the data to make decisions that improve organic traffic, lead generation, and conversion rates.
+
+---
+
+## Which Analytics Tools Do You Need?
+
+### Google Analytics 4 (GA4) — Required
+
+GA4 is Google's current analytics platform, replacing Universal Analytics which was sunset in 2023. GA4 tracks: pageviews, sessions, users, traffic sources, conversion events, user journeys, and audience demographics. It is the foundation of website analytics for any business targeting organic search growth or measuring marketing ROI.
+
+GA4 is free and should be installed on every website.
+
+### Google Search Console — Required
+
+Google Search Console is separate from GA4 and specifically covers your website's performance in Google organic search. It shows: which queries drive impressions and clicks, average ranking position for specific keywords, crawl errors, indexing status, Core Web Vitals issues, and manual actions.
+
+Google Search Console is free, requires verification of domain ownership, and is essential for any business that cares about organic search.
+
+### Bing Webmaster Tools — Required
+
+Bing Webmaster Tools is the Bing equivalent of Google Search Console. It shows organic search performance in Bing, crawl errors, sitemap status, and keyword data. Bing holds approximately 25–30% of desktop search market share in the US and UK — significant enough that ignoring it leaves meaningful data on the table.
+
+Bing Webmaster Tools is free and requires domain verification (similar to Google Search Console). If you implement IndexNow (which submits new URLs to Bing automatically), verify your site in Bing Webmaster Tools first.
+
+### Hotjar or Microsoft Clarity — Recommended
+
+Session recording and heatmap tools show how visitors actually interact with your website — where they click, how far they scroll, and where they drop off. This qualitative data is invaluable for understanding why conversion rates are low on specific pages.
+
+Microsoft Clarity is free with no session limits. Hotjar has a free tier and paid plans for more advanced analysis.
+
+---
+
+## Setting Up Google Analytics 4 Correctly
+
+### Step 1: Create a GA4 Property
+
+In Google Analytics, create a new property (GA4 is the default). Set the correct timezone (your primary market's timezone — this affects all reporting) and currency.
+
+### Step 2: Install the GA4 Tag
+
+**Via Google Tag Manager (recommended):** Create a GA4 Configuration tag in GTM with your Measurement ID (G-XXXXXXXX). Publish the container. This approach centralises all tracking scripts and makes future additions easier.
+
+**Via direct script (Next.js/custom):** For Next.js, install the `@next/third-parties` package and use the `GoogleAnalytics` component in your root layout. This handles script loading optimally for Core Web Vitals performance.
+
+**Verify installation:** Use the GA4 DebugView in real-time or the Google Tag Assistant Chrome extension to confirm GA4 is firing pageview events correctly on all pages.
+
+### Step 3: Configure Conversion Events
+
+GA4's default tracking captures pageviews, scrolls, outbound clicks, and a few other engagement signals automatically. But conversions — the actions that actually matter for your business — must be configured explicitly.
+
+Mark the following as conversion events (in GA4 Admin > Events > Mark as Conversion):
+
+- **Contact form submission** — `form_submit` event with page path filter for your contact form URL
+- **Phone number click** — `click` event for `tel:` link clicks
+- **Email click** — `click` event for `mailto:` link clicks
+- **Calendar booking** — configure via Google Tag Manager to fire when a Calendly/Cal.com booking is confirmed
+- **Download** — if you offer lead magnets or resources
+- **Purchase / Transaction** — automatic for e-commerce sites with e-commerce tracking
+
+Conversions not tracked from day one are permanently lost — analytics cannot retroactively calculate conversion data for periods before tracking was configured.
+
+### Step 4: Link GA4 to Google Search Console
+
+In GA4, go to Admin > Property Settings > Search Console Links. Connect your verified Search Console property. This enables you to see organic search query data (keywords, impressions, clicks, average position) directly inside GA4 reports.
+
+### Step 5: Exclude Internal Traffic
+
+Create a data filter in GA4 Admin > Data Filters to exclude traffic from your own IP address or office IP range. Internal visits inflate session counts, reduce bounce rate accuracy, and can skew conversion rate data.
+
+---
+
+## Setting Up Google Search Console
+
+### Step 1: Add and Verify Property
+
+In Google Search Console, add your domain using the Domain property option (covers both www and non-www, plus all subdomains). Verify via DNS TXT record (add to your domain's DNS settings). This is the most comprehensive verification method.
+
+### Step 2: Submit Your Sitemap
+
+In Search Console, go to Sitemaps and submit your XML sitemap URL (typically `https://yourdomain.com/sitemap.xml`). This tells Google where to find all your indexable pages.
+
+### Step 3: Enable Email Alerts
+
+In Settings > Email preferences, enable notifications for: coverage issues, manual actions, and security issues. These alert you to problems that could affect organic rankings — you want to know about them as soon as they occur.
+
+### Step 4: Monitor Core Web Vitals
+
+The Core Web Vitals report in Search Console shows real-world user experience data from Chrome users visiting your site. Pages with poor LCP, CLS, or INP scores are flagged. This is more meaningful than lab data (PageSpeed Insights) because it reflects actual user experience across devices and connection speeds.
+
+---
+
+## Setting Up Bing Webmaster Tools
+
+### Step 1: Add Your Site
+
+In Bing Webmaster Tools, add your site URL and verify via XML file upload, meta tag, or CNAME record. The CNAME method requires a DNS change.
+
+### Step 2: Submit Sitemaps
+
+Submit your XML sitemap. Bing processes sitemaps independently from Google — do both.
+
+### Step 3: Configure IndexNow
+
+IndexNow is an open protocol that notifies search engines (Bing, Yandex, and other participating engines) immediately when URLs are published or updated. For Next.js sites, this can be automated via a postbuild script that submits all sitemap URLs. This dramatically accelerates indexing of new content on Bing compared to waiting for the crawler to discover it.
+
+---
+
+## What Metrics Actually Matter
+
+### Traffic Metrics
+
+**Organic Sessions:** Visits from search engines (Google, Bing). The primary signal of SEO performance. Track month-over-month and year-over-year to distinguish genuine growth from seasonal fluctuation.
+
+**Organic Traffic by Landing Page:** Which pages receive organic traffic? This tells you which content is ranking and which isn't. Sort by sessions and identify your top 20 organic landing pages.
+
+**Traffic Sources:** Direct, organic, referral, social, email. Understand where your visitors come from to allocate marketing investment appropriately.
+
+### Engagement Metrics
+
+**Engagement Rate (GA4):** The percentage of sessions with at least one engaged session (30+ seconds, 2+ pages, or conversion event). More meaningful than bounce rate as a health signal.
+
+**Average Engagement Time per Session:** How long, on average, do visitors spend actively on the site? Low engagement time on key service pages can indicate the content isn't matching visitor intent.
+
+**Scroll Depth:** How far do visitors scroll on key pages? If most visitors don't scroll past the first screen of your services page, your most important content may be too far down.
+
+### Conversion Metrics
+
+**Conversion Rate by Traffic Source:** What percentage of organic visitors, paid visitors, and direct visitors convert? If paid traffic converts at 1% and organic converts at 4%, that's an insight worth acting on.
+
+**Conversion Rate by Landing Page:** Which pages convert visitors into enquiries at the highest rate? Which pages have high traffic but low conversion? The latter are your highest-priority optimisation targets.
+
+**Goal Completions:** Total number of conversion events (form submissions, call clicks, downloads) by time period. The primary measure of business performance from the website.
+
+### Search Console Metrics
+
+**Total Impressions:** How many times your site appeared in Google search results. An increasing trend indicates growing organic visibility.
+
+**Total Clicks:** Actual visits from Google search results. The gap between impressions and clicks (click-through rate) indicates how well your title tags and meta descriptions convert searchers into visitors.
+
+**Average Position:** Average ranking position across all queries where the site appears. Track this for specific target keywords, not just the overall average (which is meaningless as a single number).
+
+**Top Queries:** Which search queries drive the most impressions and clicks? Are your actual traffic-driving queries the same as your target keywords? Discrepancies reveal optimisation opportunities.
+
+---
+
+## What Metrics Don't Matter
+
+**Total pageviews.** Pageviews without context are vanity metrics. 50,000 pageviews from irrelevant traffic is worse than 5,000 pageviews from your target audience.
+
+**Bounce rate (old definition).** GA4's engagement rate is more meaningful. A "bounce" in Universal Analytics terms (single-page session) included every user who read a full blog post and left satisfied — a poor proxy for actual engagement.
+
+**Social media followers.** Followers are not website traffic and not leads. Track website sessions from social media sources, not follower counts.
+
+**Rankings for branded keywords.** Ranking #1 for your own company name is expected and tells you nothing useful about your organic search strategy. Track rankings for non-branded target keywords.
+
+---
+
+## Using Analytics to Improve Your Website
+
+### Find your best-performing pages — then improve them
+
+Your top organic landing pages are already working. Identify why: long-form content? Specific keyword targeting? Strong technical SEO? Apply what's working to underperforming pages.
+
+### Find high-impression, low-click pages in Search Console
+
+Pages with many impressions but low click-through rates are ranking but not compelling clicks. The fix is usually improving the title tag and meta description to be more specific, more useful, and more aligned with the searcher's intent.
+
+### Find high-traffic, low-conversion pages in GA4
+
+Pages that receive significant organic traffic but convert at below-average rates are leaving leads on the table. Audit these pages for: CTA placement and clarity, content-to-intent alignment, social proof, and page speed.
+
+### Monitor for traffic drops
+
+Set up email alerts in GA4 for significant drops in organic sessions. A sudden 30% drop in organic traffic is not a marketing issue — it's a technical issue (robots.txt accidentally blocking Google, a manual action, a site error, or a Core Web Vitals failure). Catching it within 24–48 hours prevents weeks of ranking recovery.
+
+<CTASection
+  headline="Website that's not generating traffic or leads? Let's find out why."
+  description="Evoke Studio builds Next.js websites with analytics configured from day one — GA4, Search Console, conversion tracking, and IndexNow for Bing. You'll know exactly how your website is performing from launch."
+  cta="Start Your Web Project"
+  href="/contact"
+  secondary="View Services & Pricing"
+  secondaryHref="/services"
+/>
+
+<FAQAccordion items={[
+  {
+    q: "What analytics does a small business website need?",
+    a: "At minimum, a small business website needs three tools: Google Analytics 4 (traffic, conversions, user behaviour), Google Search Console (organic search performance, crawl errors, Core Web Vitals), and Bing Webmaster Tools (Bing organic search performance). All three are free. GA4 requires a short setup process to configure conversion events (form submissions, call clicks). The most common small business analytics mistake is installing GA4 but never configuring conversion tracking — which means you have traffic data but no way to measure whether the website is actually generating leads."
+  },
+  {
+    q: "What is the difference between Google Analytics and Google Search Console?",
+    a: "Google Analytics 4 tracks what happens on your website — who visits, where they come from, what pages they view, how long they stay, and whether they complete conversion actions (form submissions, purchases, calls). Google Search Console tracks how your website performs in Google search — which queries trigger your pages to appear, how often they're clicked, your average ranking position, and any technical issues affecting indexation. Both are essential and complementary: Search Console tells you how people find you; Analytics tells you what they do when they arrive."
+  },
+  {
+    q: "How do I set up conversion tracking in GA4?",
+    a: "In GA4, conversion tracking requires: (1) identifying the actions that represent a lead or sale on your website; (2) configuring GA4 to record these as events — typically via Google Tag Manager for form submissions, call clicks, and calendar bookings; (3) marking those events as conversions in GA4 Admin > Events. For simple websites, the most important conversions to track are: contact form submission (fire a GA4 event on the thank-you page or on successful submission), phone number click (track as an outbound click event), and email link click. Conversions not tracked from launch cannot be retroactively recovered."
+  },
+  {
+    q: "How long before my website starts getting organic traffic?",
+    a: "New websites typically start receiving small amounts of organic traffic within 4–8 weeks of launch, as Google crawls and indexes the site. Meaningful organic traffic for competitive keywords typically takes 4–12 months of consistent content publishing and on-page SEO. The timeline depends heavily on domain authority (new domains start with none), content quality and quantity, keyword competition, and technical SEO quality. Bing typically indexes faster than Google when IndexNow is configured. Tracking from day one in Search Console gives you the data to understand the growth trajectory."
+  },
+  {
+    q: "What is a good conversion rate for a website?",
+    a: "Conversion rates vary significantly by industry and conversion type. For B2B professional services websites, a contact form conversion rate of 1–3% of organic sessions is typical. For e-commerce, 1–4% purchase conversion rate is common across most categories. For landing pages with a single, specific offer, 5–15% is achievable with strong optimisation. More useful than industry benchmarks is tracking your own conversion rate over time and understanding what changes improve it. A site converting at 0.5% has significant optimisation potential regardless of the industry average."
+  }
+]} />

@@ -1,0 +1,190 @@
+---
+title: "Website Maintenance Guide: What to Do After Your Site Launches (2027)"
+excerpt: "A complete guide to ongoing website maintenance — security updates, performance monitoring, content freshness, backups, and technical health checks. What to do weekly, monthly, and quarterly to keep your website working."
+category: "Guide"
+date: "2027-02-27"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Website Maintenance", "Website Maintenance Guide", "Website Updates", "Web Design"]
+related:
+  - "website-launch-checklist"
+  - "website-analytics-guide"
+  - "web-design-process-guide"
+  - "how-much-does-web-design-cost"
+seo:
+  title: "Website Maintenance Guide: What to Do After Launch (2027)"
+  description: "Complete website maintenance guide for 2027. Security updates, performance monitoring, content freshness, backups, and technical health checks. What to do weekly, monthly, and quarterly."
+---
+
+Most businesses treat their website as a one-time project — design it, launch it, and leave it. That approach leads to websites that become progressively slower, less secure, and less effective over time. Search rankings decline as competitors publish fresh content. Security vulnerabilities go unpatched. Content goes stale and erodes trust. Broken links accumulate. Performance degrades as third-party scripts are added and never removed. A website that receives no maintenance after launch is not staying the same — it is slowly deteriorating. This guide covers what website maintenance actually means in 2027, what a realistic maintenance schedule looks like, and how to approach it depending on your platform.
+
+---
+
+## What Is Website Maintenance?
+
+Website maintenance is the ongoing work of keeping a website secure, performant, accurate, and effective after launch. It is not the same as a redesign — maintenance preserves and improves the existing site rather than rebuilding it.
+
+Maintenance covers four areas:
+
+**Security** — keeping software, plugins, and dependencies updated to prevent vulnerabilities from being exploited.
+
+**Performance** — monitoring Core Web Vitals, page load times, and uptime; addressing degradation before it affects search rankings or user experience.
+
+**Content** — keeping page content accurate, publishing new content regularly, and removing or updating outdated pages.
+
+**Technical health** — monitoring for broken links, crawl errors, indexing issues, and form failures.
+
+---
+
+## Why Website Maintenance Is Not Optional
+
+**Security vulnerabilities are exploited quickly.** WordPress sites with outdated plugins are the primary vector for most website hacks. A plugin with a known vulnerability will be targeted by automated scanners within days of the vulnerability becoming public. Patching promptly is the primary defence.
+
+**Search engines reward freshness.** Google's freshness algorithm favours recently updated content for many query types. A blog post last updated in 2022 will progressively lose rankings to a competitor who updated theirs in 2026. Regular content maintenance maintains rankings.
+
+**Core Web Vitals scores degrade over time.** Adding a new chat widget, embedding a video, or installing a new tracking script can each add enough weight to push performance scores below Google's thresholds. Monitoring detects this before it affects rankings.
+
+**Content goes stale.** Pricing changes. Services change. Team members leave. Case studies become outdated. A business that looks out of date online loses the trust of potential customers who are evaluating multiple options.
+
+---
+
+## Website Maintenance Schedule
+
+### Weekly (15–30 minutes)
+
+**Check uptime alerts.** Review any downtime alerts from your monitoring tool (UptimeRobot, Better Uptime). Investigate any incidents.
+
+**Check form submissions.** Verify contact forms, booking requests, and enquiry forms are delivering to the correct inbox. Form delivery failures are a silent conversion killer.
+
+**Review basic analytics.** Check for unusual traffic drops or spikes. A sudden 70% traffic drop on a Monday morning typically indicates a technical problem — not a marketing one.
+
+### Monthly (1–2 hours)
+
+**WordPress/plugin updates.** For WordPress sites: update core, themes, and all plugins. Test on a staging environment before updating production. Keep a backup immediately before updating.
+
+**Check Google Search Console for errors.** Look for new crawl errors, manual actions, or Core Web Vitals issues flagged in Search Console. Address any pages returning 404 errors that were previously indexed.
+
+**Test all forms and conversion paths.** Submit a test enquiry through every form on the site. Confirm delivery. Test any booking or purchase flows end-to-end.
+
+**Check broken links.** Run a crawl using Screaming Frog (free for under 500 URLs), Ahrefs Site Audit, or a free alternative. Fix any internal 404 links. Update any external links that point to dead pages.
+
+**Review and update key page content.** Check homepage, service pages, and contact page for outdated information: old pricing, discontinued services, departed team members, closed locations.
+
+**Backup verification.** Confirm backups are completing successfully and that at least one recent backup can be restored. A backup system you can't restore from is not a backup system.
+
+### Quarterly (2–4 hours)
+
+**Full Core Web Vitals test.** Run Google PageSpeed Insights on the homepage, primary service pages, and top blog posts (mobile and desktop). Address any pages that have fallen below LCP < 2.5s, CLS < 0.1, or INP < 200ms.
+
+**Security audit.** For WordPress: run a security scan (Wordfence, Sucuri). Check for unusual admin users, unexpected file changes, or suspicious redirect rules. Review your SSL certificate expiry date.
+
+**Content audit.** Review all blog posts and service pages for accuracy and freshness. Update statistics, pricing examples, tool recommendations, and regulatory references. Remove or consolidate underperforming content that may be diluting the site's topical authority.
+
+**Analytics review.** Analyse the quarter's organic search performance in Google Search Console. Identify pages gaining or losing rankings. Identify high-impression/low-click-rate pages that could benefit from title or meta description updates.
+
+**Third-party script audit.** List every third-party script running on the site (analytics, chat, social embeds, review widgets). Remove any that are no longer needed. Each script adds load time and is a potential security surface.
+
+**Accessibility check.** Rerun automated accessibility checks (Axe, WAVE) on key pages. Check colour contrast, keyboard navigation, and form labels. Address any new issues introduced since the last audit.
+
+### Annually
+
+**Full technical SEO audit.** Run a comprehensive site crawl looking at title tags, meta descriptions, canonical tags, internal link structure, and page depth from homepage. A site that has grown organically over years often develops technical SEO debt.
+
+**Performance benchmark.** Compare current Core Web Vitals, conversion rates, and organic traffic against the same period last year. Identify areas requiring investment.
+
+**Platform and dependency review.** Check whether your platform (Next.js, WordPress, Webflow) has had a major version update requiring migration. Check whether hosting costs have changed. Evaluate whether the current stack still meets the site's requirements.
+
+**Domain and SSL renewal check.** Verify your domain registration renewal date and SSL certificate expiry are not within 90 days. Set reminders well in advance — an expired domain can cause a site to go offline.
+
+---
+
+## Maintenance by Platform
+
+### Next.js (with Vercel)
+
+Next.js sites on Vercel have minimal ongoing infrastructure maintenance — Vercel handles hosting, SSL, and CDN automatically. Maintenance focuses on:
+
+- Keeping Next.js and npm dependencies updated (monthly)
+- Monitoring Core Web Vitals via Vercel Analytics or Google Search Console
+- Content updates via the CMS or MDX files
+- Monitoring deployment logs for errors after any code pushes
+
+Next.js sites do not require the same plugin patching cycle as WordPress — but dependencies still need updating to address security vulnerabilities published in npm packages.
+
+### WordPress
+
+WordPress requires the most active maintenance of any major platform:
+
+- **Core updates:** Monthly, or immediately for security releases
+- **Plugin updates:** Monthly, with staging environment testing
+- **Theme updates:** Monthly
+- **PHP version updates:** Annually or when security support ends for your current version
+- **Database optimization:** Quarterly (delete post revisions, spam comments, transients)
+- **Backup schedule:** Daily automated backups retained for 30 days minimum
+
+For WordPress sites with significant organic traffic, consider a managed WordPress host (Kinsta, WP Engine, Flywheel) — they handle core and plugin updates, security scanning, and backups for you.
+
+### Webflow
+
+Webflow sites have no plugin or infrastructure maintenance — Webflow handles all of that. Maintenance focuses on:
+
+- Content accuracy and freshness
+- Monitoring Core Web Vitals
+- Form and interaction testing
+- CMS content updates
+- Periodic checking of Webflow's project dashboard for any platform notices
+
+---
+
+## What Happens If You Don't Maintain Your Website?
+
+**Security breach.** Outdated WordPress plugins are the cause of the vast majority of WordPress hacks. A hacked website can be used to send spam, distribute malware, or redirect visitors to malicious sites — damaging your brand and triggering Google's "dangerous site" warning.
+
+**Search ranking decline.** Sites that don't publish fresh content lose ground to competitors who do. Sites with broken links accumulate technical debt that search engines penalise. Core Web Vitals degradation directly affects Google search ranking.
+
+**Conversion loss.** Broken forms, outdated pricing, and stale content all reduce conversion rates. A visitor who can't submit a contact form because it's broken is a lost lead.
+
+**Domain or SSL expiry.** A domain that expires takes the website offline until renewed. An SSL certificate that expires triggers "Not Secure" warnings in every browser — causing immediate visitor abandonment and loss of rankings.
+
+---
+
+## Do I Need to Hire Someone for Website Maintenance?
+
+For small business websites on Next.js or Webflow: content updates are manageable in-house, and technical maintenance requirements are low. A developer for quarterly check-ins is typically sufficient.
+
+For WordPress sites: ongoing technical maintenance (updates, backups, security monitoring) is best handled by a developer or managed WordPress host. The risk of a security breach on an unmanaged WordPress site is significant.
+
+For websites that are a primary revenue source: professional maintenance is essential. The cost of a monthly maintenance retainer is a fraction of the revenue impact of a week of downtime, a Google security warning, or a broken checkout process.
+
+<CTASection
+  headline="Website that's been neglected? We can get it back in shape."
+  description="Evoke Studio provides Next.js web design and development for businesses that need a website that performs from day one — with ongoing support available for clients who need it."
+  cta="Start Your Web Project"
+  href="/contact"
+  secondary="View Services & Pricing"
+  secondaryHref="/services"
+/>
+
+<FAQAccordion items={[
+  {
+    q: "How much does website maintenance cost?",
+    a: "Website maintenance costs vary by platform and scope. For simple Next.js or Webflow sites: content updates can be handled in-house, with a developer retainer of $100–$500/month for quarterly technical checks. For WordPress sites: managed WordPress hosting ($30–$100/month) handles infrastructure; a developer retainer of $200–$800/month covers updates, monitoring, and content. For e-commerce or high-traffic sites where downtime has direct revenue impact: comprehensive maintenance packages from $500–$2,000+/month are common. These costs are consistently lower than the revenue impact of an undetected security breach, extended downtime, or significant search ranking loss."
+  },
+  {
+    q: "How often should a WordPress website be updated?",
+    a: "WordPress core and plugin updates should be applied monthly at minimum. For security patches (labelled as security releases by WordPress), update immediately — within 24 hours if possible. The window between a vulnerability being published and automated attacks targeting it is very short. Test updates on a staging environment before applying to production. Always take a backup immediately before running updates."
+  },
+  {
+    q: "What causes a website to slow down over time?",
+    a: "The most common causes of website performance degradation over time: adding new third-party scripts (analytics, chat, review widgets, social embeds) that weren't part of the original performance budget; database growth on WordPress sites (post revisions, spam comments, expired transients); unoptimised images added by non-technical users; hosting resource limits being reached as traffic grows; CSS/JavaScript added for specific features without removing code that's no longer needed. Quarterly performance audits catch these issues before they significantly affect search rankings."
+  },
+  {
+    q: "What should I do if my website gets hacked?",
+    a: "If your website is hacked: take it offline immediately to prevent it from harming visitors; restore from a clean, pre-hack backup (daily backups are essential for this reason); change all admin passwords, hosting credentials, and database passwords; identify and patch the vulnerability that allowed the breach (usually an outdated plugin or weak password); submit a reconsideration request to Google if the site was flagged as dangerous. If no clean backup exists, a professional clean-up service like Sucuri Hack Cleanup ($200–$500) can remove malware and restore the site."
+  },
+  {
+    q: "How often should website content be updated?",
+    a: "At minimum: review all service pages and the homepage quarterly for accuracy (pricing, services, team, contact information). For businesses that rely on organic search: publishing new blog content at least monthly maintains topical authority and provides fresh signals for search engines. Updating existing blog posts annually with current statistics, examples, and recommendations is equally important and often more effective for rankings than publishing new content alone. Case studies and portfolio work should be updated whenever significant projects are completed."
+  }
+]} />
