@@ -1,0 +1,217 @@
+---
+title: "Technical SEO Guide: Fix the Foundation Before You Build Rankings (2027)"
+excerpt: "Technical SEO is everything search engines need to crawl, understand, and index your website — before content and links even factor in. A site with technical problems can't rank, no matter how good the content. Here's what to fix."
+category: "Guide"
+date: "2027-03-10"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Technical SEO", "Technical SEO Guide", "Core Web Vitals", "Website Performance SEO"]
+related:
+  - "on-page-seo-guide"
+  - "local-seo-guide"
+  - "website-launch-checklist"
+  - "website-speed-optimization-guide"
+seo:
+  title: "Technical SEO Guide: Fix the Foundation Before You Build Rankings (2027)"
+  description: "Complete technical SEO guide for 2027. Core Web Vitals, crawlability, indexation, schema markup, site structure, and the technical fixes that unlock rankings."
+---
+
+Here's a frustrating truth: you can write the most comprehensive, perfectly optimised content — and it still won't rank if your technical SEO is broken.
+
+If Google can't crawl your site, your pages won't be indexed. If your site loads in 8 seconds, your Core Web Vitals fail. If your canonical tags point the wrong way, you have duplicate content issues that suppress rankings.
+
+Technical SEO is the foundation. Everything else sits on top of it.
+
+<QuickAnswers items={[
+  { q: "What is technical SEO?", a: "Technical SEO is the configuration of your website's infrastructure — crawlability, indexation, page speed, schema, site structure — to help search engines find, understand, and rank your content." },
+  { q: "How do I know if I have technical SEO problems?", a: "Google Search Console is the primary tool. Check the Coverage report for indexing issues, the Core Web Vitals report for performance issues, and the Enhancements report for schema errors." },
+  { q: "Can technical SEO problems stop my site from ranking?", a: "Yes — a robots.txt file that accidentally blocks Google, missing canonical tags creating duplicate content, or a site that fails Core Web Vitals can all significantly suppress rankings." }
+]} />
+
+---
+
+## Core Web Vitals: Google's Page Experience Signals
+
+Core Web Vitals are Google's measurable user experience metrics — and they're a direct ranking factor.
+
+There are three metrics:
+
+**LCP (Largest Contentful Paint)** — how long until the largest visible element on the page has loaded.
+- Good: under 2.5 seconds
+- Needs improvement: 2.5–4.0 seconds
+- Poor: over 4.0 seconds
+
+**CLS (Cumulative Layout Shift)** — how much the page visually shifts as it loads.
+- Good: under 0.1
+- Needs improvement: 0.1–0.25
+- Poor: over 0.25
+
+**INP (Interaction to Next Paint)** — how quickly the page responds to user interactions.
+- Good: under 200ms
+- Needs improvement: 200–500ms
+- Poor: over 500ms
+
+Check your scores at Google's PageSpeed Insights. For real-world data, check the Core Web Vitals report in [Google Search Console](/blog/website-analytics-guide).
+
+<Callout type="tip" title="The Most Common Core Web Vitals Fix">
+  LCP failure is almost always caused by a large, unoptimised image above the fold. Convert your hero image to WebP, set correct dimensions, and use `fetchpriority="high"` on the LCP element. This single fix resolves LCP issues on most websites.
+</Callout>
+
+---
+
+## Crawlability: Can Google Actually Access Your Site?
+
+Search engines discover your content by crawling it — following links from page to page.
+
+If something is blocking them, your pages won't be indexed, and they won't rank.
+
+**Check robots.txt.** Your robots.txt file at `yourdomain.com/robots.txt` should not be blocking search engines from crawling your important pages. A misconfigured robots.txt is one of the most common causes of new websites not appearing in search results.
+
+The correct robots.txt for a standard site:
+```
+User-agent: *
+Disallow:
+
+Sitemap: https://yourdomain.com/sitemap.xml
+```
+
+**Check for noindex tags.** Some pages should be noindexed (admin pages, thank-you pages, internal search results). But core pages should never have `<meta name="robots" content="noindex">`. Check in Google Search Console for unintentionally noindexed pages.
+
+**Internal links.** Pages that no other page links to (orphan pages) are difficult for crawlers to discover. Every important page should have at least one internal link pointing to it.
+
+---
+
+## XML Sitemap: Helping Google Find Everything
+
+Your XML sitemap is a file that lists all the pages you want Google to index.
+
+For Next.js sites, sitemaps can be automatically generated from your page routes. For WordPress, Yoast and RankMath both generate sitemaps automatically.
+
+**What to include:** All canonical pages — blog posts, service pages, product pages, location pages.
+
+**What to exclude:** Duplicate pages, noindexed pages, pagination pages (often), admin pages.
+
+Submit your sitemap URL in Google Search Console (under Sitemaps) and Bing Webmaster Tools.
+
+For Bing, using IndexNow automates URL submission — every time a page is published or updated, it's submitted immediately to Bing without waiting for the crawler. Read the [website launch checklist](/blog/website-launch-checklist) for the IndexNow setup.
+
+---
+
+## HTTPS: Non-Negotiable Since 2018
+
+Every website must serve over HTTPS (secure).
+
+Google has used HTTPS as a ranking signal since 2014, and browsers now show "Not Secure" warnings on HTTP sites.
+
+Check that:
+- All pages serve via `https://`
+- All `http://` requests redirect to `https://` with a 301
+- Your SSL certificate is valid (check the padlock in your browser)
+- You haven't accidentally mixed content (HTTP resources loaded on HTTPS pages)
+
+---
+
+## Canonical Tags: Preventing Duplicate Content
+
+Canonical tags tell search engines which version of a page is the "main" version when the same content is accessible via multiple URLs.
+
+Common causes of duplicate content:
+- `www.yourdomain.com` and `yourdomain.com` both serving the same page
+- Pages accessible with and without a trailing slash
+- Pages accessible via multiple URL parameters (`?sort=asc`, `?ref=email`)
+- HTTP and HTTPS versions both accessible
+
+Every page should have a canonical tag pointing to its preferred URL. In Next.js, this is typically handled automatically when configured correctly. Check a sample of your pages with Google's URL Inspection tool to verify.
+
+---
+
+## Site Architecture: How Your Pages Are Organised
+
+Good site architecture makes it easy for both users and search engines to navigate your site.
+
+**Flat architecture is better.** Every important page should be reachable within 3 clicks from the homepage. Pages buried 7 levels deep get crawled rarely and rank poorly.
+
+**Logical URL structure.** `/blog/technical-seo-guide` is better than `/blog/articles/seo/2027/technical-guide.html`.
+
+**Breadcrumbs.** These navigation aids at the top of pages help users understand where they are and provide structured data that search engines use to understand site hierarchy.
+
+---
+
+## Schema Markup: Structured Data for Rich Results
+
+Schema markup is code you add to your pages that tells search engines explicitly what your content contains.
+
+It enables **rich results** — enhanced search results with stars, FAQ dropdowns, event dates, product prices, and more.
+
+Most valuable schema types for business websites:
+
+**FAQPage schema** — enables FAQ dropdowns directly in search results. Most pages on this site use FAQAccordion which implements this automatically.
+
+**LocalBusiness schema** — essential for any local business. Includes address, hours, services, phone.
+
+**BreadcrumbList schema** — helps Google understand your site hierarchy.
+
+**WebSite schema** — enables the sitelinks search box in branded search results.
+
+Test your schema at Google's Rich Results Test. Check for errors in Search Console's Enhancements reports.
+
+---
+
+## Redirect Management: Keeping SEO Equity Intact
+
+Every time a URL changes, you need a 301 redirect from the old URL to the new one.
+
+301 redirects tell Google: "this page has moved permanently — all the ranking authority for the old URL should transfer to the new one."
+
+Broken redirects (links that lead to 404 pages) waste crawl budget and leak ranking authority.
+
+Check for broken internal links monthly with Screaming Frog (free for under 500 URLs) or a similar crawler.
+
+<Callout type="warning" title="Redirect Chains Are Ranking Killers">
+  A chain like A → B → C dilutes the link equity passed along each hop. All redirects should go directly to the final destination. If you have chains from previous site migrations, flatten them to direct redirects.
+</Callout>
+
+---
+
+## Hreflang: For Multi-Language or Multi-Region Sites
+
+If your website serves different content for different countries or languages (English UK vs English US, or English vs French), hreflang tags tell Google which version to show to which users.
+
+Missing hreflang on multi-region sites often results in UK users seeing the US site or vice versa — hurting both conversions and rankings.
+
+This is an advanced topic. If you have a multi-region site, the [technical implementation guide on Google's documentation](https://developers.google.com/search/docs/specialty/international/localization-with-hreflang) is the definitive reference.
+
+---
+
+<CTASection
+  headline="Website with technical SEO problems holding back your rankings?"
+  description="Evoke Studio builds Next.js websites with technical SEO foundations built in from day one — correct canonicals, schema markup, Core Web Vitals compliance, and a sitemap configured for IndexNow."
+  cta="Start Your Web Project"
+  href="/contact"
+  secondary="View Services & Pricing"
+  secondaryHref="/services"
+/>
+
+<FAQAccordion items={[
+  {
+    q: "What are the most important technical SEO checks?",
+    a: "In priority order: (1) Check robots.txt isn't accidentally blocking Google; (2) Verify HTTPS is correctly configured with HTTP redirecting to HTTPS; (3) Submit XML sitemap to Google Search Console and Bing Webmaster Tools; (4) Check Core Web Vitals in PageSpeed Insights (especially LCP); (5) Verify canonical tags are correctly set on all pages; (6) Check for crawl errors in Google Search Console's Coverage report. These six checks catch the majority of technical issues that suppress rankings."
+  },
+  {
+    q: "How do I check my website's Core Web Vitals?",
+    a: "Use Google's PageSpeed Insights (lab data — tests a single page on demand) and Google Search Console's Core Web Vitals report (field data — real user performance aggregated over 28 days). Field data is more representative but only available once your site has enough traffic. For new sites with limited traffic, PageSpeed Insights is the primary diagnostic tool. Test both mobile and desktop — mobile scores are typically lower and are the primary ranking factor."
+  },
+  {
+    q: "What causes duplicate content in SEO?",
+    a: "Common causes of duplicate content: www and non-www versions both serving the same content without canonical tags; HTTP and HTTPS versions both accessible; pages accessible with and without trailing slashes; URL parameters creating multiple versions of the same page (?sort=price, ?color=red); and pages that appear in multiple category paths on e-commerce sites. Each needs a canonical tag pointing to the preferred version, or a 301 redirect from the duplicate to the canonical."
+  },
+  {
+    q: "Does site speed affect Google rankings?",
+    a: "Yes — page speed is a direct ranking factor via Core Web Vitals (LCP, CLS, INP). Google introduced page experience signals as ranking factors in 2021 and has progressively increased their weight. Slow pages don't just rank lower — they lose users before they load. A 3-second load time sees 53% of mobile visitors abandon the page. Improving page speed improves rankings, engagement, and conversion rate simultaneously. Read the website speed optimisation guide for specific fixes."
+  },
+  {
+    q: "How often should I do a technical SEO audit?",
+    a: "Monthly monitoring (15 minutes): check Google Search Console for new crawl errors, Core Web Vitals issues, and manual actions. Quarterly audit (2 hours): run a full site crawl with Screaming Frog or Ahrefs to check for broken links, redirect chains, missing canonical tags, and orphan pages. Annual comprehensive audit: check all technical foundations, review schema implementation, evaluate site architecture for changes needed as the site has grown."
+  }
+]} />
