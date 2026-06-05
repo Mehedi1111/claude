@@ -14,7 +14,7 @@ export default function ComparisonTable({
   rows?: Row[];
 }) {
   return (
-    <div className="not-prose my-10 overflow-x-auto rounded-xl border border-[#e5e5e5]">
+    <div className="not-prose my-10 overflow-x-auto border border-[#e5e5e5]">
       <table className="w-full border-collapse text-sm font-sans">
         <thead>
           <tr>
