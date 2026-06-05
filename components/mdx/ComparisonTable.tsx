@@ -18,13 +18,13 @@ export default function ComparisonTable({
       <table className="w-full border-collapse text-sm font-sans">
         <thead>
           <tr>
-            <th className="text-left py-4 px-6 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#737373] border-b border-[#e5e5e5] w-[38%] bg-white">
+            <th className="text-left py-4 pl-8 pr-10 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#737373] border-b border-[#e5e5e5] w-[36%] bg-white">
               Feature
             </th>
-            <th className="text-left py-4 px-6 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#737373] border-b border-[#e5e5e5] bg-[#fafafa] border-l border-[#e5e5e5]">
+            <th className="text-left py-4 pl-8 pr-10 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#737373] border-b border-[#e5e5e5] bg-[#fafafa] border-l-2 border-l-[#e0e0e0]">
               {beforeLabel}
             </th>
-            <th className="text-left py-4 px-6 text-[11px] font-semibold uppercase tracking-[0.12em] text-white border-b border-[#1a1a1a] bg-[#0a0a0a] border-l border-[#1a1a1a]">
+            <th className="text-left py-4 pl-8 pr-10 text-[11px] font-semibold uppercase tracking-[0.12em] text-white border-b border-[#1a1a1a] bg-[#0a0a0a] border-l-2 border-l-[#2a2a2a]">
               {afterLabel}
             </th>
           </tr>
@@ -33,12 +33,12 @@ export default function ComparisonTable({
           {rows.map((row, i) => (
             <tr
               key={i}
-              className="group transition-colors hover:bg-[#fafafa]"
+              className="group transition-colors hover:bg-[#f7f7f7]"
             >
-              <td className="py-4 px-6 text-[14px] font-medium text-[#0a0a0a] border-b border-[#f0f0f0] last:border-b-0 leading-snug align-top">
+              <td className="py-5 pl-8 pr-10 text-[14px] font-medium text-[#0a0a0a] border-b border-[#f0f0f0] last:border-b-0 leading-snug align-top">
                 {row.feature}
               </td>
-              <td className="py-4 px-6 border-b border-[#f0f0f0] last:border-b-0 bg-[#fafafa] border-l border-[#e5e5e5] align-top">
+              <td className="py-5 pl-8 pr-10 border-b border-[#f0f0f0] last:border-b-0 bg-[#fafafa] border-l-2 border-l-[#e0e0e0] align-top">
                 {typeof row.before === "boolean" ? (
                   <span
                     className={`inline-flex items-center gap-1 text-[13px] font-medium ${
@@ -53,7 +53,7 @@ export default function ComparisonTable({
                   </span>
                 )}
               </td>
-              <td className="py-4 px-6 border-b border-[#1a1a1a] last:border-b-0 bg-[#0a0a0a] border-l border-[#1a1a1a] align-top">
+              <td className="py-5 pl-8 pr-10 border-b border-[#1a1a1a] last:border-b-0 bg-[#0a0a0a] border-l-2 border-l-[#2a2a2a] align-top">
                 {typeof row.after === "boolean" ? (
                   <span
                     className={`inline-flex items-center gap-1 text-[13px] font-medium ${
