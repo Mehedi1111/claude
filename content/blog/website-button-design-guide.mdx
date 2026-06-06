@@ -1,0 +1,224 @@
+---
+title: "Website Button Design Guide: Best Practices and Examples (2027)"
+excerpt: "Buttons are the most important interactive element on your website. They are where decisions get made. Here's how to design buttons that communicate clearly and drive action."
+category: "Guide"
+date: "2027-04-16"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Web Design", "UI Design", "Button Design", "UX Design", "Conversion Optimisation"]
+related:
+  - "website-card-design-guide"
+  - "website-form-design-guide"
+  - "website-landing-page-design-guide"
+  - "nextjs-vs-webflow-for-brand-websites"
+seo:
+  title: "Website Button Design Guide: Best Practices, Sizes, and Examples (2027)"
+  description: "How to design website buttons that drive action. Button hierarchy, sizing, colour, states, and best practices for CTAs that convert in 2027."
+---
+
+<QuickAnswers items={[
+  {
+    q: "What makes a good website button?",
+    a: "A good button communicates three things clearly: that it is interactive, what will happen when clicked, and how important that action is relative to other options on the page. Most button failures come from poor label copy ('Submit', 'Click here'), insufficient visual weight for primary actions, or too many competing buttons fighting for attention."
+  },
+  {
+    q: "How big should website buttons be?",
+    a: "Minimum touch target of 44x44px on mobile (Apple's Human Interface Guidelines recommendation). Desktop primary buttons are typically 48–56px tall. Secondary buttons can be slightly smaller. The label text inside should be 14–16px. Buttons that are too small are common on mobile and significantly hurt conversion."
+  },
+  {
+    q: "How many button styles should a website have?",
+    a: "Three is the practical maximum for most sites: a primary button (solid, highest visual weight — for the most important action), a secondary button (outline or lighter — for secondary actions), and a ghost or text link button (minimal — for tertiary actions). More than three competing styles creates confusion about which action to take."
+  }
+]} />
+
+Buttons are where decisions happen.
+
+Every time a visitor clicks a button, they are making a commitment — to contact you, to buy, to sign up, to read more. The design of that button — its size, colour, label, position, and visual weight — either makes that decision easier or harder.
+
+Most websites underinvest in button design. They choose a colour, write a generic label, and move on. The result is buttons that don't communicate priority, don't stand out at the right moments, and don't earn the click.
+
+---
+
+## Button Hierarchy: Primary, Secondary, Tertiary
+
+The first decision in button design is hierarchy: which actions are most important, and how does the visual design reflect that?
+
+**Primary button:**
+The most important action on the page. Should have the strongest visual weight — typically a solid fill in the brand's primary colour. There should be one primary button visible at any given scroll position. If everything is primary, nothing is.
+
+**Secondary button:**
+An alternative or supporting action. Outline style (border, transparent fill) or a lighter colour treatment. Clearly subordinate to the primary button visually.
+
+**Tertiary / ghost button:**
+Low-emphasis action. Often a text link with underline, or a minimal border treatment. Used for cancel, skip, or supplementary navigation.
+
+<ComparisonTable
+  beforeLabel="Poor Button Hierarchy"
+  afterLabel="Clear Button Hierarchy"
+  rows={[
+    { feature: "Primary actions", before: "Multiple solid buttons, equal weight", after: "One solid primary button per section" },
+    { feature: "Secondary actions", before: "Outlined, same size as primary", after: "Outlined, slightly less prominent" },
+    { feature: "Tertiary actions", before: "Another solid button", after: "Text link or ghost button" },
+    { feature: "Visual decision", before: "User doesn't know where to click", after: "User immediately sees the next step" },
+    { feature: "Colour count", before: "3+ button colours in use", after: "1–2 button colours across the hierarchy" }
+  ]}
+/>
+
+---
+
+## Button Labels: The Most Underrated Part of Button Design
+
+The label is what the user reads to decide whether to click.
+
+**Bad button labels:**
+- "Submit" — tells the user nothing about what happens
+- "Click here" — describes the action, not the outcome
+- "Learn more" — vague; used for everything
+- "Get started" — overused; doesn't differentiate
+
+**Good button labels:**
+- Describe the outcome: "Start Free Trial", "Book a Call", "Download the Guide"
+- Match the offer: "Get My Free Quote", "See Pricing", "Start Building"
+- Use first person where appropriate: "Yes, Send Me the Report"
+- Be specific about what happens: "Book a 30-Minute Call"
+
+<Callout type="tip" title="Button Label Formula">
+The most effective button labels follow this formula: action verb + outcome + (optional) qualifier. "Start free trial" = Start (verb) + free trial (outcome). "Book a 15-minute call" = Book (verb) + call (outcome) + 15 minutes (qualifier). The qualifier reduces uncertainty and increases click confidence.
+</Callout>
+
+---
+
+## Button Sizing
+
+Size communicates importance and determines usability.
+
+**Recommended button heights:**
+- Large (hero, primary CTA): 52–60px
+- Default (standard primary): 44–52px
+- Small (forms, table actions): 36–40px
+- Extra small (inline, chip): 28–32px
+
+**Minimum touch target:** 44px × 44px on mobile, regardless of visual button size. Use padding rather than hardcoded height to achieve this — buttons with longer labels need width, not height.
+
+**Padding inside buttons:**
+- Horizontal padding: 20–32px (more for larger buttons)
+- Vertical padding: let it determine height naturally rather than hardcoding height
+
+---
+
+## Button Colours
+
+The primary button colour should be the highest-contrast, most attention-commanding colour in your palette.
+
+**For most brand colour systems:**
+- If your brand has one strong accent colour, use it for the primary button — consistently, everywhere
+- If your brand is predominantly that colour, your button may need to contrast against it (e.g., a white button on a dark brand-colour section)
+
+**Avoid:**
+- Red primary buttons (except for destructive actions — users associate red with danger or errors)
+- Grey primary buttons (grey reads as disabled)
+- Too-subtle primary buttons that don't stand out from the background
+
+**Dark mode:** Primary button colours typically need adjustment for dark backgrounds. A medium blue primary button on white may need to be brighter (higher value) on dark backgrounds to maintain the same perceived weight.
+
+---
+
+## Button States
+
+Every button needs five states. Designing only the default state produces an incomplete and often inaccessible UI.
+
+**1. Default** — the standard appearance.
+
+**2. Hover** — subtle change confirming interactivity. Typically: slight darkening of fill, slight elevation (shadow), or colour shift.
+
+**3. Focus** — visible outline for keyboard navigation. Required for accessibility (WCAG 2.1 AA). Cannot be the same as hover — it must be visible even without a pointing device.
+
+**4. Active / Pressed** — feedback that the button is being clicked. Typically: slight inward movement or darker fill.
+
+**5. Disabled** — reduced opacity (typically 40–50%) and `cursor: not-allowed`. Never remove the disabled state entirely — users need to know why they can't click.
+
+**6. Loading (for async actions)** — spinner or loading indicator inside the button, replacing the label. Prevents double-submission and communicates that something is happening.
+
+---
+
+## CTA Button Placement
+
+Where you place buttons matters as much as how they look.
+
+**Hero section:** Primary CTA button directly below the headline. Should be the most prominent button on the page.
+
+**Feature sections:** CTA at the end of each feature or benefit section. Don't make visitors scroll back to the top to convert.
+
+**Pricing tables:** Primary CTA button below each pricing plan. The recommended plan's button should be the primary style; others can be secondary.
+
+**Navigation:** A CTA button in the navigation (top right) provides persistent access without disrupting scroll.
+
+**Blog posts:** Contextual CTAs within long-form content — not just at the end. Place where the context is most relevant.
+
+<Callout type="warning" title="The Buried CTA">
+Placing your primary CTA only in the footer or requiring users to scroll to the bottom before they can take action is one of the most common and most costly conversion mistakes. Every section where a user could realistically decide to enquire should have a visible CTA.
+</Callout>
+
+---
+
+## Button Groups and Multiple CTAs
+
+When you need more than one button side by side, the visual hierarchy must be clear.
+
+**Primary + Secondary side by side:**
+The most common pattern. Primary button (solid) on the left, secondary button (outline) on the right. The eye reads left to right — the primary action is encountered first.
+
+**Vertical stacking on mobile:**
+Side-by-side buttons rarely work well below 400px width. Stack them vertically on mobile, with the primary button on top.
+
+**Full-width buttons on mobile:**
+Primary CTA buttons in key conversion moments should often be full-width on mobile — easier to tap, more prominent.
+
+---
+
+## Icon Buttons
+
+Buttons with icons — an arrow, a download icon, an external link indicator — add visual clarity when used correctly.
+
+**Icon after label (→):** Signals forward movement or external navigation. Appropriate for "Get Started →" or "Visit Site →"
+
+**Icon before label (↓ Download):** Use when the icon reinforces the action type. Appropriate for "Download Guide" or "Play Video"
+
+**Icon only:** Requires a tooltip or `aria-label` for accessibility. Only appropriate for common, universally understood actions (close, search, play).
+
+Keep icons small (16–20px) and vertically centred with the label text. Avoid using icons for decoration — they should add meaning, not noise.
+
+---
+
+<CTASection
+  headline="Website that needs better button design and conversion optimisation?"
+  description="Evoke Studio designs Next.js websites with precise UI systems — button hierarchy, CTA placement, and complete design that drives action. Packages from $1,500."
+  cta="Start Your Web Project"
+  href="/contact"
+  secondary="View Services & Pricing"
+  secondaryHref="/services"
+/>
+
+<FAQAccordion items={[
+  {
+    q: "What is the best button colour for conversions?",
+    a: "The button colour that converts best is not a universal answer — it depends on your brand colours and page background. The principle is contrast: your primary CTA button should be the highest-contrast element in the section where it appears. Orange and green perform well in tests because they contrast against most brand colour schemes and light backgrounds — but the real reason isn't the colour itself, it's the contrast."
+  },
+  {
+    q: "Should CTA buttons be the same colour across the whole site?",
+    a: "Yes — consistency builds recognition. Your primary button should always be the same colour, style, and size across the site. When users learn that the dark button = take action, they find it faster on subsequent pages. Changing button colours or styles within a site creates confusion and slows decision-making."
+  },
+  {
+    q: "How do I design accessible buttons?",
+    a: "Use semantic `<button>` or `<a>` elements (never `<div>` with onClick). Ensure minimum 44×44px touch target on mobile. Provide a visible focus state (`:focus-visible`) that doesn't rely on colour alone. Maintain 4.5:1 colour contrast ratio for button text against button background (WCAG AA). Add `aria-label` for icon-only buttons. Never disable the focus ring entirely — it's required for keyboard navigation."
+  },
+  {
+    q: "Should buttons have rounded corners?",
+    a: "Depends on the design system. Sharp corners (0px radius) feel technical and precise — appropriate for developer tools, data products, editorial sites. Subtle rounding (4–8px) is the most neutral and professional option. High rounding (20px+, pill buttons) feels consumer-friendly and approachable. Match the button radius to the overall aesthetic of the design — and use it consistently throughout the site."
+  },
+  {
+    q: "What is the difference between a button and a link?",
+    a: "Semantically: a `<button>` performs an action on the current page (submit a form, open a modal, toggle state). A `<a>` link navigates to a new URL. Visually: buttons typically look like buttons (with background fill or border); links typically look like inline underlined text. In practice, many CTAs are links styled as buttons — this is fine, but use the `<a>` tag with an `href`. Never use `<button>` for navigation — it breaks browser history, right-click behaviour, and accessibility."
+  }
+]} />
