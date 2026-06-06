@@ -1,0 +1,305 @@
+---
+title: "Website Image Optimization Guide: Faster Pages, Better SEO (2027)"
+excerpt: "Images are the largest contributor to slow page load times on most websites. Here's how to optimize images correctly — formats, compression, lazy loading, and modern techniques that dramatically improve performance."
+category: "Guide"
+date: "2027-05-11"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Web Design", "Performance", "Image Optimization", "SEO", "Web Development"]
+related:
+  - "website-speed-optimization-guide"
+  - "technical-seo-for-websites"
+  - "nextjs-vs-webflow-for-brand-websites"
+  - "mobile-first-web-design-guide"
+seo:
+  title: "Website Image Optimization Guide: Formats, Compression, and Lazy Loading (2027)"
+  description: "How to optimize website images for speed and SEO. Image formats, compression, lazy loading, next-gen formats, and best practices for 2027."
+---
+
+<QuickAnswers items={[
+  {
+    q: "Why does image optimization matter so much for websites?",
+    a: "Images are typically the largest assets on any webpage — often accounting for 50–80% of total page weight. An unoptimized hero image can be 3–5MB; optimized correctly, the same image can be under 100KB with no visible quality difference. Faster page load time directly improves user experience, reduces bounce rate, and is a confirmed Google ranking signal. Image optimization is the single highest-impact performance improvement on most websites."
+  },
+  {
+    q: "What is the best image format for websites in 2027?",
+    a: "WebP is the most widely recommended format — it delivers 25–35% smaller file sizes than JPEG at equivalent visual quality, and is supported by all modern browsers. AVIF is newer and compresses even better (often 50% smaller than JPEG) but has slightly less universal browser support. For photographs and complex images: WebP or AVIF. For icons and logos: SVG (vector, infinitely scalable, very small file size). PNG only when you need transparency and cannot use WebP."
+  },
+  {
+    q: "What is lazy loading and should all images use it?",
+    a: "Lazy loading delays the loading of images until they're about to enter the viewport — the user's visible area. This means the browser doesn't load images below the fold until the user scrolls toward them, significantly reducing initial page load time. Use lazy loading for all images below the fold. Do NOT lazy load images in the hero section or above the fold — they should load immediately. The HTML attribute is simply loading='lazy'."
+  }
+]} />
+
+Images make websites beautiful. They also make websites slow.
+
+On most websites, images represent the largest opportunity for performance improvement. An unoptimized photography-heavy homepage that loads in 8 seconds can often be optimised to load in 1.5 seconds — with no visible change to the user. The difference in search rankings, bounce rate, and conversion rate between those two load times is significant.
+
+This guide covers everything you need to know about image optimisation for websites in 2027.
+
+---
+
+## Why Image Optimization Matters
+
+### Page Speed and User Experience
+
+Google research has consistently shown that for every additional second of load time, mobile conversions drop by approximately 20%. Page speed is not a developer concern — it's a business concern.
+
+Unoptimized images are almost always the primary culprit in slow pages. A single hero image saved as a 4MB JPEG, a gallery of 20 product photos at 2MB each, background images loaded on mobile that are sized for desktop — these are common and costly mistakes.
+
+### SEO and Core Web Vitals
+
+Google's Core Web Vitals — the set of performance metrics used in search ranking — are directly affected by image optimization:
+
+**Largest Contentful Paint (LCP):** The time until the largest content element on the page is visible. For most pages, the largest element is an image. Slow-loading hero images directly hurt LCP scores.
+
+**Cumulative Layout Shift (CLS):** Layout shift caused by images loading without pre-defined dimensions. Always set `width` and `height` attributes on images.
+
+**Total Blocking Time (TBT):** Less directly related to images, but large unoptimized images can contribute through main-thread blocking.
+
+---
+
+## Image Formats
+
+Choosing the right format is the first optimisation decision.
+
+### WebP
+
+The current standard recommendation for most web images.
+
+**Best for:** All photographic content, complex illustrations, anything that would previously be JPEG or PNG.
+
+**Compression:** 25–35% smaller than JPEG at equivalent visual quality. 26% smaller than PNG with similar quality.
+
+**Browser support:** All modern browsers (Chrome, Firefox, Safari, Edge). No support required for IE (which is effectively dead in 2027).
+
+**How to use:** Export from design tools as WebP, or use build pipeline conversion tools.
+
+### AVIF
+
+The next-generation format, increasingly the best choice.
+
+**Best for:** Same use cases as WebP, with even better compression.
+
+**Compression:** 50% smaller than JPEG at comparable quality. Significantly better than WebP for most images.
+
+**Browser support:** Chrome, Firefox, Edge — not yet fully universal. Safari has partial support.
+
+**How to use:** Serve AVIF with WebP fallback using the `<picture>` element:
+
+```html
+<picture>
+  <source type="image/avif" srcset="image.avif">
+  <source type="image/webp" srcset="image.webp">
+  <img src="image.jpg" alt="Description">
+</picture>
+```
+
+### SVG
+
+For logos, icons, and illustrations.
+
+**Best for:** Any graphic that uses flat colours and geometric shapes — logos, icons, illustrations, diagrams.
+
+**File size:** Typically very small. A logo that would be 40KB as a PNG might be 2KB as SVG.
+
+**Scalability:** Infinitely scalable — perfect at any size from favicon to billboard.
+
+**How to use:** Export directly from Figma or Illustrator as SVG. Inline SVG in HTML for the smallest possible file size.
+
+### When to Still Use JPEG and PNG
+
+**JPEG:** Only when your build pipeline or CMS cannot serve WebP. JPEG is 2020 technology — there is almost no reason to serve JPEG in 2027.
+
+**PNG:** Only when you need transparency AND cannot use WebP. WebP supports transparency and compresses better.
+
+---
+
+## Compression
+
+Choosing the right format is necessary but not sufficient — compression level matters too.
+
+<ComparisonTable
+  beforeLabel="Over-Compressed"
+  afterLabel="Correctly Compressed"
+  rows={[
+    { feature: "Quality level", before: "60–70% (visible artifacts)", after: "80–85% (visually identical to original)" },
+    { feature: "Hero images", before: "Original export at full quality", after: "Compressed 80–85%, saved as WebP" },
+    { feature: "Background images", before: "Same quality as featured images", after: "Compressed more aggressively (70–75%)" },
+    { feature: "Thumbnails", before: "Scaled down full-size image", after: "Resized to display size, then compressed" },
+    { feature: "File size", before: "2–5MB per image", after: "50–200KB per image" }
+  ]}
+/>
+
+**Recommended quality settings by use:**
+
+- Hero images: 80–85% quality in WebP
+- Product photographs: 80% quality in WebP
+- Gallery thumbnails: 70–75% quality in WebP
+- Background images (visible but decorative): 65–70%
+- Icons and logos: SVG (no quality setting applies)
+
+**Tools for compression:**
+
+- **Squoosh** (squoosh.app) — Google's browser-based tool, excellent for manual optimisation
+- **Sharp** — Node.js image processing library, essential for build pipelines
+- **ImageOptim** — Mac desktop app for batch optimisation
+- **Next.js Image component** — automatic optimisation when using Next.js
+
+---
+
+## Responsive Images and `srcset`
+
+Serving a 2400px wide image to a mobile screen displaying it at 400px is wasting 80% of the image download. Responsive images solve this.
+
+**The `srcset` attribute** tells the browser which image size to download based on the viewport and display density:
+
+```html
+<img
+  src="hero-800.webp"
+  srcset="hero-400.webp 400w,
+          hero-800.webp 800w,
+          hero-1200.webp 1200w,
+          hero-2400.webp 2400w"
+  sizes="(max-width: 600px) 100vw,
+         (max-width: 1200px) 50vw,
+         800px"
+  alt="Description"
+  width="800"
+  height="533"
+>
+```
+
+This tells the browser: here are four versions of this image, use the appropriate one based on the viewport width.
+
+**Image sizes to generate for most cases:**
+- 400px (mobile small)
+- 800px (mobile large / tablet portrait)
+- 1200px (tablet landscape / desktop small)
+- 2400px (large desktop / retina displays)
+
+---
+
+## Lazy Loading
+
+Lazy loading is one of the easiest performance improvements available — one HTML attribute.
+
+```html
+<img src="image.webp" alt="Description" loading="lazy">
+```
+
+**Rules for lazy loading:**
+
+✓ Use `loading="lazy"` on all images below the fold
+
+✗ Do NOT use `loading="lazy"` on:
+- Hero images (above the fold)
+- Images in the viewport on initial page load
+- The first product image on a product page
+
+**Priority loading for above-the-fold images:**
+
+For your most important above-the-fold image (typically the hero), use `fetchpriority="high"` to tell the browser to load it first:
+
+```html
+<img src="hero.webp" alt="Hero" fetchpriority="high" width="1200" height="600">
+```
+
+This is the single most impactful change for improving LCP scores.
+
+---
+
+## Always Set Width and Height
+
+Every `<img>` element should have `width` and `height` attributes set to the intrinsic dimensions of the image.
+
+```html
+<!-- Correct -->
+<img src="photo.webp" alt="Description" width="800" height="533">
+
+<!-- Incorrect — causes layout shift -->
+<img src="photo.webp" alt="Description">
+```
+
+Why: without dimensions, the browser doesn't know how much space to reserve for the image while it loads. When the image loads, the page shifts (Cumulative Layout Shift) — which hurts Core Web Vitals scores and is jarring for users.
+
+The `width` and `height` don't prevent the image from being responsive (use `max-width: 100%` in CSS) — they simply tell the browser the aspect ratio to reserve space for.
+
+---
+
+## Next.js Image Optimization
+
+If your site is built with Next.js, the `<Image>` component handles most of this automatically.
+
+```jsx
+import Image from 'next/image'
+
+<Image
+  src="/hero.jpg"
+  alt="Hero"
+  width={1200}
+  height={600}
+  priority  // For above-the-fold images
+  quality={85}
+/>
+```
+
+Next.js Image automatically:
+- Converts to WebP or AVIF based on browser support
+- Generates responsive srcset variants
+- Lazy loads images below the fold
+- Prevents layout shift with proper sizing
+- Serves images from Vercel's edge network
+
+Read [Next.js vs Webflow for brand websites](/blog/nextjs-vs-webflow-for-brand-websites) for more on choosing the right platform for your needs.
+
+---
+
+## Image ALT Text for SEO and Accessibility
+
+Every `<img>` element must have an `alt` attribute.
+
+**For SEO:** Alt text tells search engines what the image depicts. Google Image Search, Google Lens, and contextual image ranking all rely on alt text. Describe the image accurately and include relevant keywords where natural.
+
+**For accessibility:** Screen reader users hear alt text when an image is encountered. Descriptive alt text is a legal accessibility requirement in many jurisdictions.
+
+**How to write good alt text:**
+- Describe what the image shows: "Black and white photograph of the interior of a coffee shop with wooden tables"
+- Include relevant keywords naturally: "Next.js website design for a London startup"
+- For decorative images that add no content value: `alt=""` (empty, not missing)
+- Never: "image of", "photo of", "picture of" — just describe the content directly
+
+---
+
+<CTASection
+  headline="Website that needs performance and image optimization?"
+  description="Evoke Studio builds Next.js websites that score highly on Core Web Vitals — optimized images, fast load times, and excellent SEO. Packages from $1,500."
+  cta="Start Your Web Project"
+  href="/contact"
+  secondary="View Services & Pricing"
+  secondaryHref="/services"
+/>
+
+<FAQAccordion items={[
+  {
+    q: "What tools can I use to test my website's image performance?",
+    a: "Google PageSpeed Insights (pagespeed.web.dev) — shows Core Web Vitals scores and specific image issues. Google Lighthouse in Chrome DevTools — detailed performance audit including specific images causing issues. WebPageTest (webpagetest.org) — professional-grade testing with waterfall charts showing image load timing. Squoosh (squoosh.app) — for testing compression at different quality levels before exporting."
+  },
+  {
+    q: "How do I handle retina (2x) displays without doubling image file sizes?",
+    a: "Use the srcset attribute with display density descriptors. Provide a 1x image for standard displays and a 2x image for retina displays: `srcset='image.webp 1x, image@2x.webp 2x'`. The 2x image should be double the pixel dimensions. Alternatively, use a higher compression level on the 2x image — retina images can tolerate 10–15% more compression than standard images while still appearing sharp on high-DPI displays."
+  },
+  {
+    q: "Should background images in CSS be optimized the same way?",
+    a: "Yes — CSS background images should be WebP format and compressed appropriately. Use the `image-set()` CSS function to serve different formats based on browser support. CSS background images cannot use the native `loading='lazy'` attribute, but they are only downloaded when the element is rendered — so images in elements that are initially off-screen may not load immediately anyway. For critical background images, preload them with a `<link rel='preload'>` in the `<head>`."
+  },
+  {
+    q: "How do I optimize images in a WordPress or CMS site?",
+    a: "For WordPress: use a plugin like Imagify, ShortPixel, or WebP Converter for Media to automatically convert and compress images on upload. Combine with a CDN (Cloudflare is free and effective) to serve images from edge locations. For most hosted CMS platforms (Squarespace, Wix, Webflow), image optimization is handled automatically — check your platform's documentation for recommended upload specifications."
+  },
+  {
+    q: "What is the ideal file size for a hero image?",
+    a: "Under 200KB for a full-width desktop hero image saved as WebP at 80–85% quality. Under 100KB for mobile. For context: a typical unoptimized hero image saved from a design tool or downloaded from a stock photo site is often 2–5MB — 10–25 times larger than necessary. If your hero image is over 300KB, it is almost certainly hurting your page speed scores and needs optimisation."
+  }
+]} />
