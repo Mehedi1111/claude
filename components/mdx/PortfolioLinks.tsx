@@ -22,7 +22,7 @@ export default function PortfolioLinks({
             href={siteUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-[#0a0a0a] text-white px-5 py-3.5 text-[13px] font-sans font-semibold hover:bg-[#1f1f1f] transition-colors"
+            className="inline-flex items-center gap-3 border border-[#0a0a0a] text-[#0a0a0a] bg-transparent px-5 py-3.5 text-[13px] font-sans font-semibold hover:bg-[#0a0a0a] hover:text-white transition-colors"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />

@@ -9,6 +9,7 @@ import MDXCTASection from "./MDXCTASection";
 import TestimonialQuote from "./TestimonialQuote";
 import ImageCaption from "./ImageCaption";
 import PortfolioLinks from "./PortfolioLinks";
+import SitePreview from "./SitePreview";
 
 const mdxComponents: MDXComponents = {
   // MDX custom components
@@ -21,6 +22,7 @@ const mdxComponents: MDXComponents = {
   TestimonialQuote,
   ImageCaption,
   PortfolioLinks,
+  SitePreview,
 
   // Override default HTML elements
   img: ({ src, alt }) => (
