@@ -1,0 +1,225 @@
+---
+title: "Why Your Website Isn't Showing Up on Google (And How to Fix It) (2027)"
+excerpt: "You built the website. You launched it. You searched for your business on Google — and it's nowhere to be found. Here's why this happens, what the specific causes are, and the exact steps to fix each one."
+category: "Guide"
+date: "2027-06-21"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["SEO", "Google", "Website", "Search Visibility", "Small Business"]
+related:
+  - "website-seo-guide"
+  - "signs-your-website-is-losing-customers"
+  - "website-speed-optimization-guide"
+  - "how-much-does-web-design-cost"
+seo:
+  title: "Why Your Website Isn't Showing Up on Google: Causes and Fixes (2027)"
+  description: "The specific reasons a website doesn't appear in Google search results — and the exact steps to diagnose and fix each one. For business owners who can't find their site."
+---
+
+<QuickAnswers items={[
+  {
+    q: "Why isn't my website showing up on Google at all?",
+    a: "The most common reasons: Google hasn't crawled it yet (new sites can take days to weeks), the site has a noindex tag blocking indexing, there's a robots.txt file blocking Googlebot, or the site has crawl errors preventing Google from reading it. Run your domain through Google Search Console to see exactly what Google can and cannot access."
+  },
+  {
+    q: "How long does it take for a new website to appear on Google?",
+    a: "A new website can appear in Google search results within days if it's submitted via Google Search Console and has at least a few inbound links. Without active submission and links, it can take 4–8 weeks. A site with technical blocking issues (noindex, robots.txt errors) may never appear regardless of age."
+  },
+  {
+    q: "My website appears on Google but not for the searches I want. Is that a different problem?",
+    a: "Yes — entirely different. A site that exists in Google's index but doesn't rank for target keywords has an SEO content and authority problem, not a crawlability problem. This requires building relevant content, earning links, and optimising for specific search terms — not the technical fixes that address indexing issues."
+  }
+]} />
+
+There are two very different versions of "my website isn't showing up on Google":
+
+**Version 1:** You literally cannot find your website anywhere in Google search results — not even when you search for your exact business name. This is an indexing problem.
+
+**Version 2:** Your website exists in Google but doesn't appear for the searches your customers are making. This is a ranking problem.
+
+Both are fixable, but they have different causes and different solutions. This guide covers both — starting with diagnosis so you know which problem you actually have.
+
+---
+
+## Step 1: Diagnose Which Problem You Have
+
+**Test 1: Search your exact domain.**
+In Google, search: `site:yourdomain.com`
+
+- **No results:** Google has not indexed your site at all → indexing problem (this guide's first half)
+- **Results appear:** Google knows your site exists → ranking problem (this guide's second half)
+
+**Test 2: Search your exact business name.**
+If your business name is fairly unique (not "Coffee Shop"), search for it directly.
+
+- **Your site appears:** Indexing is working; specific keyword rankings are the issue
+- **Competitors appear but not you:** Indexing and/or ranking problem
+- **Nothing relevant appears:** Strong signal of indexing issue
+
+---
+
+## Part 1: Indexing Problems — Why Google Can't Find Your Site
+
+### Cause 1: Noindex Tag
+
+The most common technical cause of complete Google invisibility is a `noindex` tag that was added during development and never removed.
+
+Developers routinely add `<meta name="robots" content="noindex">` to websites while they're being built — to prevent half-finished sites from appearing in search. The problem: this tag is sometimes forgotten and shipped with the live site.
+
+**How to check:** Right-click on your homepage, select "View Page Source," and search (Ctrl+F / Cmd+F) for `noindex`. If you find it on a live page, have your developer remove it.
+
+**In Google Search Console:** The Coverage report will show "Excluded — noindex tag" for affected pages.
+
+### Cause 2: Robots.txt Blocking
+
+Your `robots.txt` file tells search engine crawlers which parts of your site they can and cannot access. A misconfigured robots.txt can block Googlebot from your entire site.
+
+**How to check:** Go to `yourdomain.com/robots.txt` in your browser. If you see `Disallow: /` under `User-agent: *` or `User-agent: Googlebot`, Google is being told not to crawl your site.
+
+**The fix:** Change `Disallow: /` to `Allow: /` for Googlebot, or remove the blocking rule entirely if it's unintentional.
+
+### Cause 3: Site Too New — Google Hasn't Crawled It Yet
+
+A brand new website with no inbound links and no sitemap submission may simply not have been discovered by Google yet.
+
+**How to fix:**
+1. Set up Google Search Console (free, at search.google.com/search-console)
+2. Add and verify your domain
+3. Submit your sitemap (`yourdomain.com/sitemap.xml`) — most website platforms generate this automatically
+4. Use the URL Inspection tool in Search Console to request indexing of your homepage
+
+After submission, initial indexing typically takes 1–7 days.
+
+### Cause 4: Crawl Errors
+
+If your site has significant technical errors — broken server responses, redirect loops, misconfigured hosting — Google may have attempted to crawl it and encountered errors that prevent indexing.
+
+**How to check:** Google Search Console → Coverage report → Errors tab. This lists every URL Google tried to crawl and failed.
+
+### Cause 5: The Site Has No Content Google Can Read
+
+Some websites are built in ways that make their content invisible to Google's crawler:
+
+- JavaScript-rendered content that requires a browser to load (Google can crawl this but often doesn't do it reliably)
+- Content in iframes (Google doesn't index iframe content)
+- Images instead of text for key headings and content
+
+**How to check:** View your site's page source (Ctrl+U / Cmd+Option+U). If the main content is absent from the raw HTML and only appears after JavaScript runs, this is the problem.
+
+<ComparisonTable
+  beforeLabel="Indexed But Not Ranking"
+  afterLabel="Not Indexed At All"
+  rows={[
+    { feature: "site: search result", before: "Pages appear", after: "Zero results" },
+    { feature: "Cause", before: "SEO content/authority problem", after: "Technical blocking or crawl issue" },
+    { feature: "Fix timeline", before: "3–6 months of SEO work", after: "Days to weeks after technical fix" },
+    { feature: "Tools", before: "Google Search Console, keyword research", after: "View Source, robots.txt check, Search Console" },
+    { feature: "Primary action", before: "Create content, earn links", after: "Remove noindex, submit sitemap, fix errors" }
+  ]}
+/>
+
+---
+
+## Part 2: Ranking Problems — Why Google Ignores You for Your Keywords
+
+If Google has indexed your site but it doesn't appear for the searches your customers make, you have an SEO content and authority problem.
+
+### Reason 1: You Have No Content Google Can Match to Search Queries
+
+Google's job is to match search queries to the most relevant, authoritative page on the web. If your website has no content about the specific things your customers are searching for, Google has nothing to show.
+
+A website with five pages — Home, About, Services, Contact, and one blog post — is competing for rankings against websites with 50, 100, or 200 relevant pages. On virtually every keyword, it loses.
+
+**The fix:** Create specific, well-written content that matches the searches your customers make. Read [website seo guide](/blog/website-seo-guide) for the keyword research and content strategy framework. The businesses that rank well for commercial keywords almost always have significant content investment behind them.
+
+### Reason 2: Your Pages Aren't Optimised for Specific Keywords
+
+Even if you have relevant content, Google needs signals about what each page is specifically about. These include:
+
+- The page title tag (what appears in the browser tab and in search results)
+- The meta description (the summary under your page title in results)
+- The H1 heading on each page
+- The page URL slug
+- The body content — using the target keyword naturally throughout
+
+A service page titled "Our Services" with an H1 of "What We Offer" and no mention of the specific service and location in the body copy will not rank for searches like "web design agency London." The same page titled "Web Design Agency London | Evoke Studio" with an H1 of "Web Design Agency in London" and content that specifically addresses what Londoners are searching for — will.
+
+### Reason 3: Your Site Has No Authority
+
+Google's algorithm weights domain authority heavily — a proxy measure of how many quality websites link to yours. A new website, even with excellent content, will be outranked by older, more linked-to competitors.
+
+**Building authority over time:**
+- Getting featured in relevant online publications and directories
+- Being listed in industry-specific directories
+- Creating content that others in your sector want to reference
+- Getting client testimonials published on their own websites with links back to yours
+
+This takes time — typically 6–18 months of consistent work before meaningful authority accumulates. There's no shortcut that works reliably.
+
+### Reason 4: Your Website Is Slow
+
+Google uses Core Web Vitals — including Largest Contentful Paint and page load time — as a direct ranking factor. A slow website ranks below faster competitors, all else being equal.
+
+Run your site through Google PageSpeed Insights (free). A score below 70 on mobile is a ranking liability. Read [website speed optimization guide](/blog/website-speed-optimization-guide) for the specific fixes that improve Core Web Vitals scores. The fastest websites are typically built on modern frameworks with global CDN delivery — [Next.js on Vercel](/blog/nextjs-vs-webflow-for-brand-websites) consistently produces excellent Core Web Vitals scores.
+
+### Reason 5: Your Local SEO Isn't Set Up
+
+If you're a local or regional business and you want to appear in local search results ("web designer near me," "plumber London"), Google Business Profile is as important as your website.
+
+**Set up and optimise:**
+- Claim and verify your Google Business Profile at business.google.com
+- Complete every field: business name, address, phone, website, hours, categories, description
+- Upload 10+ high-quality photos
+- Collect and respond to Google reviews
+- Keep the profile actively updated
+
+Local businesses that appear in the "map pack" (the 3 businesses shown with a map above organic results) get dramatically more clicks than those below it. This position is earned primarily through Google Business Profile optimisation and review count.
+
+---
+
+## The Quick Wins Checklist
+
+If you're starting from zero visibility, this sequence gets you indexed quickly:
+
+- [ ] Check for noindex tags in page source
+- [ ] Check robots.txt for Disallow rules
+- [ ] Set up Google Search Console and verify domain
+- [ ] Submit sitemap.xml
+- [ ] Request indexing of homepage via URL Inspection
+- [ ] Set up Google Business Profile if local
+- [ ] Ensure every page has a unique, keyword-relevant title tag
+
+---
+
+<CTASection
+  headline="Website that exists but isn't bringing in organic enquiries?"
+  description="Evoke Studio builds websites on Next.js with SEO architecture built in from the start — fast load times, proper metadata, sitemap, and structured content. Not an afterthought."
+  cta="Start Your Web Project"
+  href="/contact"
+  secondary="View Services & Pricing"
+  secondaryHref="/services"
+/>
+
+<FAQAccordion items={[
+  {
+    q: "How long does SEO take to produce results?",
+    a: "Technical fixes (indexing, noindex removal, sitemap submission) produce results within days to weeks — Google re-crawls and indexes quickly once barriers are removed. Content and authority-building SEO takes 3–12 months to produce meaningful ranking improvements for competitive keywords. Local SEO (Google Business Profile) can show results within weeks for low-competition local searches. There is no shortcut that produces sustainable results faster."
+  },
+  {
+    q: "Should I pay for Google Ads while I wait for organic rankings?",
+    a: "For businesses where search intent is the primary customer acquisition channel, Google Ads can provide immediate visibility while organic rankings develop. The key difference: Ads traffic stops the moment you stop paying; organic rankings compound over time. The ideal approach is running Ads for high-intent keywords while building organic content and authority in parallel — then reducing Ad spend as organic positions strengthen."
+  },
+  {
+    q: "Does building a website on Next.js help with Google rankings?",
+    a: "Indirectly, significantly. Next.js sites deployed on Vercel's edge network typically achieve excellent Core Web Vitals scores — fast LCP, low CLS, responsive FID — which Google weights as a ranking factor. WordPress sites on slow shared hosting frequently have poor Core Web Vitals, which is a ranking disadvantage. The framework doesn't directly affect rankings; the performance it enables does."
+  },
+  {
+    q: "Can I do SEO myself or do I need to hire someone?",
+    a: "Technical SEO basics — sitemap submission, noindex removal, page title optimisation, Google Business Profile setup — are learnable and doable by most business owners with a few hours of effort. Content strategy and execution (writing ranking-quality content consistently) is more time-intensive but doesn't require a specialist. Link building and authority development is where specialist knowledge and relationships matter most. Most small businesses can do 80% of the value themselves; the other 20% benefits from professional help."
+  },
+  {
+    q: "Why does my competitor's website rank better than mine when mine looks better?",
+    a: "Because Google ranks on relevance, authority, and technical performance — not visual quality. A competitor with an older, uglier site that has hundreds of pages of relevant content and thousands of inbound links will outrank a newer, better-looking site with little content and few links. Ranking is earned by content and authority; aesthetics are invisible to Google. Both matter — aesthetics for conversion once the visitor arrives; content and authority for getting them there."
+  }
+]} />

@@ -1,0 +1,197 @@
+---
+title: "Why Your Website Bounce Rate Is High (And What to Do About It) (2027)"
+excerpt: "A high bounce rate means visitors are arriving and leaving without engaging. But 'high' is relative — and fixing it requires knowing which pages have the problem, where those visitors came from, and why they're leaving. Here's the complete diagnostic framework."
+category: "Guide"
+date: "2027-06-27"
+author:
+  name: "Mehedi Hasan"
+  role: "Founder & CEO, Evoke Studio"
+tags: ["Analytics", "Web Design", "Bounce Rate", "Conversion", "UX Design"]
+related:
+  - "website-traffic-but-no-enquiries"
+  - "signs-your-website-is-losing-customers"
+  - "website-mobile-ux-guide"
+  - "website-speed-optimization-guide"
+seo:
+  title: "Why Your Website Bounce Rate Is High: Diagnosis and Fixes (2027)"
+  description: "Why websites have high bounce rates, which bounce rates are actually problems, and the specific fixes for the most common causes. A practical guide for business owners."
+---
+
+<QuickAnswers items={[
+  {
+    q: "What is a good website bounce rate?",
+    a: "It depends entirely on the page type and traffic source. Blog posts and informational content: 60–90% bounce rate is normal (people read the post and leave — that's the correct behaviour). Homepage and service pages: 40–65% is typical; below 40% is strong. Landing pages for paid campaigns: 20–50% depending on specificity of targeting. There is no universal 'good' bounce rate — context determines whether a rate is a problem."
+  },
+  {
+    q: "Does bounce rate affect Google rankings?",
+    a: "Google has stated that bounce rate is not a direct ranking signal. However, the factors that cause high bounce rates — slow page speed, poor mobile experience, irrelevant content for the search query — do affect rankings. Fixing the causes of high bounce rate (speed, relevance, mobile UX) improves both the metric and the underlying ranking factors."
+  },
+  {
+    q: "Is bounce rate still a useful metric in GA4?",
+    a: "Google Analytics 4 replaced 'bounce rate' with 'engagement rate' — the percentage of sessions that lasted over 10 seconds, had a conversion event, or visited at least 2 pages. GA4's inverse (non-engagement rate) is roughly equivalent to the old bounce rate. The metric is still useful; the definition has shifted slightly. Sessions with only 1 page viewed but over 10 seconds duration now count as engaged in GA4."
+  }
+]} />
+
+A high bounce rate is one of those metrics that can cause genuine concern or turn out to be completely irrelevant, depending on which page you're looking at and where the traffic came from.
+
+This guide gives you the diagnostic framework to determine whether your bounce rate is actually a problem, what's causing it if it is, and the specific actions that fix each cause.
+
+---
+
+## Step 1: Find Out WHICH Pages Have High Bounce Rates
+
+Google Analytics (or your analytics tool of choice) breaks down bounce rate by page. Aggregate site-level bounce rate tells you almost nothing useful — you need page-level data.
+
+**In GA4:** Reports → Engagement → Pages and Screens → sort by "Bounce rate" (or "Engagement rate" descending to find the least engaged pages).
+
+**The question to ask for each page:** Is the high bounce rate a problem, or is it expected?
+
+| Page Type | Expected Bounce Rate | Problem Threshold |
+|---|---|---|
+| Blog post / guide | 65–90% | Above 90% |
+| Homepage | 40–65% | Above 75% |
+| Service/product page | 35–60% | Above 70% |
+| Contact page | 25–50% | Above 65% |
+| Pricing page | 35–60% | Above 70% |
+| Landing page (paid) | 20–50% | Above 65% |
+
+A blog post with a 75% bounce rate is performing normally — people read the post and leave. The same rate on a service page where you want visitors to enquire is a problem.
+
+---
+
+## Step 2: Identify Where the Bouncing Traffic Comes From
+
+Bounce rate varies dramatically by traffic source. A page with 80% bounce rate overall may have 50% bounce rate from organic search and 95% bounce rate from social media — completely different problems with different solutions.
+
+**In GA4:** Use secondary dimensions or explore reports to filter bounce rate by source/medium.
+
+**What the breakdown typically reveals:**
+
+- **Social media traffic bounces highest** — social visitors are often casually browsing, not actively seeking your service. High bounce from social is usually not a problem.
+- **Paid traffic should bounce least** — you're paying for these visitors; if they're bouncing at 70%+, the landing page isn't matching the ad's promise.
+- **Branded search bounces least** — people who searched your exact name are motivated and trust you before they arrive.
+- **Organic informational search may bounce more** — people finding a specific answer may leave when they have it; this is fine if conversion wasn't the goal.
+
+---
+
+## Cause 1: The Page Doesn't Match What the Visitor Expected
+
+This is the most common cause of high bounce rate, and it's called "expectation mismatch."
+
+The visitor clicked a link (from search, social, email, or ad) with a certain expectation of what they'd find. The page they landed on didn't match that expectation. They left.
+
+**Common scenarios:**
+- A Google ad for "web design packages" leads to a general homepage instead of a packages page
+- A social media post about AI logo vectorization links to a homepage that doesn't immediately reference the service
+- A search result for "brand identity for startups" leads to a generic "services" page
+
+**The fix:** Match the landing page to the specific intent of each traffic source. Each ad group needs its own landing page. Each specific organic keyword should land on the most relevant page. Each social media post should link to the page most relevant to that post's content.
+
+---
+
+## Cause 2: The Page Loads Too Slowly
+
+A visitor who waits more than 3 seconds for a page to load on mobile is statistically likely to leave before the page finishes loading. This registers as a bounce — a session with a single page view, very short duration.
+
+**How to check:** Google PageSpeed Insights → run on mobile → look at Largest Contentful Paint (LCP). Above 4 seconds is a problem.
+
+**Common causes of slow pages:**
+- Large, uncompressed images
+- Render-blocking JavaScript that delays content display
+- Slow hosting (shared hosting in the wrong geographic region)
+- Too many third-party scripts (chat widgets, analytics, retargeting pixels)
+
+Read [website speed optimization guide](/blog/website-speed-optimization-guide) for the prioritised fix list. For structural speed issues, a modern framework on a global CDN — [Next.js on Vercel](/blog/nextjs-vs-webflow-for-brand-websites) — consistently delivers the performance that platform-constrained sites cannot achieve through optimisation alone.
+
+---
+
+## Cause 3: The Mobile Experience Is Broken or Poor
+
+If 60%+ of your traffic is mobile (the global average) and the mobile experience is difficult — tiny text, hard-to-tap buttons, horizontal scrolling, layout elements overflowing the screen — high mobile bounce rate is the predictable result.
+
+**How to check:** View your site on a real phone, not just the browser's mobile emulator. Use multiple devices if possible. Try to use the site as a first-time visitor: navigate, read, fill in the form.
+
+Read [website mobile ux guide](/blog/website-mobile-ux-guide) for the specific elements to audit. The most impactful mobile fixes: font size (minimum 16px body text), button tap targets (minimum 44×44px), and eliminating horizontal scroll.
+
+---
+
+## Cause 4: The Page Doesn't Immediately Communicate Its Value
+
+A visitor lands on a homepage and within 5 seconds cannot answer "what does this company do?" They leave.
+
+This is the conversion problem covered in detail in [website traffic but no enquiries](/blog/website-traffic-but-no-enquiries), but it shows up in bounce rate data before it shows up in zero conversions. The homepage is the most common bouncer because it's the most common first landing page and it's often the most generically written.
+
+**The fix:** Rewrite the above-the-fold section so a stranger can immediately understand what the business does, for who, and what to do next. The headline and subheadline do this work. If they don't, the bounce follows inevitably.
+
+<ComparisonTable
+  beforeLabel="Page With High Bounce Rate"
+  afterLabel="Engaged Page"
+  rows={[
+    { feature: "Page load speed", before: "5+ seconds on mobile", after: "Under 2 seconds — LCP passes Core Web Vitals" },
+    { feature: "Above fold clarity", before: "Visitor can't tell what the business does", after: "Clear value proposition, for who, next step" },
+    { feature: "Traffic match", before: "Generic traffic from mismatched sources", after: "Traffic matched to landing page content" },
+    { feature: "Mobile experience", before: "Desktop layout squeezed onto phone", after: "Mobile-first design with proper tap targets" },
+    { feature: "Content relevance", before: "Page doesn't answer visitor's question", after: "Page matches search intent precisely" }
+  ]}
+/>
+
+---
+
+## Cause 5: The Content Doesn't Answer the Visitor's Actual Question
+
+Informational bounce (someone reads a blog post and leaves) is normal. Bounces on commercial pages caused by content gaps are a different problem.
+
+**Examples:**
+- A visitor arrives on a "web design services" page looking for pricing information — finds none, and leaves to find a competitor who shows prices
+- A visitor arrives on a "brand identity" page looking for examples of past work — finds only descriptions, not images
+- A visitor arrives on a contact page and finds only an email address with no phone, no address, no response time commitment — feels uncertain and leaves
+
+**The fix:** On every commercial page, ask: "What is the visitor's main question when they land here? Does this page answer it?" If not, add the answer.
+
+---
+
+## When High Bounce Rate Is Not a Problem
+
+It's worth being explicit: a high bounce rate on some pages is a sign the content is working correctly.
+
+**Blog posts and guides:** If someone searches "how to vectorize an AI logo," reads the entire guide, gets their answer, and leaves — that's a successful session even if it's a "bounce." The goal of informational content is often to build trust and demonstrate expertise, not to produce an immediate commercial action.
+
+**Single-purpose landing pages:** If you create a landing page for a specific campaign where the only actions are "enquire" or "leave," a bounce that doesn't convert is expected. The conversion rate matters; the bounce rate is just the inverse.
+
+**Specific referral traffic:** A mention in a media publication may drive high-bounce traffic — people who clicked out of curiosity, not commercial intent. This traffic has high brand value; its bounce rate is irrelevant.
+
+Focus bounce rate optimisation efforts on pages where conversion is the goal and bounce rate represents a commercial loss.
+
+---
+
+<CTASection
+  headline="Website with high bounce rates and poor conversion — time to rebuild it right?"
+  description="Evoke Studio builds Next.js websites designed for engagement and conversion — fast load times, mobile-first, clear value propositions, and architecture that keeps the right visitors engaged."
+  cta="Start Your Web Project"
+  href="/contact"
+  secondary="View Services & Pricing"
+  secondaryHref="/services"
+/>
+
+<FAQAccordion items={[
+  {
+    q: "What is a good bounce rate for a homepage?",
+    a: "For a homepage receiving mixed traffic sources, 45–60% is typical for a well-optimised business website. Below 40% is strong — it means visitors are consistently moving to other pages. Above 70% on a homepage is a signal to investigate — either the traffic quality is poor (wrong audience), the value proposition is unclear, the page loads slowly, or the mobile experience is bad."
+  },
+  {
+    q: "How do I reduce bounce rate on blog posts?",
+    a: "Add internal links to related content (which you're already reading); add a CTA at the end of posts that matches the topic (a post about AI logo vectorization should CTA to the vectorization service); add a 'related posts' section; and ensure the post fully answers the question the visitor arrived with (unfulfilled informational intent is the top cause of blog bounce). Reducing bounce on informational content is lower priority than reducing it on commercial pages."
+  },
+  {
+    q: "Is a 100% bounce rate always bad?",
+    a: "Not always. A single-page website (like a landing page or a 'coming soon' page) will have a 100% bounce rate by definition — there's nowhere else to go. A page that perfectly answers a specific question (a 'how to' guide that resolves the query completely) may have a legitimately high bounce rate because the visit was successful. Always ask: did the visitor get what they came for?"
+  },
+  {
+    q: "Can I lower bounce rate by adding popups or chat widgets?",
+    a: "These interventions can artificially reduce bounce rate (a pop-up interaction may count as engagement) without improving the underlying page quality. They can also actively increase bounce rate if they're intrusive on mobile or appear before the visitor has had a chance to read anything. Focus on the genuine causes — speed, relevance, clarity — rather than mechanisms that manipulate the metric without improving the experience."
+  },
+  {
+    q: "How long does it take to see bounce rate improvements after making changes?",
+    a: "Technical improvements (speed, mobile) show results immediately and can be verified in days. Content improvements (clearer headline, better value proposition) show results within 1–2 weeks of implementation if you have meaningful traffic. Traffic source improvements (matching ads to landing pages, improving search relevance) take effect as soon as the changes are live. Analytics reporting lag means you may need 2–4 weeks of post-change data to measure cleanly."
+  }
+]} />
