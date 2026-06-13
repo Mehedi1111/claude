@@ -15,6 +15,19 @@ async function getBlogSlugs() {
   return files.filter((f) => f.endsWith(".mdx")).map((f) => f.replace(".mdx", ""));
 }
 
+const lpSlugs = [
+  "logo-design-service",
+  "brand-identity-design",
+  "ai-logo-vectorization",
+  "startup-branding",
+  "small-business-branding",
+  "logo-redesign-service",
+  "brand-guidelines-design",
+  "web-design-for-startups",
+  "branding-agency-usa",
+  "ai-logo-cleanup",
+];
+
 async function main() {
   try {
     const slugs = await getBlogSlugs();
@@ -24,6 +37,7 @@ async function main() {
       `${BASE}/blog`,
       `${BASE}/services`,
       `${BASE}/contact`,
+      ...lpSlugs.map((slug) => `${BASE}/lp/${slug}`),
       ...slugs.map((slug) => `${BASE}/blog/${slug}`),
     ];
 

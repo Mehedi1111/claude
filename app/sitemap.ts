@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getSlugs } from "@/lib/mdx";
 import { allServices } from "@/lib/data";
 import { domains } from "@/lib/domains";
+import { landingPages } from "@/lib/landing-pages";
 
 const BASE = "https://madebyevoke.com";
 
@@ -51,5 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   ];
 
-  return [...staticPages, ...servicePages, ...domainPages, ...portfolioPages, ...blogPages];
+  const landingPageUrls: MetadataRoute.Sitemap = landingPages.map((p) => ({
+    url: `${BASE}/lp/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  }));
+
+  return [...staticPages, ...landingPageUrls, ...servicePages, ...domainPages, ...portfolioPages, ...blogPages];
 }
