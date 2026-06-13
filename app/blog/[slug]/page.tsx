@@ -197,16 +197,23 @@ export default async function BlogPostPage({
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none" />
 
         <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-          {/* breadcrumb + meta */}
-          <div className="flex flex-wrap items-center gap-3 mb-10">
-            <Link
-              href="/blog"
-              className="text-[12px] font-sans font-medium text-white/35 hover:text-white/70 transition-colors group"
-            >
-              <span className="group-hover:-translate-x-0.5 inline-block transition-transform">←</span>{" "}
+          {/* breadcrumb nav */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 mb-5 flex-wrap">
+            <Link href="/" className="text-[12px] font-sans text-white/35 hover:text-white/70 transition-colors">
+              Home
+            </Link>
+            <span className="text-white/20 text-[12px]">/</span>
+            <Link href="/blog" className="text-[12px] font-sans text-white/35 hover:text-white/70 transition-colors">
               Blog
             </Link>
-            <span className="w-px h-3 bg-white/10" />
+            <span className="text-white/20 text-[12px]">/</span>
+            <span className="text-[12px] font-sans text-white/55 line-clamp-1 max-w-[300px] sm:max-w-none">
+              {frontmatter.title}
+            </span>
+          </nav>
+
+          {/* category + meta */}
+          <div className="flex flex-wrap items-center gap-3 mb-10">
             <span className="text-[11px] font-sans font-bold text-white/50 uppercase tracking-[0.12em] border border-white/10 px-2.5 py-1">
               {frontmatter.category}
             </span>
