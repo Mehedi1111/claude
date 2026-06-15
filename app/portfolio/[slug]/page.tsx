@@ -69,8 +69,60 @@ export default async function CaseStudyPage({
     const nextSlug = allSlugs[(currentIndex + 1) % allSlugs.length];
     const nextPost = nextSlug ? getPost<CaseStudyFrontmatter>("case-studies", nextSlug) : null;
 
+    const pageUrl = `https://madebyevoke.com/portfolio/${slug}`;
+
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://madebyevoke.com" },
+        { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://madebyevoke.com/portfolio" },
+        { "@type": "ListItem", position: 3, name: frontmatter.seo?.title || frontmatter.client, item: pageUrl },
+      ],
+    };
+
+    const creativeWorkSchema = {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: frontmatter.title,
+      description: frontmatter.challenge,
+      url: pageUrl,
+      image: { "@type": "ImageObject", url: frontmatter.coverImage.startsWith("/") ? `https://madebyevoke.com${frontmatter.coverImage}` : frontmatter.coverImage, name: frontmatter.title },
+      creator: { "@type": "Person", name: "Mehedi Hasan", jobTitle: "Founder & CEO, Evoke Studio", url: "https://madebyevoke.com/about" },
+      publisher: { "@type": "Organization", name: "Evoke Studio", url: "https://madebyevoke.com" },
+      dateCreated: frontmatter.year,
+      keywords: frontmatter.seo?.keywords?.join(", ") ?? frontmatter.tags.join(", "),
+      genre: frontmatter.category,
+    };
+
+    const serviceSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: frontmatter.service,
+      provider: { "@type": "Organization", name: "Evoke Studio", url: "https://madebyevoke.com" },
+      serviceType: frontmatter.service,
+      areaServed: ["US", "GB", "CA", "AU"],
+      url: "https://madebyevoke.com/services",
+    };
+
+    const faqSchema = frontmatter.faqItems && frontmatter.faqItems.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: frontmatter.faqItems.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
+        }
+      : null;
+
     return (
       <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+        {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
         <ReadingProgress />
 
         {/* Hero */}
@@ -109,9 +161,10 @@ export default async function CaseStudyPage({
               src={frontmatter.coverImage}
               alt={frontmatter.client}
               fill
-              className="object-cover grayscale opacity-55"
+              className={`object-cover ${frontmatter.colorImages ? "" : "grayscale opacity-55"}`}
               priority
               sizes="100vw"
+              unoptimized={frontmatter.coverImage.endsWith(".avif")}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/20 via-transparent to-[#0a0a0a]/30" />
           </div>

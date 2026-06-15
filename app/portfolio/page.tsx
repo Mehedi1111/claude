@@ -9,16 +9,27 @@ import AnimatedText from "@/components/ui/AnimatedText";
 import LogoShowcase from "@/components/sections/LogoShowcase";
 
 export const metadata: Metadata = {
-  title: "Brand Identity & Logo Design Portfolio | Evoke Studio — Mehedi Hasan",
+  title: "Brand Identity, Social Media Design & Web Portfolio | Evoke Studio",
   description:
-    "Real logo design and brand identity projects by Evoke Studio. 9 case studies across 8 industries — cannabis wellness, freight, logistics, food, tech, and more. See how AI logos become production-ready brand systems.",
+    "Real brand identity, logo design, social media graphics, and web design projects by Evoke Studio. 13 case studies across USA, UK, Canada & Australia — from AI logo vectorization to full brand systems and Instagram content design.",
+  keywords: [
+    "brand identity portfolio",
+    "logo design portfolio",
+    "social media design portfolio",
+    "web design portfolio",
+    "brand identity designer",
+    "Instagram post design",
+    "Facebook post design",
+    "social media graphics",
+  ],
   openGraph: {
-    title: "Brand Identity & Logo Design Portfolio | Evoke Studio — Mehedi Hasan",
+    title: "Brand Identity, Social Media Design & Web Portfolio | Evoke Studio",
     description:
-      "9 brand identity and AI logo vectorization case studies. From Midjourney concepts to Pantone-certified, printer-approved brand systems.",
+      "13 brand identity, social media design, and web design case studies. From AI logo vectorization to on-brand Instagram content and live Next.js websites.",
     url: "https://madebyevoke.com/portfolio",
     siteName: "Evoke Studio",
     type: "website",
+    images: [{ url: "https://madebyevoke.com/portfolio/social-media-2025/social-media-2025-cover.avif", width: 1920, alt: "Evoke Studio Portfolio — Brand Identity, Social Media Design & Web Design" }],
   },
   alternates: { canonical: "https://madebyevoke.com/portfolio" },
 };
@@ -63,8 +74,9 @@ export default function PortfolioPage() {
                         src={item.image}
                         alt={item.client}
                         fill
-                        className="object-cover grayscale transition-transform duration-700 group-hover:scale-105"
+                        className={`object-cover transition-transform duration-700 group-hover:scale-105 ${(item as { colorThumbnail?: boolean }).colorThumbnail ? "" : "grayscale"}`}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        unoptimized={item.image.endsWith(".avif")}
                       />
                       <div className="absolute inset-0 bg-[#0a0a0a]/0 group-hover:bg-[#0a0a0a]/50 transition-all duration-500 flex items-end p-6 opacity-0 group-hover:opacity-100">
                         <span className="text-sm font-sans font-semibold text-white">
@@ -125,6 +137,67 @@ export default function PortfolioPage() {
           </div>
         </section>
       )}
+
+      {/* Social Media Design */}
+      <section className="py-20 lg:py-28 bg-white border-t border-[#e5e5e5]">
+        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+          <SectionReveal>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-2">
+              <div>
+                <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-3">
+                  Social Media Design
+                </p>
+                <h2 className="text-[clamp(32px,4vw,56px)] font-display font-bold text-[#0a0a0a] tracking-[-0.03em]">
+                  On-brand. Every post.
+                </h2>
+              </div>
+              <p className="text-sm font-sans text-[#737373] max-w-xs leading-relaxed pb-1">
+                Instagram and Facebook graphics built from established brand identity systems — not templates. Every post is a continuation of the brand, not a departure from it.
+              </p>
+            </div>
+          </SectionReveal>
+
+          <SectionReveal delay={0.1}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12 mb-10">
+              {[
+                { src: "/portfolio/social-media-2025/social-media-2025-cover.avif", alt: "Social media design portfolio 2025 — Instagram post designs by Evoke Studio" },
+                { src: "/portfolio/social-media-2025/social-media-2025-2.avif", alt: "Instagram post design examples — on-brand social media graphics by Evoke Studio" },
+                { src: "/portfolio/social-media-2025/social-media-2025-3.avif", alt: "Facebook post design portfolio 2025 — brand content graphics by Evoke Studio" },
+              ].map((img, i) => (
+                <div key={i} className="relative overflow-hidden bg-[#f0f0f0]" style={{ aspectRatio: "4/3" }}>
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    unoptimized
+                  />
+                </div>
+              ))}
+            </div>
+          </SectionReveal>
+
+          <SectionReveal delay={0.2}>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/portfolio/social-media-portfolio-2025"
+                className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white bg-[#0a0a0a] px-6 py-3.5 hover:bg-[#1f1f1f] transition-colors"
+              >
+                View Case Study →
+              </Link>
+              <a
+                href="https://www.behance.net/gallery/225081509/Social-Media-Portfolio-2025"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-[#0057ff] border border-[#0057ff]/30 px-6 py-3.5 hover:bg-[#0057ff] hover:text-white transition-colors"
+              >
+                View on Behance ↗
+              </a>
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
 
       {/* Live Websites — Web Design & Development */}
       <section className="py-20 lg:py-28 bg-[#0a0a0a]">

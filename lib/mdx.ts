@@ -30,6 +30,8 @@ export interface CaseStudyFrontmatter {
   challenge: string;
   solution: string;
   outcomes: string[];
+  colorImages?: boolean;
+  faqItems?: { q: string; a: string }[];
   seo?: { title?: string; description?: string; keywords?: string[] };
 }
 
