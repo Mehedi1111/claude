@@ -339,6 +339,59 @@ export default async function ServiceDetailPage({ params }: Props) {
         </div>
       </section>
 
+      {/* Portfolio showcase — social media management service */}
+      {slug === "social-media-management" && (
+        <section className="py-20 lg:py-28 bg-[#fafafa] border-t border-[#e5e5e5]">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <SectionReveal>
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+                <div>
+                  <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-3">
+                    Real Work
+                  </p>
+                  <h2 className="text-[clamp(28px,3.5vw,48px)] font-display font-bold text-[#0a0a0a] tracking-[-0.03em]">
+                    Social Media Portfolio 2025
+                  </h2>
+                </div>
+                <Link
+                  href="/portfolio/social-media-portfolio-2025"
+                  className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-[#0a0a0a] border border-[#0a0a0a] px-5 py-3 hover:bg-[#0a0a0a] hover:text-white transition-colors shrink-0"
+                >
+                  View Full Case Study →
+                </Link>
+              </div>
+            </SectionReveal>
+            <SectionReveal delay={0.1}>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                {[
+                  { src: "/portfolio/social-media-2025/social-media-2025-cover.avif", alt: "Social media post design portfolio 2025 — Instagram content by Evoke Studio" },
+                  { src: "/portfolio/social-media-2025/social-media-2025-2.avif", alt: "Instagram post design examples — on-brand social media graphics" },
+                  { src: "/portfolio/social-media-2025/social-media-2025-3.avif", alt: "Facebook post design portfolio — brand content graphics by Evoke Studio" },
+                ].map((img, i) => (
+                  <Link key={i} href="/portfolio/social-media-portfolio-2025">
+                    <div className="relative overflow-hidden bg-[#f0f0f0]" style={{ aspectRatio: "4/3" }}>
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className="object-cover hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        unoptimized
+                      />
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </SectionReveal>
+            <SectionReveal delay={0.15}>
+              <p className="text-sm font-sans text-[#737373] max-w-xl">
+                Instagram and Facebook post designs built from client brand identity systems — 50+ assets delivered in 2025 for brands in the USA, UK, Canada, and Australia.
+              </p>
+            </SectionReveal>
+          </div>
+        </section>
+      )}
+
       {/* Before/After showcase — vectorization service only */}
       {slug === "ai-logo-vectorization" && showcaseItems.length > 0 && (
         <section className="py-20 lg:py-28 bg-[#fafafa] border-t border-[#e5e5e5]">

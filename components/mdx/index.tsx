@@ -1,5 +1,4 @@
 import type { MDXComponents } from "mdx/types";
-import Image from "next/image";
 import Callout from "./Callout";
 import FAQAccordion from "./FAQAccordion";
 import QuickAnswers from "./QuickAnswers";
@@ -27,18 +26,15 @@ const mdxComponents: MDXComponents = {
   // Override default HTML elements
   img: ({ src, alt }) => (
     <span className="not-prose block my-8">
-      <span className="relative block overflow-hidden bg-[#f0f0f0]" style={{ aspectRatio: "16/9" }}>
-        {src && (
-          <Image
-            src={src}
-            alt={alt || ""}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 65vw"
-            unoptimized
-          />
-        )}
-      </span>
+      {src && (
+        <img
+          src={src}
+          alt={alt || ""}
+          className="w-full h-auto"
+          loading="lazy"
+          decoding="async"
+        />
+      )}
     </span>
   ),
 
