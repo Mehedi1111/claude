@@ -9,10 +9,10 @@ import AnimatedText from "@/components/ui/AnimatedText";
 const FEATURED_SLUGS = [
   "entroedge-brand-identity",
   "rivian-logo",
-  "transam",
-  "nastled-logo",
-  "asprey-logo-brand-identity",
   "ohana-brand-identity",
+  "rapidweld-brand-identity",
+  "aerion",
+  "arkane",
 ];
 
 export default function PortfolioPreview() {
