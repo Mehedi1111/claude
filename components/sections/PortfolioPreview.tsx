@@ -7,12 +7,12 @@ import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
 
 const FEATURED_SLUGS = [
-  "caravel-solutions",
-  "moissanite-website",
+  "entroedge-brand-identity",
   "rivian-logo",
   "transam",
   "nastled-logo",
   "asprey-logo-brand-identity",
+  "ohana-brand-identity",
 ];
 
 export default function PortfolioPreview() {
