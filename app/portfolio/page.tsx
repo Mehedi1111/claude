@@ -74,7 +74,7 @@ export default function PortfolioPage() {
                         src={item.image}
                         alt={item.client}
                         fill
-                        className={`object-cover transition-transform duration-700 group-hover:scale-105 ${(item as { colorThumbnail?: boolean }).colorThumbnail ? "" : "grayscale"}`}
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         unoptimized={item.image.endsWith(".avif")}
                       />
