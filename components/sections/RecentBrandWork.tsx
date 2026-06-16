@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
@@ -71,13 +70,12 @@ export default function RecentBrandWork() {
               <Link href={`/portfolio/${project.slug}`} className="group block">
                 <motion.div whileHover="hover" initial="rest">
                   <div className="relative overflow-hidden bg-[#e8e8e8]" style={{ aspectRatio: "1/1" }}>
-                    <Image
+                    <img
                       src={project.image}
                       alt={`${project.client} — logo and brand identity by Evoke Studio`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      unoptimized
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <motion.div
                       className="absolute inset-0 bg-[#0a0a0a]"

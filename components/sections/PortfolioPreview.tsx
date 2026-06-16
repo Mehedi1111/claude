@@ -1,14 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { portfolioItems } from "@/lib/data";
 import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
 
+const FEATURED_SLUGS = [
+  "caravel-solutions",
+  "moissanite-website",
+  "rivian-logo",
+  "transam",
+  "nastled-logo",
+  "asprey-logo-brand-identity",
+];
+
 export default function PortfolioPreview() {
-  const [featured, second, third] = portfolioItems;
+  const slugMap = Object.fromEntries(portfolioItems.map((p) => [p.slug, p]));
+  const items = FEATURED_SLUGS.map((s) => slugMap[s]).filter(Boolean);
+
+  const [hero, ...rest] = items;
 
   return (
     <section className="py-24 lg:py-36 bg-white overflow-hidden">
@@ -31,60 +42,52 @@ export default function PortfolioPreview() {
           <SectionReveal delay={0.2}>
             <Link
               href="/portfolio"
-              className="inline-flex items-center gap-2 text-sm font-sans font-medium text-[#0a0a0a]/50 hover:text-[#0a0a0a] transition-colors link-underline shrink-0"
+              className="inline-flex items-center gap-2 text-sm font-sans font-medium text-[#0a0a0a]/50 hover:text-[#0a0a0a] transition-colors shrink-0"
             >
-              View All Work
+              View All Work →
             </Link>
           </SectionReveal>
         </div>
 
-        {/* Editorial grid: featured (large) + 2 smaller */}
-        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-4 lg:gap-5">
+        {/* Hero row: large left + 2 stacked right */}
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-4 lg:gap-5 mb-4 lg:mb-5">
 
-          {/* Featured — large left */}
+          {/* Hero item */}
           <SectionReveal direction="none">
-            <Link href={`/portfolio/${featured.slug}`} className="group block" data-cursor="VIEW">
+            <Link href={`/portfolio/${hero.slug}`} className="group block">
               <motion.div whileHover="hover" initial="rest">
                 <div className="relative overflow-hidden bg-[#f0f0f0]" style={{ aspectRatio: "4/3" }}>
-                  <Image
-                    src={featured.image}
-                    alt={featured.client}
-                    fill
-                    className="object-cover grayscale"
-                    sizes="(max-width: 1024px) 100vw, 60vw"
+                  <img
+                    src={hero.image}
+                    alt={`${hero.client} — brand identity by Evoke Studio`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <motion.div
                     className="absolute inset-0 bg-[#0a0a0a]"
-                    variants={{ rest: { opacity: 0 }, hover: { opacity: 0.55 } }}
-                    transition={{ duration: 0.5 }}
+                    variants={{ rest: { opacity: 0 }, hover: { opacity: 0.5 } }}
+                    transition={{ duration: 0.4 }}
                   />
                   <motion.div
                     className="absolute inset-0 flex items-end p-8"
-                    variants={{ rest: { opacity: 0, y: 12 }, hover: { opacity: 1, y: 0 } }}
-                    transition={{ duration: 0.4 }}
+                    variants={{ rest: { opacity: 0, y: 10 }, hover: { opacity: 1, y: 0 } }}
+                    transition={{ duration: 0.35 }}
                   >
-                    <div>
-                      <span className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white">
-                        View Case Study
-                        <motion.span
-                          variants={{ rest: { x: 0 }, hover: { x: 4 } }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          →
-                        </motion.span>
-                      </span>
-                    </div>
+                    <span className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-white">
+                      View Case Study →
+                    </span>
                   </motion.div>
                 </div>
                 <div className="pt-5 flex items-end justify-between gap-4">
                   <div>
-                    <p className="text-lg sm:text-xl font-display font-bold text-[#0a0a0a] tracking-[-0.03em] group-hover:text-[#0a0a0a]/60 transition-colors">
-                      {featured.client}
+                    <p className="text-lg sm:text-xl font-display font-bold text-[#0a0a0a] tracking-[-0.03em] group-hover:text-[#0a0a0a]/50 transition-colors">
+                      {hero.client}
                     </p>
-                    <p className="text-xs font-sans text-[#737373] mt-1">{featured.category}</p>
+                    <p className="text-xs font-sans text-[#737373] mt-1">{hero.category}</p>
                   </div>
-                  <div className="flex gap-1.5 flex-wrap justify-end max-w-[180px]">
-                    {featured.tags.map((tag) => (
+                  <div className="flex gap-1.5 flex-wrap justify-end max-w-[200px]">
+                    {hero.tags.slice(0, 3).map((tag) => (
                       <span key={tag} className="text-[10px] font-sans text-[#737373] border border-[#e5e5e5] px-2.5 py-1 whitespace-nowrap">
                         {tag}
                       </span>
@@ -95,29 +98,29 @@ export default function PortfolioPreview() {
             </Link>
           </SectionReveal>
 
-          {/* Right column: 2 stacked */}
+          {/* Stacked pair */}
           <div className="flex flex-col gap-4 lg:gap-5">
-            {[second, third].map((item, i) => (
-              <SectionReveal key={item.id} delay={0.1 + i * 0.08} direction="none">
-                <Link href={`/portfolio/${item.slug}`} className="group block" data-cursor="VIEW">
+            {rest.slice(0, 2).map((item, i) => (
+              <SectionReveal key={item.id} delay={0.08 + i * 0.07} direction="none">
+                <Link href={`/portfolio/${item.slug}`} className="group block">
                   <motion.div whileHover="hover" initial="rest">
                     <div className="relative overflow-hidden bg-[#f0f0f0]" style={{ aspectRatio: "4/3" }}>
-                      <Image
+                      <img
                         src={item.image}
-                        alt={item.client}
-                        fill
-                        className="object-cover grayscale"
-                        sizes="(max-width: 1024px) 100vw, 40vw"
+                        alt={`${item.client} — brand identity by Evoke Studio`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        decoding="async"
                       />
                       <motion.div
                         className="absolute inset-0 bg-[#0a0a0a]"
-                        variants={{ rest: { opacity: 0 }, hover: { opacity: 0.55 } }}
-                        transition={{ duration: 0.5 }}
+                        variants={{ rest: { opacity: 0 }, hover: { opacity: 0.5 } }}
+                        transition={{ duration: 0.4 }}
                       />
                       <motion.div
                         className="absolute inset-0 flex items-end p-6"
-                        variants={{ rest: { opacity: 0, y: 10 }, hover: { opacity: 1, y: 0 } }}
-                        transition={{ duration: 0.4 }}
+                        variants={{ rest: { opacity: 0, y: 8 }, hover: { opacity: 1, y: 0 } }}
+                        transition={{ duration: 0.35 }}
                       >
                         <span className="text-sm font-sans font-semibold text-white">
                           View Case Study →
@@ -126,12 +129,12 @@ export default function PortfolioPreview() {
                     </div>
                     <div className="pt-4 flex items-end justify-between gap-3">
                       <div>
-                        <p className="text-base font-display font-bold text-[#0a0a0a] tracking-[-0.02em] group-hover:text-[#0a0a0a]/60 transition-colors">
+                        <p className="text-base font-display font-bold text-[#0a0a0a] tracking-[-0.02em] group-hover:text-[#0a0a0a]/50 transition-colors">
                           {item.client}
                         </p>
                         <p className="text-xs font-sans text-[#737373] mt-0.5">{item.category}</p>
                       </div>
-                      <span className="text-[10px] font-sans text-[#0a0a0a]/25">{item.year}</span>
+                      <span className="text-[10px] font-sans text-[#0a0a0a]/25 shrink-0">{item.year}</span>
                     </div>
                   </motion.div>
                 </Link>
@@ -139,6 +142,51 @@ export default function PortfolioPreview() {
             ))}
           </div>
         </div>
+
+        {/* Bottom row: 3 equal columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-5">
+          {rest.slice(2).map((item, i) => (
+            <SectionReveal key={item.id} delay={0.1 + i * 0.07} direction="none">
+              <Link href={`/portfolio/${item.slug}`} className="group block">
+                <motion.div whileHover="hover" initial="rest">
+                  <div className="relative overflow-hidden bg-[#f0f0f0]" style={{ aspectRatio: "4/3" }}>
+                    <img
+                      src={item.image}
+                      alt={`${item.client} — brand identity by Evoke Studio`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <motion.div
+                      className="absolute inset-0 bg-[#0a0a0a]"
+                      variants={{ rest: { opacity: 0 }, hover: { opacity: 0.5 } }}
+                      transition={{ duration: 0.4 }}
+                    />
+                    <motion.div
+                      className="absolute inset-0 flex items-end p-5"
+                      variants={{ rest: { opacity: 0, y: 8 }, hover: { opacity: 1, y: 0 } }}
+                      transition={{ duration: 0.35 }}
+                    >
+                      <span className="text-xs font-sans font-semibold text-white">
+                        View Case Study →
+                      </span>
+                    </motion.div>
+                  </div>
+                  <div className="pt-4 flex items-end justify-between gap-2">
+                    <div>
+                      <p className="text-sm font-display font-bold text-[#0a0a0a] tracking-[-0.02em] group-hover:text-[#0a0a0a]/50 transition-colors">
+                        {item.client}
+                      </p>
+                      <p className="text-xs font-sans text-[#737373] mt-0.5">{item.category}</p>
+                    </div>
+                    <span className="text-[10px] font-sans text-[#0a0a0a]/25 shrink-0">{item.year}</span>
+                  </div>
+                </motion.div>
+              </Link>
+            </SectionReveal>
+          ))}
+        </div>
+
       </div>
     </section>
   );
