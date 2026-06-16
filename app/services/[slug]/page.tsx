@@ -84,6 +84,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     : [];
 
   const webDesignItems = [
+    { slug: "moissanite-website", client: "Moissanite by Aurelia", category: "E-commerce & Web Design", image: "/portfolio/moissanite-website/cover.avif" },
     { slug: "decarbonops", client: "DeCarbonOPS", category: "SaaS Web Design & Dev", image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80" },
     { slug: "zoninggraph-website", client: "ZoningGraph", category: "Web Design & Development", image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80" },
     { slug: "kannel-club-website", client: "Orange Kannel Club", category: "Web Design & Development", image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80" },
