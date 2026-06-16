@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 interface SitePreviewProps {
   url: string;
   label?: string;
@@ -30,16 +28,13 @@ export default function SitePreview({ url, label, screenshotUrl }: SitePreviewPr
 
       {screenshotUrl ? (
         <a href={url} target="_blank" rel="noopener noreferrer" className="block">
-          <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
-            <Image
-              src={screenshotUrl}
-              alt={label || displayUrl}
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 768px) 100vw, 65vw"
-              unoptimized={screenshotUrl.endsWith(".avif")}
-            />
-          </div>
+          <img
+            src={screenshotUrl}
+            alt={label || displayUrl}
+            className="w-full h-auto block"
+            loading="lazy"
+            decoding="async"
+          />
         </a>
       ) : (
         <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
