@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { allServices } from "@/lib/data";
+import { allServices, portfolioItems } from "@/lib/data";
 import { showcaseItems } from "@/lib/showcase";
 import CTASection from "@/components/sections/CTASection";
 import SectionReveal from "@/components/ui/SectionReveal";
@@ -72,6 +72,22 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   const serviceIndex = allServices.findIndex((s) => s.slug === slug);
   const nextService = allServices[(serviceIndex + 1) % allServices.length];
+
+  const LOGO_BRAND_SLUGS = ["logo-design", "brand-identity", "visual-identity-system", "business-stationery", "brand-guidelines", "brand-system-rebuild", "ai-logo-vectorization", "ai-logo-cleanup", "typography-reconstruction", "svg-conversion"];
+  const logoBrandItems = LOGO_BRAND_SLUGS.includes(slug)
+    ? portfolioItems
+        .filter(item =>
+          (item.service?.includes("Logo") || item.service?.includes("Brand")) &&
+          !item.service?.includes("Social Media")
+        )
+        .slice(0, 6)
+    : [];
+
+  const webDesignItems = [
+    { slug: "decarbonops", client: "DeCarbonOPS", category: "SaaS Web Design & Dev", image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80" },
+    { slug: "zoninggraph-website", client: "ZoningGraph", category: "Web Design & Development", image: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80" },
+    { slug: "kannel-club-website", client: "Orange Kannel Club", category: "Web Design & Development", image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&q=80" },
+  ];
 
   const categoryLabel =
     service.category === "ai" ? "AI Logo Services"
@@ -338,6 +354,87 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
         </div>
       </section>
+
+      {/* Portfolio grid — logo & brand identity services */}
+      {logoBrandItems.length > 0 && (
+        <section className="py-20 lg:py-28 bg-[#fafafa] border-t border-[#e5e5e5]">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <SectionReveal>
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+                <div>
+                  <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-3">Real Work</p>
+                  <h2 className="text-[clamp(28px,3.5vw,48px)] font-display font-bold text-[#0a0a0a] tracking-[-0.03em]">Selected Portfolio</h2>
+                </div>
+                <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-[#0a0a0a] border border-[#0a0a0a] px-5 py-3 hover:bg-[#0a0a0a] hover:text-white transition-colors shrink-0">
+                  View Full Portfolio →
+                </Link>
+              </div>
+            </SectionReveal>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {logoBrandItems.map((item, i) => (
+                <SectionReveal key={item.id} delay={i * 0.05}>
+                  <Link href={`/portfolio/${item.slug}`} className="group block">
+                    <div className="relative overflow-hidden bg-[#f0f0f0]" style={{ aspectRatio: "4/3" }}>
+                      <Image
+                        src={item.image}
+                        alt={`${item.client} — ${item.category} by Evoke Studio`}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        unoptimized={item.image.endsWith(".avif")}
+                      />
+                    </div>
+                    <div className="pt-4 pb-2">
+                      <p className="text-[11px] font-sans text-[#b4b4b4] uppercase tracking-[0.15em] mb-1">{item.category}</p>
+                      <p className="text-[15px] font-sans font-semibold text-[#0a0a0a]">{item.client}</p>
+                    </div>
+                  </Link>
+                </SectionReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Portfolio grid — web design & development */}
+      {slug === "web-design-development" && (
+        <section className="py-20 lg:py-28 bg-[#fafafa] border-t border-[#e5e5e5]">
+          <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <SectionReveal>
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+                <div>
+                  <p className="text-[11px] font-sans font-semibold text-[#0a0a0a]/35 uppercase tracking-[0.2em] mb-3">Real Work</p>
+                  <h2 className="text-[clamp(28px,3.5vw,48px)] font-display font-bold text-[#0a0a0a] tracking-[-0.03em]">Web Design Portfolio</h2>
+                </div>
+                <Link href="/portfolio" className="inline-flex items-center gap-2 text-sm font-sans font-semibold text-[#0a0a0a] border border-[#0a0a0a] px-5 py-3 hover:bg-[#0a0a0a] hover:text-white transition-colors shrink-0">
+                  View Full Portfolio →
+                </Link>
+              </div>
+            </SectionReveal>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {webDesignItems.map((item, i) => (
+                <SectionReveal key={item.slug} delay={i * 0.05}>
+                  <Link href={`/portfolio/${item.slug}`} className="group block">
+                    <div className="relative overflow-hidden bg-[#f0f0f0]" style={{ aspectRatio: "4/3" }}>
+                      <Image
+                        src={item.image}
+                        alt={`${item.client} — ${item.category} by Evoke Studio`}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                    </div>
+                    <div className="pt-4 pb-2">
+                      <p className="text-[11px] font-sans text-[#b4b4b4] uppercase tracking-[0.15em] mb-1">{item.category}</p>
+                      <p className="text-[15px] font-sans font-semibold text-[#0a0a0a]">{item.client}</p>
+                    </div>
+                  </Link>
+                </SectionReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Portfolio showcase — social media management service */}
       {slug === "social-media-management" && (

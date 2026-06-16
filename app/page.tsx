@@ -14,7 +14,6 @@ const PortfolioPreview = dynamic(() => import("@/components/sections/PortfolioPr
 const ZoningGraphShowcase = dynamic(() => import("@/components/sections/ZoningGraphShowcase"));
 const PayXaraShowcase = dynamic(() => import("@/components/sections/PayXaraShowcase"));
 const KannelClubShowcase = dynamic(() => import("@/components/sections/KannelClubShowcase"));
-const DeCarbonOpsShowcase = dynamic(() => import("@/components/sections/DeCarbonOpsShowcase"));
 const Testimonials = dynamic(() => import("@/components/sections/Testimonials"));
 const FAQPreview = dynamic(() => import("@/components/sections/FAQPreview"));
 const CTASection = dynamic(() => import("@/components/sections/CTASection"));
@@ -49,7 +48,6 @@ export default function Home() {
       <ZoningGraphShowcase />
       <PayXaraShowcase />
       <KannelClubShowcase />
-      <DeCarbonOpsShowcase />
       <Testimonials />
       <FAQPreview />
       <CTASection />
