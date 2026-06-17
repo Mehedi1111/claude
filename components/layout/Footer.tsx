@@ -23,10 +23,23 @@ const popularPages = [
   { label: "Brand Identity Design", href: "/lp/brand-identity-design" },
   { label: "Startup Branding", href: "/lp/startup-branding" },
   { label: "Small Business Branding", href: "/lp/small-business-branding" },
-  { label: "Logo Redesign Service", href: "/lp/logo-redesign-service" },
   { label: "Branding Agency USA", href: "/lp/branding-agency-usa" },
+  { label: "Logo Design Agency", href: "/lp/logo-design-agency" },
+  { label: "Branding Agency UK", href: "/lp/branding-agency-uk" },
+  { label: "Branding Agency Australia", href: "/lp/branding-agency-australia" },
+  { label: "Rebranding Agency", href: "/lp/rebranding-agency" },
+];
+
+const morePages = [
+  { label: "Logo Redesign Service", href: "/lp/logo-redesign-service" },
   { label: "Web Design for Startups", href: "/lp/web-design-for-startups" },
   { label: "AI Logo Cleanup", href: "/lp/ai-logo-cleanup" },
+  { label: "Web Design Agency", href: "/lp/web-design-agency" },
+  { label: "Brand Identity Package", href: "/lp/brand-identity-package" },
+  { label: "SaaS Branding Agency", href: "/lp/saas-branding-agency" },
+  { label: "B2B Branding Agency", href: "/lp/b2b-branding-agency" },
+  { label: "E-commerce Branding", href: "/lp/ecommerce-branding-agency" },
+  { label: "Affordable Logo Design", href: "/lp/affordable-logo-design" },
 ];
 
 const companyLinks = [
@@ -138,7 +151,7 @@ export default function Footer() {
       {/* ── Main link grid ── */}
       <div className="border-b border-white/[0.06]">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-14 lg:py-20">
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10 lg:gap-6">
 
             {/* Brand column */}
             <div className="col-span-2 sm:col-span-2 lg:col-span-1 lg:pr-6">
@@ -204,13 +217,32 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Popular Pages (landing pages) */}
+            {/* Popular Pages col 1 */}
             <div>
               <p className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-white/15 mb-5">
                 Popular
               </p>
               <ul className="space-y-3">
                 {popularPages.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-[12px] font-sans text-white/30 hover:text-white/80 transition-colors leading-snug"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Popular Pages col 2 */}
+            <div>
+              <p className="text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-white/15 mb-5">
+                More
+              </p>
+              <ul className="space-y-3">
+                {morePages.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
