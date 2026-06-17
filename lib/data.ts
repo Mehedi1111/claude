@@ -917,6 +917,28 @@ export const portfolioItems = [
     service: "Logo Design + Brand Identity",
     colorThumbnail: true,
   },
+  {
+    id: "31",
+    slug: "jaspy-website",
+    client: "Jaspy",
+    category: "Web Design & Development",
+    description: "Full web design and development for Jaspy — an AI-powered wealth and portfolio management SaaS platform serving high-net-worth individuals, family offices, and financial institutions across the USA, UK, Canada, and Australia.",
+    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1400&q=80",
+    coverImage: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1400&q=80",
+    year: "2025",
+    tags: ["Web Design", "Web Development", "SaaS", "WealthTech", "FinTech", "AI Platform", "Next.js"],
+    challenge: "Jaspy needed a marketing website that communicated AI-powered wealth intelligence to sophisticated financial buyers — HNW individuals, family offices, and RIAs — without defaulting to generic FinTech visual language.",
+    solution: "A premium SaaS marketing site built with Next.js — positioning Jaspy's AI capabilities with clarity and authority, designed to convert high-trust financial prospects from first impression to demo request.",
+    outcomes: [
+      "Premium SaaS marketing site communicating AI wealth intelligence with authority",
+      "Conversion-focused architecture optimised for financial services buyers",
+      "Design language differentiating Jaspy from generic FinTech competitors",
+      "Fast, production-grade Next.js deployment on Vercel",
+    ],
+    service: "Web Design & Development",
+    websiteUrl: "https://jaspy.vercel.app/",
+    colorThumbnail: true,
+  },
 ];
 
 // ─── Testimonials ─────────────────────────────────────────────────────────────
