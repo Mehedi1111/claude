@@ -26,6 +26,16 @@ const lpSlugs = [
   "web-design-for-startups",
   "branding-agency-usa",
   "ai-logo-cleanup",
+  "logo-design-agency",
+  "branding-agency-uk",
+  "branding-agency-australia",
+  "rebranding-agency",
+  "web-design-agency",
+  "brand-identity-package",
+  "saas-branding-agency",
+  "b2b-branding-agency",
+  "ecommerce-branding-agency",
+  "affordable-logo-design",
 ];
 
 async function main() {
