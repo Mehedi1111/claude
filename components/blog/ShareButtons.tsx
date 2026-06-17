@@ -15,9 +15,13 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
   const encodedTitle = encodeURIComponent(title);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(url);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard not available (non-HTTPS or old browser)
+    }
   };
 
   return (

@@ -77,7 +77,7 @@ export const landingPages: LandingPage[] = [
       { title: "View all services", href: "/services" },
       { title: "See our portfolio", href: "/portfolio" },
       { title: "Get a free quote", href: "/contact" },
-      { title: "How to build a brand identity", href: "/blog/how-to-build-brand-identity" },
+      { title: "How to build a brand identity", href: "/blog/what-is-brand-identity-design" },
       { title: "Brand naming guide", href: "/blog/brand-naming-guide" },
     ],
     stats: [
@@ -754,7 +754,7 @@ export const landingPages: LandingPage[] = [
       { title: "View logo design portfolio", href: "/portfolio" },
       { title: "Logo design pricing and services", href: "/services/logo-design" },
       { title: "Brand identity design service", href: "/services/brand-identity" },
-      { title: "How to build brand identity", href: "/blog/how-to-build-brand-identity" },
+      { title: "How to build brand identity", href: "/blog/what-is-brand-identity-design" },
       { title: "Get a free quote", href: "/contact" },
     ],
     stats: [
@@ -1088,7 +1088,7 @@ export const landingPages: LandingPage[] = [
     ],
     internalLinks: [
       { title: "What is brand identity", href: "/blog/brand-identity-vs-brand-image" },
-      { title: "How to build brand identity", href: "/blog/how-to-build-brand-identity" },
+      { title: "How to build brand identity", href: "/blog/what-is-brand-identity-design" },
       { title: "Brand brief guide", href: "/blog/brand-brief-guide" },
       { title: "See our portfolio", href: "/portfolio" },
       { title: "Get a free quote", href: "/contact" },
@@ -1353,7 +1353,7 @@ export const landingPages: LandingPage[] = [
     ],
     internalLinks: [
       { title: "How much does logo design cost", href: "/blog/logo-design-cost-guide" },
-      { title: "How to build brand identity", href: "/blog/how-to-build-brand-identity" },
+      { title: "How to build brand identity", href: "/blog/what-is-brand-identity-design" },
       { title: "Brand photography guide", href: "/blog/brand-photography-guide" },
       { title: "See our portfolio", href: "/portfolio" },
       { title: "Get a free quote", href: "/contact" },

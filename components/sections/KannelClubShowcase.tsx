@@ -34,7 +34,7 @@ export default function KannelClubShowcase() {
                 Open Live Site ↗
               </a>
               <Link
-                href="/portfolio/kannel-club-website"
+                href="/portfolio/kannel-club"
                 className="inline-flex items-center gap-2 text-sm font-sans font-medium text-[#737373] hover:text-[#0a0a0a] transition-colors px-6 py-3.5"
               >
                 View Case Study →

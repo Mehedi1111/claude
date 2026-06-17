@@ -42,16 +42,21 @@ export default function CustomCursor() {
       }
     };
 
+    const handleHide = () => setHidden(true);
+    const handleShow = () => setHidden(false);
+
     window.addEventListener("mousemove", move);
     window.addEventListener("mouseover", handleEnter);
     window.addEventListener("mouseout", handleLeave);
-    document.documentElement.addEventListener("mouseleave", () => setHidden(true));
-    document.documentElement.addEventListener("mouseenter", () => setHidden(false));
+    document.documentElement.addEventListener("mouseleave", handleHide);
+    document.documentElement.addEventListener("mouseenter", handleShow);
 
     return () => {
       window.removeEventListener("mousemove", move);
       window.removeEventListener("mouseover", handleEnter);
       window.removeEventListener("mouseout", handleLeave);
+      document.documentElement.removeEventListener("mouseleave", handleHide);
+      document.documentElement.removeEventListener("mouseenter", handleShow);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
   }, [cursorX, cursorY]);

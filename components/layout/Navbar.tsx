@@ -61,8 +61,8 @@ export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState<MegaMenu>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [visible, setVisible] = useState(true);
+  const lastScrollYRef = useRef(0);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isDark = !scrolled && pathname === "/";
@@ -71,17 +71,23 @@ export default function Navbar() {
     const handleScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 60);
-      setVisible(y < lastScrollY || y < 100);
-      setLastScrollY(y);
+      setVisible(y < lastScrollYRef.current || y < 100);
+      lastScrollYRef.current = y;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
 
   useEffect(() => {
     setScrolled(false);
@@ -96,7 +102,7 @@ export default function Navbar() {
   };
 
   const close = () => {
-    closeTimer.current = setTimeout(() => setActiveMenu(null), 120);
+    closeTimer.current = setTimeout(() => setActiveMenu(null), 200);
   };
 
   const keep = () => {
@@ -149,6 +155,7 @@ export default function Navbar() {
               <button
                 onMouseEnter={() => open("services")}
                 onMouseLeave={close}
+                onClick={() => setActiveMenu(activeMenu === "services" ? null : "services")}
                 className={triggerCls(pathname.startsWith("/services") || activeMenu === "services")}
               >
                 Services
@@ -166,6 +173,7 @@ export default function Navbar() {
               <button
                 onMouseEnter={() => open("work")}
                 onMouseLeave={close}
+                onClick={() => setActiveMenu(activeMenu === "work" ? null : "work")}
                 className={triggerCls(pathname.startsWith("/portfolio") || activeMenu === "work")}
               >
                 Work
@@ -185,6 +193,7 @@ export default function Navbar() {
               <button
                 onMouseEnter={() => open("journal")}
                 onMouseLeave={close}
+                onClick={() => setActiveMenu(activeMenu === "journal" ? null : "journal")}
                 className={triggerCls(pathname.startsWith("/blog") || activeMenu === "journal")}
               >
                 Journal

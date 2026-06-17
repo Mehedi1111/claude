@@ -34,10 +34,10 @@ export default function ZoningGraphShowcase() {
                 Open Live Site ↗
               </a>
               <Link
-                href="/portfolio/zoninggraph-website"
+                href="/domains/zoninggraph"
                 className="inline-flex items-center gap-2 text-sm font-sans font-medium text-white/50 hover:text-white transition-colors px-6 py-3.5"
               >
-                View Case Study →
+                About the Domain →
               </Link>
             </div>
           </SectionReveal>

@@ -457,7 +457,7 @@ export default function PricingPage() {
                 { label: "Logo Design Agency", href: "/lp/logo-design-agency" },
                 { label: "Brand Identity Package", href: "/lp/brand-identity-package" },
                 { label: "Rebranding Agency", href: "/lp/rebranding-agency" },
-                { label: "How to build brand identity", href: "/blog/how-to-build-brand-identity" },
+                { label: "How to build brand identity", href: "/blog/what-is-brand-identity-design" },
                 { label: "View portfolio", href: "/portfolio" },
               ].map((l) => (
                 <Link key={l.href} href={l.href} className="text-[13px] font-sans text-[#0a0a0a] hover:underline underline-offset-2">
