@@ -123,10 +123,11 @@ export default function ContactForm() {
         {/* Name + Company */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
+            <label htmlFor="contact-name" className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
               Name *
             </label>
             <input
+              id="contact-name"
               ref={nameRef}
               type="text"
               required
@@ -135,10 +136,11 @@ export default function ContactForm() {
             />
           </div>
           <div>
-            <label className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
+            <label htmlFor="contact-company" className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
               Company
             </label>
             <input
+              id="contact-company"
               ref={companyRef}
               type="text"
               placeholder="Company or brand"
@@ -149,10 +151,11 @@ export default function ContactForm() {
 
         {/* Email */}
         <div>
-          <label className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
+          <label htmlFor="contact-email" className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
             Email *
           </label>
           <input
+            id="contact-email"
             ref={emailRef}
             type="email"
             required
@@ -211,18 +214,19 @@ export default function ContactForm() {
 
         {/* File upload */}
         <div>
-          <label className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
+          <label htmlFor="contact-file" className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
             Upload your logo (optional)
           </label>
-          <div
-            className="border border-dashed border-[#d4d4d4] hover:border-[#0a0a0a] transition-colors cursor-pointer p-5 text-center"
-            onClick={() => fileRef.current?.click()}
+          <label
+            htmlFor="contact-file"
+            className="border border-dashed border-[#d4d4d4] hover:border-[#0a0a0a] transition-colors cursor-pointer p-5 text-center block"
           >
             <input
+              id="contact-file"
               ref={fileRef}
               type="file"
               accept=".png,.jpg,.jpeg,.svg,.ai,.eps,.pdf,.webp"
-              className="hidden"
+              className="sr-only"
               onChange={handleFileChange}
             />
             {fileName ? (
@@ -243,7 +247,7 @@ export default function ContactForm() {
                 </p>
               </div>
             )}
-          </div>
+          </label>
           <p className="text-[11px] font-sans text-[#737373] mt-1.5">
             Uploading a file helps us provide a more accurate quote.
           </p>
@@ -251,10 +255,11 @@ export default function ContactForm() {
 
         {/* AI tool */}
         <div>
-          <label className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
+          <label htmlFor="contact-ai-tool" className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
             AI tool used (if applicable)
           </label>
           <input
+            id="contact-ai-tool"
             ref={aiToolRef}
             type="text"
             placeholder="Midjourney, DALL-E, Ideogram, etc."
@@ -264,10 +269,11 @@ export default function ContactForm() {
 
         {/* Message */}
         <div>
-          <label className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
+          <label htmlFor="contact-message" className="block text-[11px] font-sans font-semibold text-[#0a0a0a]/45 uppercase tracking-[0.15em] mb-2">
             Project details
           </label>
           <textarea
+            id="contact-message"
             ref={messageRef}
             rows={4}
             placeholder="Tell us about your brand, how you intend to use the logo, any specific requirements or deadlines..."
