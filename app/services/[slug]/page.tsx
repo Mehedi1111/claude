@@ -177,13 +177,10 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       {/* Hero image */}
       <div className="relative aspect-[21/7] overflow-hidden bg-[#111]">
-        <Image
-          src={service.image}
+        <img
+          src="/images/service-hero.avif"
           alt={service.title}
-          fill
-          className="object-cover grayscale opacity-50"
-          priority
-          sizes="100vw"
+          className="w-full h-full object-cover opacity-40"
         />
       </div>
 
