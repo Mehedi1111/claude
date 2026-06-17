@@ -46,6 +46,7 @@ async function main() {
       BASE,
       `${BASE}/blog`,
       `${BASE}/services`,
+      `${BASE}/pricing`,
       `${BASE}/contact`,
       ...lpSlugs.map((slug) => `${BASE}/lp/${slug}`),
       ...slugs.map((slug) => `${BASE}/blog/${slug}`),
