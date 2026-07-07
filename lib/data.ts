@@ -1021,6 +1021,26 @@ export const faqs = [
     question: "How do I submit my logo?",
     answer: "Use the contact form on our website. Upload your AI-generated logo file, describe your brand, and tell us how you intend to use it. We'll respond with a quote within one business day.",
   },
+  {
+    question: "What is the difference between AI logo cleanup and vectorization?",
+    answer: "Vectorization is for logos that only exist as a raster image (PNG or JPG) — we rebuild the entire mark as clean vector paths from scratch. Cleanup is for logos that are already in vector format but have technical problems: messy anchor points, inconsistent strokes, broken paths, or rough curves. Vectorization is a full rebuild. Cleanup is a precision repair.",
+  },
+  {
+    question: "Can you build a full brand identity around my AI-generated logo?",
+    answer: "Yes — and it is one of our most common project types. We first vectorize your AI logo (24–48 hours), then build the complete brand identity system around it: color palette with full production values, typography hierarchy, secondary graphic elements, usage rules, and a full brand guidelines document. The vectorized mark becomes the foundation everything else is built from.",
+  },
+  {
+    question: "Do I need to know which service I need before contacting you?",
+    answer: "No. Just submit your logo and describe what you're trying to do — print it, put it on a website, apply it to merchandise, or build a brand around it. We will assess your files and recommend the right service. You won't be charged for anything until you approve the quote.",
+  },
+  {
+    question: "Do you work with clients outside the USA?",
+    answer: "Yes. We work with clients across the USA, Canada, the UK, and Australia. All projects are handled remotely — file submission, communication, and delivery are entirely online. We accept payment in USD and respond within one business day regardless of time zone.",
+  },
+  {
+    question: "What happens if I'm not happy with the result?",
+    answer: "Every order includes two rounds of revisions at no extra cost, requested within 7 days of delivery. If there is a technical error on our side — incorrect paths, missing elements, wrong colors — we correct it immediately at no charge. Additional revision rounds beyond the included two are available for a small fee per round.",
+  },
 ];
 
 // ─── Blog Posts ───────────────────────────────────────────────────────────────

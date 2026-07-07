@@ -4,8 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CustomCursor from "@/components/ui/CustomCursor";
-import Chatbot from "@/components/ui/Chatbot";
-import FloatingContact from "@/components/ui/FloatingContact";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -196,8 +195,7 @@ export default function RootLayout({
         <Navbar />
         <main id="main-content">{children}</main>
         <Footer />
-        <Chatbot />
-        <FloatingContact />
+        <WhatsAppButton />
       </body>
     </html>
   );
