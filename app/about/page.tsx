@@ -16,6 +16,14 @@ export const metadata: Metadata = {
     url: "https://madebyevoke.com/about",
     siteName: "Evoke Studio",
     type: "website",
+    images: [{ url: "https://madebyevoke.com/mehedi-hasan.jpg", width: 800, height: 800, alt: "Mehedi Hasan — Founder & CEO, Evoke Studio" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Evoke Studio — Mehedi Hasan, Brand Identity & AI Logo Vectorization",
+    description: "Meet Mehedi Hasan — 15 years of brand identity experience, founder of Evoke Studio. AI logo vectorization and brand design for modern businesses.",
+    images: ["https://madebyevoke.com/mehedi-hasan.jpg"],
+    creator: "@MadeByEvoke",
   },
   alternates: { canonical: "https://madebyevoke.com/about" },
 };

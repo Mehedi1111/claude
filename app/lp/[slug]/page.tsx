@@ -30,11 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       siteName: "Evoke Studio",
       type: "website",
+      images: [{ url: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c47385218256145.679e5b461e6a6.jpg", width: 1400, height: 933, alt: "Evoke Studio — Brand Identity & AI Logo Vectorization" }],
     },
     twitter: {
       card: "summary_large_image",
       title: page.metaTitle,
       description: page.metaDescription,
+      images: ["https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c47385218256145.679e5b461e6a6.jpg"],
+      creator: "@MadeByEvoke",
     },
   };
 }

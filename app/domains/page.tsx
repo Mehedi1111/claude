@@ -19,6 +19,14 @@ export const metadata: Metadata = {
     url: "https://madebyevoke.com/domains",
     siteName: "Evoke Studio",
     type: "website",
+    images: [{ url: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c47385218256145.679e5b461e6a6.jpg", width: 1400, height: 933, alt: "Evoke Studio — Brand Identity & AI Logo Vectorization" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Premium Domains for Sale — PropTech, FinTech & AgriFinance | Evoke Studio",
+    description: "Acquire a premium .com domain with brand identity included. PropTech, FinTech, and AgriFinance domains available now with optional website packages.",
+    images: ["https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c47385218256145.679e5b461e6a6.jpg"],
+    creator: "@MadeByEvoke",
   },
   alternates: { canonical: "https://madebyevoke.com/domains" },
 };

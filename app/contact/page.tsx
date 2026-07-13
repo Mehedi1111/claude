@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     url: "https://madebyevoke.com/contact",
     siteName: "Evoke Studio",
     type: "website",
+    images: [{ url: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c47385218256145.679e5b461e6a6.jpg", width: 1400, height: 933, alt: "Evoke Studio — Brand Identity & AI Logo Vectorization" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Get a Quote — AI Logo Vectorization & Brand Design | Evoke Studio",
+    description: "Share your AI logo and get a quote within 1 business day. Manual vectorization, Pantone-certified, printer-approved. From $50.",
+    images: ["https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c47385218256145.679e5b461e6a6.jpg"],
+    creator: "@MadeByEvoke",
   },
   alternates: { canonical: "https://madebyevoke.com/contact" },
 };

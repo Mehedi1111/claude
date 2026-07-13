@@ -18,6 +18,14 @@ export const metadata: Metadata = {
     url: "https://madebyevoke.com/services",
     siteName: "Evoke Studio",
     type: "website",
+    images: [{ url: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c47385218256145.679e5b461e6a6.jpg", width: 1400, height: 933, alt: "Evoke Studio — Brand Identity & AI Logo Vectorization" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Logo Design, AI Vectorization & Web Design Services | Evoke Studio",
+    description: "AI logo vectorization from $50 · Logo design from $150 · Brand identity from $500 · Web design and development. Manual precision, 24–48hr turnaround.",
+    images: ["https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c47385218256145.679e5b461e6a6.jpg"],
+    creator: "@MadeByEvoke",
   },
   alternates: { canonical: "https://madebyevoke.com/services" },
 };
