@@ -1,4 +1,4 @@
-import { readdir } from "fs/promises";
+import { readdir, readFile, writeFile } from "fs/promises";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -8,14 +8,17 @@ const KEY = "a8f3e7d2b5c94f1e8a2d6b3c7f9e4d5a";
 const BASE = "https://madebyevoke.com";
 const HOST = "madebyevoke.com";
 const ENDPOINT = "https://api.indexnow.org/indexnow";
+const TRACKER = join(__dirname, "..", ".indexnow-submitted.json");
 
-async function getBlogSlugs() {
-  const dir = join(__dirname, "..", "content", "blog");
-  const files = await readdir(dir);
-  return files.filter((f) => f.endsWith(".mdx")).map((f) => f.replace(".mdx", ""));
-}
+const STATIC_URLS = [
+  BASE,
+  `${BASE}/blog`,
+  `${BASE}/services`,
+  `${BASE}/pricing`,
+  `${BASE}/contact`,
+];
 
-const lpSlugs = [
+const LP_SLUGS = [
   "logo-design-service",
   "brand-identity-design",
   "ai-logo-vectorization",
@@ -38,19 +41,46 @@ const lpSlugs = [
   "affordable-logo-design",
 ];
 
+async function getBlogSlugs() {
+  const dir = join(__dirname, "..", "content", "blog");
+  const files = await readdir(dir);
+  return files
+    .filter((f) => f.endsWith(".mdx"))
+    .map((f) => f.replace(".mdx", ""));
+}
+
+async function loadSubmitted() {
+  try {
+    const raw = await readFile(TRACKER, "utf-8");
+    return new Set(JSON.parse(raw));
+  } catch {
+    return new Set();
+  }
+}
+
+async function saveSubmitted(submitted) {
+  await writeFile(TRACKER, JSON.stringify([...submitted], null, 2));
+}
+
 async function main() {
   try {
-    const slugs = await getBlogSlugs();
-
-    const urls = [
-      BASE,
-      `${BASE}/blog`,
-      `${BASE}/services`,
-      `${BASE}/pricing`,
-      `${BASE}/contact`,
-      ...lpSlugs.map((slug) => `${BASE}/lp/${slug}`),
-      ...slugs.map((slug) => `${BASE}/blog/${slug}`),
+    const blogSlugs = await getBlogSlugs();
+    const allUrls = [
+      ...STATIC_URLS,
+      ...LP_SLUGS.map((slug) => `${BASE}/lp/${slug}`),
+      ...blogSlugs.map((slug) => `${BASE}/blog/${slug}`),
     ];
+
+    const submitted = await loadSubmitted();
+    const newUrls = allUrls.filter((url) => !submitted.has(url));
+
+    if (newUrls.length === 0) {
+      console.log("✓ IndexNow: no new URLs to submit");
+      return;
+    }
+
+    // IndexNow allows max 10,000 URLs per request
+    const batch = newUrls.slice(0, 10000);
 
     const res = await fetch(ENDPOINT, {
       method: "POST",
@@ -59,14 +89,16 @@ async function main() {
         host: HOST,
         key: KEY,
         keyLocation: `${BASE}/${KEY}.txt`,
-        urlList: urls,
+        urlList: batch,
       }),
     });
 
     if (res.status === 200 || res.status === 202) {
-      console.log(`✓ IndexNow: submitted ${urls.length} URLs to Bing (status ${res.status})`);
+      batch.forEach((url) => submitted.add(url));
+      await saveSubmitted(submitted);
+      console.log(`✓ IndexNow: submitted ${batch.length} new URLs (status ${res.status})`);
     } else {
-      console.warn(`⚠ IndexNow: unexpected status ${res.status}`);
+      console.warn(`⚠ IndexNow: unexpected status ${res.status} — URLs not marked as submitted`);
     }
   } catch (err) {
     // Never fail the build — IndexNow is best-effort
