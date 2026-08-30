@@ -6117,6 +6117,58 @@ export const blogPosts = [
     tags: ["Referrals", "Web Design", "Lead Generation", "Service Business", "Marketing"],
   },
 
+  // ─── Cluster 36: Bing Logo Types + Brand Partners ────────────────────────
+  {
+    slug: "geometric-logo-design",
+    title: "What Is a Geometric Logo? (Examples + How to Design One) (2027)",
+    excerpt: "Geometric logos use pure shapes — circles, triangles, hexagons, grids — to build marks that feel precise, modern, and timeless. BMW, Target, Mitsubishi, Chanel. Here's what makes geometric logos work and how to design one properly.",
+    category: "Guide",
+    readTime: "10 min read",
+    date: "Aug 14, 2027",
+    author: { name: "Mehedi Hasan", role: "Founder & CEO, Evoke Studio" },
+    tags: ["Geometric Logo", "Logo Design", "Abstract Mark", "Brand Identity", "Logo Types"],
+  },
+  {
+    slug: "brand-typography-guide",
+    title: "What Is Brand Typography? (And How to Build a Type System) (2027)",
+    excerpt: "Typography is the most underestimated element in brand identity. People think they're choosing a font. They're actually making decisions about personality, authority, warmth, and how every piece of communication feels to the person reading it.",
+    category: "Guide",
+    readTime: "10 min read",
+    date: "Aug 13, 2027",
+    author: { name: "Mehedi Hasan", role: "Founder & CEO, Evoke Studio" },
+    tags: ["Brand Typography", "Brand Identity", "Type System", "Logo Design", "Visual Identity"],
+  },
+  {
+    slug: "branding-agency-vs-freelancer",
+    title: "Branding Agency vs. Freelance Designer: How to Choose (2027)",
+    excerpt: "Both can design a logo. But branding is more than design — it's strategy, positioning, and a system that has to hold together across every touchpoint. Here's what you actually get from each, where the real differences lie, and how to decide.",
+    category: "Guide",
+    readTime: "11 min read",
+    date: "Aug 12, 2027",
+    author: { name: "Mehedi Hasan", role: "Founder & CEO, Evoke Studio" },
+    tags: ["Branding Agency", "Freelance Designer", "Brand Identity", "Brand Strategy", "Logo Design"],
+  },
+  {
+    slug: "mascot-logo-design",
+    title: "What Is a Mascot Logo? (Examples + When to Use One) (2027)",
+    excerpt: "A mascot logo uses a character — human, animal, or illustrated — as the face of your brand. It's the warmest, most memorable logo format possible. It's also the most easily misused. Here's when a mascot logo works, when it doesn't, and how to design one that builds real brand equity.",
+    category: "Guide",
+    readTime: "10 min read",
+    date: "Aug 11, 2027",
+    author: { name: "Mehedi Hasan", role: "Founder & CEO, Evoke Studio" },
+    tags: ["Mascot Logo", "Logo Design", "Logo Types", "Brand Identity", "Character Design"],
+  },
+  {
+    slug: "pictorial-mark-logo-design",
+    title: "What Is a Pictorial Mark Logo? (Examples + When to Use One) (2027)",
+    excerpt: "A pictorial mark is a logo built from a single, recognisable image — a bird, an apple, a shell. No text. No icon-plus-wordmark combination. Just one image that stands alone. Here's when this format works, when it fails, and what it takes to design one properly.",
+    category: "Guide",
+    readTime: "9 min read",
+    date: "Aug 10, 2027",
+    author: { name: "Mehedi Hasan", role: "Founder & CEO, Evoke Studio" },
+    tags: ["Pictorial Mark", "Logo Design", "Logo Types", "Brand Identity", "Graphic Mark"],
+  },
+
   // ─── Cluster 35: Bing Logo Types + Brand Process ─────────────────────────
   {
     slug: "wordmark-logo-design",
