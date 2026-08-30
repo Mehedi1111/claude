@@ -7,6 +7,8 @@ import SectionReveal from "@/components/ui/SectionReveal";
 import AnimatedText from "@/components/ui/AnimatedText";
 
 const FEATURED_SLUGS = [
+  "badge-retriever-mascot-logo",
+  "kansas-city-tbones-logo",
   "entroedge-brand-identity",
   "rivian-logo",
   "ohana-brand-identity",

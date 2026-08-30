@@ -61,16 +61,24 @@ export const showcaseItems: ShowcaseItem[] = [
     ],
   },
 
-  // ── Paste more items below this line ──────────────────────────────────────
-  // {
-  //   id: "project-2",
-  //   client: "Client Name",
-  //   industry: "Industry",
-  //   beforeSrc: "/portfolio/project-2-before.jpg",
-  //   beforeSubtitle: "Low-res PNG, no vector source",
-  //   afterVariations: [
-  //     { src: "/portfolio/project-2-after-1.svg", label: "Clean Vector" },
-  //     { src: "/portfolio/project-2-after-2.svg", label: "Dark Version" },
-  //   ],
-  // },
+  {
+    id: "kansas-city-tbones",
+    client: "Kansas City T-Bones",
+    industry: "Sports / Minor League Baseball",
+    beforeSrc: "/portfolio/kansas-city-tbones/before.jpg",
+    beforeSubtitle: "ChatGPT raster image — pixelated, unusable for print or embroidery",
+    afterVariations: [
+      { src: "/portfolio/kansas-city-tbones/after.jpg", label: "Professional Vector Rebuild" },
+    ],
+  },
+  {
+    id: "badge-retriever",
+    client: "Badge Retriever",
+    industry: "B2B / Business & Consulting",
+    beforeSrc: "/portfolio/badge-retriever/before.jpg",
+    beforeSubtitle: "ChatGPT raster image — pixelated at scale, no vector source",
+    afterVariations: [
+      { src: "/portfolio/badge-retriever/after.jpg", label: "Flat Vector Rebuild — Navy on Amber" },
+    ],
+  },
 ];
