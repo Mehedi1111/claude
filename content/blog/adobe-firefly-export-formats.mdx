@@ -18,112 +18,150 @@ seo:
 ---
 
 <QuickAnswers items={[
-  { q: "What formats does Adobe Firefly export?", a: "Adobe Firefly exports raster formats — primarily PNG and JPG. It does not natively export true vector formats like SVG or EPS. When you generate an image with Firefly inside Illustrator or Photoshop, what you receive is a raster image embedded in the document. To get a true vector SVG or EPS from Firefly output, you need to trace or rebuild the design as vector paths — either using Illustrator's Image Trace tool or through manual vectorization." },
+  { q: "What formats does Adobe Firefly export?", a: "Adobe Firefly exports raster formats — primarily PNG and JPG. It does not natively export true vector formats like SVG or EPS. When you generate an image with Firefly inside Illustrator or Photoshop, what you receive is a raster image embedded in the document. To get a true vector SVG or EPS from Firefly output, you need to trace or rebuild the design as vector paths in Illustrator." },
   { q: "Can Adobe Firefly export SVG directly?", a: "Not in the way most people assume. Firefly generates raster images. If you're working in Illustrator, you can save the document as SVG — but the Firefly-generated content inside it remains embedded raster data, not true vector paths. A document saved as SVG is not the same as a vector SVG. For a clean, scalable SVG with true vector paths, the Firefly output needs to be vectorized first." },
-  { q: "What's the right workflow for using Adobe Firefly output in a logo project?", a: "Generate concept in Firefly → use as a reference or rough direction, not a final file → rebuild the concept as vector in Illustrator using the pen tool or manual tracing → export clean SVG, EPS, AI, and PNG files from the rebuilt vector. The Firefly output is a starting point, not a deliverable. Production-ready logo files require vector rebuilding regardless of which AI tool generated the concept." }
+  { q: "What's the right workflow for using Adobe Firefly output in a logo project?", a: "Generate concept in Firefly → use it as a reference direction, not a final file → rebuild the concept as vector in Illustrator using the pen tool or manual tracing → export clean SVG, EPS, AI, and PNG files from the rebuilt vector. The Firefly output is a starting point, not a deliverable. Production-ready logo files require vector rebuilding regardless of which AI tool generated the concept." }
 ]} />
 
-Adobe Firefly export formats are one of the most misunderstood parts of the Creative Cloud AI workflow. Because Firefly lives inside Illustrator and Photoshop, the assumption is natural: if I generate a logo concept here, the output should already be in a professional vector format.
+Here's the thing most people get wrong about Adobe Firefly.
 
-It isn't. And understanding why — and what to do about it — changes how you use the tool.
+Because Firefly lives inside Illustrator and Photoshop, the assumption feels logical: if you generate a logo concept here, the output should already be in a professional vector format.
+
+It isn't. And understanding why — and what to do about it — changes how you use the tool entirely.
 
 ---
 
 ## What Adobe Firefly Actually Generates
 
-Firefly is an image generation model. What it produces is a raster image — made of pixels, at a specific resolution, with no inherent scalability.
+Firefly is an image generation model. Full stop.
 
-This is true regardless of which Creative Cloud application you're using it in. Generating with Firefly in Illustrator doesn't produce an Illustrator vector. It produces a raster image placed inside an Illustrator document.
+What it produces is a raster image — made of pixels, at a specific resolution, with no inherent scalability. This is true regardless of which Creative Cloud application you're generating inside.
 
-Think of it this way: if you drag a JPEG into Illustrator and save the file as AI, you have an Illustrator file containing a JPEG. The JPEG is still a JPEG — it hasn't become vector. The same logic applies to Firefly-generated content placed in an Illustrator document.
+Generating with Firefly in Illustrator doesn't produce an Illustrator vector. It produces a raster image placed inside an Illustrator document.
 
-This matters enormously for logo and brand work, where the end requirement is usually a scalable vector file.
+Think of it this way: if you drag a JPEG into Illustrator and save the file as AI, you have an Illustrator file containing a JPEG. The JPEG is still a JPEG. It hasn't become vector. The same logic applies to Firefly-generated content placed in an Illustrator document.
+
+This matters enormously for logo and brand work, where the end requirement is almost always a scalable vector file.
 
 ---
 
 ## Adobe Firefly Export Formats: What's Actually Available
 
-**PNG** — Firefly's primary export format. Raster, pixel-based, with transparent background support. A 2048×2048 PNG from Firefly is a high-resolution image file. It's suitable for web use, presentations, and on-screen display at intended size — but it doesn't scale to billboard size without quality loss.
+**PNG** — Firefly's primary export format. Raster, pixel-based, with transparent background support. A 2048×2048 PNG from Firefly is a high-resolution image file. It's suitable for web use, presentations, and on-screen display at intended size. It does not scale to billboard size without visible quality loss.
 
 **JPG** — available in some Firefly workflows. Raster, no transparency support. Smaller file size than PNG. Used for photographic outputs, not logo or graphic work where transparency is needed.
 
 **What Firefly does NOT natively export:**
 
-- **True vector SVG** — a Firefly image saved as SVG from Illustrator is an SVG document containing embedded raster data. The paths describing the design are not vector paths.
-- **EPS** — same issue as SVG. An EPS containing a raster Firefly output is a container format, not a true vector.
-- **AI (Adobe Illustrator native)** — the Illustrator file will contain the Firefly raster. The file format is AI; the content is raster.
+**True vector SVG** — a Firefly image saved as SVG from Illustrator is an SVG document containing embedded raster data. The paths describing the design are not vector paths. The file is a container holding a raster image, labelled as SVG.
 
-The distinction is important: the file format of the container (SVG, EPS, AI) doesn't determine whether the content inside it is vector. Only properly traced or manually built paths are true vector.
+**EPS** — same issue. An EPS containing a raster Firefly output is a container format, not a true vector. It will not behave like a vector EPS when handed to a printer or sign maker.
+
+**AI (Adobe Illustrator native)** — the Illustrator file contains the Firefly raster. The file format is AI; the content inside it is still raster.
+
+This distinction is critical: the file format of the container (SVG, EPS, AI) does not determine whether the content inside is vector. Only properly traced or manually built paths are true vector.
 
 ---
 
-## The Illustrator Workflow With Firefly Output
+## The Raster vs. Vector Problem in Practice
 
-Here's what the professional workflow actually looks like when Firefly is part of the process.
+Here's where this causes real problems.
+
+A client generates a logo concept in Firefly. They love how it looks. They export it from Illustrator as an SVG. They hand it to a print supplier. The supplier opens it. It's embedded raster data — not scalable. The logo looks pixelated on the banner.
+
+Or: the client uploads the "SVG" to their website. It displays fine at small sizes but looks blurry on retina screens. They wonder why.
+
+Or: they ask a second designer to modify the logo six months later. The designer opens the file, selects the logo, and finds it's an embedded image — not editable paths. Starting from scratch.
+
+None of these problems would exist if the Firefly output had been properly vectorized before delivery. [What a vector file actually is](/blog/what-is-a-vector-file) explains the technical difference — it's worth understanding if you're working with Firefly output for brand use.
+
+---
+
+## The Professional Workflow: Firefly to Production-Ready Files
+
+Here's how the workflow actually looks when Firefly is part of a proper design process.
 
 **Step 1: Generate the concept**
 
-Use Firefly (via Adobe Firefly web, Illustrator's Generative Fill, or Photoshop's Generate Image) to explore visual directions. At this stage you're generating ideas, not production files. Think of it the way you'd think of a rough sketch — a direction to develop, not an output to deliver.
+Use Firefly — via the Adobe Firefly web interface, Illustrator's Generative Fill panel, or Photoshop's Generate Image — to explore visual directions. At this stage you're generating ideas, not production files.
 
-**Step 2: Place or open in Illustrator**
+Think of a Firefly output the way you'd think of a rough sketch. It's a direction to develop, not an output to deliver.
 
-The Firefly raster output is placed in Illustrator as a reference layer. This gives you something to trace or build from.
+**Step 2: Place in Illustrator as a reference layer**
+
+The Firefly raster output goes into Illustrator as a locked reference layer. This gives you something to trace or build from. It is not the working artwork — it's a guide.
 
 **Step 3: Vectorize the concept**
 
-Two options:
+You have two options here.
 
-*Image Trace (faster, lower precision)* — Illustrator's built-in Image Trace can convert raster images to vector paths automatically. For simple, high-contrast designs with limited colours, this can produce usable vector output. For complex designs, photographic textures, or gradients, Image Trace produces messy paths that aren't suitable for professional use.
+*Image Trace (faster, lower precision)* — Illustrator's built-in Image Trace converts raster images to vector paths automatically. For simple, high-contrast designs with two to four colours, this produces usable vector output. For complex designs, photographic textures, or gradients, Image Trace produces messy paths that aren't suitable for professional use. You get vector technically — but not vector practically.
 
-*Manual vectorization (slower, professional quality)* — a designer recreates the concept using the pen tool and shape tools, building clean vector paths from scratch using the Firefly concept as a reference. This produces the cleanest possible vector output and allows the designer to refine and improve the concept as they build. [Auto-trace vs manual vectorization](/blog/auto-trace-vs-manual-vectorization) explains the quality difference in detail.
+*Manual vectorization (slower, professional quality)* — a designer rebuilds the concept using the pen tool and shape tools, constructing clean vector paths from scratch using the Firefly concept as a reference. This produces the cleanest possible output. It also lets the designer refine and improve the concept as they build.
 
-**Step 4: Export production files**
+[Auto-trace vs manual vectorization](/blog/auto-trace-vs-manual-vectorization) explains the quality difference in detail — including when each approach is appropriate.
 
-Once the design is properly vectorized in Illustrator, export the full professional file set: AI (source), EPS, SVG, and PNG (multiple sizes, transparent background). These are now true production files, not raster exports from a Firefly concept.
+**Step 4: Export the full production file set**
 
-This is the workflow that [Adobe Firefly logo vectorization](/blog/adobe-firefly-logo-vectorization) covers in depth — specifically how to assess Firefly output and determine how much vectorization work it needs.
+Once the design is properly vectorized, export the complete professional file set: AI (source file), EPS, SVG, and PNG in multiple sizes with transparent background. These are now true production files.
+
+This is the workflow that [Adobe Firefly logo vectorization](/blog/adobe-firefly-logo-vectorization) covers in depth — specifically how to assess whether Firefly output is a good candidate for Image Trace versus manual rebuild.
 
 ---
 
 ## SVG From Illustrator: What's Vector and What Isn't
 
-This is worth being specific about because it causes real confusion.
+This causes more confusion than anything else. Let's be precise.
 
-When you export a file from Illustrator as SVG, the SVG is clean and true vector — provided the content in the Illustrator document was created as vector paths.
+When you export a file from Illustrator as SVG, the result is clean and true vector — if the content in the Illustrator document was created as vector paths.
 
-If the Illustrator document contains an embedded raster image (from Firefly or any other source), that raster image will be embedded in the SVG as base64-encoded data. The SVG file will be large, it won't scale cleanly at all resolutions, and it won't work the way a vector SVG is expected to work in web or print contexts.
+If the Illustrator document contains an embedded raster image — from Firefly or any other source — that raster image is embedded in the SVG as base64-encoded data. The SVG file will be large. It won't scale cleanly at all resolutions. It won't work the way a vector SVG is expected to work in web or print contexts.
 
-How to check: in Illustrator, select the content in question. If the Properties panel shows it as "Linked File" or "Embedded Image," it's raster. If it shows as paths, groups, or compound paths, it's vector.
+**How to check in Illustrator:** select the content in question. If the Properties panel shows "Linked File" or "Embedded Image" — it's raster. If it shows paths, groups, or compound paths — it's vector.
 
-A clean SVG from Illustrator — with properly vectorized content — is infinitely scalable, small in file size, and editable in any vector tool. A "SVG" containing embedded raster data is none of those things.
+A clean SVG from Illustrator — with properly vectorized content — is infinitely scalable, small in file size, and editable in any vector tool. An "SVG" containing embedded raster data is none of those things.
 
 ---
 
-## EPS: When It's Still Required
+## EPS: When You'll Be Asked for It
 
-EPS (Encapsulated PostScript) is an older format that many newer designers never work with — until a print supplier or embroidery company requests it.
+EPS is an older format. Many newer designers never encounter it — until a print supplier, sign maker, embroidery company, or merchandise printer asks for it.
 
-From Illustrator with properly vectorized content, an EPS export is clean and production-ready. It works in virtually any professional print production workflow, including older prepress systems that may not accept SVG.
+These suppliers ask for EPS because their production workflows — sometimes running on older prepress systems — expect it. They need actual vector paths to produce accurate results.
 
-For Firefly-generated content that hasn't been vectorized, the same issue applies: an EPS containing raster data is not a production vector EPS.
+From Illustrator with properly vectorized content, an EPS export is clean and production-ready. From Firefly content that hasn't been vectorized, the EPS contains raster data. The supplier's system will either reject it or produce a pixelated result.
 
-If you need to deliver an EPS of Firefly-generated concept work, vectorize first, export after.
+The rule is simple: vectorize first, export after.
 
 ---
 
 ## PNG: Where Firefly Output Is Actually Useful As-Is
 
-There are contexts where the Firefly PNG export is genuinely useful without vectorization.
+There are specific contexts where using the Firefly PNG export directly makes sense.
 
-**Concept presentation.** Showing a client the direction you're exploring. A high-resolution PNG from Firefly communicates the visual concept clearly enough for approval discussions.
+**Concept presentation.** Showing a client the visual direction you're exploring. A high-resolution Firefly PNG communicates the concept clearly enough for discussion and approval — provided the client understands this is a concept, not the final file.
 
-**Web mockups.** As part of a website design mockup where the logo will eventually be replaced with a proper vector, a Firefly PNG placeholder works fine.
+**Web mockups and wireframes.** As a placeholder in a website design mockup — where the logo will be replaced with a proper vector before development — the PNG works fine.
 
-**Social media and digital use at intended size.** A 2048×2048 PNG at 72dpi is sharp at most digital display sizes. For social media graphics, web assets, and on-screen presentations, the Firefly PNG can be a usable output — provided the use case doesn't require scaling beyond the native resolution.
+**Social media and digital at intended size.** A 2048×2048 PNG at 72dpi displays sharply at most digital display sizes. For social media graphics and on-screen presentations, the Firefly PNG can work as a usable asset — as long as you're not scaling it beyond its native resolution.
 
-What it can't do: print at large scale, be modified or recoloured by another designer, be submitted to a printer as a logo file, or be used as a favicon (needs SVG or ICO), vector embroidery file, or die-cut sticker.
+What it cannot do: print at large scale, be modified or recoloured by another designer, be submitted as a logo file to a printer, be used as a favicon, be converted to embroidery or die-cut sticker format, or serve as a retina-sharp SVG on a website.
 
-[What files a designer should deliver](/blog/what-files-should-a-designer-deliver) covers the full professional file set required for brand use — Firefly PNG alone meets very few of those requirements.
+[What files a designer should deliver](/blog/what-files-should-a-designer-deliver) covers the full professional file set required for proper brand use. A Firefly PNG alone satisfies very few of those requirements.
+
+---
+
+## Why Designers Confidently Hand Over the Wrong Files
+
+Here's why this confusion persists.
+
+A designer generates a concept in Firefly. They open Illustrator. They export as SVG. They have an SVG file on their desktop. They believe they've delivered a vector file.
+
+They technically have. They've delivered an SVG container with embedded raster content. The client won't know the difference until it causes a problem — at the printer, on the website, when the next designer tries to edit it.
+
+This isn't always intentional. Many designers who haven't specifically worked with production files don't know the distinction. They equate "saved as SVG" with "is vector." The two are not the same.
+
+If you're reviewing files from a designer who used Firefly, open the SVG in a text editor. A true vector SVG contains `<path>` elements with coordinate data. An SVG containing embedded raster data contains a `<image>` element with a long base64 string. That's how you know.
 
 ---
 
@@ -131,9 +169,11 @@ What it can't do: print at large scale, be modified or recoloured by another des
 
 Adobe Firefly is a useful concept generation tool. It is not a production asset generator for logo and brand work.
 
-The output is always raster. The file format of the document you save it into (AI, SVG, EPS) doesn't change that. Production-ready brand files require vectorization — either through Image Trace for simple designs or manual rebuilding for professional quality.
+The output is always raster. The file format of the document you save it into — AI, SVG, EPS — doesn't change what's inside it. Production-ready brand files require vectorization.
 
-The workflow that works: Firefly for concept exploration → manual vectorization in Illustrator for production → export clean AI, EPS, SVG, and PNG from the vector source. That's how Firefly output becomes a professional brand asset.
+The workflow that works: Firefly for concept exploration → manual vectorization in Illustrator for production quality → export clean AI, EPS, SVG, and PNG from the vector source.
+
+That's how a Firefly concept becomes a professional brand asset.
 
 ---
 
@@ -147,9 +187,9 @@ The workflow that works: Firefly for concept exploration → manual vectorizatio
 />
 
 <FAQAccordion items={[
-  { q: "Can I use Adobe Firefly to create a professional logo?", a: "Firefly can generate strong visual concepts that serve as the starting point for a logo. The concept itself can't be used as a professional logo directly — it needs to be rebuilt as vector for production use. A designer using Firefly as part of a professional process (concept generation → vectorization → refinement → delivery) can produce excellent results. Using Firefly output as the final logo file, without vectorization, produces files that will cause problems in print and at scale." },
-  { q: "What's the difference between Firefly in Illustrator and Firefly on the web?", a: "Adobe Firefly on the web (firefly.adobe.com) generates standalone images you download as PNG or JPG. Firefly within Illustrator (via Generative Fill or the Firefly panel) places the generated content directly into your Illustrator document as an embedded image layer. The core output is the same — raster — but the Illustrator integration saves the step of manually placing the exported file. Neither produces native Illustrator vector paths." },
-  { q: "Does Illustrator's Image Trace produce usable vector from Firefly output?", a: "For simple, high-contrast, limited-colour designs — yes, often. Image Trace can produce clean enough paths for professional use on designs that don't have photographic complexity, many gradient layers, or fine detail. For complex AI-generated imagery, Image Trace produces hundreds or thousands of messy paths that are technically vector but practically unusable. The test: after tracing, zoom in to 1000% and look at the paths. Clean, intentional curves are good. Thousands of tiny irregular paths are not." },
-  { q: "Why do some designers say Firefly exports SVG when it doesn't?", a: "Because Illustrator can save any document as SVG — and if someone generates with Firefly inside Illustrator and then exports as SVG, they technically have an SVG file. But the SVG contains embedded raster data, not vector paths. The confusion comes from conflating the container file format (SVG) with the content type (raster vs. vector). An SVG can contain either. A true vector SVG contains paths. A Firefly SVG without vectorization contains raster." },
-  { q: "Can Firefly output be used directly for a website logo?", a: "For a website where the logo is displayed at a fixed size smaller than the Firefly output resolution — yes, a PNG can work temporarily. But an SVG is strongly preferred for web logos because it's infinitely scalable (sharp on retina displays at any size), smaller in file size than a large PNG, and can be styled with CSS. A proper web logo is always SVG. Firefly output used directly as a web logo will either be blurry on retina screens (too small) or unnecessarily heavy (full resolution PNG)." }
+  { q: "Can I use Adobe Firefly to create a professional logo?", a: "Firefly can generate strong visual concepts that serve as the starting point for a logo. The concept itself can't be used directly as a professional logo — it needs to be rebuilt as vector for production use. A designer who uses Firefly for concept generation and then properly vectorizes, refines, and delivers the full file set can produce excellent results. Using Firefly output as the final logo file, without vectorization, produces files that will cause problems in print and at scale." },
+  { q: "What's the difference between Firefly in Illustrator and Firefly on the web?", a: "Adobe Firefly on the web (firefly.adobe.com) generates standalone images you download as PNG or JPG. Firefly within Illustrator — via Generative Fill or the Firefly panel — places the generated content directly into your Illustrator document as an embedded image layer. The core output is the same in both cases: raster. The Illustrator integration saves the step of manually placing the exported file, but neither produces native Illustrator vector paths." },
+  { q: "Does Illustrator's Image Trace produce usable vector from Firefly output?", a: "For simple, high-contrast, limited-colour designs — often yes. Image Trace can produce clean enough paths for professional use when the design doesn't have photographic complexity, many gradient layers, or fine detail. For complex AI-generated imagery, Image Trace produces hundreds or thousands of messy paths that are technically vector but practically unusable. The test: after tracing, zoom in to 1000% and look at the paths. Clean, intentional curves are good. Thousands of tiny irregular paths are not." },
+  { q: "Why do some designers say Firefly exports SVG when it doesn't?", a: "Because Illustrator can save any document as SVG — and if someone generates with Firefly inside Illustrator and then exports as SVG, they technically have an SVG file. But the SVG contains embedded raster data, not vector paths. The confusion comes from conflating the container file format (SVG) with the content type (raster vs. vector). An SVG can contain either. A true vector SVG contains paths. A Firefly 'SVG' without prior vectorization contains raster." },
+  { q: "Can Firefly output be used directly for a website logo?", a: "For a website where the logo is displayed at a fixed size smaller than the Firefly output resolution — yes, a PNG can work temporarily. But an SVG is strongly preferred for web logos because it's infinitely scalable (sharp on retina displays at any size), smaller in file size than a large PNG, and can be styled with CSS. A proper web logo is always SVG. Firefly output used directly as a web logo will either be blurry on retina screens (if too small) or unnecessarily heavy on page load (if using the full resolution PNG)." }
 ]} />
