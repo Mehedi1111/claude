@@ -6117,6 +6117,58 @@ export const blogPosts = [
     tags: ["Referrals", "Web Design", "Lead Generation", "Service Business", "Marketing"],
   },
 
+  // ─── Cluster 35: Bing Logo Types + Brand Process ─────────────────────────
+  {
+    slug: "wordmark-logo-design",
+    title: "What Is a Wordmark Logo? (Examples + When to Use One) (2027)",
+    excerpt: "A wordmark logo is pure typography — the business name, set in a distinctive typeface, with no separate symbol. Some of the most recognised logos in the world are wordmarks. Here's when they work, when they don't, and how to design one properly.",
+    category: "Guide",
+    readTime: "9 min read",
+    date: "Aug 5, 2027",
+    author: { name: "Mehedi Hasan", role: "Founder & CEO, Evoke Studio" },
+    tags: ["Wordmark Logo", "Logo Design", "Typography", "Logo Types", "Brand Identity"],
+  },
+  {
+    slug: "emblem-logo-design",
+    title: "What Is an Emblem Logo? (Examples + When to Use One) (2027)",
+    excerpt: "An emblem logo locks the text inside the symbol — badge, crest, seal — into one contained shape. They signal heritage, authority, and premium quality. Here's how emblem logos work, when to use one, and how to design them for modern applications.",
+    category: "Guide",
+    readTime: "9 min read",
+    date: "Aug 6, 2027",
+    author: { name: "Mehedi Hasan", role: "Founder & CEO, Evoke Studio" },
+    tags: ["Emblem Logo", "Badge Logo", "Logo Design", "Crest Logo", "Brand Identity"],
+  },
+  {
+    slug: "brand-moodboard-guide",
+    title: "What Is a Brand Moodboard? (And How to Create One) (2027)",
+    excerpt: "A brand moodboard is the visual reference that aligns everyone on what the brand should feel like before any design begins. Without one, designers guess, clients get surprises, and revisions multiply. Here's what goes into a proper brand moodboard and how to create one that actually works.",
+    category: "Guide",
+    readTime: "8 min read",
+    date: "Aug 7, 2027",
+    author: { name: "Mehedi Hasan", role: "Founder & CEO, Evoke Studio" },
+    tags: ["Brand Moodboard", "Brand Identity", "Design Process", "Visual Direction", "Branding"],
+  },
+  {
+    slug: "adobe-firefly-logo-design-capabilities",
+    title: "Adobe Firefly for Logo Design: What It Can and Can't Do (2027)",
+    excerpt: "Adobe Firefly can generate impressive AI imagery. But logo design has specific technical requirements that most AI tools weren't built for. Here's an honest evaluation of what Firefly does well, where it falls short, and what the professional workflow actually looks like.",
+    category: "Guide",
+    readTime: "10 min read",
+    date: "Aug 8, 2027",
+    author: { name: "Mehedi Hasan", role: "Founder & CEO, Evoke Studio" },
+    tags: ["Adobe Firefly", "AI Logo Design", "Logo Design", "Adobe Illustrator", "AI Tools"],
+  },
+  {
+    slug: "unique-value-proposition-guide",
+    title: "What Is a Unique Value Proposition? (With Examples) (2027)",
+    excerpt: "Your unique value proposition is the single most important sentence on your website. It tells the right client they've found what they're looking for — and tells the wrong client to keep looking. Here's what a real UVP is, how it differs from a tagline or mission statement, and how to write one that actually works.",
+    category: "Guide",
+    readTime: "10 min read",
+    date: "Aug 9, 2027",
+    author: { name: "Mehedi Hasan", role: "Founder & CEO, Evoke Studio" },
+    tags: ["Unique Value Proposition", "Brand Positioning", "Brand Strategy", "UVP", "Marketing"],
+  },
+
   // ─── Cluster 34: Bing High-Intent Queries ────────────────────────────────
   {
     slug: "adobe-firefly-export-formats",
