@@ -71,6 +71,10 @@ export const metadata: Metadata = {
     images: ["https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c47385218256145.679e5b461e6a6.jpg"],
     creator: "@MadeByEvoke",
   },
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
   robots: {
     index: true,
     follow: true,
