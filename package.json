@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "postbuild": "node scripts/submit-indexnow.mjs",
-    "pages:build": "npx @cloudflare/next-on-pages",
     "start": "next start",
     "lint": "eslint",
     "convert-image": "node scripts/convert-images.mjs"

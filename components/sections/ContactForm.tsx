@@ -50,24 +50,39 @@ export default function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Client-side honeypot check
+    if (honeypotRef.current?.value) {
+      setSubmitted(true);
+      return;
+    }
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/contact", {
+      const serviceList = selected.length ? selected.join(", ") : "Not specified";
+      const aiTool = aiToolRef.current?.value || "";
+      const body = [
+        `Name: ${nameRef.current?.value}`,
+        companyRef.current?.value ? `Company: ${companyRef.current.value}` : "",
+        `Services: ${serviceList}`,
+        aiTool ? `AI Tool: ${aiTool}` : "",
+        fileName ? `File: ${fileName}` : "",
+        messageRef.current?.value ? `\nProject Details:\n${messageRef.current.value}` : "",
+      ].filter(Boolean).join("\n");
+
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
           name: nameRef.current?.value,
-          company: companyRef.current?.value,
           email: emailRef.current?.value,
-          services: selected,
-          aiTool: aiToolRef.current?.value,
-          message: messageRef.current?.value,
-          fileName,
-          _hp: honeypotRef.current?.value ?? "",
+          subject: `New inquiry from ${nameRef.current?.value}${companyRef.current?.value ? ` — ${companyRef.current.value}` : ""}`,
+          message: body,
+          from_name: "Evoke Studio Contact Form",
         }),
       });
-      if (!res.ok) throw new Error("Send failed");
+      const data = await res.json();
+      if (!data.success) throw new Error("Send failed");
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please email us directly at work@madebyevoke.com");
