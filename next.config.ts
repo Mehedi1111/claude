@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { setupDevPlatform } from "@cloudflare/next-on-pages/next-dev";
 
 const nextConfig: NextConfig = {
   async redirects() {
@@ -25,5 +26,9 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
 };
+
+if (process.env.NODE_ENV === "development") {
+  setupDevPlatform().catch(console.error);
+}
 
 export default nextConfig;
