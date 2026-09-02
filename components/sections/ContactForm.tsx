@@ -58,31 +58,21 @@ export default function ContactForm() {
     setLoading(true);
     setError(null);
     try {
-      const serviceList = selected.length ? selected.join(", ") : "Not specified";
-      const aiTool = aiToolRef.current?.value || "";
-      const body = [
-        `Name: ${nameRef.current?.value}`,
-        companyRef.current?.value ? `Company: ${companyRef.current.value}` : "",
-        `Services: ${serviceList}`,
-        aiTool ? `AI Tool: ${aiTool}` : "",
-        fileName ? `File: ${fileName}` : "",
-        messageRef.current?.value ? `\nProject Details:\n${messageRef.current.value}` : "",
-      ].filter(Boolean).join("\n");
-
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "59922070-0d79-4f55-8d25-ca3374880536",
           name: nameRef.current?.value,
+          company: companyRef.current?.value,
           email: emailRef.current?.value,
-          subject: `New inquiry from ${nameRef.current?.value}${companyRef.current?.value ? ` — ${companyRef.current.value}` : ""}`,
-          message: body,
-          from_name: "Evoke Studio Contact Form",
+          services: selected,
+          aiTool: aiToolRef.current?.value,
+          message: messageRef.current?.value,
+          fileName,
+          _hp: honeypotRef.current?.value ?? "",
         }),
       });
-      const data = await res.json();
-      if (!data.success) throw new Error("Send failed");
+      if (!res.ok) throw new Error("Send failed");
       setSubmitted(true);
     } catch {
       setError("Something went wrong. Please email us directly at work@madebyevoke.com");
