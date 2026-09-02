@@ -4,6 +4,8 @@ import { allServices } from "@/lib/data";
 import { domains } from "@/lib/domains";
 import { landingPages } from "@/lib/landing-pages";
 
+export const dynamic = "force-static";
+
 const BASE = "https://madebyevoke.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
