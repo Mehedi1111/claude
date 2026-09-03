@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Manrope } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -172,13 +173,7 @@ export default function RootLayout({
       <head>
         {/* LLMs.txt — AI agent discoverability */}
         <link rel="alternate" type="text/plain" href="/llms.txt" />
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-B7B1WEPVL2" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B7B1WEPVL2');`,
-          }}
-        />
+        {/* Google Analytics — loaded after page is interactive to avoid blocking LCP */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -200,6 +195,13 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-B7B1WEPVL2"
+          strategy="lazyOnload"
+        />
+        <Script id="ga-init" strategy="lazyOnload">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-B7B1WEPVL2');`}
+        </Script>
       </body>
     </html>
   );
